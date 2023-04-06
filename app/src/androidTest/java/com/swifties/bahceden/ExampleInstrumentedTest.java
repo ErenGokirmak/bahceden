@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.swifties.bahceden;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.myapplication", appContext.getPackageName());
+        assertEquals("com.swifties.bahceden", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.swifties.bahceden;
 
 import org.junit.Test;
 

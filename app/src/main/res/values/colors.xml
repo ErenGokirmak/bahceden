@@ -7,4 +7,35 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Our app's color palette -->
+
+    <!-- Blacks -->
+    <color name="richBlack">#040F0F</color>
+    <color name="night">#0D0A0B</color>
+
+    <!-- Grays -->
+    <color name="gunmetal">#2D3A3A</color>
+    <color name="charcoal">#454955</color>
+    
+    <!-- Whites -->
+    <color name="magnolia">#F3EFF5</color>
+    <color name="babyPowder">#FCFFFC</color>
+
+    <!-- Greens -->
+    <color name="forestGreen">#248232</color>
+    <color name="pigmentGreen">#2BA84A</color>
+    <color name="appleGreen">#72B01D</color>
+    <color name="officeGreen">#3F7D20</color>
+
+    <!-- Oranges -->
+    <color name="xanthous">#FBB02D</color>
+    <color name="pantoneOrange">#FB6107</color>
+    <color name="webDarkOrange">#F78E31</color>
+
+    <!-- Yellows -->
+    <color name="maize">#FCEC52</color>
+    <color name="citrine">#F3DE2C</color>
+
+    <!-- Happy user interfacing mates! -->
 </resources>
