@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/bahcedenImg"
-        android:layout_width="332dp"
-        android:layout_height="425dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toTopOf="@id/bySwifties"
         app:layout_constraintEnd_toEndOf="parent"
