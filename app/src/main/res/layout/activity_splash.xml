@@ -9,12 +9,11 @@
 
     <ImageView
         android:id="@+id/bahcedenImg"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginBottom="100dp"
+        android:layout_width="240dp"
+        android:layout_height="268dp"
         app:layout_constraintBottom_toTopOf="@id/bySwifties"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/bahcedenSplash"
+        app:layout_constraintStart_toStartOf="@+id/bahcedenSplash"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bahcedenlogo" />
 
@@ -26,7 +25,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bahcedenImg"
-        android:text="By Swifties"
+        android:text="@string/by_swifties"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:textColor="@color/bahceden_green"/>
+
+    <TextView
+        android:id="@+id/bahcedenSplash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50dp"
+        android:fontFamily="@font/the_bold_font"
+        android:text="BAHÇEDEN"
+        android:textColor="@color/bahceden_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bahcedenImg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

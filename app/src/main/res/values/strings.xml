@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">bahceden</string>
+    <string name="by_swifties">By Swifties</string>
     <string name="customer">Customer</string>
 </resources>
