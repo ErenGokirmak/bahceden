@@ -10,64 +10,80 @@
         android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:textSize="46sp"
-        android:text="Welcome to Bahçeden"
+        android:layout_marginTop="56dp"
         android:fontFamily="@font/the_bold_font"
-        android:paddingStart="26dp"
+        android:paddingStart="16dp"
+        android:text="Welcome to Bahçeden"
         android:textColor="@color/bahceden_green"
+        android:textSize="46sp"
         app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome"
-        app:srcCompat="@drawable/bahcedenlogo" />
+        app:srcCompat="@drawable/gardening" />
 
     <TextView
+        android:id="@+id/introSelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/the_bold_font"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/nexa_heavy"
         android:paddingStart="16dp"
-        android:text="Choose to Continue:"
+        android:text="Select to Continue"
         android:textColor="@color/bahceden_green"
         android:textSize="26sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/introCustomer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/intro_button"
         android:drawableTop="@mipmap/customer_png_foreground"
+        android:fontFamily="@font/nexa_heavy"
         android:paddingTop="6dp"
         android:text="@string/customer"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/introProducer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/introSelect" />
 
     <Button
+        android:id="@+id/introProducer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="26dp"
         android:background="@drawable/intro_button"
         android:drawableTop="@mipmap/farmer_png_foreground"
-        android:text="Farmer"
+        android:paddingTop="6dp"
+        android:text="@string/producer"
+        android:fontFamily="@font/nexa_heavy"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/introCustomer" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:text="@string/already_have_an_account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:paddingTop="6dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/nexa_heavy"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/introCustomer"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
