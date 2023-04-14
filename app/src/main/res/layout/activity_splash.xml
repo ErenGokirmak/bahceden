@@ -25,8 +25,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bahcedenImg"
-        android:text="By Swifties"
-        android:layout_marginTop="150dp"
+        android:text="@string/by_swifties"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:textColor="@color/bahceden_green"/>
 
     <TextView
