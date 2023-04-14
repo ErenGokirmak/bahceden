@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="bahceden_green">#007251</color>
-    <color name="bahceden_beige">#CCC2B0</color>
-    <color name="bahceden_beige_light">#D7CDB9</color>
+    <color name="bahceden_background">#eaeaea</color>
+    <color name="bahceden_foreground">#D6E5E3</color>
 
 </resources>
