@@ -2,4 +2,10 @@
     <string name="app_name">bahceden</string>
     <string name="by_swifties">By Swifties</string>
     <string name="customer">Customer</string>
+    <string name="producer">Producer</string>
+    <string name="already_have_an_account">Already have an Account?</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="or_continue_with">or continue with</string>
+    <string name="forget_password">Forget Password?</string>
 </resources>

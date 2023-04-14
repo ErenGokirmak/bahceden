@@ -12,6 +12,15 @@
         android:theme="@style/Theme.Bahceden"
         tools:targetApi="31">
         <activity
+            android:name=".signUpCustomerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".signUpFarmerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".logInActivity"
+            android:exported="false" />
+        <activity
             android:name=".IntroActivity"
             android:exported="false"/>
         <activity
