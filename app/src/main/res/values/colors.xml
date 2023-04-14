@@ -10,5 +10,6 @@
 
     <color name="bahceden_green">#007251</color>
     <color name="bahceden_beige">#CCC2B0</color>
+    <color name="bahceden_beige_light">#D7CDB9</color>
 
 </resources>
