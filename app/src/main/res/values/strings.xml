@@ -19,4 +19,5 @@
     <string name="new_arrivals">New Arrivals</string>
     <string name="hot_sales">Hot Sales</string>
     <string name="categories">Categories</string>
+    <string name="search_history">Search History</string>
 </resources>
