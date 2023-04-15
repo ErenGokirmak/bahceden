@@ -8,11 +8,11 @@
     tools:context=".logInActivity">
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginBack"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_margin="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -49,6 +49,7 @@
         android:drawableTint="@color/darkGray"
         android:hint="@string/email"
         android:padding="12dp"
+        android:inputType="textEmailAddress"
         android:textColorHint="@color/darkGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +67,7 @@
         android:drawableTint="@color/darkGray"
         android:hint="@string/password"
         android:padding="12dp"
+        android:inputType="textPassword"
         android:textColorHint="@color/darkGray"
         app:layout_constraintEnd_toEndOf="@+id/loginEmail"
         app:layout_constraintStart_toStartOf="@+id/loginEmail"
@@ -77,6 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:checked="true"
+        android:buttonTint="@color/bahceden_green"
         android:text="Remember Me?"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -84,14 +87,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginPassword" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="28dp"
-        android:background="@drawable/long_button_backgroun"
+        android:background="@drawable/long_button_background"
+        android:backgroundTint="@color/bahceden_green"
         android:fontFamily="@font/nexa_heavy"
         android:text="Sign In"
         android:textColor="@color/white"
