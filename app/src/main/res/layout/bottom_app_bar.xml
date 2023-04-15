@@ -41,7 +41,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Home"
+                    android:text="@string/home"
                     android:textSize="15sp"
                     android:textAlignment="center"/>
 
@@ -63,7 +63,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Search"
+                    android:text="@string/search"
                     android:textSize="15sp"
                     android:textAlignment="center"/>
 
@@ -95,7 +95,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Favorites"
+                    android:text="@string/favorites"
                     android:textSize="15sp"
                     android:textAlignment="center"/>
 
@@ -117,7 +117,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Profile"
+                    android:text="@string/profile"
                     android:textSize="15sp"
                     android:textAlignment="center"/>
 
