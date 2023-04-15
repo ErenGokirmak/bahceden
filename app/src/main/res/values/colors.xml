@@ -13,5 +13,5 @@
     <color name="darkGray">#808080</color>
     <color name="bahceden_background">#eaeaea</color>
     <color name="bahceden_foreground">#D6E5E3</color>
-
+    <color name="heart">#BD1616</color>
 </resources>
