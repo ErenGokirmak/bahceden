@@ -29,14 +29,14 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/nexa_heavy"
-        android:text="@string/login_to_your_account"
+        android:text="Login to Your Account"
         android:textColor="@color/bahceden_green"
-        android:textSize="48sp"
+        android:textSize="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginBack" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/loginEmail"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -55,23 +55,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginText" />
 
-    <EditText
-        android:id="@+id/loginPassword"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loginPasswordLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="16dp"
-        android:background="@drawable/edit_text_background"
-        android:drawableStart="@drawable/ic_padlock"
-        android:drawableEnd="@drawable/ic_hidden"
-        android:drawablePadding="12dp"
-        android:drawableTint="@color/darkGray"
-        android:hint="@string/password"
-        android:padding="12dp"
-        android:inputType="textPassword"
-        android:textColorHint="@color/darkGray"
+        app:passwordToggleEnabled="true"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintEnabled="false"
+        app:passwordToggleTint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/loginEmail"
         app:layout_constraintStart_toStartOf="@+id/loginEmail"
-        app:layout_constraintTop_toBottomOf="@id/loginEmail" />
+        app:layout_constraintTop_toBottomOf="@id/loginEmail">
+
+        <EditText
+            android:id="@+id/loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edit_text_background"
+            android:drawableStart="@drawable/ic_padlock"
+            android:drawablePadding="12dp"
+            android:drawableTint="@color/darkGray"
+            android:hint="@string/password"
+            android:padding="12dp"
+            android:inputType="textPassword"
+            android:textColorHint="@color/darkGray" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <CheckBox
         android:id="@+id/loginRememberMe"
@@ -80,12 +91,12 @@
         android:layout_marginTop="16dp"
         android:checked="true"
         android:buttonTint="@color/bahceden_green"
-        android:text="@string/remember_me"
+        android:text="Remember Me?"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginPassword" />
+        app:layout_constraintTop_toBottomOf="@id/loginPasswordLayout" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logIn"
@@ -97,9 +108,9 @@
         android:background="@drawable/long_button_background"
         android:backgroundTint="@color/bahceden_green"
         android:fontFamily="@font/nexa_heavy"
-        android:text="@string/sign_in"
+        android:text="Sign In"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/loginRememberMe"
         app:layout_constraintStart_toStartOf="@+id/loginRememberMe"
