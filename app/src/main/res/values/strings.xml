@@ -16,4 +16,7 @@
     <string name="remember_me">Remember Me?</string>
     <string name="login_to_your_account">Login to Your Account</string>
     <string name="filters">Filters</string>
+    <string name="new_arrivals">New Arrivals</string>
+    <string name="hot_sales">Hot Sales</string>
+    <string name="categories">Categories</string>
 </resources>
