@@ -109,7 +109,7 @@
         android:background="@drawable/long_button_background"
         android:backgroundTint="@color/bahceden_green"
         android:fontFamily="@font/nexa_heavy"
-        android:text="Sign In"
+        android:text="SIGN IN"
         android:textColor="@color/white"
         android:textSize="18dp"
         android:textStyle="bold"
