@@ -13,7 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/long_button_background"
-        app:tint="@color/bahceden_green"/>
+        app:tint="@color/bahceden_foreground"/>
 
     <ImageView
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
         android:layout_marginBottom="32dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/bahcedenlogo"
-        app:tint="@color/white"/>
+        app:tint="@color/bahceden_green"/>
 
     <TextView
         android:layout_width="match_parent"

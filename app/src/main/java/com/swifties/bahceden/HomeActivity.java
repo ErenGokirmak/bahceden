@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         hLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
         hotSalesRV.setLayoutManager(hLayoutManager);
-        hotSalesAdapter = new CategoriesAdapter();
+        hotSalesAdapter = new HotSalesAdapter();
         hotSalesRV.setAdapter(hotSalesAdapter);
 
         newArrivalsRV = (RecyclerView) findViewById(R.id.newArrivalsRV);
@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         aLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
         newArrivalsRV.setLayoutManager(aLayoutManager);
-        arrivalsAdapter = new CategoriesAdapter();
+        arrivalsAdapter = new HotSalesAdapter();
         newArrivalsRV.setAdapter(arrivalsAdapter);
 
 
