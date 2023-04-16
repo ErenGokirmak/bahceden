@@ -20,4 +20,8 @@
     <string name="hot_sales">Hot Sales</string>
     <string name="categories">Categories</string>
     <string name="don_t_have_an_account">Don\'t have an Account?</string>
+    <string name="search_history">Search History</string>
+    <string name="manage_account">Manage Account</string>
+    <string name="change_location">Change Location</string>
+    <string name="about_us">About Us</string>
 </resources>
