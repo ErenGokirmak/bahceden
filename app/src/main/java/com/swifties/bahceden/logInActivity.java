@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class logInActivity extends AppCompatActivity {
 
     Button backButton, logIn;
-    TextView dontHaveAccount;
+    TextView dontHaveAccount, forgetPassword;
     EditText emailInput, passwordInput;
     TextInputLayout textInputLayout;
 
@@ -32,6 +32,7 @@ public class logInActivity extends AppCompatActivity {
         dontHaveAccount = findViewById(R.id.dontHaveAccount);
         passwordInput = findViewById(R.id.loginPassword);
         textInputLayout = findViewById(R.id.loginPasswordLayout);
+        forgetPassword = findViewById(R.id.forgetPassword);
         logIn = findViewById(R.id.logIn);
 
         textInputLayout.setEndIconVisible(false);
@@ -91,6 +92,14 @@ public class logInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(logInActivity.this, signUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(logInActivity.this, ForgetPasswordActivity.class);
                 startActivity(intent);
             }
         });
