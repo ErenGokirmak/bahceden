@@ -24,10 +24,7 @@
             android:name=".SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".signUpCustomerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".signUpFarmerActivity"
+            android:name=".signUpActivity"
             android:exported="false" />
         <activity
             android:name=".logInActivity"

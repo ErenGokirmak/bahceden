@@ -75,6 +75,7 @@
         app:layout_constraintTop_toTopOf="@+id/introCustomer" />
 
     <TextView
+        android:id="@+id/haveAnAccount"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:text="@string/already_have_an_account"
