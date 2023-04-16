@@ -19,7 +19,7 @@
             android:id="@+id/locationText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="28dp"
             android:fontFamily="@font/nexa_heavy"
             android:text="Shopping Cart"
             android:textColor="@color/black"
@@ -53,17 +53,43 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+
+    <include
+        android:id="@+id/bottomBar"
+        layout="@layout/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
-        android:id="@+id/product1"
+        android:id="@+id/total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="90dp"
+        android:fontFamily="@font/nexa_heavy"
+        android:text="Total: _ _ _ _ _"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.683" />
+
+    <TextView
+        android:id="@+id/product1_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/nexa_heavy"
         android:text="Cherry Jam"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/add2"
+        app:layout_constraintStart_toStartOf="@+id/remove1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2" />
 
@@ -81,20 +107,20 @@
         app:layout_constraintVertical_bias="0.201" />
 
     <ImageView
-        android:id="@+id/add"
+        android:id="@+id/add1"
         android:layout_width="30dp"
         android:layout_height="20dp"
         android:layout_margin="10dp"
         android:src="@mipmap/add_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.766"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.576" />
 
     <ImageView
-        android:id="@+id/remove"
+        android:id="@+id/remove1"
         android:layout_width="30dp"
         android:layout_height="20dp"
         android:layout_margin="10dp"
@@ -107,7 +133,7 @@
         app:layout_constraintVertical_bias="0.3" />
 
     <ImageView
-        android:id="@+id/rubbish"
+        android:id="@+id/rubbish1"
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:layout_margin="10dp"
@@ -119,17 +145,113 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.234" />
 
+
     <TextView
         android:id="@+id/product1_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="19dp"
+        android:layout_height="26dp"
         android:fontFamily="@font/nexa_heavy"
         android:text="2"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/product1"
-        app:layout_constraintStart_toStartOf="@+id/product1"
-        tools:layout_editor_absoluteY="190dp"
+        app:layout_constraintEnd_toEndOf="@+id/product1_name"
+        app:layout_constraintStart_toStartOf="@+id/product1_name"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="180dp" />
+
+    <TextView
+        android:id="@+id/product2_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nexa_heavy"
+        android:text="Walnut"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/add1"
+        app:layout_constraintStart_toStartOf="@+id/remove2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.472" />
+
+    <ImageView
+        android:id="@+id/walnut"
+        android:layout_width="119dp"
+        android:layout_height="103dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/walnut"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.516" />
+
+    <ImageView
+        android:id="@+id/add2"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:src="@mipmap/add_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <ImageView
+        android:id="@+id/remove2"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:src="@mipmap/remove_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.573" />
+
+
+    <ImageView
+        android:id="@+id/rubbish2"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:src="@mipmap/rubbish_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.512" />
+
+    <TextView
+        android:id="@+id/product2_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nexa_heavy"
+        android:text="3"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/product2_name"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/product2_name"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="380dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/shop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/long_button_background"
+        android:backgroundTint="@color/bahceden_green"
+        android:fontFamily="@font/nexa_heavy"
+        android:text="SHOP NOW"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="530dp"
         tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.Group
