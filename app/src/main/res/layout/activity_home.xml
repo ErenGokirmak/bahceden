@@ -8,9 +8,9 @@
     android:background="@color/bahceden_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/topBar"
+        android:id="@+id/topBarHome"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -63,9 +63,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Categories"/>
+                android:text="@string/categories"
+                android:textColor="@color/bahceden_green"
+                android:fontFamily="@font/nexa_heavy"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoriesRV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"/>
@@ -73,9 +76,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hot Sales"/>
+                android:text="@string/hot_sales"
+                android:textColor="@color/bahceden_green"
+                android:fontFamily="@font/nexa_heavy"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hotSalesRV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"/>
@@ -83,9 +89,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="New Arrivals"/>
+                android:text="@string/new_arrivals"
+                android:textColor="@color/bahceden_green"
+                android:fontFamily="@font/nexa_heavy"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/newArrivalsRV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"/>
