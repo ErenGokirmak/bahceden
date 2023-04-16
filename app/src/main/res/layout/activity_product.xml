@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductActivity">
+
+
+    <include
+        android:id="@+id/bottomBar"
+        style="@android:style/Widget.Holo.Button.Borderless"
+        layout="@layout/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <Button
+        android:id="@+id/productCategoryButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="65dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:padding="0dp"
+        android:text="category"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:iconPadding="4dp"
+        app:layout_constraintStart_toEndOf="@+id/productHomeButton"
+        app:layout_constraintTop_toBottomOf="@+id/productImage" />
+
+    <Button
+        android:id="@+id/productTypeButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="65dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:padding="0dp"
+        android:text="procuct"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:iconPadding="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/productCategoryButton"
+        app:layout_constraintTop_toBottomOf="@+id/productImage" />
+
+    <TextView
+        android:id="@+id/companyNameDisplay"
+        android:layout_width="174dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/nexa_heavy"
+        android:text="Company Name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="256dp"
+        android:layout_height="256dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/companyNameDisplay"
+        app:srcCompat="@drawable/jam" />
+
+    <Button
+        android:id="@+id/productHomeButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="65dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="12dp"
+        android:padding="0dp"
+        android:text="home"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:iconPadding="4dp"
+        app:layout_constraintStart_toStartOf="@+id/bottomBar"
+        app:layout_constraintTop_toBottomOf="@+id/productImage" />
+
+    <TextView
+        android:id="@+id/descriptionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/nexa_heavy"
+        android:text="Description"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productHomeButton" />
+
+    <TextView
+        android:id="@+id/descriptionTextDisplay"
+        android:layout_width="314dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="16dp"
+        android:text="description description description description description description description description description description description "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTitle" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/bahceden_green"
+        android:fontFamily="@font/nexa_heavy"
+        android:text="Add to cart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTextDisplay" />
+
+    <ImageView
+        android:id="@+id/increaseItemCountButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/button10"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTextDisplay"
+        app:srcCompat="@mipmap/add_foreground" />
+
+    <TextView
+        android:id="@+id/itemCountDisplay"
+        android:layout_width="35dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/nexa_heavy"
+        android:padding="2dp"
+        android:text="1"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/increaseItemCountButton"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTextDisplay" />
+
+    <ImageView
+        android:id="@+id/decreaseItemCountButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/itemCountDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTextDisplay"
+        app:srcCompat="@mipmap/remove_foreground" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
