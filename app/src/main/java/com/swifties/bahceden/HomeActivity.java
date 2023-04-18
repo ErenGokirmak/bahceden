@@ -6,6 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+
+import java.util.ArrayList;
+
 public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView categoriesRV;
@@ -14,6 +20,8 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView.Adapter categoriesAdapter;
     private RecyclerView.Adapter arrivalsAdapter;
     private RecyclerView.Adapter hotSalesAdapter;
+
+    private ImageSlider imageSlider;
 
     RecyclerView.LayoutManager cLayoutManager;
     RecyclerView.LayoutManager aLayoutManager;
@@ -24,6 +32,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        imageSlider = findViewById(R.id.slider);
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+
+        slideModels.add(new SlideModel(R.drawable.banana, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.cucumber, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.tomato, ScaleTypes.FIT));
+        imageSlider.setImageList(slideModels);
+
         categoriesRV = (RecyclerView) findViewById(R.id.categoriesRV);
         categoriesRV.setHasFixedSize(true);
         cLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -32,13 +48,13 @@ public class HomeActivity extends AppCompatActivity {
         categoriesAdapter = new CategoriesAdapter();
         categoriesRV.setAdapter(categoriesAdapter);
 
-        hotSalesRV = (RecyclerView) findViewById(R.id.hotSalesRV);
-        hotSalesRV.setHasFixedSize(true);
-        hLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-
-        hotSalesRV.setLayoutManager(hLayoutManager);
-        hotSalesAdapter = new HotSalesAdapter();
-        hotSalesRV.setAdapter(hotSalesAdapter);
+//        hotSalesRV = (RecyclerView) findViewById(R.id.hotSalesRV);
+//        hotSalesRV.setHasFixedSize(true);
+//        hLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+//
+//        hotSalesRV.setLayoutManager(hLayoutManager);
+//        hotSalesAdapter = new HotSalesAdapter();
+//        hotSalesRV.setAdapter(hotSalesAdapter);
 
         newArrivalsRV = (RecyclerView) findViewById(R.id.newArrivalsRV);
         newArrivalsRV.setHasFixedSize(true);
