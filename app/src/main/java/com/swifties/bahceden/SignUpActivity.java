@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-public class signUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     Button backButton, signUp;
     TextView haveAnAccount;
@@ -49,13 +49,13 @@ public class signUpActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                nameInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(signUpActivity.this, R.color.bahceden_green));
+                nameInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(SignUpActivity.this, R.color.bahceden_green));
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().isEmpty())
-                    nameInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(signUpActivity.this, R.color.darkGray));
+                    nameInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(SignUpActivity.this, R.color.darkGray));
             }
         });
 
@@ -68,13 +68,13 @@ public class signUpActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                emailInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(signUpActivity.this, R.color.bahceden_green));
+                emailInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(SignUpActivity.this, R.color.bahceden_green));
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().isEmpty())
-                    emailInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(signUpActivity.this, R.color.darkGray));
+                    emailInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(SignUpActivity.this, R.color.darkGray));
             }
         });
 
@@ -86,14 +86,14 @@ public class signUpActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                passwordInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(signUpActivity.this, R.color.bahceden_green));
+                passwordInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(SignUpActivity.this, R.color.bahceden_green));
                 passwordInputLayout.setEndIconVisible(true);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().isEmpty()) {
-                    passwordInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(signUpActivity.this, R.color.darkGray));
+                    passwordInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(SignUpActivity.this, R.color.darkGray));
                     passwordInputLayout.setEndIconVisible(false);
                 }
             }
@@ -107,14 +107,14 @@ public class signUpActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                confirmPasswordInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(signUpActivity.this, R.color.bahceden_green));
+                confirmPasswordInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(SignUpActivity.this, R.color.bahceden_green));
                 confirmPasswordInputLayout.setEndIconVisible(true);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().isEmpty()) {
-                    confirmPasswordInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(signUpActivity.this, R.color.darkGray));
+                    confirmPasswordInput.getCompoundDrawables()[0].setTint(ContextCompat.getColor(SignUpActivity.this, R.color.darkGray));
                     confirmPasswordInputLayout.setEndIconVisible(false);
                 }
             }
@@ -141,7 +141,7 @@ public class signUpActivity extends AppCompatActivity {
         haveAnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(signUpActivity.this, logInActivity.class);
+                Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
                 startActivity(intent);
             }
         });
@@ -149,7 +149,7 @@ public class signUpActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signUpActivity.super.onBackPressed();
+                SignUpActivity.super.onBackPressed();
             }
         });
 

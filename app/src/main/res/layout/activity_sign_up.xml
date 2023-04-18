@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".signUpActivity">
+    tools:context=".SignUpActivity">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signUpBack"
@@ -27,7 +27,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/nexa_heavy"
-        android:text="Creat Your Account"
+        android:text="Create Your Account"
         android:textColor="@color/bahceden_green"
         android:textSize="36dp"
         app:layout_constraintEnd_toEndOf="parent"

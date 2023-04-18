@@ -25,7 +25,7 @@ public class IntroActivity extends AppCompatActivity {
         customerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, signUpActivity.class);
+                Intent intent = new Intent(IntroActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });
@@ -33,7 +33,7 @@ public class IntroActivity extends AppCompatActivity {
         producerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, signUpActivity.class);
+                Intent intent = new Intent(IntroActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });
@@ -41,7 +41,7 @@ public class IntroActivity extends AppCompatActivity {
         haveAnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, logInActivity.class);
+                Intent intent = new Intent(IntroActivity.this, LogInActivity.class);
                 startActivity(intent);
             }
         });
