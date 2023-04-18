@@ -132,7 +132,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginHorizontal="10dp"
-            app:srcCompat="@mipmap/add_foreground" />
+            app:srcCompat="@drawable/plus" />
 
         <TextView
             android:id="@+id/itemCountDisplay"
@@ -149,7 +149,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginHorizontal="10dp"
-            app:srcCompat="@mipmap/remove_foreground" />
+            app:srcCompat="@drawable/minus" />
     </LinearLayout>
 
 
