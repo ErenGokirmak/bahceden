@@ -48,14 +48,6 @@ public class HomeActivity extends AppCompatActivity {
         categoriesAdapter = new CategoriesAdapter();
         categoriesRV.setAdapter(categoriesAdapter);
 
-//        hotSalesRV = (RecyclerView) findViewById(R.id.hotSalesRV);
-//        hotSalesRV.setHasFixedSize(true);
-//        hLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-//
-//        hotSalesRV.setLayoutManager(hLayoutManager);
-//        hotSalesAdapter = new HotSalesAdapter();
-//        hotSalesRV.setAdapter(hotSalesAdapter);
-
         newArrivalsRV = (RecyclerView) findViewById(R.id.newArrivalsRV);
         newArrivalsRV.setHasFixedSize(true);
         aLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
