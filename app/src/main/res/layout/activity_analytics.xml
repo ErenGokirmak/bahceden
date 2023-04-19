@@ -86,7 +86,7 @@
             />
 
         <TextView
-            android:id="@+id/producerAnalyticsAmountText"
+            android:id="@+id/producerAnalyticsAverageText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -139,6 +139,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/producerAnalyticsRV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.4"
