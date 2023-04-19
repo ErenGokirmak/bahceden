@@ -60,26 +60,25 @@
         android:textColor="@color/black"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/cartShopButton"
-        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="16dp"
-        />
+        android:layout_marginBottom="100dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/cartShopButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/long_button_background"
         android:backgroundTint="@color/bahceden_green"
         android:fontFamily="@font/nexa_heavy"
-        android:text="SHOP NOW"
+        android:text="@string/shop_now"
         android:textColor="@color/white"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="@id/cartTotal"
+        app:layout_constraintBottom_toBottomOf="@id/cartTotal"
+        app:layout_constraintStart_toEndOf="@id/cartTotal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="128dp"/>
+        android:layout_marginHorizontal="16dp"/>
 
     <include
         android:id="@+id/cartBottomBar"
