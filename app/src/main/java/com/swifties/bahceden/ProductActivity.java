@@ -21,6 +21,7 @@ public class ProductActivity extends AppCompatActivity {
         imageSlider = findViewById(R.id.productSlider);
         ArrayList<SlideModel> slideModels = new ArrayList<>();
 
+        
         slideModels.add(new SlideModel(R.drawable.honey1, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.honey2, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.honey3, ScaleTypes.FIT));
