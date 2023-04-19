@@ -4,15 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.constants.ScaleTypes;
-import com.denzcoskun.imageslider.models.SlideModel;
-
-import java.util.ArrayList;
-
 public class ProductActivity extends AppCompatActivity {
 
-    ImageSlider imageSlider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
