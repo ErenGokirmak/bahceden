@@ -12,8 +12,10 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/productBottom"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,49 +45,51 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/productSliderHolder">
+                app:layout_constraintTop_toBottomOf="@id/productSliderHolder"
+                app:layout_constraintVertical_bias="0.0">
 
                 <TextView
                     android:id="@+id/productName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ev Yapımı Honey"
-                    android:fontFamily="@font/nexa_heavy"
-                    android:textSize="36sp"
-                    android:textColor="@color/bahceden_green"
                     android:layout_margin="8dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:fontFamily="@font/nexa_heavy"
+                    android:text="Ev Yapımı Honey"
+                    android:textColor="@color/bahceden_green"
+                    android:textSize="36sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_favorite"
                     android:layout_margin="8dp"
-                    app:layout_constraintTop_toTopOf="@id/productName"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    android:src="@drawable/ic_favorite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/productName" />
 
                 <ImageView
                     android:id="@+id/rating"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/ic_star"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/productName"
-                    app:layout_constraintStart_toStartOf="@id/productName"/>
+                    android:src="@drawable/ic_star"
+                    app:layout_constraintStart_toStartOf="@id/productName"
+                    app:layout_constraintTop_toBottomOf="@id/productName" />
 
                 <TextView
                     android:id="@+id/ratingNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4.8"
-                    android:textStyle="bold"
-                    android:textSize="22sp"
                     android:layout_marginStart="8dp"
+                    android:text="4.8"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/rating"
                     app:layout_constraintStart_toEndOf="@id/rating"
-                    app:layout_constraintTop_toTopOf="@id/rating"
-                    app:layout_constraintBottom_toBottomOf="@id/rating"/>
+                    app:layout_constraintTop_toTopOf="@id/rating" />
 
                 <View
                     android:id="@+id/horizontalDivider"
@@ -93,7 +97,7 @@
                     android:layout_height="1dp"
                     android:layout_margin="8dp"
                     android:background="@android:color/darker_gray"
-                    app:layout_constraintTop_toBottomOf="@id/rating"/>
+                    app:layout_constraintTop_toBottomOf="@id/rating" />
 
                 <TextView
                     android:id="@+id/descTitle"
@@ -138,9 +142,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="36dp"
                     android:elevation="10dp"
+                    app:layout_constraintBottom_toBottomOf="@id/amount"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/amount"
-                    app:layout_constraintBottom_toBottomOf="@id/amount">
+                    app:layout_constraintTop_toTopOf="@+id/amount">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/decrement"
@@ -189,14 +193,14 @@
                 android:layout_height="1dp"
                 android:layout_margin="8dp"
                 android:background="@android:color/darker_gray"
-                app:layout_constraintTop_toBottomOf="@id/itemInfo"/>
+                app:layout_constraintTop_toBottomOf="@id/itemInfo" />
 
             <LinearLayout
                 android:id="@+id/similarItemsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_margin="8dp"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/horizontalDivider2">
@@ -229,7 +233,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginVertical="8dp"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/similarItemsTitle"/>
+                app:layout_constraintTop_toBottomOf="@id/similarItemsTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
