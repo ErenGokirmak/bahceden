@@ -32,7 +32,7 @@
             android:layout_height="match_parent"
             android:textColor="@color/bahceden_green"
             android:fontFamily="@font/nexa_heavy"
-            android:text="Şifa Gıda"
+            android:text="Company Name"
             android:textSize="20sp"
             android:gravity="center"
             android:layout_weight="1"/>

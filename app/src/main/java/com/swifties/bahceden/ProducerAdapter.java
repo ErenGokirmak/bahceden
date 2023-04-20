@@ -18,7 +18,7 @@ public class ProducerAdapter extends RecyclerView.Adapter<ProducerAdapter.ViewHo
     public ProducerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.item_layout, viewGroup, false);
+                .inflate(R.layout.layout_item, viewGroup, false);
 
         return new ProducerAdapter.ViewHolder(view);
     }
@@ -30,7 +30,7 @@ public class ProducerAdapter extends RecyclerView.Adapter<ProducerAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 20;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

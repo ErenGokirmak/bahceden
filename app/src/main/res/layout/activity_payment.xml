@@ -152,6 +152,7 @@
         android:backgroundTint="@color/bahceden_green"
         android:text="Order Now"
         android:autoSizeTextType="uniform"
+        android:textColor="@color/white"
         android:padding="16dp"
         android:fontFamily="@font/nexa_heavy"
         android:layout_marginHorizontal="16dp"
