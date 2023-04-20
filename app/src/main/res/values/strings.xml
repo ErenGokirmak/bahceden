@@ -27,5 +27,15 @@
     <string name="about_us">About Us</string>
     <string name="analytics">Analytics</string>
     <string name="see_all">See All</string>
+    <string name="shop_now">SHOP NOW</string>
     <string name="cart">Cart</string>
+    <string-array name="analytics_spinner_1">
+        <item>This Month</item>
+        <item>Last Month</item>
+        <item>This Year</item>
+    </string-array>
+    <string-array name="analytics_spinner_2">
+        <item>Earnings</item>
+        <item>Quantity</item>
+    </string-array>
 </resources>
