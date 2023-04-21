@@ -29,6 +29,7 @@
     <string name="see_all">See All</string>
     <string name="shop_now">SHOP NOW</string>
     <string name="cart">Cart</string>
+    <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string-array name="analytics_spinner_1">
         <item>This Month</item>
         <item>Last Month</item>
