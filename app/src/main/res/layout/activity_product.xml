@@ -126,6 +126,7 @@
                     android:id="@+id/amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
                     android:text="Amount"
                     android:textColor="@color/bahceden_green"
@@ -208,6 +209,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_heavy"
                     android:text="Similar Items"
+                    android:textSize="16dp"
                     android:textColor="@color/bahceden_green" />
 
                 <View
@@ -221,6 +223,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_heavy"
                     android:text="@string/see_all"
+                    android:textSize="16dp"
                     android:textColor="@color/bahceden_green" />
 
             </LinearLayout>
