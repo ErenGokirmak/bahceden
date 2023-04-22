@@ -63,7 +63,7 @@
                 app:layout_constraintStart_toStartOf="@id/hotSalesItemImage"
                 app:layout_constraintEnd_toStartOf="@id/hotSalesItemRating"
                 app:layout_constraintHorizontal_bias="0"
-                android:text="Cramberry Jam"
+                android:text="Cranberry Jam"
                 android:fontFamily="@font/nexa_heavy"
                 android:textColor="@color/bahceden_green"
                 android:textSize="12sp"/>
