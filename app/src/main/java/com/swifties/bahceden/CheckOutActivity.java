@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.swifties.bahceden.adapters.CheckOutAdapter;
+
 public class CheckOutActivity extends AppCompatActivity {
 
     private RecyclerView checkOutRc;

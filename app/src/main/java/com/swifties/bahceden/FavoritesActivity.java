@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.swifties.bahceden.adapters.FavItemAdapter;
 
 public class FavoritesActivity extends AppCompatActivity {
     TextView productTxt, dukkanTxt;
