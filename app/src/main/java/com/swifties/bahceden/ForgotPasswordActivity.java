@@ -9,15 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-<<<<<<< HEAD:app/src/main/java/com/swifties/bahceden/ForgotPasswordActivity.java
 public class ForgotPasswordActivity extends AppCompatActivity {
-=======
-import com.swifties.bahceden.fragments.ChooseActionFragment;
-import com.swifties.bahceden.fragments.EnterMailFragment;
-
-public class ForgetPasswordActivity extends AppCompatActivity {
->>>>>>> main:app/src/main/java/com/swifties/bahceden/ForgetPasswordActivity.java
-
     Button fgtContinue, backBt;
 
     @Override
