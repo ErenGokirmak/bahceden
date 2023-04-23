@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.swifties.bahceden.fragments.ChooseActionFragment;
+import com.swifties.bahceden.fragments.EnterMailFragment;
+
 public class ForgetPasswordActivity extends AppCompatActivity {
 
     Button fgtContinue, backBt;

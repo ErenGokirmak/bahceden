@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.swifties.bahceden.adapters.CartProductAdapter;
+
 public class CartActivity extends AppCompatActivity {
 
     private RecyclerView cartProductsRV;

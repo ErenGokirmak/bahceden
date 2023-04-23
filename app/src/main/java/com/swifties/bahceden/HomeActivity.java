@@ -9,6 +9,8 @@ import android.os.Bundle;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.swifties.bahceden.adapters.CategoriesAdapter;
+import com.swifties.bahceden.adapters.HotSalesAdapter;
 
 import java.util.ArrayList;
 

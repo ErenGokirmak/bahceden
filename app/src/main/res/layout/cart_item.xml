@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/nexa_heavy"
         android:text="Cherry Jam"
-        android:textColor="@color/black"
+        android:textColor="@color/bahceden_green"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="@id/cartProductImage"
         app:layout_constraintStart_toEndOf="@id/cartProductImage"
@@ -48,6 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/delete"
+        app:tint="@color/bahceden_green"
         app:layout_constraintEnd_toEndOf="@id/buttonLayout"
         app:layout_constraintTop_toTopOf="@id/cartProductName"/>
 
@@ -63,33 +64,13 @@
         app:layout_constraintTop_toBottomOf="@id/cartProductName"
         app:layout_constraintStart_toStartOf="@id/cartProductName"/>
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="2dp"
-        android:layout_height="20dp"
-        android:layout_margin="6dp"
-        android:background="@color/darkGray"
-        app:layout_constraintStart_toEndOf="@id/city"
-        app:layout_constraintTop_toTopOf="@id/city"
-        app:layout_constraintBottom_toBottomOf="@id/city"/>
-
-    <TextView
-        android:id="@+id/amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="15 KG"
-        android:textColor="@color/darkGray"
-        android:textStyle="bold"
-        android:layout_margin="8dp"
-        app:layout_constraintTop_toBottomOf="@id/cartProductName"
-        app:layout_constraintStart_toEndOf="@id/divider"/>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginBottom="12dp"
+        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -99,9 +80,9 @@
             android:layout_height="35dp"
             android:background="@drawable/bg_semi_circle_2"
             android:padding="7dp"
-            android:drawableTop="@drawable/plus"
-            android:drawableTint="@color/plus_green"
-            android:backgroundTint="@color/gray"
+            android:drawableTop="@drawable/minus"
+            android:drawableTint="@color/white"
+            android:backgroundTint="@color/minus_red"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -112,9 +93,10 @@
             app:layout_constraintTop_toTopOf="parent"
             android:text="0"
             android:textStyle="bold"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:gravity="center"
-            android:backgroundTint="@color/gray"
+            android:textColor="@color/bahceden_green"
+            android:backgroundTint="@color/white"
             app:layout_constraintStart_toEndOf="@id/decrement"
             app:layout_constraintEnd_toStartOf="@id/increment"/>
 
@@ -124,9 +106,9 @@
             android:layout_height="35dp"
             android:background="@drawable/bg_semi_circle_1"
             android:padding="7dp"
-            android:drawableTop="@drawable/minus"
-            android:drawableTint="@color/minus_red"
-            android:backgroundTint="@color/gray"
+            android:drawableTop="@drawable/plus"
+            android:drawableTint="@color/white"
+            android:backgroundTint="@color/plus_green"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -139,7 +121,7 @@
         android:text="$000"
         android:textStyle="bold"
         android:textSize="22sp"
-        android:textColor="@color/black"
+        android:textColor="@color/bahceden_green"
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@id/cartProductImage"
         app:layout_constraintTop_toTopOf="@id/buttonLayout"

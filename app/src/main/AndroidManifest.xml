@@ -12,10 +12,10 @@
         android:theme="@style/Theme.Bahceden"
         tools:targetApi="31">
         <activity
-            android:name=".CheckOutActivity"
+            android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".PaymentActivity"
+            android:name=".CheckOutActivity"
             android:exported="false" />
         <activity
             android:name=".AnalyticsActivity"
