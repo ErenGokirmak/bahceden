@@ -9,14 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ForgetPasswordActivity extends AppCompatActivity {
-
+public class ForgotPasswordActivity extends AppCompatActivity {
     Button fgtContinue, backBt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forget_password);
+        setContentView(R.layout.activity_forgot_password);
 
         backBt = findViewById(R.id.forgetPasswordBack);
         fgtContinue = findViewById(R.id.forgetContinue);
@@ -34,7 +33,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         backBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ForgetPasswordActivity.super.onBackPressed();
+                ForgotPasswordActivity.super.onBackPressed();
             }
         });
     }

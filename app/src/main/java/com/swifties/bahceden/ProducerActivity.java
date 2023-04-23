@@ -20,7 +20,7 @@ public class ProducerActivity extends AppCompatActivity {
 
         producerRV = (RecyclerView) findViewById(R.id.producerActivityRecyclerView);
         producerRV.setHasFixedSize(true);
-        producerLayoutManager = new GridLayoutManager(this, 3);
+        producerLayoutManager = new GridLayoutManager(this, 2);
 
         producerRV.setLayoutManager(producerLayoutManager);
         ProducerAdapter = new ProducerAdapter();
