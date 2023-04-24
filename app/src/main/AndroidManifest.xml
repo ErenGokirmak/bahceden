@@ -12,6 +12,15 @@
         android:theme="@style/Theme.Bahceden"
         tools:targetApi="31">
         <activity
+            android:name=".ProducerAddListingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProducerSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProducerHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
