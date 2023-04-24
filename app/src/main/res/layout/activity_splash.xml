@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".SplashActivity">
 
     <ImageView
         android:id="@+id/bahcedenImg"
@@ -21,23 +21,23 @@
         android:id="@+id/bySwifties"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/by_swifties"
+        android:textColor="@color/bahceden_green"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bahcedenImg"
-        android:text="@string/by_swifties"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="@color/bahceden_green"/>
+        app:layout_constraintTop_toBottomOf="@id/bahcedenImg" />
 
     <TextView
         android:id="@+id/bahcedenSplash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50dp"
         android:fontFamily="@font/the_bold_font"
         android:text="BAHÇEDEN"
         android:textColor="@color/bahceden_green"
+        android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bahcedenImg" />
