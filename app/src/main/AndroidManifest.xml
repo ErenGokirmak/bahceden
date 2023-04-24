@@ -18,7 +18,7 @@
             android:name=".ProducerProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ProducerAddListingActivity"
+            android:name=".ProducerCreateListingActivity"
             android:exported="false" />
         <activity
             android:name=".ProducerSearchActivity"
