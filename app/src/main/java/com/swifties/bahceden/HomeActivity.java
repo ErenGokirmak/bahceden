@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
         aLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
         newArrivalsRV.setLayoutManager(aLayoutManager);
-        arrivalsAdapter = new HotSalesAdapter();
+        arrivalsAdapter = new NewArrivalsAdapter();
         newArrivalsRV.setAdapter(arrivalsAdapter);
 
 

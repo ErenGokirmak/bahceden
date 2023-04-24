@@ -3,20 +3,19 @@ package com.swifties.bahceden;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class HotSalesAdapter extends RecyclerView.Adapter<HotSalesAdapter.ViewHolder> {
+public class NewArrivalsAdapter extends RecyclerView.Adapter<NewArrivalsAdapter.ViewHolder> {
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.hot_sales_item, viewGroup, false);
+                .inflate(R.layout.layout_item, viewGroup, false);
 
         return new ViewHolder(view);
     }
