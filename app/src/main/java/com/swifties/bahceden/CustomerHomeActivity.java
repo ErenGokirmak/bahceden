@@ -55,7 +55,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
         aLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
         newArrivalsRV.setLayoutManager(aLayoutManager);
-        arrivalsAdapter = new NewArrivalsAdapter();
+        arrivalsAdapter = new HotSalesAdapter();
         newArrivalsRV.setAdapter(arrivalsAdapter);
 
     }
