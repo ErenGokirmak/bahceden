@@ -63,15 +63,15 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
         android:background="@drawable/bg_curved_border"
-        app:drawableStartCompat="@drawable/ic_star"
         android:drawablePadding="8dp"
-        app:drawableTint="@color/bahceden_green"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
         android:text="5"
         android:textColor="@color/bahceden_green"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:drawableStartCompat="@drawable/ic_star"
+        app:drawableTint="@color/bahceden_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

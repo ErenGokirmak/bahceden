@@ -47,8 +47,8 @@
         android:drawablePadding="12dp"
         android:drawableTint="@color/darkGray"
         android:hint="Full Name"
-        android:padding="12dp"
         android:inputType="textEmailAddress"
+        android:padding="12dp"
         android:textColorHint="@color/darkGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,8 +66,8 @@
         android:drawablePadding="12dp"
         android:drawableTint="@color/darkGray"
         android:hint="@string/email"
-        android:padding="12dp"
         android:inputType="textEmailAddress"
+        android:padding="12dp"
         android:textColorHint="@color/darkGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,14 +78,14 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="16dp"
-        app:passwordToggleEnabled="true"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintEnabled="false"
-        app:passwordToggleTint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/signUpEmail"
         app:layout_constraintStart_toStartOf="@+id/signUpEmail"
-        app:layout_constraintTop_toBottomOf="@id/signUpEmail">
+        app:layout_constraintTop_toBottomOf="@id/signUpEmail"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/black">
 
         <EditText
             android:id="@+id/signUpPassword"
@@ -96,8 +96,8 @@
             android:drawablePadding="12dp"
             android:drawableTint="@color/darkGray"
             android:hint="@string/password"
-            android:padding="12dp"
             android:inputType="textPassword"
+            android:padding="12dp"
             android:textColorHint="@color/darkGray" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,14 +106,14 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="16dp"
-        app:passwordToggleEnabled="true"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintEnabled="false"
-        app:passwordToggleTint="@color/black"
         app:layout_constraintEnd_toEndOf="@id/signUpPasswordLayout"
         app:layout_constraintStart_toStartOf="@id/signUpPasswordLayout"
-        app:layout_constraintTop_toBottomOf="@id/signUpPasswordLayout">
+        app:layout_constraintTop_toBottomOf="@id/signUpPasswordLayout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/black">
 
         <EditText
             android:id="@+id/signUpConfirmPassword"
@@ -124,8 +124,8 @@
             android:drawablePadding="12dp"
             android:drawableTint="@color/darkGray"
             android:hint="Confirm Password"
-            android:padding="12dp"
             android:inputType="textPassword"
+            android:padding="12dp"
             android:textColorHint="@color/darkGray" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -164,8 +164,8 @@
         android:id="@+id/loginContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:layout_marginTop="26dp"
+        android:background="@color/white"
         android:padding="8dp"
         android:text="@string/or_continue_with"
         android:textColor="@color/darkGray"

@@ -21,27 +21,27 @@
             android:id="@+id/checkoutBack"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_back"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_back" />
 
         <TextView
             android:id="@+id/checkoutTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
             android:fontFamily="@font/nexa_heavy"
             android:text="Check Out"
             android:textColor="@color/bahceden_green"
-            android:textSize="25sp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="25sp" />
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/checkoutTopBar"
         app:layout_constraintBottom_toTopOf="@id/continueToPayment"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/checkoutTopBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -52,27 +52,27 @@
                 android:id="@+id/shippingTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shipping Address"
                 android:fontFamily="@font/nexa_heavy"
-                android:textSize="22sp"
+                android:text="Shipping Address"
                 android:textColor="@color/bahceden_green"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/addressHolder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
                 android:layout_marginHorizontal="4dp"
-                android:paddingHorizontal="8dp"
+                android:layout_marginVertical="8dp"
                 android:background="@drawable/long_button_background"
-               android:backgroundTint="@color/white"
+                android:backgroundTint="@color/white"
                 android:elevation="5dp"
-                app:layout_constraintTop_toBottomOf="@id/shippingTitle"
+                android:paddingHorizontal="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/shippingTitle">
 
                 <ImageView
                     android:id="@+id/addressImage"
@@ -87,38 +87,38 @@
                     android:id="@+id/addressTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cennet"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/bahceden_green"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="-8dp"
-                    app:layout_constraintTop_toTopOf="@id/addressImage"
-                    app:layout_constraintStart_toEndOf="@id/addressImage"/>
+                    android:text="Cennet"
+                    android:textColor="@color/bahceden_green"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/addressImage"
+                    app:layout_constraintTop_toTopOf="@id/addressImage" />
 
                 <TextView
                     android:id="@+id/addressText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
                     android:text="Sıratı geçtikten sonra cehennemin 7 kat üstü. Israfile sorsanız gösterir."
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    app:layout_constraintStart_toStartOf="@id/addressTitle"
-                    app:layout_constraintTop_toBottomOf="@id/addressTitle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/addressEdit"/>
+                    app:layout_constraintEnd_toStartOf="@id/addressEdit"
+                    app:layout_constraintStart_toStartOf="@id/addressTitle"
+                    app:layout_constraintTop_toBottomOf="@id/addressTitle" />
 
                 <ImageView
                     android:id="@+id/addressEdit"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_edit"
-                    app:tint="@color/bahceden_green"
+                    app:layout_constraintBottom_toBottomOf="@id/addressImage"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/addressImage"
-                    app:layout_constraintBottom_toBottomOf="@id/addressImage"/>
+                    app:tint="@color/bahceden_green" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -134,22 +134,22 @@
                 android:id="@+id/ordersTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order List"
-                android:fontFamily="@font/nexa_heavy"
-                android:textSize="22sp"
-                android:textColor="@color/bahceden_green"
                 android:layout_marginTop="12dp"
-                app:layout_constraintTop_toBottomOf="@id/horizontalDivider1"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:fontFamily="@font/nexa_heavy"
+                android:text="Order List"
+                android:textColor="@color/bahceden_green"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horizontalDivider1" />
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/checkOutRVholder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".ActivityName"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ordersTitle">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ordersTitle"
+                tools:context=".ActivityName">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/checkOutRV"
@@ -173,104 +173,105 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_margin="8dp"
                 android:background="@drawable/long_button_background"
                 android:backgroundTint="@color/white"
                 android:elevation="8dp"
+                android:orientation="vertical"
                 android:padding="8dp"
-                android:layout_margin="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalDivider2"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalDivider2">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Amount"
-                        android:textSize="22sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="22sp" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/amountTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="$333"
-                        android:textSize="16sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Shipping"
-                        android:textSize="22sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="22sp" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/shippingPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="$50"
-                        android:textSize="16sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="16sp" />
 
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Discount"
-                        android:textSize="22sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="22sp" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/amountDiscount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="-$133"
-                        android:textSize="16sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -285,30 +286,30 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Total"
-                        android:textSize="22sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="22sp" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/finalAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="$250"
-                        android:textSize="16sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -321,25 +322,25 @@
         android:id="@+id/continueToPayment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:elevation="20dp"
+        android:gravity="center"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="8dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Continue to Payment"
-            android:textStyle="bold"
-            android:fontFamily="@font/nexa_heavy"
-            android:textColor="@color/white"
-            android:paddingVertical="8dp"
-            android:paddingHorizontal="56dp"
             android:layout_margin="8dp"
             android:background="@drawable/long_button_background"
-            android:backgroundTint="@color/bahceden_green"/>
+            android:backgroundTint="@color/bahceden_green"
+            android:fontFamily="@font/nexa_heavy"
+            android:paddingHorizontal="56dp"
+            android:paddingVertical="8dp"
+            android:text="Continue to Payment"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
     </LinearLayout>
 
 

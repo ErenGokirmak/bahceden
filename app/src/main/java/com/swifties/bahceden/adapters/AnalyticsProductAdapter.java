@@ -13,7 +13,7 @@ public class AnalyticsProductAdapter extends RecyclerView.Adapter<AnalyticsProdu
     @NonNull
     @Override
     public AnalyticsProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.analytics_product_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.producer_analytics_product_item, parent, false);
 
         return new ViewHolder(view);
     }

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
+    android:paddingHorizontal="8dp"
     android:weightSum="1"
-    android:paddingHorizontal="8dp">
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="0.01"/>
+        android:layout_weight="0.01" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/itemLayoutImageHolder"
@@ -27,8 +26,8 @@
             android:id="@+id/itemLayoutItemImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/milk"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/milk" />
 
         <ImageView
             android:id="@+id/itemLayoutItemLiked"
@@ -44,11 +43,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/nexa_heavy"
         android:text="Beyaz Milk"
         android:textColor="@color/bahceden_green"
-        android:autoSizeTextType="uniform"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,35 +61,35 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.55"
-            android:gravity="center_vertical"
+            android:autoSizeTextType="uniform"
             android:fontFamily="@font/nexa_heavy"
+            android:gravity="center_vertical"
             android:text="Black Inek"
             android:textColor="@color/darkGray"
-            android:autoSizeTextType="uniform"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.2"/>
+            android:layout_weight="0.2" />
 
         <TextView
             android:id="@+id/itemLayoutPriceText"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
+            android:autoSizeTextType="uniform"
             android:gravity="center_vertical"
             android:text="$10"
             android:textColor="@color/black"
-            android:autoSizeTextType="uniform"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="0.06"/>
+        android:layout_weight="0.06" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/itemLayoutAddToCart"
@@ -101,6 +100,7 @@
         android:backgroundTint="@color/bahceden_green"
         android:fontFamily="@font/nexa_heavy"
         android:text="Add to Cart"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
 </LinearLayout>
