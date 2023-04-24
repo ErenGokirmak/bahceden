@@ -21,18 +21,18 @@
             android:id="@+id/analyticsBack"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_back"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_back" />
 
         <TextView
             android:id="@+id/analyticsTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
             android:fontFamily="@font/nexa_heavy"
             android:text="Analytics"
             android:textColor="@color/bahceden_green"
-            android:textSize="25sp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="25sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -41,37 +41,37 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2"
-        app:layout_constraintTop_toBottomOf="@id/analyticsTopBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/analyticsTopBar">
 
         <LinearLayout
             android:id="@+id/profitHolder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
             android:background="@drawable/long_button_background"
             android:backgroundTint="@color/gray"
-            android:layout_margin="8dp"
-            android:padding="16dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/profitTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profit"
-                android:textSize="22sp"
                 android:fontFamily="@font/nexa_heavy"
-                android:textColor="@color/plus_green"/>
+                android:text="Profit"
+                android:textColor="@color/plus_green"
+                android:textSize="22sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nexa_heavy"
                 android:text="$10"
-                android:textSize="26sp"
                 android:textColor="@color/plus_green"
-                android:fontFamily="@font/nexa_heavy"/>
+                android:textSize="26sp" />
 
         </LinearLayout>
 
@@ -79,29 +79,29 @@
             android:id="@+id/expnseHolder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
             android:background="@drawable/long_button_background"
             android:backgroundTint="@color/gray"
-            android:layout_margin="8dp"
-            android:padding="16dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/expenseTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Expense"
-                android:textSize="22sp"
                 android:fontFamily="@font/nexa_heavy"
-                android:textColor="@color/minus_red"/>
+                android:text="Expense"
+                android:textColor="@color/minus_red"
+                android:textSize="22sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nexa_heavy"
                 android:text="$250"
-                android:textSize="26sp"
                 android:textColor="@color/minus_red"
-                android:fontFamily="@font/nexa_heavy"/>
+                android:textSize="26sp" />
 
         </LinearLayout>
 
@@ -111,9 +111,9 @@
         android:id="@+id/consumerChart"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/profitExpenseHolder"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profitExpenseHolder" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

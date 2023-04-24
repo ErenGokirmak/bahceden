@@ -67,9 +67,9 @@
         android:layout_marginEnd="26dp"
         android:background="@drawable/intro_button_background"
         android:drawableTop="@mipmap/farmer_png_foreground"
+        android:fontFamily="@font/nexa_heavy"
         android:paddingTop="6dp"
         android:text="@string/producer"
-        android:fontFamily="@font/nexa_heavy"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/introCustomer" />
@@ -78,13 +78,13 @@
         android:id="@+id/haveAnAccount"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
+        android:fontFamily="@font/nexa_heavy"
         android:text="@string/already_have_an_account"
+        android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:fontFamily="@font/nexa_heavy"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/introCustomer"/>
+        app:layout_constraintTop_toBottomOf="@+id/introCustomer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
