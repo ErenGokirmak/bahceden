@@ -7,6 +7,7 @@
     tools:context=".ProducerAddListingActivity">
 
     <LinearLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -14,7 +15,6 @@
         android:background="@color/bahceden_foreground"
         android:padding="8dp"
         android:orientation="horizontal">
-
         <ImageView
             android:layout_width="40dp"
             android:layout_height="match_parent"
@@ -27,8 +27,180 @@
             android:fontFamily="@font/nexa_heavy"
             android:textSize="26sp"
             android:textColor="@color/bahceden_green"
-            android:text="Add Listing"/>
+            android:text="Create Listing"/>
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        >
+        <LinearLayout
+            android:id="@+id/newItemInfoFields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:divider="@drawable/divider"
+            android:showDividers="middle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="parent">
+
+            <LinearLayout
+                android:id="@+id/nameSelectionSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nameOfItemLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:gravity="center"
+                    android:text="Name" />
+
+                <EditText
+                    android:id="@+id/nameOfItemField"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="name"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="Name"
+                    android:paddingVertical="4dp"
+                    android:paddingStart="8dp"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/descriptionSelectionSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginVertical="6dp">
+
+                <TextView
+                    android:id="@+id/descriptionOfItemLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:gravity="center"
+                    android:text="Description" />
+
+                <EditText
+                    android:id="@+id/descriptionOfItemField"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="name"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="Describe your product"
+                    android:inputType="textMultiLine"
+                    android:paddingStart="8dp"
+                    android:paddingVertical="4dp"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/categorySelectionSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginVertical="6dp">
+
+                <TextView
+                    android:id="@+id/categoryOfItemLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:text="Category" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I'm not sure what to do here, have we done any categories?" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/imageSelectionSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginVertical="6dp">
+
+                <TextView
+                    android:id="@+id/imageOfItemLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:text="Images" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload pictures of your product for the customers to see" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nexa_extra_light"
+                    android:text="Placeholder for whatever will display the images after they are selected"
+                    android:background="@color/bahceden_foreground"
+                    android:justificationMode="inter_word"
+                    android:layout_margin="8dp" />
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/long_button_background"
+                    app:backgroundTint="@color/bahceden_green"
+                    android:textSize="12dp"
+                    android:padding="0dp"
+                    android:text="Select Images"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pricingSelectionSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/priceOfItemLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:text="Price" />
+
+                <EditText
+                    android:id="@+id/priceOfItemField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_background"
+                    android:inputType="numberDecimal"
+                    android:hint="Price of the product"
+                    android:paddingStart="8dp"
+                    android:paddingVertical="4dp"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/addListingButton"
+                android:layout_marginVertical="6dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/long_button_background"
+                app:backgroundTint="@color/bahceden_green"
+                android:text="Create Item Listing" />
+        </LinearLayout>
+    </ScrollView>
     <include
         layout="@layout/producer_bottom_app_bar"
         android:id="@+id/bottomBar"
