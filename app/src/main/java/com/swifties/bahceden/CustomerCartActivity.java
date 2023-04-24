@@ -1,10 +1,14 @@
 package com.swifties.bahceden;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.swifties.bahceden.adapters.CartProductAdapter;
 
@@ -26,5 +30,15 @@ public class CustomerCartActivity extends AppCompatActivity {
         cartProductsRV.setLayoutManager(cartProductLayoutManager);
         cartProductAdapter = new CartProductAdapter();
         cartProductsRV.setAdapter(cartProductAdapter);
+    }
+
+    public static class ChooseActionFragment extends Fragment {
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Inflate the layout for this fragment
+            return inflater.inflate(R.layout.fragment_choose_action, container, false);
+        }
     }
 }
