@@ -131,12 +131,168 @@
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/categoriesRV"
+            <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginVertical="8dp"
-                android:orientation="horizontal"/>
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:rowCount="2"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:layout_marginVertical="8dp">
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:gravity="center"
+                    android:layout_marginVertical="8dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/gray">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/png_beef"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Red Et"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/nexa_heavy"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="8dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/gray">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/png_vegetable"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vegetable"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/nexa_heavy"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_row="0"
+                    android:layout_column="2"
+                    android:gravity="center"
+                    android:layout_marginVertical="8dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/gray">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/png_dairy_products"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dairy"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/nexa_heavy"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:gravity="center"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/gray">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/png_walnut"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nuts"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/nexa_heavy"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/gray">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/png_bakery"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bakery"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/nexa_heavy"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_row="1"
+                    android:layout_column="2"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/gray">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/png_honey"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bal"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/nexa_heavy"/>
+
+                </LinearLayout>
+            </GridLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
