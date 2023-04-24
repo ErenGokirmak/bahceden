@@ -14,7 +14,7 @@ import com.swifties.bahceden.adapters.HotSalesAdapter;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity {
+public class CustomerHomeActivity extends AppCompatActivity {
 
     private RecyclerView categoriesRV;
     private RecyclerView hotSalesRV;
@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_customer_home);
 
         imageSlider = findViewById(R.id.slider);
         ArrayList<SlideModel> slideModels = new ArrayList<>();

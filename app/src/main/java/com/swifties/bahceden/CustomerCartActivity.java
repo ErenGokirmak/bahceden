@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.swifties.bahceden.adapters.CartProductAdapter;
 
-public class CartActivity extends AppCompatActivity {
+public class CustomerCartActivity extends AppCompatActivity {
 
     private RecyclerView cartProductsRV;
     private RecyclerView.Adapter cartProductAdapter;
@@ -17,7 +17,7 @@ public class CartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
+        setContentView(R.layout.activity_customer_cart);
 
         cartProductsRV = (RecyclerView) findViewById(R.id.cartProductRV);
         cartProductsRV.setHasFixedSize(true);

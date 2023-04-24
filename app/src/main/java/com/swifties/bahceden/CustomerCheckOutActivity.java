@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.swifties.bahceden.adapters.CheckOutAdapter;
 
-public class CheckOutActivity extends AppCompatActivity {
+public class CustomerCheckOutActivity extends AppCompatActivity {
 
     private RecyclerView checkOutRc;
     private CheckOutAdapter checkOutAdapter;
@@ -17,11 +17,11 @@ public class CheckOutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_check_out);
+        setContentView(R.layout.activity_customer_check_out);
 
         checkOutRc = findViewById(R.id.checkOutRV);
         checkOutRc.setHasFixedSize(true);
-        rcLayoutManager = new LinearLayoutManager(CheckOutActivity.this);
+        rcLayoutManager = new LinearLayoutManager(CustomerCheckOutActivity.this);
         checkOutRc.setLayoutManager(rcLayoutManager);
         checkOutAdapter = new CheckOutAdapter();
         checkOutRc.setAdapter(checkOutAdapter);

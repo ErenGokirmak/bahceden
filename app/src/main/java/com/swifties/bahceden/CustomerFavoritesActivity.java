@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.swifties.bahceden.adapters.FavItemAdapter;
 
-public class FavoritesActivity extends AppCompatActivity {
+public class CustomerFavoritesActivity extends AppCompatActivity {
     TextView productTxt, dukkanTxt;
     RecyclerView r;
     RecyclerView.Adapter a;
@@ -18,7 +18,7 @@ public class FavoritesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorites);
+        setContentView(R.layout.activity_customer_favorites);
         productTxt = findViewById(R.id.favPButton);
         dukkanTxt = findViewById(R.id.favDButton);
         buttonsListener listener = new buttonsListener();

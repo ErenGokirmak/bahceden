@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    tools:context=".CustomerSearchActivity">
 
     <EditText
         android:id="@+id/searchBar"
@@ -97,7 +97,7 @@
 
     <include
         android:id="@+id/bottomBar"
-        layout="@layout/bottom_app_bar"
+        layout="@layout/customer_bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

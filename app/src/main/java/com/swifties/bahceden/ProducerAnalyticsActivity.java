@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.swifties.bahceden.adapters.AnalyticsProductAdapter;
 
-public class AnalyticsActivity extends AppCompatActivity {
+public class ProducerAnalyticsActivity extends AppCompatActivity {
 
     RecyclerView analyticsProductRV;
     RecyclerView.Adapter analyticsProductAdapter;
@@ -28,7 +28,7 @@ public class AnalyticsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_analytics);
+        setContentView(R.layout.activity_producer_analytics);
 
         totalText = findViewById(R.id.producerAnalyticsTotalText);
         averageText = findViewById(R.id.producerAnalyticsAverageText);
