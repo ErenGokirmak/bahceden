@@ -40,8 +40,7 @@
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/checkoutTopBar"
         app:layout_constraintBottom_toTopOf="@id/checkoutContinueToPayment"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkoutTopBar">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -70,8 +69,7 @@
                 android:backgroundTint="@color/white"
                 android:elevation="5dp"
                 app:layout_constraintTop_toBottomOf="@id/checkoutAddressTitle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/shippingTitle">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <ImageView
                     android:id="@+id/checkoutAddressImage"
@@ -87,13 +85,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="-8dp"
                     android:text="Cennet"
-                    android:textColor="@color/bahceden_green"
                     android:textSize="22sp"
                     android:textStyle="bold"
                     android:textColor="@color/bahceden_green"
-                    android:layout_marginStart="8dp"
                     android:layout_marginTop="-8dp"
                     app:layout_constraintTop_toTopOf="@id/checkoutAddressImage"
                     app:layout_constraintStart_toEndOf="@id/checkoutAddressImage"/>
@@ -102,8 +97,6 @@
                     android:id="@+id/checkoutAdressText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
                     android:text="Sıratı geçtikten sonra cehennemin 7 kat üstü. Israfile sorsanız gösterir."
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -119,7 +112,6 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_edit"
-                    app:layout_constraintBottom_toBottomOf="@id/addressImage"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/checkoutAddressImage"
                     app:layout_constraintBottom_toBottomOf="@id/checkoutAddressImage"/>
@@ -143,8 +135,6 @@
                 android:text="Order List"
                 android:textColor="@color/bahceden_green"
                 android:textSize="22sp"
-                android:textColor="@color/bahceden_green"
-                android:layout_marginTop="12dp"
                 app:layout_constraintTop_toBottomOf="@id/checkoutHorizontalDivider1"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -154,7 +144,6 @@
                 android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/checkoutOrdersTitle">
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -248,7 +237,6 @@
                 android:elevation="8dp"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:layout_margin="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/checkoutHorizontalDivider3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
