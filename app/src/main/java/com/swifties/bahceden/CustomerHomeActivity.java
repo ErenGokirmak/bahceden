@@ -58,7 +58,5 @@ public class CustomerHomeActivity extends AppCompatActivity {
         arrivalsAdapter = new HotSalesAdapter();
         newArrivalsRV.setAdapter(arrivalsAdapter);
 
-
-
     }
 }

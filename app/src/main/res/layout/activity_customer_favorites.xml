@@ -35,7 +35,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:src="@drawable/bahcedenlogo"
+            android:src="@drawable/bahceden_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

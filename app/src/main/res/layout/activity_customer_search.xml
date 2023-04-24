@@ -54,7 +54,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/long_button_background"
             android:backgroundTint="@color/bahceden_foreground"
-            android:text="Sort By"
+            android:text="@string/sort_by"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/nexa_heavy"/>
 
