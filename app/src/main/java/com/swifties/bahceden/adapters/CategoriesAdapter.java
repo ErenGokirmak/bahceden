@@ -17,7 +17,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.categorie_item, viewGroup, false);
+                .inflate(R.layout.customer_categorie_item, viewGroup, false);
 
         return new ViewHolder(view);
     }
