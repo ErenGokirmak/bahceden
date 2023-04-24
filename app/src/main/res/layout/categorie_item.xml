@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/nexa_heavy"
         android:layout_margin="10dp"
-        android:text="hebelek"
+        android:text="Item"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"

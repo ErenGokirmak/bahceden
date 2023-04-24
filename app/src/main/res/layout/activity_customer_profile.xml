@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".CustomerProfileActivity">
 
     <LinearLayout
         android:id="@+id/topBarProfile"
@@ -308,7 +308,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Logout"
+                    android:text="Log out"
                     android:textSize="20sp"
                     android:fontFamily="@font/nexa_heavy"
                     android:textColor="@color/minus_red"
@@ -325,7 +325,7 @@
     </ScrollView>
 
     <include
-        layout="@layout/bottom_app_bar"
+        layout="@layout/customer_bottom_app_bar"
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

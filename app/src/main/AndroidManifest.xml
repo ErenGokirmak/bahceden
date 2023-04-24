@@ -15,31 +15,31 @@
             android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".CheckOutActivity"
+            android:name=".CustomerCheckOutActivity"
             android:exported="false" />
         <activity
-            android:name=".AnalyticsActivity"
+            android:name=".ProducerAnalyticsActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductActivity"
+            android:name=".CustomerProductActivity"
             android:exported="false" />
         <activity
-            android:name=".ProducerActivity"
+            android:name=".CustomerViewProducerActivity"
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".CustomerProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".FavoritesActivity"
+            android:name=".CustomerFavoritesActivity"
             android:exported="false" />
         <activity
-            android:name=".CartActivity"
+            android:name=".CustomerCartActivity"
             android:exported="false" />
         <activity
-            android:name=".SearchActivity"
+            android:name=".CustomerSearchActivity"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
@@ -51,7 +51,7 @@
             android:name=".IntroActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".CustomerHomeActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
