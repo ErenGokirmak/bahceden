@@ -191,7 +191,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layoutDirection="rtl"
-                    android:checked="true"
                     android:text="Producer Delivery"
                     android:fontFamily="@font/nexa_heavy"
                     android:drawableEnd="@drawable/ic_truck"
