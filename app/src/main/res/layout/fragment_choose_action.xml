@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ChooseActionFragment">
+    tools:context=".CustomerCartActivity$ChooseActionFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -39,11 +39,10 @@
                 android:id="@+id/smsImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_margin="16sp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="16sp"
                 android:src="@drawable/bt_sms" />
 
             <TextView

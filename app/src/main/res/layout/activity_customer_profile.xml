@@ -4,22 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProducerProfileActivity">
+    tools:context=".CustomerProfileActivity">
 
     <LinearLayout
-        android:id="@+id/topBarProducerProfile"
+        android:id="@+id/topBarProfile"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/bahceden_foreground"
-        android:paddingVertical="8dp"
-        android:paddingHorizontal="16dp"
+        android:padding="8dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="60dp"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
             android:src="@drawable/bahceden_logo"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -27,14 +26,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/producerProfileTopBarNameText"
+            android:id="@+id/profileTopBarNameText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:fontFamily="@font/nexa_heavy"
-            android:gravity="center"
-            android:text="Company Name"
             android:textColor="@color/bahceden_green"
-            android:textSize="20sp" />
+            android:fontFamily="@font/nexa_heavy"
+            android:text="@string/profile"
+            android:textSize="26sp"
+            android:layout_marginStart="8dp"/>
 
     </LinearLayout>
 
@@ -44,7 +43,7 @@
         android:layout_height="100dp"
         app:cardCornerRadius="100dp"
         android:layout_margin="18dp"
-        app:layout_constraintTop_toBottomOf="@id/topBarProducerProfile"
+        app:layout_constraintTop_toBottomOf="@id/topBarProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -60,7 +59,7 @@
         android:id="@+id/profileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cow But Producer"
+        android:text="Cow"
         android:textColor="@color/bahceden_green"
         android:fontFamily="@font/nexa_heavy"
         android:textSize="28sp"
@@ -72,7 +71,7 @@
         android:id="@+id/profileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="cowprod@gmail.com"
+        android:text="cow@gmail.com"
         android:textColor="@color/darkGray"
         android:fontFamily="@font/nexa_heavy"
         android:textSize="18sp"
@@ -92,10 +91,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:layout_editor_absoluteY="248dp"
         app:layout_constraintTop_toBottomOf="@id/horizontalDivider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/bottomBar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,174 +103,238 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:layout_margin="8dp">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_userempty" />
+                    android:src="@drawable/ic_userempty"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/nexa_heavy"
-                    android:padding="2dp"
                     android:text="Edit Profile"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:layout_marginStart="8dp"
+                    android:padding="2dp"/>
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"/>
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_right_arrow" />
+                    android:src="@drawable/ic_right_arrow"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:layout_margin="8dp">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_ordersempty" />
+                    android:src="@drawable/ic_ordersempty"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:text="Orders"
+                    android:textSize="20sp"
                     android:fontFamily="@font/nexa_heavy"
-                    android:padding="2dp"
-                    android:text="Completed Orders"
-                    android:textSize="20sp" />
+                    android:layout_marginStart="8dp"
+                    android:padding="2dp"/>
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"/>
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_right_arrow" />
+                    android:src="@drawable/ic_right_arrow"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:layout_margin="8dp">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_paymentempty" />
+                    android:src="@drawable/ic_location_empty"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:text="Addresses"
+                    android:textSize="20sp"
                     android:fontFamily="@font/nexa_heavy"
-                    android:padding="2dp"
-                    android:text="@string/withdraw_earnings"
-                    android:textSize="20sp" />
+                    android:layout_marginStart="8dp"
+                    android:padding="2dp"/>
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"/>
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_right_arrow" />
+                    android:src="@drawable/ic_right_arrow"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:layout_margin="8dp">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_securityempty" />
+                    android:src="@drawable/ic_paymentempty"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:text="Payment Methods"
+                    android:textSize="20sp"
                     android:fontFamily="@font/nexa_heavy"
-                    android:padding="2dp"
+                    android:layout_marginStart="8dp"
+                    android:padding="2dp"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_right_arrow"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_analyticsempty"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/analytics"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:layout_marginStart="8dp"
+                    android:padding="2dp"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_right_arrow"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_securityempty"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Security"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:layout_marginStart="8dp"
+                    android:padding="2dp"/>
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"/>
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_right_arrow" />
+                    android:src="@drawable/ic_right_arrow"/>
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:layout_margin="8dp">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/ic_logout"
-                    app:tint="@color/minus_red" />
+                    app:tint="@color/minus_red"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/nexa_heavy"
-                    android:padding="2dp"
                     android:text="Log out"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/nexa_heavy"
                     android:textColor="@color/minus_red"
-                    android:textSize="20sp" />
+                    android:layout_marginStart="8dp"
+                    android:padding="2dp" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_weight="1" />
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_right_arrow"
-                    app:tint="@color/minus_red"/>
+                    app:tint="@color/minus_red" />
+
             </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
 
     <include
-        layout="@layout/producer_bottom_app_bar"
+        layout="@layout/customer_bottom_app_bar"
         android:id="@+id/bottomBar"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

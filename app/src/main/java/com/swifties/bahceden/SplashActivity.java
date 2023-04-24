@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.ContactsContract;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -16,7 +17,11 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+<<<<<<< HEAD
                 Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+=======
+                Intent intent = new Intent(SplashActivity.this, ConsumerAnalyticsActivity.class);
+>>>>>>> main
                 startActivity(intent);
                 finish();
             }
