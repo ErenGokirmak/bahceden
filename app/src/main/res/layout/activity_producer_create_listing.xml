@@ -19,7 +19,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:src="@drawable/bahceden_logo" />
+            android:src="@drawable/ic_back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,6 +66,7 @@
                     android:textSize="20sp" />
 
                 <Button
+                    android:id="@+id/selectImageButton"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
