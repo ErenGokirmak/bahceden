@@ -209,8 +209,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_heavy"
                     android:text="Similar Items"
-                    android:textSize="16dp"
-                    android:textColor="@color/bahceden_green" />
+                    android:textColor="@color/bahceden_green"
+                    android:textSize="16dp" />
 
                 <View
                     android:layout_width="0dp"
@@ -223,8 +223,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_heavy"
                     android:text="@string/see_all"
-                    android:textSize="16dp"
-                    android:textColor="@color/bahceden_green" />
+                    android:textColor="@color/bahceden_green"
+                    android:textSize="16dp" />
 
             </LinearLayout>
 
@@ -246,21 +246,21 @@
         android:background="@drawable/bg_top_curved_rec"
         android:backgroundTint="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/totalPriceTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total Price"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
-            android:textStyle="bold"
-            android:textSize="22sp"
+            android:layout_marginTop="8dp"
+            android:text="Total Price"
             android:textColor="@color/darkGray"
-            app:layout_constraintTop_toTopOf="@id/productBottom"
-            app:layout_constraintStart_toStartOf="@id/productBottom"/>
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/productBottom"
+            app:layout_constraintTop_toTopOf="@id/productBottom" />
 
 
         <TextView
@@ -268,26 +268,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$000.00"
-            android:textStyle="bold"
-            android:textSize="32sp"
             android:textColor="@color/bahceden_green"
-            app:layout_constraintTop_toBottomOf="@id/totalPriceTitle"
-            app:layout_constraintStart_toStartOf="@id/totalPriceTitle" />
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/totalPriceTitle"
+            app:layout_constraintTop_toBottomOf="@id/totalPriceTitle" />
 
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addToCart"
             android:layout_width="200dp"
             android:layout_height="50dp"
+            android:layout_margin="16dp"
             android:background="@drawable/long_button_background"
             android:backgroundTint="@color/bahceden_green"
             android:fontFamily="@font/nexa_heavy"
             android:text="Add to Cart"
             android:textColor="@color/white"
             android:textSize="15dp"
-            android:layout_margin="16dp"
-            app:layout_constraintTop_toTopOf="@id/productBottom"
-            app:layout_constraintEnd_toEndOf="@id/productBottom" />
+            app:layout_constraintEnd_toEndOf="@id/productBottom"
+            app:layout_constraintTop_toTopOf="@id/productBottom" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

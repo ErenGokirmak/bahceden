@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -22,96 +21,94 @@
             android:id="@+id/producerProfileImage"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_marginTop="64dp"
             android:layout_marginLeft="4dp"
+            android:layout_marginTop="64dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ciftci" />
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/producerInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/producerActivityRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/producerRelativeLayout">
+
         <LinearLayout
-            android:id="@+id/producerInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/producerActivityRecyclerView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/producerRelativeLayout">
-    
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-    
-                <TextView
-                    android:id="@+id/company_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="Company Name"
-                    android:textSize="32sp"
-                    android:fontFamily="@font/nexa_heavy"
-                    android:textColor="@color/bahceden_green"
-                    android:textStyle="bold"
-                    />
-    
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-    
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="12dp"
-                    android:src="@drawable/ic_favorite"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/productName" />
-    
-            </LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/desc"
+                android:id="@+id/company_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
+                android:fontFamily="@font/nexa_heavy"
                 android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/descTitle"
-                app:layout_constraintTop_toBottomOf="@id/descTitle" />
-    
-    
-            <LinearLayout
+                android:text="Company Name"
+                android:textColor="@color/bahceden_green"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_location"
-                    android:layout_marginStart="8dp"
-                    app:tint="@color/black" />
-    
-                <TextView
-                    android:id="@+id/company_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:textStyle="bold"
-                    android:text="1234 Main Street, Anytown, USA"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-    
-            </LinearLayout>
-
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:src="@drawable/ic_favorite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/productName" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/descTitle"
+            app:layout_constraintTop_toBottomOf="@id/descTitle" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_location"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/company_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="1234 Main Street, Anytown, USA"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/producerActivityRecyclerView"

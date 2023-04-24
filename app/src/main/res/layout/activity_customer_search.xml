@@ -8,7 +8,6 @@
 
     <EditText
         android:id="@+id/searchBar"
-        android:paddingStart="8dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -16,10 +15,11 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/edit_text_background"
         android:backgroundTint="@color/bahceden_foreground"
-
         android:fontFamily="@font/nexa_heavy"
 
         android:hint="@string/search"
+
+        android:paddingStart="8dp"
         android:textColorHint="@color/darkGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -30,42 +30,42 @@
         android:id="@+id/filterButtons"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginVertical="8dp"
         android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/searchBar"
+        android:layout_marginVertical="8dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/searchHistoryText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchBar">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@drawable/long_button_background"
-            android:backgroundTint="@color/bahceden_foreground"
-            android:text="@string/filters"
             android:layout_marginEnd="8dp"
-            android:fontFamily="@font/nexa_heavy"/>
-
-        <androidx.appcompat.widget.AppCompatButton
             android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:background="@drawable/long_button_background"
             android:backgroundTint="@color/bahceden_foreground"
-            android:text="@string/sort_by"
+            android:fontFamily="@font/nexa_heavy"
+            android:text="@string/filters" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginEnd="8dp"
-            android:fontFamily="@font/nexa_heavy"/>
-
-        <androidx.appcompat.widget.AppCompatButton
             android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:background="@drawable/long_button_background"
             android:backgroundTint="@color/bahceden_foreground"
-            android:text="Zıvır"
-            android:fontFamily="@font/nexa_heavy"/>
+            android:fontFamily="@font/nexa_heavy"
+            android:text="@string/sort_by" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/long_button_background"
+            android:backgroundTint="@color/bahceden_foreground"
+            android:fontFamily="@font/nexa_heavy"
+            android:text="Zıvır" />
 
     </LinearLayout>
 
@@ -73,27 +73,27 @@
         android:id="@+id/searchHistoryText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filterButtons"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp"
+        android:fontFamily="@font/nexa_heavy"
         android:text="@string/search_history"
         android:textColor="@color/bahceden_green"
-        android:fontFamily="@font/nexa_heavy"
-        android:layout_marginHorizontal="16dp"
         android:textSize="16dp"
-        android:layout_marginVertical="8dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterButtons" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchHistoryRV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/searchHistoryText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
-        app:layout_constraintVertical_bias="0"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchHistoryText"
+        app:layout_constraintVertical_bias="0" />
 
     <include
         android:id="@+id/bottomBar"
@@ -110,11 +110,10 @@
         android:id="@+id/imageView2"
         android:layout_width="35dp"
         android:layout_height="38dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/searchBar"
         app:layout_constraintEnd_toEndOf="@+id/searchBar"
         app:layout_constraintTop_toTopOf="@+id/searchBar"
-        app:srcCompat="@drawable/ic_search"
-        android:layout_marginEnd="16dp"
-        />
+        app:srcCompat="@drawable/ic_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

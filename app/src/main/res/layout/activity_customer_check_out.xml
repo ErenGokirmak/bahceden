@@ -21,18 +21,18 @@
             android:id="@+id/checkoutBack"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_back"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_back" />
 
         <TextView
             android:id="@+id/checkoutTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
             android:fontFamily="@font/nexa_heavy"
             android:text="Check Out"
             android:textColor="@color/bahceden_green"
-            android:textSize="25sp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="25sp" />
     </LinearLayout>
 
     <ScrollView
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@id/checkoutTopBar"
         app:layout_constraintBottom_toTopOf="@id/checkoutContinueToPayment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/checkoutTopBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -52,27 +52,26 @@
                 android:id="@+id/checkoutAddressTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shipping Address"
                 android:fontFamily="@font/nexa_heavy"
-                android:textSize="22sp"
+                android:text="Shipping Address"
                 android:textColor="@color/bahceden_green"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/checkoutAddressHolder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
                 android:layout_marginHorizontal="4dp"
-                android:paddingHorizontal="8dp"
+                android:layout_marginVertical="8dp"
                 android:background="@drawable/long_button_background"
-               android:backgroundTint="@color/white"
+                android:backgroundTint="@color/white"
                 android:elevation="5dp"
                 app:layout_constraintTop_toBottomOf="@id/checkoutAddressTitle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/shippingTitle">
 
                 <ImageView
                     android:id="@+id/checkoutAddressImage"
@@ -87,7 +86,10 @@
                     android:id="@+id/checkoutCustomerAddressTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="-8dp"
                     android:text="Cennet"
+                    android:textColor="@color/bahceden_green"
                     android:textSize="22sp"
                     android:textStyle="bold"
                     android:textColor="@color/bahceden_green"
@@ -100,6 +102,8 @@
                     android:id="@+id/checkoutAdressText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
                     android:text="Sıratı geçtikten sonra cehennemin 7 kat üstü. Israfile sorsanız gösterir."
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -115,7 +119,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_edit"
-                    app:tint="@color/bahceden_green"
+                    app:layout_constraintBottom_toBottomOf="@id/addressImage"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/checkoutAddressImage"
                     app:layout_constraintBottom_toBottomOf="@id/checkoutAddressImage"/>
@@ -134,8 +138,10 @@
                 android:id="@+id/checkoutOrdersTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order List"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/nexa_heavy"
+                android:text="Order List"
+                android:textColor="@color/bahceden_green"
                 android:textSize="22sp"
                 android:textColor="@color/bahceden_green"
                 android:layout_marginTop="12dp"
@@ -146,7 +152,7 @@
                 android:id="@+id/checkOutRVholder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".ActivityName"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/checkoutOrdersTitle">
@@ -236,10 +242,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_margin="8dp"
                 android:background="@drawable/long_button_background"
                 android:backgroundTint="@color/white"
                 android:elevation="8dp"
+                android:orientation="vertical"
                 android:padding="8dp"
                 android:layout_margin="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/checkoutHorizontalDivider3"
@@ -250,89 +257,90 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Amount"
-                        android:textSize="22sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="22sp" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/checkoutAmountTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="$333"
-                        android:textSize="16sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Shipping"
-                        android:textSize="22sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="22sp" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/checkoutShippingPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="$50"
-                        android:textSize="16sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="16sp" />
 
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Discount"
-                        android:textSize="22sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="22sp" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/checkoutAmountDiscount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="-$133"
-                        android:textSize="16sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -347,30 +355,30 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="8dp">
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Total"
-                        android:textSize="22sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="22sp" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/finalAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="$250"
-                        android:textSize="16sp"
                         android:textColor="@color/bahceden_green"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -383,25 +391,25 @@
         android:id="@+id/checkoutContinueToPayment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:elevation="20dp"
+        android:gravity="center"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="8dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Continue to Payment"
-            android:textStyle="bold"
-            android:fontFamily="@font/nexa_heavy"
-            android:textColor="@color/white"
-            android:paddingVertical="8dp"
-            android:paddingHorizontal="56dp"
             android:layout_margin="8dp"
             android:background="@drawable/long_button_background"
-            android:backgroundTint="@color/bahceden_green"/>
+            android:backgroundTint="@color/bahceden_green"
+            android:fontFamily="@font/nexa_heavy"
+            android:paddingHorizontal="56dp"
+            android:paddingVertical="8dp"
+            android:text="Continue to Payment"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
     </LinearLayout>
 
 
