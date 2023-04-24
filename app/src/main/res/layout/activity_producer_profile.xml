@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".ProducerProfileActivity">
 
     <LinearLayout
         android:id="@+id/topBarProducerProfile"
@@ -15,13 +15,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/bahceden_foreground"
         android:paddingVertical="8dp"
-        android:paddingHorizontal="25dp"
+        android:paddingHorizontal="16dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:src="@drawable/bahcedenlogo"
+            android:src="@drawable/bahceden_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,188 +30,248 @@
             android:id="@+id/producerProfileTopBarNameText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textColor="@color/bahceden_green"
             android:fontFamily="@font/nexa_heavy"
-            android:text="Company Name"
-            android:textSize="20sp"
             android:gravity="center"
-            android:layout_weight="1"/>
-
-        <ImageView
-            android:id="@+id/producerProfileSettingButton"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_settings"
-            app:tint="@color/bahceden_green"
-            android:layout_margin="4dp"/>
+            android:text="Company Name"
+            android:textColor="@color/bahceden_green"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profileImageHolder"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cardCornerRadius="100dp"
+        android:layout_margin="18dp"
         app:layout_constraintTop_toBottomOf="@id/topBarProducerProfile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:paddingVertical="75dp"
-        android:paddingHorizontal="8dp"
-        android:divider="@drawable/divider"
-        android:showDividers="middle"
-        android:dividerPadding="8dp">
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/cow"
+            android:scaleType="centerCrop"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/profileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cow But Producer"
+        android:textColor="@color/bahceden_green"
+        android:fontFamily="@font/nexa_heavy"
+        android:textSize="28sp"
+        app:layout_constraintTop_toBottomOf="@id/profileImageHolder"
+        app:layout_constraintStart_toStartOf="@id/profileImageHolder"
+        app:layout_constraintEnd_toEndOf="@id/profileImageHolder"/>
+
+    <TextView
+        android:id="@+id/profileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cowprod@gmail.com"
+        android:textColor="@color/darkGray"
+        android:fontFamily="@font/nexa_heavy"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/profileName"
+        app:layout_constraintStart_toStartOf="@id/profileName"
+        app:layout_constraintEnd_toEndOf="@id/profileName"/>
+
+    <View
+        android:id="@+id/horizontalDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="8dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/profileEmail"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteY="248dp"
+        app:layout_constraintTop_toBottomOf="@id/horizontalDivider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
-            android:id="@+id/producerProfileManageAccountButton"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:paddingVertical="8dp"
-            android:layout_marginVertical="8dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_profile"
-                app:tint="@color/black"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="8dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/manage_account"
-                android:textColor="@color/black"
-                android:fontFamily="@font/nexa_heavy"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_userempty" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:padding="2dp"
+                    android:text="Edit Profile"
+                    android:textSize="20sp" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_stickless_arrow"
-                android:layout_marginVertical="10dp"
-                app:tint="@color/black"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
 
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_right_arrow" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_ordersempty" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:padding="2dp"
+                    android:text="Completed Orders"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_right_arrow" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_paymentempty" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:padding="2dp"
+                    android:text="@string/withdraw_earnings"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_right_arrow" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_securityempty" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:padding="2dp"
+                    android:text="Security"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_right_arrow" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_logout"
+                    app:tint="@color/minus_red" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:padding="2dp"
+                    android:text="Log out"
+                    android:textColor="@color/minus_red"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_right_arrow"
+                    app:tint="@color/minus_red"/>
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/producerProfileChangeLocationButton"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:paddingVertical="8dp"
-            android:layout_marginVertical="8dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_location"
-                app:tint="@color/black"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/change_location"
-                android:textColor="@color/black"
-                android:fontFamily="@font/nexa_heavy"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_stickless_arrow"
-                android:layout_marginVertical="10dp"
-                app:tint="@color/black"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/producerProfileAnalyticsButton"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:paddingVertical="8dp"
-            android:layout_marginVertical="8dp">
-
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="match_parent"
-                android:src="@mipmap/analytics_foreground"
-                app:tint="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/analytics"
-                android:textColor="@color/black"
-                android:fontFamily="@font/nexa_heavy"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_stickless_arrow"
-                android:layout_marginVertical="10dp"
-                app:tint="@color/black"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/producerProfileAboutUsButton"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:paddingVertical="8dp"
-            android:layout_marginVertical="8dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_about_us"
-                app:tint="@color/black"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/about_us"
-                android:textColor="@color/black"
-                android:fontFamily="@font/nexa_heavy"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_stickless_arrow"
-                android:layout_marginVertical="10dp"
-                app:tint="@color/black"/>
-
-        </LinearLayout>
-
-
-    </LinearLayout>
+    </ScrollView>
 
     <include
         layout="@layout/producer_bottom_app_bar"
         android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

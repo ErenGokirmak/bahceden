@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CartActivity">
+    tools:context=".CustomerCartActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cartTopBar"
@@ -34,7 +34,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:src="@drawable/bahcedenlogo"
+            android:src="@drawable/bahceden_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -106,7 +106,7 @@
 
     <include
         android:id="@+id/cartBottomBar"
-        layout="@layout/bottom_app_bar"
+        layout="@layout/customer_bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

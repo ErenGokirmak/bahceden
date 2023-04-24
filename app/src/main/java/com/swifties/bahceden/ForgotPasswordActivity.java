@@ -20,13 +20,13 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         backBt = findViewById(R.id.forgetPasswordBack);
         fgtContinue = findViewById(R.id.forgetContinue);
 
-        changeFragment(new EnterMailFragment());
+        changeFragment(new CustomerCheckOutActivity.EnterMailFragment());
 
         fgtContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (true)
-                    changeFragment(new ChooseActionFragment());
+                    changeFragment(new CustomerCartActivity.ChooseActionFragment());
             }
         });
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".CustomerProfileActivity">
 
     <LinearLayout
         android:id="@+id/topBarProfile"
@@ -14,14 +14,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/bahceden_foreground"
-        android:paddingVertical="8dp"
-        android:paddingHorizontal="8dp"
+        android:padding="8dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:src="@drawable/bahcedenlogo"
+            android:src="@drawable/bahceden_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:id="@+id/profielImage"
+            android:id="@+id/profileImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/cow"
@@ -109,8 +108,8 @@
                 android:layout_margin="8dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_userempty"/>
 
                 <TextView
@@ -128,8 +127,8 @@
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_right_arrow"/>
             </LinearLayout>
 
@@ -141,8 +140,8 @@
                 android:layout_margin="8dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_ordersempty"/>
 
                 <TextView
@@ -160,8 +159,8 @@
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_right_arrow"/>
             </LinearLayout>
 
@@ -173,8 +172,8 @@
                 android:layout_margin="8dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_location_empty"/>
 
                 <TextView
@@ -192,8 +191,8 @@
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_right_arrow"/>
             </LinearLayout>
 
@@ -205,8 +204,8 @@
                 android:layout_margin="8dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_paymentempty"/>
 
                 <TextView
@@ -224,8 +223,8 @@
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_right_arrow"/>
             </LinearLayout>
 
@@ -237,8 +236,8 @@
                 android:layout_margin="8dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_analyticsempty"/>
 
                 <TextView
@@ -256,8 +255,8 @@
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_right_arrow"/>
             </LinearLayout>
 
@@ -269,8 +268,8 @@
                 android:layout_margin="8dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_securityempty"/>
 
                 <TextView
@@ -288,8 +287,8 @@
                     android:layout_weight="1"/>
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_right_arrow"/>
             </LinearLayout>
             <LinearLayout
@@ -308,24 +307,31 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Logout"
+                    android:text="Log out"
                     android:textSize="20sp"
                     android:fontFamily="@font/nexa_heavy"
                     android:textColor="@color/minus_red"
                     android:layout_marginStart="8dp"
-                    android:padding="2dp"/>
+                    android:padding="2dp" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_right_arrow"
+                    app:tint="@color/minus_red" />
+
             </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
 
     <include
-        layout="@layout/bottom_app_bar"
+        layout="@layout/customer_bottom_app_bar"
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
