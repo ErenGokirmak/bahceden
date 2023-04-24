@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Bahceden"
         tools:targetApi="31">
         <activity
-            android:name=".ConsumerAnalyticsActivity"
+            android:name=".CostumerAnalyticsActivity"
             android:exported="false" />
         <activity
             android:name=".ProducerProfileActivity"

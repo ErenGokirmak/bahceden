@@ -13,7 +13,7 @@ import com.github.mikephil.charting.data.PieEntry;
 
 import java.util.ArrayList;
 
-public class ConsumerAnalyticsActivity extends AppCompatActivity {
+public class CostumerAnalyticsActivity extends AppCompatActivity {
 
 
     PieChart consumerChart;
@@ -21,7 +21,7 @@ public class ConsumerAnalyticsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consumer_analytics);
+        setContentView(R.layout.activity_costumer_analytics);
 
         consumerChart = findViewById(R.id.consumerChart);
 
@@ -31,7 +31,7 @@ public class ConsumerAnalyticsActivity extends AppCompatActivity {
 
         PieDataSet pieDataSet = new PieDataSet(dataEntries, "Monthly Data");
         pieDataSet.setColors(getResources().getColor(R.color.plus_green, null), getResources().getColor(R.color.minus_red, null));
-        pieDataSet.setValueTextColor(Color.BLACK);
+        pieDataSet.setValueTextColor(Color.WHITE);
         pieDataSet.setValueTextSize(16);
 
         PieData pieData = new PieData(pieDataSet);
@@ -39,7 +39,6 @@ public class ConsumerAnalyticsActivity extends AppCompatActivity {
         consumerChart.setData(pieData);
         consumerChart.setCenterText("Monthly Data");
         consumerChart.getDescription().setEnabled(false);
-        consumerChart.setEntryLabelTextSize(16);
         consumerChart.animate();
     }
 

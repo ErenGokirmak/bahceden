@@ -9,7 +9,6 @@ import android.os.Bundle;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.swifties.bahceden.adapters.CategoriesAdapter;
 import com.swifties.bahceden.adapters.HotSalesAdapter;
 
 import java.util.ArrayList;
@@ -41,14 +40,6 @@ public class CustomerHomeActivity extends AppCompatActivity {
         slideModels.add(new SlideModel(R.drawable.cucumber, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.tomato, ScaleTypes.FIT));
         imageSlider.setImageList(slideModels);
-
-        categoriesRV = (RecyclerView) findViewById(R.id.categoriesRV);
-        categoriesRV.setHasFixedSize(true);
-        cLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-
-        categoriesRV.setLayoutManager(cLayoutManager);
-        categoriesAdapter = new CategoriesAdapter();
-        categoriesRV.setAdapter(categoriesAdapter);
 
         newArrivalsRV = (RecyclerView) findViewById(R.id.newArrivalsRV);
         newArrivalsRV.setHasFixedSize(true);

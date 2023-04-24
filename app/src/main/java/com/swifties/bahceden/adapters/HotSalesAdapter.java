@@ -17,7 +17,7 @@ public class HotSalesAdapter extends RecyclerView.Adapter<HotSalesAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.hot_sales_item, viewGroup, false);
+                .inflate(R.layout.layout_item, viewGroup, false);
 
         return new ViewHolder(view);
     }
