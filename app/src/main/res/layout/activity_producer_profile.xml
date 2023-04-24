@@ -111,8 +111,8 @@
                 android:padding="8dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_userempty" />
 
                 <TextView
@@ -130,8 +130,8 @@
                     android:layout_weight="1" />
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_right_arrow" />
             </LinearLayout>
 
@@ -143,8 +143,8 @@
                 android:padding="8dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_ordersempty" />
 
                 <TextView
@@ -162,8 +162,8 @@
                     android:layout_weight="1" />
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_right_arrow" />
             </LinearLayout>
 
@@ -175,8 +175,8 @@
                 android:padding="8dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_paymentempty" />
 
                 <TextView
@@ -194,8 +194,8 @@
                     android:layout_weight="1" />
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_right_arrow" />
             </LinearLayout>
 
@@ -207,8 +207,8 @@
                 android:padding="8dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_securityempty" />
 
                 <TextView
@@ -226,8 +226,8 @@
                     android:layout_weight="1" />
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_right_arrow" />
             </LinearLayout>
 
@@ -239,8 +239,8 @@
                 android:padding="8dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_logout"
                     app:tint="@color/minus_red" />
 
@@ -259,8 +259,8 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_right_arrow"
                     app:tint="@color/minus_red"/>
             </LinearLayout>
