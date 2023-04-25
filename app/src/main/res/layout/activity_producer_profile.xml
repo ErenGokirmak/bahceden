@@ -153,7 +153,7 @@
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/nexa_heavy"
                     android:padding="2dp"
-                    android:text="Completed Orders"
+                    android:text="Orders"
                     android:textSize="20sp" />
 
                 <View
@@ -167,37 +167,6 @@
                     android:src="@drawable/ic_right_arrow" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_paymentempty" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/nexa_heavy"
-                    android:padding="2dp"
-                    android:text="@string/withdraw_earnings"
-                    android:textSize="20sp" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_right_arrow" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
