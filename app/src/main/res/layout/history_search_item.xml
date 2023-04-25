@@ -8,11 +8,14 @@
 
     <ImageView
         android:id="@+id/deleteHistory"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_delete" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_cross"
+        android:layout_marginRight="5dp"
+        app:tint="@color/grey_font"/>
 
     <TextView
         android:id="@+id/historyText"

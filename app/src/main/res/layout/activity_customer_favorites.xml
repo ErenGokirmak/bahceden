@@ -70,7 +70,7 @@
             android:background="@color/bahceden_green"
             android:fontFamily="@font/nexa_heavy"
             android:gravity="center"
-            android:text="Favorite Companies"
+            android:text="Favorite Dukkan"
             android:textAlignment="center"
             android:textColor="@color/white" />
 
