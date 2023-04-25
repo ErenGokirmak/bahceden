@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Bahceden"
         tools:targetApi="31">
         <activity
+            android:name=".ProducerViewProducerActivity"
+            android:exported="false" />
+        <activity
             android:name=".CustomerAddAddressActivity"
             android:exported="false" />
         <activity
@@ -42,15 +45,14 @@
             android:name=".ProducerAnalyticsActivity"
             android:exported="false" />
         <activity
-            android:name=".CustomerProductActivity"
+            android:name=".CustomerViewProductActivity"
             android:exported="false" />
         <activity
             android:name=".CustomerViewProducerActivity"
             android:exported="false" />
         <activity
             android:name=".OrdersProfileActivity"
-            android:exported="false" >
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />

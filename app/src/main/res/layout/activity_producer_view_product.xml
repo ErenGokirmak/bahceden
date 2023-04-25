@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerProductActivity">
+    tools:context=".CustomerViewProductActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -121,70 +121,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/descTitle"
                     app:layout_constraintTop_toBottomOf="@id/descTitle" />
-
-
-                <TextView
-                    android:id="@+id/amount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Amount"
-                    android:textColor="@color/bahceden_green"
-                    android:textSize="32sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/desc"
-                    app:layout_constraintTop_toBottomOf="@id/desc" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/buttonLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="36dp"
-                    android:elevation="10dp"
-                    app:layout_constraintBottom_toBottomOf="@id/amount"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/amount">
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/decrement"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/bg_semi_circle_2"
-                        android:backgroundTint="@color/minus_red"
-                        android:drawableTop="@drawable/minus"
-                        android:drawableTint="@color/white"
-                        android:padding="18dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:layout_marginBottom="2dp"
-                        android:background="@drawable/bg_square"
-                        android:backgroundTint="@color/white"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/black"
-                        android:textSize="36sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@id/increment"
-                        app:layout_constraintStart_toEndOf="@id/decrement"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/increment"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/bg_semi_circle_1"
-                        android:backgroundTint="@color/plus_green"
-                        android:drawableTop="@drawable/plus"
-                        android:drawableTint="@color/white"
-                        android:padding="18dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
@@ -194,48 +130,6 @@
                 android:layout_margin="8dp"
                 android:background="@android:color/darker_gray"
                 app:layout_constraintTop_toBottomOf="@id/itemInfo" />
-
-            <LinearLayout
-                android:id="@+id/similarItemsTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/checkoutHorizontalDivider2">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nexa_heavy"
-                    android:text="Similar Items"
-                    android:textColor="@color/bahceden_green"
-                    android:textSize="16dp" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/homeCategoriesSeeAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nexa_heavy"
-                    android:text="@string/see_all"
-                    android:textColor="@color/bahceden_green"
-                    android:textSize="16dp" />
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/itemSimilarItems"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/similarItemsTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -256,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Total Price"
+            android:text="Price"
             android:textColor="@color/darkGray"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -274,21 +168,6 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/totalPriceTitle"
             app:layout_constraintTop_toBottomOf="@id/totalPriceTitle" />
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/addToCart"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_margin="16dp"
-            android:background="@drawable/long_button_background"
-            android:backgroundTint="@color/bahceden_green"
-            android:fontFamily="@font/nexa_heavy"
-            android:text="Add to Cart"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            app:layout_constraintEnd_toEndOf="@id/productBottom"
-            app:layout_constraintTop_toTopOf="@id/productBottom" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

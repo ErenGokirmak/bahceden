@@ -2,7 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/appBar"
@@ -68,12 +68,24 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/profileButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
-                android:orientation="vertical"
-                android:visibility="visible">
+                android:orientation="vertical">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_add_product" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile"
+                    android:textAlignment="center"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -122,17 +134,5 @@
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.bottomappbar.BottomAppBar>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/bahceden_foreground"
-        android:contentDescription="cart"
-        android:src="@drawable/ic_add_product"
-        app:backgroundTint="@color/bahceden_foreground"
-        app:layout_anchor="@+id/appBar"
-        app:maxImageSize="40dp"
-        app:tint="@null" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
