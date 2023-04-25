@@ -60,18 +60,18 @@
         android:id="@+id/itemCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="4dp"
-        android:text="5 KG"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/bg_circle"
         android:backgroundTint="@color/bahceden_green"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="5 KG"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/price"

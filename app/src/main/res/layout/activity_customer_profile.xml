@@ -150,7 +150,7 @@
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/nexa_heavy"
                     android:padding="2dp"
-                    android:text="Orders"
+                    android:text="My Orders"
                     android:textSize="20sp" />
 
                 <View
