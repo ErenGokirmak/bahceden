@@ -3,7 +3,7 @@ package com.swifties.bahceden;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.adapters.OrdersAdapter;
@@ -20,7 +20,7 @@ public class OrdersProfileActivity extends AppCompatActivity {
 
         ordersRV = (RecyclerView) findViewById(R.id.ordersProfileRecyclerView);
         ordersRV.setHasFixedSize(true);
-        ordersLayoutManager = new GridLayoutManager(this, 2);
+        ordersLayoutManager = new LinearLayoutManager(this);
 
         ordersRV.setLayoutManager(ordersLayoutManager);
         OrdersAdapter = new OrdersAdapter();
