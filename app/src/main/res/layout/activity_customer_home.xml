@@ -21,9 +21,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
+            android:fontFamily="@font/nexa_heavy"
             android:text="Isparta"
             android:textColor="@color/black"
-            android:fontFamily="@font/nexa_heavy"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,10 +47,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/homeTopBar"
         app:layout_constraintBottom_toTopOf="@id/bottomBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeTopBar">
 
 
         <LinearLayout
@@ -59,109 +59,81 @@
             android:layout_marginHorizontal="16dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Special Offers"
-                    android:textColor="@color/bahceden_green"
-                    android:fontFamily="@font/nexa_heavy"/>
+                android:fontFamily="@font/nexa_heavy"
+                android:text="Special Offers"
+                android:textColor="@color/bahceden_green" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:id="@+id/specialOffersSeeAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/see_all"
-                    android:textColor="@color/bahceden_green"
-                    android:fontFamily="@font/nexa_heavy"/>
-
-            </LinearLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/sliderHolder"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="28dp"
-                android:layout_marginHorizontal="16dp"
-                app:cardElevation="10dp"
-                app:cardCornerRadius="20dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
 
                 <com.denzcoskun.imageslider.ImageSlider
                     android:id="@+id/slider"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    app:iss_period="1000"
                     app:iss_auto_cycle="true"
+                    app:iss_corner_radius="20"
                     app:iss_delay="1000"
-                    app:iss_corner_radius="20"/>
+                    app:iss_period="1000" />
             </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/categories"
-                    android:textColor="@color/bahceden_green"
-                    android:fontFamily="@font/nexa_heavy"/>
+                android:fontFamily="@font/nexa_heavy"
+                android:text="@string/categories"
+                android:textColor="@color/bahceden_green" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:id="@+id/homeCategoriesSeeAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/see_all"
-                    android:textColor="@color/bahceden_green"
-                    android:fontFamily="@font/nexa_heavy"/>
-
-            </LinearLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="3"
-                android:rowCount="2"
-                android:padding="8dp"
                 android:layout_margin="8dp"
-                android:layout_marginVertical="8dp">
+                android:layout_marginVertical="8dp"
+                android:columnCount="3"
+                android:padding="8dp"
+                android:rowCount="2">
 
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_row="0"
                     android:layout_column="0"
-                    android:gravity="center"
                     android:layout_marginVertical="8dp"
-                    android:orientation="vertical"
                     android:background="@drawable/bg_circle"
-                    android:backgroundTint="@color/gray">
+                    android:backgroundTint="@color/gray"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/png_beef"/>
+                        android:src="@drawable/png_beef" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Red Et"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -170,24 +142,24 @@
                     android:layout_height="100dp"
                     android:layout_row="0"
                     android:layout_column="1"
-                    android:gravity="center"
                     android:layout_gravity="center"
                     android:layout_marginVertical="8dp"
-                    android:orientation="vertical"
                     android:background="@drawable/bg_circle"
-                    android:backgroundTint="@color/gray">
+                    android:backgroundTint="@color/gray"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/png_vegetable"/>
+                        android:src="@drawable/png_vegetable" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Vegetable"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -196,23 +168,23 @@
                     android:layout_height="100dp"
                     android:layout_row="0"
                     android:layout_column="2"
-                    android:gravity="center"
                     android:layout_marginVertical="8dp"
-                    android:orientation="vertical"
                     android:background="@drawable/bg_circle"
-                    android:backgroundTint="@color/gray">
+                    android:backgroundTint="@color/gray"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/png_dairy_products"/>
+                        android:src="@drawable/png_dairy_products" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Dairy"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -221,24 +193,24 @@
                     android:layout_height="100dp"
                     android:layout_row="1"
                     android:layout_column="0"
-                    android:gravity="center"
                     android:layout_gravity="start"
                     android:layout_marginTop="8dp"
-                    android:orientation="vertical"
                     android:background="@drawable/bg_circle"
-                    android:backgroundTint="@color/gray">
+                    android:backgroundTint="@color/gray"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/png_walnut"/>
+                        android:src="@drawable/png_walnut" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Nuts"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -247,24 +219,24 @@
                     android:layout_height="100dp"
                     android:layout_row="1"
                     android:layout_column="1"
-                    android:gravity="center"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:orientation="vertical"
                     android:background="@drawable/bg_circle"
-                    android:backgroundTint="@color/gray">
+                    android:backgroundTint="@color/gray"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/png_bakery"/>
+                        android:src="@drawable/png_bakery" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Bakery"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -273,23 +245,23 @@
                     android:layout_height="100dp"
                     android:layout_row="1"
                     android:layout_column="2"
-                    android:gravity="center"
                     android:layout_marginTop="8dp"
-                    android:orientation="vertical"
                     android:background="@drawable/bg_circle"
-                    android:backgroundTint="@color/gray">
+                    android:backgroundTint="@color/gray"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/png_honey"/>
+                        android:src="@drawable/png_honey" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
                         android:text="Bal"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/nexa_heavy"/>
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
             </GridLayout>
@@ -298,25 +270,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nexa_heavy"
                     android:text="@string/new_arrivals"
-                    android:textColor="@color/bahceden_green"
-                    android:fontFamily="@font/nexa_heavy"/>
+                    android:textColor="@color/bahceden_green" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/homeNewArrivalsSeeAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nexa_heavy"
                     android:text="@string/see_all"
-                    android:textColor="@color/bahceden_green"
-                    android:fontFamily="@font/nexa_heavy"/>
+                    android:textColor="@color/bahceden_green" />
 
             </LinearLayout>
 
@@ -325,18 +298,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginVertical="8dp"
-                android:orientation="horizontal"/>
+                android:orientation="horizontal" />
 
         </LinearLayout>
 
     </ScrollView>
 
     <include
-        layout="@layout/customer_bottom_app_bar"
         android:id="@+id/bottomBar"
+        layout="@layout/customer_bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
