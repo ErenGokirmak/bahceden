@@ -33,6 +33,7 @@
     <string name="sort_by">Sort By</string>
     <string name="withdraw_earnings">Withdraw Earnings</string>
     <string name="shipping">Shipping</string>
+    <string name="create_listing">Create Listing</string>
     <string-array name="analytics_spinner_1">
         <item>This Month</item>
         <item>Last Month</item>

@@ -22,11 +22,12 @@
             android:src="@drawable/ic_back" />
 
         <TextView
+            android:id="@+id/createListingTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/nexa_heavy"
-            android:text="Create Listing"
+            android:text="@string/create_listing"
             android:textColor="@color/bahceden_green"
             android:textSize="26sp" />
     </LinearLayout>
@@ -80,6 +81,7 @@
             </LinearLayout>
 
             <Spinner
+                android:id="@+id/categoryOfItemSelection"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="center"

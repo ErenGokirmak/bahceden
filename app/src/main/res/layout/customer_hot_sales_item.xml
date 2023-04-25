@@ -87,7 +87,7 @@
                 android:layout_height="12dp"
                 app:layout_constraintEnd_toEndOf="@id/hotSalesItemImage"
                 app:layout_constraintTop_toTopOf="@id/hotSalesItemName"
-                app:tint="@color/bahceden_green"
+                app:tint="@color/star_yellow"
                 app:layout_constraintBottom_toBottomOf="@id/hotSalesItemName"
                 android:src="@drawable/ic_star"/>
 

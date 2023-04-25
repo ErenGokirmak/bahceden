@@ -71,7 +71,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:drawableStartCompat="@drawable/ic_star"
-        app:drawableTint="@color/bahceden_green"
+        app:drawableTint="@color/star_yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

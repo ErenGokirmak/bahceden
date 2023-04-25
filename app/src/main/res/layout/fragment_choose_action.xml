@@ -15,6 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nexa_heavy"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
             android:text="Choose to Continue"
             android:textColor="@color/bahceden_green"
             android:textSize="26sp"

@@ -19,7 +19,7 @@
 
         android:hint="@string/search"
 
-        android:paddingStart="4dp"
+        android:paddingStart="8dp"
         android:textColorHint="@color/darkGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
