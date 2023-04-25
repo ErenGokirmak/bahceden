@@ -46,8 +46,9 @@
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_star"
+            app:tint="@color/star_yellow"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"></ImageView>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/smallDukkanRating"

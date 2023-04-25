@@ -59,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
+                android:paddingStart="8dp"
                 android:background="@drawable/edit_text_background"
                 android:hint="Current Password"
                 android:inputType="textPassword" />
@@ -67,6 +68,7 @@
                 android:id="@+id/new_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:paddingStart="8dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edit_text_background"
                 android:hint="New Password"
@@ -77,6 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
+                android:paddingStart="8dp"
                 android:background="@drawable/edit_text_background"
                 android:hint="Confirm New Password"
                 android:inputType="textPassword" />

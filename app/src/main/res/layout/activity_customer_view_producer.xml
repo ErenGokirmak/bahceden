@@ -64,6 +64,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="12dp"
                 android:src="@drawable/ic_favorite"
+                app:tint="@color/minus_red"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/productName" />
 
