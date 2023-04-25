@@ -196,6 +196,7 @@
                     android:fontFamily="@font/nexa_heavy"
                     android:drawableEnd="@drawable/ic_truck"
                     android:drawablePadding="8dp"
+                    android:drawableTint="@color/bahceden_green"
                     android:buttonTint="@color/bahceden_green"/>
 
                 <RadioButton
@@ -206,6 +207,7 @@
                     android:fontFamily="@font/nexa_heavy"
                     android:drawableEnd="@drawable/ic_pickup"
                     android:drawablePadding="8dp"
+                    android:drawableTint="@color/bahceden_green"
                     android:buttonTint="@color/bahceden_green"/>
 
                 <RadioButton
@@ -216,6 +218,7 @@
                     android:fontFamily="@font/nexa_heavy"
                     android:drawableEnd="@drawable/ic_cargo"
                     android:drawablePadding="8dp"
+                    android:drawableTint="@color/bahceden_green"
                     android:buttonTint="@color/bahceden_green"/>
 
             </RadioGroup>
