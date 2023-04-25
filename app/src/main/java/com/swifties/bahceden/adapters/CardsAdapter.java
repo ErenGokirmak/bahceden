@@ -29,7 +29,7 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 3;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
