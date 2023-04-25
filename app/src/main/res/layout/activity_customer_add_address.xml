@@ -109,7 +109,6 @@
         android:fontFamily="@font/nexa_heavy"
         android:text="Add Address"
         android:paddingHorizontal="16dp"
-        android:layout_margin="16dp"
         app:backgroundTint="@color/bahceden_green"
         android:background="@drawable/long_button_background"
         app:layout_constraintBottom_toBottomOf="parent"
