@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, CustomerViewProducerActivity.class);
+                Intent intent = new Intent(SplashActivity.this, ProducerHomeActivity.class);
                 startActivity(intent);
                 finish();
             }

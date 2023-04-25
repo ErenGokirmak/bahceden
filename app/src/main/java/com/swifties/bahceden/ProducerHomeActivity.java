@@ -25,7 +25,7 @@ public class ProducerHomeActivity extends AppCompatActivity {
 
         RecyclerView.LayoutManager reviewsLM = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         newReviewsRV.setLayoutManager(reviewsLM);
-        RecyclerView.LayoutManager listingsLM = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        RecyclerView.LayoutManager listingsLM = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         yourListingsRV.setLayoutManager(listingsLM);
 
         NewReviewsAdapter nra = new NewReviewsAdapter();
