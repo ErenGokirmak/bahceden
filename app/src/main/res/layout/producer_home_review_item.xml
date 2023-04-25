@@ -48,7 +48,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/bg_curved_border"
         android:drawablePadding="8dp"
-        android:drawableTint="@color/star_yellow"
+        android:drawableTint="@color/bahceden_green"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
         android:text="5"
