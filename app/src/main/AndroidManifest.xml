@@ -48,6 +48,10 @@
             android:name=".CustomerViewProducerActivity"
             android:exported="false" />
         <activity
+            android:name=".OrdersProfileActivity"
+            android:exported="false" >
+        </activity>
+        <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
