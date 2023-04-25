@@ -13,7 +13,7 @@ import com.github.mikephil.charting.data.PieEntry;
 
 import java.util.ArrayList;
 
-public class CostumerAnalyticsActivity extends AppCompatActivity {
+public class CustomerAnalyticsActivity extends AppCompatActivity {
 
 
     PieChart consumerChart;
@@ -21,7 +21,7 @@ public class CostumerAnalyticsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_costumer_analytics);
+        setContentView(R.layout.activity_customer_analytics);
 
         consumerChart = findViewById(R.id.consumerChart);
 
