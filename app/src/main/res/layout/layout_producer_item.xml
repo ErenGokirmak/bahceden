@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="Farm of Ali Baba"
         android:layout_margin="8dp"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:fontFamily="@font/nexa_heavy"
         android:textColor="@color/bahceden_green"
         app:layout_constraintTop_toBottomOf="@id/producer_bg_imageHolder"
