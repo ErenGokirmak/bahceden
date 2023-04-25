@@ -44,8 +44,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addAddressTopBar">
 
-
-
         <EditText
             android:id="@+id/editTitleOfCard"
             android:layout_width="match_parent"
@@ -138,7 +136,7 @@
         android:background="@drawable/long_button_background"
         android:fontFamily="@font/nexa_heavy"
         android:paddingHorizontal="16dp"
-        android:text="Add Address"
+        android:text="Add Card"
         android:textSize="15sp"
         app:backgroundTint="@color/bahceden_green"
         app:layout_constraintBottom_toBottomOf="parent"
