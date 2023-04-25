@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/cow" />
+            android:src="@drawable/jpg_rooster" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nexa_heavy"
-        android:text="Cow But Producer"
+        android:text="Rooster"
         android:textColor="@color/bahceden_green"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="@id/profileImageHolder"
@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nexa_heavy"
-        android:text="cowprod@gmail.com"
+        android:text="rooster@hotmail.com"
         android:textColor="@color/darkGray"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@id/profileName"
