@@ -19,7 +19,7 @@ public class ProducerHomeActivity extends AppCompatActivity {
 
         yourListingsRV.setHasFixedSize(true);
 
-        RecyclerView.LayoutManager lam = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager lam = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         yourListingsRV.setLayoutManager(lam);
 
         YourListingsAdapter yla = new YourListingsAdapter();
