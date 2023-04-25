@@ -10,15 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
 
-public class HotSalesAdapter extends RecyclerView.Adapter<HotSalesAdapter.ViewHolder> {
+public class NewReviewsAdapter extends RecyclerView.Adapter<NewReviewsAdapter.ViewHolder> {
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        // Create a new view, which defines the UI of the list item
-        View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.layout_item, viewGroup, false);
-
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.producer_home_review_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -29,7 +27,7 @@ public class HotSalesAdapter extends RecyclerView.Adapter<HotSalesAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 31;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
