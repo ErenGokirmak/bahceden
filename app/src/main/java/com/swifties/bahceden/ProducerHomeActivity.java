@@ -6,8 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.material.slider.Slider;
 import com.swifties.bahceden.adapters.NewReviewsAdapter;
 import com.swifties.bahceden.adapters.YourListingsAdapter;
+
+import java.util.ArrayList;
 
 public class ProducerHomeActivity extends AppCompatActivity {
 
@@ -15,6 +21,15 @@ public class ProducerHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producer_home);
+
+        ImageSlider imageSlider = findViewById(R.id.producerHomeSlider);
+
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+
+        slideModels.add(new SlideModel(R.drawable.banana, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.cucumber, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.tomato, ScaleTypes.FIT));
+        imageSlider.setImageList(slideModels);
 
         RecyclerView yourListingsRV = findViewById(R.id.yourListingsRV);
         RecyclerView newReviewsRV = findViewById(R.id.newReviewsRV);
@@ -25,7 +40,7 @@ public class ProducerHomeActivity extends AppCompatActivity {
 
         RecyclerView.LayoutManager reviewsLM = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         newReviewsRV.setLayoutManager(reviewsLM);
-        RecyclerView.LayoutManager listingsLM = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        RecyclerView.LayoutManager listingsLM = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         yourListingsRV.setLayoutManager(listingsLM);
 
         NewReviewsAdapter nra = new NewReviewsAdapter();

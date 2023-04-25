@@ -84,6 +84,7 @@
                 android:background="@drawable/edit_text_background"
                 android:gravity="center"
                 app:ccp_areaCodeDetectedCountry="true"
+                app:ccp_defaultPhoneCode="90"
                 app:ccp_showNameCode="false" />
 
             <com.google.android.material.textfield.TextInputEditText
@@ -104,17 +105,15 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_margin="16dp"
         android:fontFamily="@font/nexa_heavy"
         android:text="Add Address"
         android:paddingHorizontal="16dp"
-        android:layout_margin="16dp"
         app:backgroundTint="@color/bahceden_green"
         android:background="@drawable/long_button_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="20sp"/>
-
-
+        android:textSize="15sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
