@@ -7,7 +7,7 @@
     android:layout_marginVertical="8dp"
     android:background="@drawable/long_button_background"
     android:backgroundTint="@color/white"
-    android:elevation="10dp"
+    android:elevation="4dp"
     android:padding="8dp">
 
     <androidx.cardview.widget.CardView
@@ -71,7 +71,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:drawableStartCompat="@drawable/ic_star"
-        app:drawableTint="@color/star_yellow"
+        app:drawableTint="@color/bahceden_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

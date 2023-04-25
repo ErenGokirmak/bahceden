@@ -44,14 +44,14 @@
         app:layout_constraintTop_toBottomOf="@id/addAddressTopBar">
 
         <EditText
-            android:id="@+id/editNameOfAddress"
+            android:id="@+id/editTitleOfAddress"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edit_text_background"
-            android:hint="Name of the address"
+            android:hint="Title"
             android:inputType="text"
             android:padding="12dp"
             android:textColorHint="@color/darkGray" />
@@ -93,7 +93,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/edit_text_background"
-                android:hint="Phone Number of Recipient"
+                android:hint="Phone Number"
                 android:inputType="phone"
                 android:padding="12dp"
                 android:textColorHint="@color/darkGray" />
@@ -109,7 +109,7 @@
         android:fontFamily="@font/nexa_heavy"
         android:text="Add Address"
         android:paddingHorizontal="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_margin="16dp"
         app:backgroundTint="@color/bahceden_green"
         android:background="@drawable/long_button_background"
         app:layout_constraintBottom_toBottomOf="parent"

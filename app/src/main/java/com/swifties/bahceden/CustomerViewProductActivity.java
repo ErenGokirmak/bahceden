@@ -10,13 +10,13 @@ import com.denzcoskun.imageslider.models.SlideModel;
 
 import java.util.ArrayList;
 
-public class CustomerProductActivity extends AppCompatActivity {
+public class CustomerViewProductActivity extends AppCompatActivity {
 
     ImageSlider imageSlider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_product);
+        setContentView(R.layout.activity_customer_view_product);
 
         imageSlider = findViewById(R.id.productSlider);
         ArrayList<SlideModel> slideModels = new ArrayList<>();

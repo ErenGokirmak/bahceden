@@ -48,6 +48,5 @@ public class CustomerHomeActivity extends AppCompatActivity {
         newArrivalsRV.setLayoutManager(aLayoutManager);
         arrivalsAdapter = new HotSalesAdapter();
         newArrivalsRV.setAdapter(arrivalsAdapter);
-
     }
 }
