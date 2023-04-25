@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    android:background="@drawable/long_button_background"
+    android:backgroundTint="@color/white"
+    android:padding="8dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/commentImageHolder"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="75dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/commentImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/chicken" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/commentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/nexa_heavy"
+        android:text="Davuk"
+        android:textColor="@color/bahceden_green"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/commentImageHolder"
+        app:layout_constraintStart_toEndOf="@id/commentImageHolder"
+        app:layout_constraintTop_toTopOf="@id/commentImageHolder" />
+
+
+    <TextView
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_curved_border"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/star_yellow"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:text="5"
+        android:textColor="@color/bahceden_green"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="@id/commentName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/commentName" />
+
+    <TextView
+        android:id="@+id/commentMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:text="@string/loremIpsum"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@id/rating"
+        app:layout_constraintStart_toStartOf="@id/commentImageHolder"
+        app:layout_constraintTop_toBottomOf="@id/commentImageHolder" />
+
+    <TextView
+        android:id="@+id/likeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableStart="@drawable/favorite2"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/bahceden_green"
+        android:text="336"
+        android:textColor="@color/bahceden_green"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/commentMessage"
+        app:layout_constraintTop_toBottomOf="@id/commentMessage" />
+
+    <TextView
+        android:id="@+id/commentDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="13 Days ago"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/likeCount"
+        app:layout_constraintTop_toBottomOf="@id/commentMessage" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_reply"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/bahceden_green" />
+    "
+
+</androidx.constraintlayout.widget.ConstraintLayout>
