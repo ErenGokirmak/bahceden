@@ -44,8 +44,8 @@
         app:layout_constraintTop_toBottomOf="@id/customerViewProducerTopBar">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="98dp"
-            android:layout_height="98dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/ciftci"
             app:civ_border_color="@color/white"
             app:civ_border_width="5dp"
@@ -96,6 +96,7 @@
 
         </LinearLayout>
 
+
         <TextView
             android:id="@+id/desc"
             android:layout_width="match_parent"
@@ -108,7 +109,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/descTitle"
             app:layout_constraintTop_toBottomOf="@id/descTitle" />
-
 
         <LinearLayout
             android:layout_width="wrap_content"
