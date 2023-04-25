@@ -62,7 +62,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nexa_heavy"
                 android:text="Profit"
-                android:textColor="@color/plus_green"
                 android:textSize="22sp" />
 
             <TextView
@@ -92,7 +91,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nexa_heavy"
                 android:text="Expense"
-                android:textColor="@color/minus_red"
                 android:textSize="22sp" />
 
             <TextView
