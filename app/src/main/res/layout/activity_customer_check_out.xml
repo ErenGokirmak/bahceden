@@ -75,6 +75,7 @@
                     android:id="@+id/checkoutAddressImage"
                     android:layout_width="55dp"
                     android:layout_height="55dp"
+                    android:layout_marginStart="16dp"
                     android:src="@drawable/bt_location"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

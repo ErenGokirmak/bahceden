@@ -15,5 +15,6 @@
     <color name="bahceden_foreground">#D6E5E3</color>
     <color name="minus_red">#F34235</color>
     <color name="plus_green">#23A24D</color>
+    <color name="star_yellow">#FCCA46</color>
 
 </resources>
