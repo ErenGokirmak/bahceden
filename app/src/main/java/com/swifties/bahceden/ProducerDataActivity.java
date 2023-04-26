@@ -2,11 +2,16 @@ package com.swifties.bahceden;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -18,6 +23,7 @@ public class ProducerDataActivity extends AppCompatActivity {
     ArrayList<SpinnerCustomItem> customItems;
     ArrayList<ArrayList<SpinnerCustomItem>> customSubItems;
     SpinnerCustomAdapter spinnerSubCategoriesAdapter;
+    PieChart producerChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,24 @@ public class ProducerDataActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.producerBottomNavBar);
         bottomNavigationView.setSelectedItemId(R.id.producerNavData);
         bottomNavigationView.setOnItemSelectedListener(new ProducerNavBarListener(this));
+
+        producerChart = findViewById(R.id.producerDataChart);
+
+        ArrayList<PieEntry> dataEntries = new ArrayList<>();
+        dataEntries.add(new PieEntry(70, "Our Recommendation"));
+        dataEntries.add(new PieEntry(40, "Other Prices"));
+
+        PieDataSet pieDataSet = new PieDataSet(dataEntries, "Success Rate");
+        pieDataSet.setColors(getResources().getColor(R.color.plus_green, null), getResources().getColor(R.color.minus_red, null));
+        pieDataSet.setValueTextColor(Color.WHITE);
+        pieDataSet.setValueTextSize(16);
+
+        PieData pieData = new PieData(pieDataSet);
+
+        producerChart.setData(pieData);
+        producerChart.setCenterText("Success Rate");
+        producerChart.getDescription().setEnabled(false);
+        producerChart.animate();
 
         customItems = getCustomCategoriesList();
         customSubItems = getCustomSubCategoriesList();
