@@ -121,7 +121,7 @@ public class ProducerDataActivity extends AppCompatActivity {
         ArrayList<SpinnerCustomItem> submenu5 = new ArrayList<SpinnerCustomItem>();
         submenu5.add(new SpinnerCustomItem("Bread", 0));
         submenu5.add(new SpinnerCustomItem("Toast", 0));
-        submenu5.add(new SpinnerCustomItem("croissant", 0));
+        submenu5.add(new SpinnerCustomItem("Croissant", 0));
 
         ArrayList<SpinnerCustomItem> submenu6 = new ArrayList<SpinnerCustomItem>();
         submenu6.add(new SpinnerCustomItem("Honey", 0));
