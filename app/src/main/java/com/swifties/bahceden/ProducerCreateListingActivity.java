@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 
 public class ProducerCreateListingActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -21,6 +23,11 @@ public class ProducerCreateListingActivity extends AppCompatActivity implements 
 
         customSpinner = findViewById(R.id.addItemSpinner);
         customItems = getCustomList();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.producerBottomNavBar);
+        bottomNavigationView.setSelectedItemId(R.id.producerNavAdd);
+        bottomNavigationView.setOnItemSelectedListener(new ProducerNavBarListener(this));
+
         SpinnerCustomAdapter spinnerAdapter = new SpinnerCustomAdapter(this, customItems);
 
         if (customSpinner != null) {

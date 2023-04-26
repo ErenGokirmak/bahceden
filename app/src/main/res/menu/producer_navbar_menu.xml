@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/producerNavHome"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home"/>
+
+    <item android:id="@+id/producerNavSearch"
+        android:title="@string/search"
+        android:icon="@drawable/ic_search"/>
+
+    <item android:id="@+id/producerNavAdd"
+        android:title="Add"
+        android:icon="@drawable/ic_add_product"/>
+
+    <item android:id="@+id/producerNavData"
+        android:title="@string/analytics"
+        android:icon="@drawable/ic_analytics"/>
+
+    <item android:id="@+id/producerNavProfile"
+        android:title="@string/profile"
+        android:icon="@drawable/ic_profile"/>
+
+</menu>

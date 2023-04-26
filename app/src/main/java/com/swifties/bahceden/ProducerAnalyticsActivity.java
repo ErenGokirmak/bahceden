@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.swifties.bahceden.adapters.AnalyticsProductAdapter;
 
 public class ProducerAnalyticsActivity extends AppCompatActivity {

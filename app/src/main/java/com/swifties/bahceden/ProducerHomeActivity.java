@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.slider.Slider;
 import com.swifties.bahceden.adapters.NewReviewsAdapter;
 import com.swifties.bahceden.adapters.YourListingsAdapter;
@@ -21,6 +22,10 @@ public class ProducerHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producer_home);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.producerBottomNavBar);
+        bottomNavigationView.setSelectedItemId(R.id.producerNavHome);
+        bottomNavigationView.setOnItemSelectedListener(new ProducerNavBarListener(this));
 
         ImageSlider imageSlider = findViewById(R.id.producerHomeSlider);
 

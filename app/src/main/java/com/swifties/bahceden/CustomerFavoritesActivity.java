@@ -31,7 +31,7 @@ public class CustomerFavoritesActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.customerBottomNavBar);
         bottomNavigationView.setSelectedItemId(R.id.customerNavFavorites);
         bottomNavigationView.setOnItemSelectedListener(new CustomerNavBarListener(this));
-        
+
         buttonsListener listener = new buttonsListener();
 
         productTxt.setOnClickListener(listener);

@@ -15,6 +15,9 @@
             android:name=".CustomerPaymentActivity"
             android:exported="false" />
         <activity
+            android:name=".ProducerDataActivity"
+            android:exported="false" />
+        <activity
             android:name=".SecurityProfile"
             android:exported="false" />
         <activity
