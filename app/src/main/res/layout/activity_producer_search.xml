@@ -6,37 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".ProducerSearchActivity">
 
-    <EditText
-        android:id="@+id/searchBar"
+    <LinearLayout
+        android:id="@+id/producerSearchBar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/edit_text_background"
-        android:backgroundTint="@color/bahceden_foreground"
-        android:fontFamily="@font/nexa_heavy"
-
-        android:hint="@string/search"
-
-        android:paddingStart="8dp"
-        android:textColorHint="@color/darkGray"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/producerSearchHistoryEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_text_background"
+            android:backgroundTint="@color/bahceden_foreground"
+            android:fontFamily="@font/nexa_heavy"
+            android:hint="@string/search"
+            android:paddingStart="8dp"
+            android:textColorHint="@color/darkGray" />
+
+        <ListView
+            android:id="@+id/producerSearchHistoryListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
 
     <LinearLayout
-        android:id="@+id/filterButtons"
+        android:id="@+id/producerSearchFilterButtons"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/searchHistoryText"
+        app:layout_constraintBottom_toTopOf="@+id/producerSearchResultsText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchBar">
+        app:layout_constraintTop_toBottomOf="@id/producerSearchBar">
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
@@ -56,44 +69,45 @@
             android:background="@drawable/long_button_background"
             android:backgroundTint="@color/bahceden_foreground"
             android:fontFamily="@font/nexa_heavy"
-            android:text="Sort By" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/long_button_background"
-            android:backgroundTint="@color/bahceden_foreground"
-            android:fontFamily="@font/nexa_heavy"
-            android:text="Zıvır" />
+            android:text="@string/sort_by" />
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/searchHistoryText"
+        android:id="@+id/producerSearchResultsText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="8dp"
         android:fontFamily="@font/nexa_heavy"
-        android:text="@string/search_history"
+        android:text="Search Results"
         android:textColor="@color/bahceden_green"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filterButtons" />
+        app:layout_constraintTop_toBottomOf="@id/producerSearchFilterButtons" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchHistoryRV"
+        android:id="@+id/producerSearchResultsRV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchHistoryText"
+        app:layout_constraintTop_toBottomOf="@id/producerSearchResultsText"
         app:layout_constraintVertical_bias="0" />
+
+    <ImageView
+        android:id="@+id/producerSearchImg"
+        android:layout_width="35dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/producerSearchBar"
+        app:layout_constraintTop_toTopOf="@+id/producerSearchBar"
+        app:srcCompat="@drawable/ic_search" />
 
     <include
         android:id="@+id/bottomBar"
