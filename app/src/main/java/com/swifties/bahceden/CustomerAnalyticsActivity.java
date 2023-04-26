@@ -26,8 +26,8 @@ public class CustomerAnalyticsActivity extends AppCompatActivity {
         consumerChart = findViewById(R.id.consumerChart);
 
         ArrayList<PieEntry> dataEntries = new ArrayList<>();
-        dataEntries.add(new PieEntry(10, "Profit"));
-        dataEntries.add(new PieEntry(200, "Expense"));
+        dataEntries.add(new PieEntry(10, "Benefits"));
+        dataEntries.add(new PieEntry(200, "Costs"));
 
         PieDataSet pieDataSet = new PieDataSet(dataEntries, "Monthly Data");
         pieDataSet.setColors(getResources().getColor(R.color.plus_green, null), getResources().getColor(R.color.minus_red, null));
