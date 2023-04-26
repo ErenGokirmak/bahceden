@@ -58,17 +58,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_heavy"
-                    android:text="Market Prices Average"
+                    android:text="Market Prices"
                     android:textSize="22sp" />
 
-                <TextView
-                    android:id="@+id/marketAverage"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nexa_heavy"
-                    android:text="$10"
-                    android:textColor="@color/bahceden_green"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/marketMin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
+                        android:text="$5"
+                        android:textColor="@color/minus_red"
+                        android:textSize="26sp"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/marketAverage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
+                        android:text="$10"
+                        android:textColor="@color/darkGray"
+                        android:textSize="26sp"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:id="@+id/marketMax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
+                        android:text="$23"
+                        android:textColor="@color/plus_green"
+                        android:textSize="26sp"
+                        android:layout_weight="1" />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -87,21 +113,47 @@
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <TextView
-                    android:id="@+id/otherSellersTitle"
+                    android:id="@+id/OtherAverageTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_heavy"
-                    android:text="Other Sellers Average"
+                    android:text="Other Sellers"
                     android:textSize="22sp" />
 
-                <TextView
-                    android:id="@+id/otherSellersAverage"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nexa_heavy"
-                    android:text="$10"
-                    android:textColor="@color/bahceden_green"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/OtherMin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
+                        android:text="$5"
+                        android:textColor="@color/minus_red"
+                        android:textSize="26sp"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/OtherAverage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
+                        android:text="$10"
+                        android:textColor="@color/darkGray"
+                        android:textSize="26sp"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:id="@+id/OtherMax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_heavy"
+                        android:text="$23"
+                        android:textColor="@color/plus_green"
+                        android:textSize="26sp"
+                        android:layout_weight="1" />
+                </LinearLayout>
 
             </LinearLayout>
 
