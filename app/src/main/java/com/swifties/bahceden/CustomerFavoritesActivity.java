@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.swifties.bahceden.adapters.FavItemAdapter;
 
 public class CustomerFavoritesActivity extends AppCompatActivity {
@@ -19,8 +20,14 @@ public class CustomerFavoritesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_favorites);
+
         productTxt = findViewById(R.id.favPButton);
         dukkanTxt = findViewById(R.id.favDButton);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.customerBottomNavBar);
+        bottomNavigationView.setSelectedItemId(R.id.customerNavFavorites);
+        bottomNavigationView.setOnItemSelectedListener(new CustomerNavBarListener(this));
+
         buttonsListener listener = new buttonsListener();
         productTxt.setOnClickListener(listener);
         dukkanTxt.setOnClickListener(listener);

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.swifties.bahceden.adapters.HotSalesAdapter;
 
 import java.util.ArrayList;
@@ -28,10 +29,15 @@ public class CustomerHomeActivity extends AppCompatActivity {
     RecyclerView.LayoutManager aLayoutManager;
     RecyclerView.LayoutManager hLayoutManager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_home);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.customerBottomNavBar);
+        bottomNavigationView.setSelectedItemId(R.id.customerNavHome);
+        bottomNavigationView.setOnItemSelectedListener(new CustomerNavBarListener(this));
 
         imageSlider = findViewById(R.id.slider);
         ArrayList<SlideModel> slideModels = new ArrayList<>();

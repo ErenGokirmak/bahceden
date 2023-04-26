@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.swifties.bahceden.adapters.CartProductAdapter;
 
 public class CustomerCartActivity extends AppCompatActivity {
@@ -22,6 +23,10 @@ public class CustomerCartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_cart);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.customerBottomNavBar);
+        bottomNavigationView.setSelectedItemId(R.id.customerNavCart);
+        bottomNavigationView.setOnItemSelectedListener(new CustomerNavBarListener(this));
 
         cartProductsRV = (RecyclerView) findViewById(R.id.cartProductRV);
         cartProductsRV.setHasFixedSize(true);
