@@ -129,6 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@drawable/edit_text_background"
+                app:ccp_defaultPhoneCode="90"
                 android:gravity="center"
                 app:ccp_showNameCode="false" />
 
