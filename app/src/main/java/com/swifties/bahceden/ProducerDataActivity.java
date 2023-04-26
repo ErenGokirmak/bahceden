@@ -16,5 +16,7 @@ public class ProducerDataActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.producerBottomNavBar);
         bottomNavigationView.setSelectedItemId(R.id.producerNavData);
         bottomNavigationView.setOnItemSelectedListener(new ProducerNavBarListener(this));
+
+
     }
 }
