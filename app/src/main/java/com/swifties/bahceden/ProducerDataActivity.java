@@ -6,17 +6,15 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class ProducerProfileActivity extends AppCompatActivity {
+public class ProducerDataActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_producer_profile);
+        setContentView(R.layout.activity_producer_data);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.producerBottomNavBar);
-        bottomNavigationView.setSelectedItemId(R.id.producerNavProfile);
+        bottomNavigationView.setSelectedItemId(R.id.producerNavData);
         bottomNavigationView.setOnItemSelectedListener(new ProducerNavBarListener(this));
-
     }
 }
