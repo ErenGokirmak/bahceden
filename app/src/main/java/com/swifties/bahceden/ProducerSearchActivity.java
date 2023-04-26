@@ -19,6 +19,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 public class ProducerSearchActivity extends AppCompatActivity {
 
@@ -33,6 +35,10 @@ public class ProducerSearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_producer_search);
 
         fillSearchHistory();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.producerBottomNavBar);
+        bottomNavigationView.setSelectedItemId(R.id.producerNavSearch);
+        bottomNavigationView.setOnItemSelectedListener(new ProducerNavBarListener(this));
 
         ArrayAdapter<String> searchHistoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, searchHistoryList);
 

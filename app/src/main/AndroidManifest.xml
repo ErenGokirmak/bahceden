@@ -12,6 +12,12 @@
         android:theme="@style/Theme.Bahceden"
         tools:targetApi="31">
         <activity
+            android:name=".CustomerPaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProducerDataActivity"
+            android:exported="false" />
+        <activity
             android:name=".SecurityProfile"
             android:exported="false" />
         <activity
@@ -37,7 +43,7 @@
             android:name=".ProducerProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ProducerCreateListingActivity"
+            android:name=".ProducerAddProductActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
@@ -78,8 +84,8 @@
             android:exported="false" />
         <activity
             android:name=".CustomerSearchActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />

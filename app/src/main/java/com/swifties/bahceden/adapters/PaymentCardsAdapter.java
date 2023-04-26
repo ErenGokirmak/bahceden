@@ -11,20 +11,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
 
-public class YourAddressesAdapter extends RecyclerView.Adapter<YourAddressesAdapter.ViewHolder> {
+public class PaymentCardsAdapter extends RecyclerView.Adapter<PaymentCardsAdapter.ViewHolder> {
+
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.customer_address_item, parent, false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        // Create a new view, which defines the UI of the list item
+        View view = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.layout_credit_card_payment, viewGroup, false);
+
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull YourAddressesAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (position == 0)
         {
-            holder.selected.setImageResource(R.drawable.ic_tick_selected);
+            holder.selectedImage.setImageResource(R.drawable.ic_tick_selected);
         }
     }
 
@@ -35,12 +38,12 @@ public class YourAddressesAdapter extends RecyclerView.Adapter<YourAddressesAdap
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView selected;
+        ImageView selectedImage;
 
         public ViewHolder(View view) {
             super(view);
 
-            selected = view.findViewById(R.id.customerAddressItemSelected);
+            selectedImage = view.findViewById(R.id.layoutCreditCartSelected);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

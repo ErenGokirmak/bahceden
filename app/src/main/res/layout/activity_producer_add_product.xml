@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProducerCreateListingActivity">
+    tools:context=".ProducerAddProductActivity">
 
     <LinearLayout
         android:id="@+id/topBar"
@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/nexa_heavy"
-            android:text="@string/create_listing"
+            android:text="Add Product"
             android:textColor="@color/bahceden_green"
             android:textSize="26sp" />
     </LinearLayout>
@@ -35,7 +35,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/updateButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBar">
@@ -71,7 +71,14 @@
             </androidx.cardview.widget.CardView>
 
             <Spinner
-                android:id="@+id/addItemSpinner"
+                android:id="@+id/addItemCategoriesSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_curved_border"
+                android:layout_marginVertical="8dp" />
+
+            <Spinner
+                android:id="@+id/addItemSubCategoriesSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_curved_border"
@@ -139,8 +146,17 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <include
+        android:id="@+id/bottomBar"
+        layout="@layout/producer_bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
