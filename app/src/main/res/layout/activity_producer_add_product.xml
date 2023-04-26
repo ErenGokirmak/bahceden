@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProducerCreateListingActivity">
+    tools:context=".ProducerAddProductActivity">
 
     <LinearLayout
         android:id="@+id/topBar"
@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/nexa_heavy"
-            android:text="@string/create_listing"
+            android:text="Add Product"
             android:textColor="@color/bahceden_green"
             android:textSize="26sp" />
     </LinearLayout>

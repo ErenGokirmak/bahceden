@@ -11,7 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class ProducerCreateListingActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class ProducerAddProductActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner customSpinner;
     ArrayList<SpinnerCustomItem> customItems;
@@ -19,7 +19,7 @@ public class ProducerCreateListingActivity extends AppCompatActivity implements 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_producer_create_listing);
+        setContentView(R.layout.activity_producer_add_product);
 
         customSpinner = findViewById(R.id.addItemSpinner);
         customItems = getCustomList();

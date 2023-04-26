@@ -30,7 +30,7 @@ public class ProducerNavBarListener implements BottomNavigationView.OnItemSelect
                 context.startActivity(intent);
                 return true;
             case R.id.producerNavAdd:
-                intent = new Intent(context, ProducerCreateListingActivity.class);
+                intent = new Intent(context, ProducerAddProductActivity.class);
                 context.startActivity(intent);
                 return true;
             case R.id.producerNavData:

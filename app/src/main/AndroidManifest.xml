@@ -43,7 +43,7 @@
             android:name=".ProducerProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ProducerCreateListingActivity"
+            android:name=".ProducerAddProductActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
