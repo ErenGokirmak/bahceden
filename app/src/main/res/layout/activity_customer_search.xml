@@ -6,37 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".CustomerSearchActivity">
 
-    <EditText
-        android:id="@+id/searchBar"
+    <LinearLayout
+        android:id="@+id/customerSearchBar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/edit_text_background"
-        android:backgroundTint="@color/bahceden_foreground"
-        android:fontFamily="@font/nexa_heavy"
-
-        android:hint="@string/search"
-
-        android:paddingStart="8dp"
-        android:textColorHint="@color/darkGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/customerSearchHistoryEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_text_background"
+            android:backgroundTint="@color/bahceden_foreground"
+            android:fontFamily="@font/nexa_heavy"
+            android:hint="@string/search"
+            android:paddingStart="8dp"
+            android:textColorHint="@color/darkGray"
+            />
+
+        <ListView
+            android:id="@+id/customerSearchHistoryListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+
 
     <LinearLayout
-        android:id="@+id/filterButtons"
+        android:id="@+id/customerSearchFilterButtons"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/searchHistoryText"
+        app:layout_constraintBottom_toTopOf="@+id/customerSearchResultsText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchBar">
+        app:layout_constraintTop_toBottomOf="@id/customerSearchBar">
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
@@ -58,33 +73,24 @@
             android:fontFamily="@font/nexa_heavy"
             android:text="@string/sort_by" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/long_button_background"
-            android:backgroundTint="@color/bahceden_foreground"
-            android:fontFamily="@font/nexa_heavy"
-            android:text="Zıvır" />
-
     </LinearLayout>
 
     <TextView
-        android:id="@+id/searchHistoryText"
+        android:id="@+id/customerSearchResultsText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="8dp"
         android:fontFamily="@font/nexa_heavy"
-        android:text="@string/search_history"
+        android:text="Search Results"
         android:textColor="@color/bahceden_green"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filterButtons" />
+        app:layout_constraintTop_toBottomOf="@id/customerSearchFilterButtons" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchHistoryRV"
+        android:id="@+id/customerSearchResultsRV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
@@ -92,7 +98,7 @@
         app:layout_constraintBottom_toTopOf="@id/bottomBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchHistoryText"
+        app:layout_constraintTop_toBottomOf="@id/customerSearchResultsText"
         app:layout_constraintVertical_bias="0" />
 
     <include
@@ -107,13 +113,13 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/customerSearchImg"
         android:layout_width="35dp"
         android:layout_height="38dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/searchBar"
-        app:layout_constraintEnd_toEndOf="@+id/searchBar"
-        app:layout_constraintTop_toTopOf="@+id/searchBar"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/customerSearchBar"
+        app:layout_constraintTop_toTopOf="@+id/customerSearchBar"
         app:srcCompat="@drawable/ic_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
