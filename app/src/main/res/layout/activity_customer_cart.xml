@@ -7,7 +7,7 @@
     tools:context=".CustomerCartActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cartTopBar"
+        android:id="@+id/customerCartTopBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bahceden_foreground"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/locationText"
+            android:id="@+id/customerCartTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -29,6 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/customerCartBahcedenLogo"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
@@ -42,28 +43,28 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cartProductRV"
+        android:id="@+id/customerCartProductsRV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/white"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@id/productBottom"
+        app:layout_constraintBottom_toTopOf="@id/customerCartProductBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cartTopBar"
+        app:layout_constraintTop_toBottomOf="@id/customerCartTopBar"
         app:layout_constraintVertical_bias="0" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/productBottom"
+        android:id="@+id/customerCartProductBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_top_curved_rec"
         android:backgroundTint="@color/gray"
-        app:layout_constraintBottom_toTopOf="@id/cartBottomBar"
+        app:layout_constraintBottom_toTopOf="@id/customerCartBottomBar"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/totalPriceTitle"
+            android:id="@+id/customerCartTotalPriceTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -72,40 +73,40 @@
             android:textColor="@color/darkGray"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/productBottom"
-            app:layout_constraintTop_toTopOf="@id/productBottom" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
-            android:id="@+id/totalPrice"
+            android:id="@+id/customerCartTotalPriceValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$000.00"
             android:textColor="@color/bahceden_green"
             android:textSize="32sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/totalPriceTitle"
-            app:layout_constraintTop_toBottomOf="@id/totalPriceTitle" />
+            app:layout_constraintStart_toStartOf="@id/customerCartTotalPriceTitle"
+            app:layout_constraintTop_toBottomOf="@id/customerCartTotalPriceTitle" />
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/addToCart"
+            android:id="@+id/customerCartBuyNowButton"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_margin="16dp"
             android:background="@drawable/long_button_background"
             android:backgroundTint="@color/bahceden_green"
             android:fontFamily="@font/nexa_heavy"
-            android:text="Shop Now"
+            android:text="Buy Now"
             android:textColor="@color/white"
             android:textSize="15dp"
-            app:layout_constraintEnd_toEndOf="@id/productBottom"
-            app:layout_constraintTop_toTopOf="@id/productBottom" />
+            app:layout_constraintEnd_toEndOf="@id/customerCartProductBottom"
+            app:layout_constraintTop_toTopOf="@id/customerCartProductBottom" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
-        android:id="@+id/cartBottomBar"
+        android:id="@+id/customerCartBottomBar"
         layout="@layout/customer_bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

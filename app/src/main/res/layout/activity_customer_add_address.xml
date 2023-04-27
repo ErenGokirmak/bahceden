@@ -18,14 +18,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/yourAddressesBackButton"
+            android:id="@+id/customerAddAddressBackButton"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_back" />
 
         <TextView
-            android:id="@+id/editProfileTitle"
+            android:id="@+id/customerAddAddressTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@id/addAddressTopBar">
 
         <EditText
-            android:id="@+id/editTitleOfAddress"
+            android:id="@+id/customerAddAddressEditTitleOfAddress"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
@@ -57,16 +57,16 @@
             android:textColorHint="@color/darkGray" />
 
         <EditText
-            android:id="@+id/editFullAddress"
+            android:id="@+id/customerAddAddressEditFullAddress"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:gravity="start"
             android:layout_marginStart="16dp"
-            android:inputType="textMultiLine"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edit_text_background"
+            android:gravity="start"
             android:hint="Full Address"
+            android:inputType="textMultiLine"
             android:padding="12dp"
             android:textColorHint="@color/darkGray" />
 
@@ -79,6 +79,7 @@
             android:orientation="horizontal">
 
             <com.hbb20.CountryCodePicker
+                android:id="@+id/customerAddAddressEditCountryCode"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@drawable/edit_text_background"
@@ -88,7 +89,7 @@
                 app:ccp_showNameCode="false" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editNumber"
+                android:id="@+id/customerAddAddressEditPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
@@ -103,18 +104,18 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/addCardButton"
+        android:id="@+id/customerAddAddressButton"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="16dp"
-        android:fontFamily="@font/nexa_heavy"
-        android:text="Add Address"
-        android:paddingHorizontal="16dp"
-        app:backgroundTint="@color/bahceden_green"
         android:background="@drawable/long_button_background"
+        android:fontFamily="@font/nexa_heavy"
+        android:paddingHorizontal="16dp"
+        android:text="Add Address"
+        android:textSize="15sp"
+        app:backgroundTint="@color/bahceden_green"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="15sp"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

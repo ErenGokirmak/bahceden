@@ -15,7 +15,7 @@ public class CustomerCardsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_cards);
 
-        RecyclerView yourCardsRV = findViewById(R.id.yourCardsRV);
+        RecyclerView yourCardsRV = findViewById(R.id.customerCardsYourCardsRV);
 
         RecyclerView.LayoutManager lam = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         CardsAdapter ca = new CardsAdapter();

@@ -10,10 +10,10 @@
         android:id="@+id/customerSearchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,17 +28,15 @@
             android:fontFamily="@font/nexa_heavy"
             android:hint="@string/search"
             android:paddingStart="8dp"
-            android:textColorHint="@color/darkGray"
-            />
+            android:textColorHint="@color/darkGray" />
 
         <ListView
             android:id="@+id/customerSearchHistoryListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </LinearLayout>
-
 
 
     <LinearLayout
@@ -54,6 +52,7 @@
         app:layout_constraintTop_toBottomOf="@id/customerSearchBar">
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/customerSearchFiltersButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="8dp"
@@ -64,6 +63,7 @@
             android:text="@string/filters" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/customerSearchSortByButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="8dp"
@@ -95,14 +95,14 @@
         android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintBottom_toTopOf="@id/customerSearchBottomBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/customerSearchResultsText"
         app:layout_constraintVertical_bias="0" />
 
     <include
-        android:id="@+id/bottomBar"
+        android:id="@+id/customerSearchBottomBar"
         layout="@layout/customer_bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -116,8 +116,8 @@
         android:id="@+id/customerSearchImg"
         android:layout_width="35dp"
         android:layout_height="38dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="@+id/customerSearchBar"
         app:layout_constraintTop_toTopOf="@+id/customerSearchBar"
         app:srcCompat="@drawable/ic_search" />

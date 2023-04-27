@@ -23,7 +23,7 @@ public class CustomerAnalyticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_analytics);
 
-        consumerChart = findViewById(R.id.consumerChart);
+        consumerChart = findViewById(R.id.customerAnalyticsConsumerChart);
 
         ArrayList<PieEntry> dataEntries = new ArrayList<>();
         dataEntries.add(new PieEntry(10, "Benefits"));

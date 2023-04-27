@@ -28,7 +28,7 @@ public class CustomerCartActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.customerNavCart);
         bottomNavigationView.setOnItemSelectedListener(new CustomerNavBarListener(this));
 
-        cartProductsRV = (RecyclerView) findViewById(R.id.cartProductRV);
+        cartProductsRV = (RecyclerView) findViewById(R.id.customerCartProductsRV);
         cartProductsRV.setHasFixedSize(true);
         cartProductLayoutManager = new LinearLayoutManager(this);
 

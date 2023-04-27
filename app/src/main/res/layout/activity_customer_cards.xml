@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerAddressesActivity">
+    tools:context=".CustomerCardsActivity">
 
     <LinearLayout
-        android:id="@+id/yourAddressesTopBar"
+        android:id="@+id/customerCardsTopBar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/bahceden_foreground"
@@ -18,14 +18,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/yourAddressesBackButton"
+            android:id="@+id/customerCardsBackButton"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_back" />
 
         <TextView
-            android:id="@+id/editProfileTitle"
+            android:id="@+id/customerCardsTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
@@ -36,16 +36,16 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/yourCardsRV"
+        android:id="@+id/customerCardsYourCardsRV"
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/yourAddressesTopBar"
-        app:layout_constraintBottom_toTopOf="@id/addCardButton"
+        app:layout_constraintTop_toBottomOf="@id/customerCardsTopBar"
+        app:layout_constraintBottom_toTopOf="@id/customerCardsAddCardButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/addCardButton"
+        android:id="@+id/customerCardsAddCardButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/long_button_background"

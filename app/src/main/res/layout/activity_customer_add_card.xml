@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/yourAddressesBackButton"
+            android:id="@+id/customerAddCardBackButton"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@id/addAddressTopBar">
 
         <EditText
-            android:id="@+id/editTitleOfCard"
+            android:id="@+id/customerAddCardEditTitleOfCard"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
@@ -58,7 +58,7 @@
             android:textColorHint="@color/darkGray" />
 
         <EditText
-            android:id="@+id/editNameOfCardHolder"
+            android:id="@+id/customerAddCardEditNameOfCardHolder"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
@@ -71,7 +71,7 @@
             android:textColorHint="@color/darkGray" />
 
         <EditText
-            android:id="@+id/editCardNumber"
+            android:id="@+id/customerAddCardEditCardNumber"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
@@ -98,10 +98,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/cvvNumber"
+                    android:id="@+id/customerAddCardEditCVV"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@drawable/edit_text_background"
                     android:hint="CCV"
                     android:inputType="number"
@@ -110,11 +110,11 @@
 
 
                 <EditText
-                    android:id="@+id/editExpirationDate"
+                    android:id="@+id/customerAddCardEditExpirationDate"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
                     android:layout_height="match_parent"
                     android:layout_marginStart="8dp"
+                    android:layout_weight="2"
                     android:background="@drawable/edit_text_background"
                     android:hint="Expiration Date"
                     android:inputType="text"
@@ -128,7 +128,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/addCardPageButton"
+        android:id="@+id/customerAddCardButton"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="16dp"

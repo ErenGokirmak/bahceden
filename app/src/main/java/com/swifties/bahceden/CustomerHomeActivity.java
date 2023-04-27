@@ -39,7 +39,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.customerNavHome);
         bottomNavigationView.setOnItemSelectedListener(new CustomerNavBarListener(this));
 
-        imageSlider = findViewById(R.id.slider);
+        imageSlider = findViewById(R.id.customerHomeSlider);
         ArrayList<SlideModel> slideModels = new ArrayList<>();
 
         slideModels.add(new SlideModel(R.drawable.banana, ScaleTypes.FIT));
@@ -47,7 +47,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
         slideModels.add(new SlideModel(R.drawable.tomato, ScaleTypes.FIT));
         imageSlider.setImageList(slideModels);
 
-        newArrivalsRV = (RecyclerView) findViewById(R.id.newArrivalsRV);
+        newArrivalsRV = (RecyclerView) findViewById(R.id.customerHomeNewArrivalsRV);
         newArrivalsRV.setHasFixedSize(true);
         aLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 

@@ -7,7 +7,7 @@
     tools:context=".CustomerAnalyticsActivity">
 
     <LinearLayout
-        android:id="@+id/analyticsTopBar"
+        android:id="@+id/customerAnalyticsTopBar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/bahceden_foreground"
@@ -18,14 +18,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/analyticsBack"
+            android:id="@+id/customerAnalyticsBackButton"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_back" />
 
         <TextView
-            android:id="@+id/analyticsTitle"
+            android:id="@+id/customerAnalyticsTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
@@ -36,17 +36,17 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/profitExpenseHolder"
+        android:id="@+id/customerAnalyticsBenefitExpenseHolder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/analyticsTopBar">
+        app:layout_constraintTop_toBottomOf="@id/customerAnalyticsTopBar">
 
         <LinearLayout
-            android:id="@+id/profitHolder"
+            android:id="@+id/customerAnalyticsBenefitHolder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -57,7 +57,7 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/profitTitle"
+                android:id="@+id/customerAnalyticsBenefitTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nexa_heavy"
@@ -65,6 +65,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/customerAnalyticsBenefitValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nexa_heavy"
@@ -75,7 +76,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/expnseHolder"
+            android:id="@+id/customerAnalyticsCostsHolder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -86,7 +87,7 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/expenseTitle"
+                android:id="@+id/customerAnalyticsCostsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nexa_heavy"
@@ -94,6 +95,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/customerAnalyticsCostsValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nexa_heavy"
@@ -106,12 +108,12 @@
     </LinearLayout>
 
     <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/consumerChart"
+        android:id="@+id/customerAnalyticsConsumerChart"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profitExpenseHolder" />
+        app:layout_constraintTop_toBottomOf="@id/customerAnalyticsBenefitExpenseHolder" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

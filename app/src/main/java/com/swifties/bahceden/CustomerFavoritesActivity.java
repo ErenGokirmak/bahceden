@@ -25,8 +25,8 @@ public class CustomerFavoritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_favorites);
 
-        productTxt = findViewById(R.id.favPButton);
-        dukkanTxt = findViewById(R.id.favDButton);
+        productTxt = findViewById(R.id.customerFavoritesProductsButton);
+        dukkanTxt = findViewById(R.id.customerFavoritesFavoriteDukkansButton);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.customerBottomNavBar);
         bottomNavigationView.setSelectedItemId(R.id.customerNavFavorites);
@@ -36,7 +36,7 @@ public class CustomerFavoritesActivity extends AppCompatActivity {
 
         productTxt.setOnClickListener(listener);
         dukkanTxt.setOnClickListener(listener);
-        r1 = (RecyclerView) findViewById(R.id.favProducts);
+        r1 = (RecyclerView) findViewById(R.id.customerFavoritesRV);
         r1.setHasFixedSize(true);
         r2 = (RecyclerView) findViewById(R.id.favDukkans);
         r2.setHasFixedSize(true);
@@ -55,23 +55,23 @@ public class CustomerFavoritesActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.favPButton:
+                case R.id.customerFavoritesProductsButton:
 
                     productTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_background, productTxt.getContext().getTheme()));
                     productTxt.setTextColor(getResources().getColor(R.color.darkGray, productTxt.getContext().getTheme()));
                     dukkanTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_green, dukkanTxt.getContext().getTheme()));
                     dukkanTxt.setTextColor(getResources().getColor(R.color.white, dukkanTxt.getContext().getTheme()));
                     findViewById(R.id.favDukkans).setVisibility(View.GONE);
-                    findViewById(R.id.favProducts).setVisibility(View.VISIBLE);
+                    findViewById(R.id.customerFavoritesRV).setVisibility(View.VISIBLE);
                     break;
-                case R.id.favDButton:
+                case R.id.customerFavoritesFavoriteDukkansButton:
 
                     dukkanTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_background, dukkanTxt.getContext().getTheme()));
                     dukkanTxt.setTextColor(getResources().getColor(R.color.darkGray, dukkanTxt.getContext().getTheme()));
                     productTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_green, productTxt.getContext().getTheme()));
                     productTxt.setTextColor(getResources().getColor(R.color.white, productTxt.getContext().getTheme()));
                     findViewById(R.id.favDukkans).setVisibility(View.VISIBLE);
-                    findViewById(R.id.favProducts).setVisibility(View.GONE);
+                    findViewById(R.id.customerFavoritesRV).setVisibility(View.GONE);
                     break;
             }
         }

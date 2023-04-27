@@ -7,7 +7,7 @@
     tools:context=".CustomerAddressesActivity">
 
     <LinearLayout
-        android:id="@+id/yourAddressesTopBar"
+        android:id="@+id/customerAddressesTopBar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/bahceden_foreground"
@@ -18,14 +18,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/yourAddressesBackButton"
+            android:id="@+id/customerAddressesBackButton"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_back" />
 
         <TextView
-            android:id="@+id/editProfileTitle"
+            android:id="@+id/customerAddressesTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
@@ -36,23 +36,24 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/yourAddressesRV"
-        android:layout_marginTop="8dp"
+        android:id="@+id/customerAddressesYourAddressesRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/yourAddressesTopBar"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/customerAddressesTopBar" />
 
     <Button
+        android:id="@+id/customerAddressesAddAddressButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/long_button_background"
-        android:text="Add New Address"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/long_button_background"
         android:fontFamily="@font/nexa_heavy"
-        app:backgroundTint="@color/bahceden_green"/>
+        android:text="Add New Address"
+        app:backgroundTint="@color/bahceden_green"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

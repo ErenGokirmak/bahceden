@@ -23,7 +23,7 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_check_out);
 
-        checkOutRc = findViewById(R.id.checkOutRV);
+        checkOutRc = findViewById(R.id.customerCheckOutOrdersRV);
         checkOutRc.setHasFixedSize(true);
         rcLayoutManager = new LinearLayoutManager(CustomerCheckOutActivity.this);
         checkOutRc.setLayoutManager(rcLayoutManager);

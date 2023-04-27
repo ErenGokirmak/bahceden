@@ -16,7 +16,7 @@ public class CustomerViewProducerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_view_producer);
 
-        producerRV = (RecyclerView) findViewById(R.id.producerActivityRecyclerView);
+        producerRV = (RecyclerView) findViewById(R.id.costumerViewProducerProductsRV);
         producerRV.setHasFixedSize(true);
         producerLayoutManager = new GridLayoutManager(this, 2);
 

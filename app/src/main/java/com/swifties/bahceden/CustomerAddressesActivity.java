@@ -16,7 +16,7 @@ public class CustomerAddressesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_addresses);
 
-        addressesRV = findViewById(R.id.yourAddressesRV);
+        addressesRV = findViewById(R.id.customerAddressesYourAddressesRV);
 
         RecyclerView.LayoutManager lam = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         addressesRV.setLayoutManager(lam);

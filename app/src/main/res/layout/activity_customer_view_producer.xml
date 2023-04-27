@@ -35,34 +35,35 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/producerRelativeLayout"
+        android:id="@+id/costumerViewProducerRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@drawable/ciftlik"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/customerViewProducerTopBar">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/costumerViewProducerImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp"
             android:src="@drawable/ciftci"
             app:civ_border_color="@color/white"
-            app:civ_border_width="5dp"
-            android:layout_margin="8dp"
-            android:layout_alignParentBottom="true"/>
+            app:civ_border_width="5dp" />
 
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/producerInfo"
+        android:id="@+id/costumerViewProducerInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/producerActivityRecyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/costumerViewProducerProductsRV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/producerRelativeLayout">
+        app:layout_constraintTop_toBottomOf="@+id/costumerViewProducerRelativeLayout">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -90,15 +91,15 @@
                 android:layout_height="match_parent"
                 android:layout_margin="12dp"
                 android:src="@drawable/ic_favorite"
-                app:tint="@color/minus_red"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/productName" />
+                app:layout_constraintTop_toTopOf="@id/productName"
+                app:tint="@color/minus_red" />
 
         </LinearLayout>
 
 
         <TextView
-            android:id="@+id/desc"
+            android:id="@+id/costumerViewProducerDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
@@ -111,6 +112,7 @@
             app:layout_constraintTop_toBottomOf="@id/descTitle" />
 
         <LinearLayout
+            android:id="@+id/costumerViewProducerLocationHolder"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
@@ -123,7 +125,7 @@
                 app:tint="@color/black" />
 
             <TextView
-                android:id="@+id/company_location"
+                android:id="@+id/costumerViewProducerLocationInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
@@ -132,12 +134,12 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            </LinearLayout>
-
         </LinearLayout>
 
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/producerActivityRecyclerView"
+        android:id="@+id/costumerViewProducerProductsRV"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@color/white"
@@ -145,7 +147,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/producerInfo"
+        app:layout_constraintTop_toBottomOf="@id/costumerViewProducerInfo"
         app:layout_constraintVertical_bias="0" />
 
 
