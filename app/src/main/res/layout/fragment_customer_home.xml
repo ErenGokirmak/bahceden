@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".CustomerHomeActivity">
+    tools:context=".fragments.CustomerHomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/customerHomeTopBar"
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@id/customerHomeBottomBar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/customerHomeTopBar">
@@ -312,18 +312,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="8dp"
                 android:orientation="horizontal" />
 
         </LinearLayout>
 
     </ScrollView>
-
-    <include
-        android:id="@+id/customerHomeBottomBar"
-        layout="@layout/customer_bottom_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

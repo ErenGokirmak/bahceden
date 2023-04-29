@@ -12,10 +12,13 @@
         android:theme="@style/Theme.Bahceden"
         tools:targetApi="31">
         <activity
-            android:name=".CustomerPaymentActivity"
+            android:name=".ProducerMainActivity"
             android:exported="false" />
         <activity
-            android:name=".ProducerDataActivity"
+            android:name=".CustomerMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerPaymentActivity"
             android:exported="false" />
         <activity
             android:name=".SecurityProfile"
@@ -40,22 +43,6 @@
             android:name=".CustomerAnalyticsActivity"
             android:exported="false" />
         <activity
-            android:name=".ProducerProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProducerAddProductActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".ProducerSearchActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProducerHomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EditProfileActivity"
-            android:exported="false" />
-        <activity
             android:name=".CustomerCheckOutActivity"
             android:exported="false" />
         <activity
@@ -74,19 +61,6 @@
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".CustomerProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CustomerFavoritesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CustomerCartActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CustomerSearchActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
@@ -94,9 +68,6 @@
             android:exported="false" />
         <activity
             android:name=".IntroActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CustomerHomeActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.swifties.bahceden.fragments.ChooseActionFragment;
+import com.swifties.bahceden.fragments.EnterMailFragment;
+
 public class ForgotPasswordActivity extends AppCompatActivity {
     Button fgtContinue, backBt;
 
@@ -20,13 +23,13 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         backBt = findViewById(R.id.forgetPasswordBack);
         fgtContinue = findViewById(R.id.forgetContinue);
 
-        changeFragment(new CustomerCheckOutActivity.EnterMailFragment());
+        changeFragment(new EnterMailFragment());
 
         fgtContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (true)
-                    changeFragment(new CustomerCartActivity.ChooseActionFragment());
+                    changeFragment(new ChooseActionFragment());
             }
         });
 

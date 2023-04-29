@@ -1,56 +1,87 @@
-package com.swifties.bahceden;
+package com.swifties.bahceden.fragments;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.graphics.Color;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.swifties.bahceden.R;
+import com.swifties.bahceden.SpinnerCustomAdapter;
+import com.swifties.bahceden.SpinnerCustomItem;
 
 import java.util.ArrayList;
 
-public class ProducerAddProductActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class ProducerDataFragment extends Fragment {
 
-    Spinner customCategoriesSpinner;
-    Spinner customSubCategoriesSpinner;
+    Spinner customDataCategoriesSpinner;
+    Spinner customDataSubCategoriesSpinner;
     ArrayList<SpinnerCustomItem> customItems;
     ArrayList<ArrayList<SpinnerCustomItem>> customSubItems;
     SpinnerCustomAdapter spinnerSubCategoriesAdapter;
+    PieChart producerChart;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_producer_add_product);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_producer_data, container, false);
+    }
 
-        customSubCategoriesSpinner = findViewById(R.id.addItemSubCategoriesSpinner);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        customCategoriesSpinner = findViewById(R.id.addItemCategoriesSpinner);
+        producerChart = view.findViewById(R.id.producerDataChart);
+
+        ArrayList<PieEntry> dataEntries = new ArrayList<>();
+        dataEntries.add(new PieEntry(70, "Our Recommendation"));
+        dataEntries.add(new PieEntry(40, "Other Prices"));
+
+        PieDataSet pieDataSet = new PieDataSet(dataEntries, "Success Rate");
+        pieDataSet.setColors(getResources().getColor(R.color.plus_green, null), getResources().getColor(R.color.minus_red, null));
+        pieDataSet.setValueTextColor(Color.WHITE);
+        pieDataSet.setValueTextSize(16);
+
+        PieData pieData = new PieData(pieDataSet);
+
+        producerChart.setData(pieData);
+        producerChart.setCenterText("Success Rate");
+        producerChart.getDescription().setEnabled(false);
+        producerChart.animate();
+
         customItems = getCustomCategoriesList();
         customSubItems = getCustomSubCategoriesList();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.producerBottomNavBar);
-        bottomNavigationView.setSelectedItemId(R.id.producerNavAdd);
-        bottomNavigationView.setOnItemSelectedListener(new ProducerNavBarListener(this));
+        customDataCategoriesSpinner = view.findViewById(R.id.dataCategoriesSpinner);
+        customDataSubCategoriesSpinner = view.findViewById(R.id.dataSubCategoriesSpinner);
 
-        SpinnerCustomAdapter spinnerCategoriesAdapter = new SpinnerCustomAdapter(this, customItems);
-        spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(this, customSubItems.get(0));
+        SpinnerCustomAdapter spinnerCategoriesAdapter = new SpinnerCustomAdapter(getActivity(), customItems);
+        spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(getActivity(), customSubItems.get(0));
 
-        if (customCategoriesSpinner != null) {
-            customCategoriesSpinner.setAdapter(spinnerCategoriesAdapter);
+        if (customDataCategoriesSpinner != null) {
+            customDataCategoriesSpinner.setAdapter(spinnerCategoriesAdapter);
         }
 
-        if (customSubCategoriesSpinner != null) {
-            customSubCategoriesSpinner.setAdapter(spinnerSubCategoriesAdapter);
+        if (customDataSubCategoriesSpinner != null) {
+            customDataSubCategoriesSpinner.setAdapter(spinnerSubCategoriesAdapter);
         }
 
-        customCategoriesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        customDataCategoriesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // Handle the selected item here
-                spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(ProducerAddProductActivity.this, customSubItems.get(position));
-                customSubCategoriesSpinner.setAdapter(spinnerSubCategoriesAdapter);
+                spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(getActivity(), customSubItems.get(position));
+                customDataSubCategoriesSpinner.setAdapter(spinnerSubCategoriesAdapter);
             }
 
             @Override
@@ -112,16 +143,5 @@ public class ProducerAddProductActivity extends AppCompatActivity implements Ada
         items.add(submenu6);
 
         return items;
-    }
-
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            SpinnerCustomItem spinnerCustomItem = (SpinnerCustomItem) parent.getSelectedItem();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
     }
 }
