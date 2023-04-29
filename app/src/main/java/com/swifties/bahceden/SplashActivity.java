@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.ContactsContract;
 
+import com.swifties.bahceden.fragments.ProducerHomeFragment;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -17,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, ProducerEditProductActivity.class);
+                Intent intent = new Intent(SplashActivity.this, ProducerMainActivity.class);
                 startActivity(intent);
                 finish();
             }
