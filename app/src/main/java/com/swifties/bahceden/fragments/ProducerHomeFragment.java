@@ -45,7 +45,6 @@ public class ProducerHomeFragment extends Fragment {
         RecyclerView newReviewsRV = view.findViewById(R.id.newReviewsRV);
 
         newReviewsRV.setHasFixedSize(true);
-
         yourListingsRV.setHasFixedSize(true);
 
         RecyclerView.LayoutManager reviewsLM = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
