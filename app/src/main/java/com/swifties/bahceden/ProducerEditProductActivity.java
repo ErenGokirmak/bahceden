@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ProducerViewProductActivity extends AppCompatActivity {
+public class ProducerEditProductActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_producer_view_product);
+        setContentView(R.layout.activity_producer_edit_product);
     }
 }
