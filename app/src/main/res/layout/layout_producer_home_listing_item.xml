@@ -44,18 +44,6 @@
         app:layout_constraintStart_toEndOf="@id/cartProductImage"
         app:layout_constraintTop_toTopOf="@id/cartProductImage" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/nexa_heavy"
-        android:text="$68"
-        android:textColor="@color/darkGray"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/price"
-        app:layout_constraintStart_toEndOf="@id/cartProductImage" />
-
     <TextView
         android:id="@+id/rating"
         android:layout_width="wrap_content"
@@ -76,23 +64,62 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/listingPriceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/cartProductImage"
+        app:layout_constraintTop_toTopOf="@id/price"
+        app:layout_constraintBottom_toBottomOf="@id/price"
+        android:layout_marginStart="8dp"
+        android:text="Price: "
+        android:fontFamily="@font/nexa_heavy"
+        android:textColor="@color/bahceden_green"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/listingRemainingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/cartProductImage"
+        app:layout_constraintTop_toTopOf="@id/listingRemaining"
+        app:layout_constraintBottom_toBottomOf="@id/cartProductImage"
+        android:layout_marginStart="8dp"
+        android:text="Remaining: "
+        android:fontFamily="@font/nexa_heavy"
+        android:textColor="@color/bahceden_green"
+        android:textSize="16sp"/>
+
+
+    <TextView
+        android:id="@+id/listingRemaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/cartProductImage"
+        app:layout_constraintStart_toEndOf="@id/listingRemainingText"
+        android:text="15KG"
+        android:fontFamily="@font/nexa_heavy"
+        android:textColor="@color/black"
+        android:textSize="22sp"/>
+
+    <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/nexa_heavy"
         android:text="$30"
-        android:textColor="@color/bahceden_green"
-        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/cartProductImage"
-        app:layout_constraintStart_toEndOf="@id/cartProductImage" />
+        app:layout_constraintBottom_toTopOf="@id/listingRemaining"
+        app:layout_constraintStart_toEndOf="@id/listingPriceText"
+        app:layout_constraintTop_toBottomOf="@id/cartProductName"
+        app:layout_constraintVertical_bias="0.466" />
 
     <ImageView
+        android:id="@+id/editListingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:src="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="@+id/cartProductImage"
         app:layout_constraintEnd_toEndOf="parent"

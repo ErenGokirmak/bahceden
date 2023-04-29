@@ -3,9 +3,12 @@ package com.swifties.bahceden.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
@@ -23,7 +26,20 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
 
     @Override
     public void onBindViewHolder(@NonNull ProducerOrderAdapter.ViewHolder holder, int position) {
-
+        holder.changeStatusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.changeStatusButtonsHolder.setVisibility(View.VISIBLE);
+                Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
+                holder.changeStatusButtonsHolder.startAnimation(animation);
+            }
+        });
+        holder.changeStatusButtonsHolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.changeStatusButtonsHolder.setVisibility(View.GONE);
+            }
+        });
     }
 
     @Override
@@ -32,10 +48,19 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
+
+        AppCompatButton changeStatusButton;
+        View changeStatusButtonsHolder;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            changeStatusButton = itemView.findViewById(R.id.changeStatusButton);
+            changeStatusButtonsHolder = itemView.findViewById(R.id.changeStatusButtonsHolder);
+
             itemView.setOnClickListener(new View.OnClickListener() {
+
+
+
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(itemView.getContext(), "BaS:" + getAdapterPosition(), Toast.LENGTH_SHORT).show();
