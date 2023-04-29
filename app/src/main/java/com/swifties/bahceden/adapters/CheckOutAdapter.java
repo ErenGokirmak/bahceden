@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.swifties.bahceden.ProducerAdapter;
 import com.swifties.bahceden.R;
 
 public class CheckOutAdapter extends RecyclerView.Adapter {

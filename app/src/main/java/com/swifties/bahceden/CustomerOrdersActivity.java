@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.adapters.OrdersAdapter;
 
-public class OrdersProfileActivity extends AppCompatActivity {
+public class CustomerOrdersActivity extends AppCompatActivity {
     private RecyclerView ordersRV;
     private RecyclerView.Adapter OrdersAdapter;
     RecyclerView.LayoutManager ordersLayoutManager;
@@ -16,7 +16,7 @@ public class OrdersProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orders_profile);
+        setContentView(R.layout.activity_customer_orders);
 
         ordersRV = (RecyclerView) findViewById(R.id.ordersProfileRecyclerView);
         ordersRV.setHasFixedSize(true);

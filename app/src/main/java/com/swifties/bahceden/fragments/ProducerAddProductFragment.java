@@ -13,8 +13,8 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import com.swifties.bahceden.R;
-import com.swifties.bahceden.SpinnerCustomAdapter;
-import com.swifties.bahceden.SpinnerCustomItem;
+import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
+import com.swifties.bahceden.classes.SpinnerCustomItem;
 
 import java.util.ArrayList;
 
