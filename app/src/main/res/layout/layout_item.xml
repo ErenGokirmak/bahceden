@@ -114,7 +114,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.06" />
 
-    <com.swifties.bahceden.HalfTextButton
+    <com.swifties.bahceden.classes.HalfTextButton
         android:id="@+id/itemLayoutAddToCart"
         android:layout_width="match_parent"
         android:layout_height="0dp"

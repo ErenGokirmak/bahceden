@@ -1,4 +1,4 @@
-package com.swifties.bahceden;
+package com.swifties.bahceden.classes;
 
 public class SpinnerCustomItem {
 

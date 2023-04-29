@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.swifties.bahceden.adapters.ProducerAdapter;
+
 public class CustomerViewProducerActivity extends AppCompatActivity {
     private RecyclerView producerRV;
     private RecyclerView.Adapter ProducerAdapter;

@@ -1,4 +1,4 @@
-package com.swifties.bahceden;
+package com.swifties.bahceden.classes;
 
 import android.content.Context;
 import android.util.AttributeSet;

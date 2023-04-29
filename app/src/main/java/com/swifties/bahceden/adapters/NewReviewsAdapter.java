@@ -16,7 +16,7 @@ public class NewReviewsAdapter extends RecyclerView.Adapter<NewReviewsAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.producer_home_review_item, parent, false);
+                .inflate(R.layout.layout_producer_home_review_item, parent, false);
         return new ViewHolder(view);
     }
 

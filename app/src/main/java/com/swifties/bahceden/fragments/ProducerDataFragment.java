@@ -18,8 +18,8 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.swifties.bahceden.R;
-import com.swifties.bahceden.SpinnerCustomAdapter;
-import com.swifties.bahceden.SpinnerCustomItem;
+import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
+import com.swifties.bahceden.classes.SpinnerCustomItem;
 
 import java.util.ArrayList;
 

@@ -21,7 +21,7 @@
             android:name=".CustomerPaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".SecurityProfile"
+            android:name=".SecurityProfileActivity"
             android:exported="false" />
         <activity
             android:name=".CustomerAddCardActivity"
@@ -55,7 +55,7 @@
             android:name=".CustomerViewProducerActivity"
             android:exported="false" />
         <activity
-            android:name=".OrdersProfileActivity"
+            android:name=".CustomerOrdersActivity"
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"

@@ -1,7 +1,6 @@
-package com.swifties.bahceden;
+package com.swifties.bahceden.adapters;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.swifties.bahceden.R;
+import com.swifties.bahceden.classes.SpinnerCustomItem;
 
 import java.util.ArrayList;
 
