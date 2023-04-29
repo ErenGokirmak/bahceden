@@ -34,9 +34,6 @@
             android:name=".CustomerCardsActivity"
             android:exported="false" />
         <activity
-            android:name=".ProducerViewProducerActivity"
-            android:exported="false" />
-        <activity
             android:name=".CustomerAddAddressActivity"
             android:exported="false" />
         <activity
