@@ -6,32 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ProducerHomeFragment">
 
-    <LinearLayout
-        android:id="@+id/homeTopBar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/bahceden_foreground"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:src="@drawable/bahceden_logo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:fontFamily="@font/nexa_heavy"
-            android:gravity="center_vertical"
-            android:text="Home"
-            android:textColor="@color/bahceden_green"
-            android:textSize="25sp" />
-
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -40,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/homeTopBar">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"

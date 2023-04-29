@@ -19,13 +19,13 @@ import com.swifties.bahceden.adapters.FavItemAdapter;
 
 public class CustomerFavoritesFragment extends Fragment {
 
-    TextView productTxt, dukkanTxt;
-    RecyclerView r1;
-    RecyclerView r2;
-    RecyclerView.Adapter a1;
-    RecyclerView.Adapter a2;
-    RecyclerView.LayoutManager l1;
-    RecyclerView.LayoutManager l2;
+    private TextView productTxt, dukkanTxt;
+    private RecyclerView customerFavoritesItemsRV;
+    private RecyclerView customerFavoritesDukkansRV;
+    private RecyclerView.Adapter customerFavoritesItemsAdapter;
+    private RecyclerView.Adapter customerFavoritesDukkansAdapter;
+    private RecyclerView.LayoutManager customerFavoritesItemsLM;
+    private RecyclerView.LayoutManager customerFavoritesDukkansLM;
 
     View rootView;
 
@@ -47,18 +47,20 @@ public class CustomerFavoritesFragment extends Fragment {
 
         productTxt.setOnClickListener(listener);
         dukkanTxt.setOnClickListener(listener);
-        r1 = view.findViewById(R.id.customerFavoritesRV);
-        r1.setHasFixedSize(true);
-        r2 = view.findViewById(R.id.favDukkans);
-        r2.setHasFixedSize(true);
-        l1 = new LinearLayoutManager(getActivity());
-        l2 = new LinearLayoutManager(getActivity());
-        r1.setLayoutManager(l1);
-        r2.setLayoutManager(l2);
-        a1 = new FavItemAdapter();
-        a2 = new FavDukkanAdapter();
-        r1.setAdapter(a1);
-        r2.setAdapter(a2);
+        customerFavoritesItemsRV = view.findViewById(R.id.customerFavoritesRV);
+        customerFavoritesItemsRV.setHasFixedSize(true);
+        customerFavoritesItemsLM = new LinearLayoutManager(getActivity());
+        customerFavoritesItemsAdapter = new FavItemAdapter();
+        customerFavoritesItemsRV.setLayoutManager(customerFavoritesItemsLM);
+        customerFavoritesItemsRV.setAdapter(customerFavoritesItemsAdapter);
+
+
+        customerFavoritesDukkansRV = view.findViewById(R.id.favDukkans);
+        customerFavoritesDukkansRV.setHasFixedSize(true);
+        customerFavoritesDukkansAdapter = new FavDukkanAdapter();
+        customerFavoritesDukkansLM = new LinearLayoutManager(getActivity());
+        customerFavoritesDukkansRV.setLayoutManager(customerFavoritesDukkansLM);
+        customerFavoritesDukkansRV.setAdapter(customerFavoritesDukkansAdapter);
     }
 
     private class ButtonsListener implements View.OnClickListener {
@@ -68,19 +70,19 @@ public class CustomerFavoritesFragment extends Fragment {
             switch (v.getId()){
                 case R.id.customerFavoritesProductsButton:
 
-                    productTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_background, productTxt.getContext().getTheme()));
-                    productTxt.setTextColor(getResources().getColor(R.color.darkGray, productTxt.getContext().getTheme()));
-                    dukkanTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_green, dukkanTxt.getContext().getTheme()));
-                    dukkanTxt.setTextColor(getResources().getColor(R.color.white, dukkanTxt.getContext().getTheme()));
+                    productTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_green, productTxt.getContext().getTheme()));
+                    productTxt.setTextColor(getResources().getColor(R.color.white, productTxt.getContext().getTheme()));
+                    dukkanTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_background, dukkanTxt.getContext().getTheme()));
+                    dukkanTxt.setTextColor(getResources().getColor(R.color.darkGray, dukkanTxt.getContext().getTheme()));
                     rootView.findViewById(R.id.favDukkans).setVisibility(View.GONE);
                     rootView.findViewById(R.id.customerFavoritesRV).setVisibility(View.VISIBLE);
                     break;
                 case R.id.customerFavoritesFavoriteDukkansButton:
 
-                    dukkanTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_background, dukkanTxt.getContext().getTheme()));
-                    dukkanTxt.setTextColor(getResources().getColor(R.color.darkGray, dukkanTxt.getContext().getTheme()));
-                    productTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_green, productTxt.getContext().getTheme()));
-                    productTxt.setTextColor(getResources().getColor(R.color.white, productTxt.getContext().getTheme()));
+                    dukkanTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_green, dukkanTxt.getContext().getTheme()));
+                    dukkanTxt.setTextColor(getResources().getColor(R.color.white, dukkanTxt.getContext().getTheme()));
+                    productTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_background, productTxt.getContext().getTheme()));
+                    productTxt.setTextColor(getResources().getColor(R.color.darkGray, productTxt.getContext().getTheme()));
                     rootView.findViewById(R.id.favDukkans).setVisibility(View.VISIBLE);
                     rootView.findViewById(R.id.customerFavoritesRV).setVisibility(View.GONE);
                     break;

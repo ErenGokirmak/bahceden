@@ -7,7 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <color name="orange">#F58216</color>
+    <color name="eggplant_pink">#A53E76</color>
     <color name="bahceden_green">#007251</color>
     <color name="gray">#ECECEC</color>
     <color name="darkGray">#808080</color>

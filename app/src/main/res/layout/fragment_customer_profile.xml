@@ -4,39 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.CustomerProfileFragments">
-
-    <LinearLayout
-        android:id="@+id/customerProfileTopBar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/bahceden_foreground"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/customerProfileBahcedenLogo"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/bahceden_logo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/customerProfileTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/nexa_heavy"
-            android:text="@string/profile"
-            android:textColor="@color/bahceden_green"
-            android:textSize="26sp" />
-
-    </LinearLayout>
+    tools:context=".fragments.CustomerProfileFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/customerProfileImageHolder"
@@ -46,7 +14,7 @@
         app:cardCornerRadius="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/customerProfileTopBar">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/customerProfileImage"
