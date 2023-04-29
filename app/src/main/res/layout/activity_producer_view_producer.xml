@@ -6,7 +6,7 @@
 
 
     <LinearLayout
-        android:id="@+id/customerViewProducerTopBar"
+        android:id="@+id/producerViewProducerTopBar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/bahceden_foreground"
@@ -35,17 +35,18 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/producerRelativeLayout"
+        android:id="@+id/producerViewProducerRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@drawable/ciftlik"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/customerViewProducerTopBar">
+        app:layout_constraintTop_toBottomOf="@id/producerViewProducerTopBar">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="98dp"
-            android:layout_height="98dp"
+            android:id="@+id/producerViewProducerImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_alignParentBottom="true"
             android:layout_margin="8dp"
             android:src="@drawable/ciftci"
@@ -55,29 +56,38 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/producerInfo"
+        android:id="@+id/producerViewProducerInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:divider="@drawable/divider"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/costumerViewProducerProductsRV"
+        android:showDividers="middle"
+        app:layout_constraintBottom_toTopOf="@+id/producerViewProducerProductsRV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/producerRelativeLayout">
+        app:layout_constraintTop_toBottomOf="@+id/producerViewProducerRelativeLayout">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/company_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nexa_heavy"
+                android:padding="8dp"
+                android:text="Company Name"
+                android:textColor="@color/bahceden_green"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
 
         <TextView
-            android:id="@+id/company_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nexa_heavy"
-            android:padding="8dp"
-            android:text="Company Name"
-            android:textColor="@color/bahceden_green"
-            android:textSize="32sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/desc"
+            android:id="@+id/producerViewProducerDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
@@ -89,11 +99,11 @@
             app:layout_constraintStart_toStartOf="@id/descTitle"
             app:layout_constraintTop_toBottomOf="@id/descTitle" />
 
-
         <LinearLayout
+            android:id="@+id/producerViewProducerLocationHolder"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            android:layout_marginVertical="4dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -103,7 +113,7 @@
                 app:tint="@color/black" />
 
             <TextView
-                android:id="@+id/company_location"
+                android:id="@+id/producerViewProducerLocationInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
@@ -116,17 +126,28 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/costumerViewProducerProductsRV"
+    <ImageView
+        android:id="@+id/producerViewProducerDivider"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/producerViewProducerInfo" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/producerViewProducerProductsRV"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@color/white"
+        android:clipToPadding="false"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/producerInfo"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintTop_toBottomOf="@id/producerViewProducerDivider"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginVertical="8dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
