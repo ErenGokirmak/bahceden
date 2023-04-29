@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ProducerOrdersFragment"
-    android:layout_marginTop="8dp">
+    android:layout_marginTop="16dp">
 
     <LinearLayout
         android:id="@+id/layoutProducerOrdersTopBar"
@@ -14,7 +14,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+
+        android:paddingHorizontal="16dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -23,8 +25,7 @@
             android:layout_weight="1"
             android:background="@drawable/bg_curved_border"
             android:backgroundTint="@color/bahceden_foreground"
-            android:padding="8dp"
-            android:layout_marginStart="8dp">
+            android:padding="8dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -126,8 +127,7 @@
             android:background="@drawable/bg_curved_border"
             android:backgroundTint="@color/bahceden_foreground"
             android:padding="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
+            android:layout_marginStart="8dp">
 
             <TextView
                 android:id="@+id/layoutProducerOrdersCancelledCount"
@@ -165,6 +165,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0"
-        android:padding="8dp"/>
+        android:paddingVertical="8dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
