@@ -21,13 +21,8 @@ import com.swifties.bahceden.adapters.HotSalesAdapter;
 import java.util.ArrayList;
 
 public class CustomerHomeFragment extends Fragment {
-
-    private RecyclerView categoriesRV;
-    private RecyclerView hotSalesRV;
     private RecyclerView newArrivalsRV;
-    private RecyclerView.Adapter categoriesAdapter;
     private RecyclerView.Adapter arrivalsAdapter;
-    private RecyclerView.Adapter hotSalesAdapter;
 
     private ImageSlider imageSlider;
 

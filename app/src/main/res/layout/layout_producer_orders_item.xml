@@ -105,8 +105,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_weight="1"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:layout_weight="0.3">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -136,30 +136,37 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:weightSum="1">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="0.48"
                     android:backgroundTint="@color/bahceden_foreground"
                     android:text="Change Status"
                     android:fontFamily="@font/nexa_heavy"
                     android:textColor="@color/black"
                     android:background="@drawable/bg_square"
-                    android:padding="4dp"
-                    android:layout_marginEnd="8dp"
-                    />
+                    android:padding="4dp"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.04"/>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="0.48"
                     android:backgroundTint="@color/bahceden_foreground"
                     android:text="Details"
                     android:fontFamily="@font/nexa_heavy"
                     android:textColor="@color/black"
                     android:background="@drawable/bg_square"
-                    android:padding="4dp"
+                    android:paddingHorizontal="4dp"
                     />
 
             </LinearLayout>

@@ -25,7 +25,6 @@ public class ProducerAdapter extends RecyclerView.Adapter<ProducerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
     }
 
     @Override
@@ -37,7 +36,6 @@ public class ProducerAdapter extends RecyclerView.Adapter<ProducerAdapter.ViewHo
 
         public ViewHolder(View view) {
             super(view);
-
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

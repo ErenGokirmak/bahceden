@@ -16,7 +16,7 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.swifties.bahceden.R;
-import com.swifties.bahceden.adapters.NewReviewsAdapter;
+import com.swifties.bahceden.adapters.CommentProducerViewAdapter;
 import com.swifties.bahceden.adapters.YourListingsAdapter;
 
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class ProducerHomeFragment extends Fragment {
         RecyclerView.LayoutManager listingsLM = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         yourListingsRV.setLayoutManager(listingsLM);
 
-        NewReviewsAdapter nra = new NewReviewsAdapter();
+        CommentProducerViewAdapter nra = new CommentProducerViewAdapter();
         newReviewsRV.setAdapter(nra);
         YourListingsAdapter yla = new YourListingsAdapter();
         yourListingsRV.setAdapter(yla);
