@@ -8,14 +8,14 @@
     android:elevation="4dp"
     android:background="@drawable/long_button_background"
     android:backgroundTint="@color/white"
-    android:padding="8dp">
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="16dp">
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/commentImageHolder"
         android:layout_width="65dp"
         android:layout_height="65dp"
-        android:layout_margin="16dp"
         app:cardCornerRadius="75dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -101,14 +101,12 @@
         app:layout_constraintTop_toBottomOf="@id/commentMessage" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/ic_reply"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/commentMessage"
+        app:layout_constraintEnd_toEndOf="@id/commentMessage"
         app:tint="@color/bahceden_green" />
-    "
 
 </androidx.constraintlayout.widget.ConstraintLayout>
