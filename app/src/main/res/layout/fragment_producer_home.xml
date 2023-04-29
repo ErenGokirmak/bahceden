@@ -48,7 +48,7 @@
                 android:layout_marginHorizontal="16dp"
 
                 android:fontFamily="@font/nexa_heavy"
-                android:text="Newest Reviews"
+                android:text="Latest Reviews"
                 android:textColor="@color/bahceden_green" />
 
             <androidx.recyclerview.widget.RecyclerView

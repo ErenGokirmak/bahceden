@@ -1,5 +1,6 @@
 package com.swifties.bahceden.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.swifties.bahceden.ProducerOrderDetails;
 import com.swifties.bahceden.R;
 
 public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdapter.ViewHolder> {
@@ -40,6 +42,14 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
                 holder.changeStatusButtonsHolder.setVisibility(View.GONE);
             }
         });
+
+        holder.detailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ProducerOrderDetails.class);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -50,12 +60,16 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         AppCompatButton changeStatusButton;
+        AppCompatButton detailsButton;
         View changeStatusButtonsHolder;
+
+        View itemView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            this.itemView =
             changeStatusButton = itemView.findViewById(R.id.changeStatusButton);
             changeStatusButtonsHolder = itemView.findViewById(R.id.changeStatusButtonsHolder);
+            detailsButton = itemView.findViewById(R.id.detailsButton);
 
             itemView.setOnClickListener(new View.OnClickListener() {
 
