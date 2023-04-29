@@ -8,8 +8,7 @@
     android:elevation="4dp"
     android:background="@drawable/long_button_background"
     android:backgroundTint="@color/white"
-    android:paddingHorizontal="8dp"
-    android:paddingVertical="16dp">
+    android:padding="16dp">
 
 
     <androidx.cardview.widget.CardView
