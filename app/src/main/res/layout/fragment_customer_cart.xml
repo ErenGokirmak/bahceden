@@ -35,7 +35,7 @@
             android:layout_marginTop="8dp"
             android:text="Total Price"
             android:textColor="@color/darkGray"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:text="$000.00"
             android:textColor="@color/bahceden_green"
-            android:textSize="32sp"
+            android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/customerCartTotalPriceTitle"
             app:layout_constraintTop_toBottomOf="@id/customerCartTotalPriceTitle" />

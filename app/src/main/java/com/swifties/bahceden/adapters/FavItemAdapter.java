@@ -19,7 +19,7 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
     @NonNull
     @Override
     public FavItemAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.customer_cart_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_customer_favorites_item, parent, false);
         return new ViewHolder(view);
     }
 

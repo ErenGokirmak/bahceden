@@ -21,27 +21,22 @@
             android:id="@+id/customerHomePageContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/customerHomeSpecialOffersTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
                 android:fontFamily="@font/nexa_heavy"
                 android:text="Special Offers"
                 android:textColor="@color/bahceden_green" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/customerHomeSliderHolder"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginHorizontal="8dp"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="28dp"
                 app:cardCornerRadius="20dp"
@@ -62,6 +57,7 @@
                 android:id="@+id/customerHomeCategoriesTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
                 android:fontFamily="@font/nexa_heavy"
                 android:text="@string/categories"
                 android:textColor="@color/bahceden_green" />
@@ -245,6 +241,7 @@
                 android:id="@+id/customerHomeNewArrivalsTitleHolder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
                 android:orientation="horizontal">
 
                 <TextView

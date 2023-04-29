@@ -16,7 +16,7 @@ public class YourAddressesAdapter extends RecyclerView.Adapter<YourAddressesAdap
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.customer_address_item, parent, false);
+                .inflate(R.layout.layout_customer_address_item, parent, false);
         return new ViewHolder(view);
     }
 

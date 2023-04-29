@@ -15,7 +15,7 @@ public class CheckOutAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.customer_layout_check_out_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_customer_check_out_item, parent, false);
 
         return new ProducerAdapter.ViewHolder(view);
     }
