@@ -3,8 +3,167 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ProducerOrdersFragment">
 
+    <LinearLayout
+        android:id="@+id/layoutProducerOrdersTopBar"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@drawable/bg_curved_border"
+            android:backgroundTint="@color/gray"
+            android:padding="8dp"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="Pending"
+                android:layout_weight="0.8"
+                android:fontFamily="@font/nexa_heavy"
+                android:autoSizeTextType="uniform"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/layoutProducerOrdersPendingCount"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="123"
+                android:fontFamily="@font/nexa_heavy"
+                android:autoSizeTextType="uniform"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@drawable/bg_curved_border"
+            android:backgroundTint="@color/gray"
+            android:padding="8dp"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/layoutProducerOrdersOngoingCount"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="Ongoing"
+                android:layout_weight="0.8"
+                android:fontFamily="@font/nexa_heavy"
+                android:autoSizeTextType="uniform"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="123"
+                android:fontFamily="@font/nexa_heavy"
+                android:autoSizeTextType="uniform"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@drawable/bg_curved_border"
+            android:backgroundTint="@color/gray"
+            android:padding="8dp"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/layoutProducerOrdersDeliveredCount"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="Delivered"
+                android:layout_weight="0.8"
+                android:fontFamily="@font/nexa_heavy"
+                android:autoSizeTextType="uniform"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="123"
+                android:fontFamily="@font/nexa_heavy"
+                android:autoSizeTextType="uniform"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@drawable/bg_curved_border"
+            android:backgroundTint="@color/gray"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
+
+            <TextView
+                android:id="@+id/layoutProducerOrdersCancelledCount"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="Cancelled"
+                android:layout_weight="0.8"
+                android:fontFamily="@font/nexa_heavy"
+                android:autoSizeTextType="uniform"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="123"
+                android:fontFamily="@font/nexa_heavy"
+                android:autoSizeTextType="uniform"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/layoutProducerOrdersRV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/layoutProducerOrdersTopBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:padding="8dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

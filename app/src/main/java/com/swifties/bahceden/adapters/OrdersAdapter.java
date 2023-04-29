@@ -1,6 +1,5 @@
 package com.swifties.bahceden.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
     public OrdersAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.order_layout_item, viewGroup, false);
+                .inflate(R.layout.layout_customer_order, viewGroup, false);
 
         return new OrdersAdapter.ViewHolder(view);
     }
