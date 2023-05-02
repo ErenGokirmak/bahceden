@@ -27,13 +27,13 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        backButton = findViewById(R.id.signUpBack);
-        signUp = findViewById(R.id.signUp);
-        nameInput = findViewById(R.id.signUpName);
-        emailInput = findViewById(R.id.signUpEmail);
-        haveAnAccount = findViewById(R.id.haveAnAccountSignUp);
-        passwordInput = findViewById(R.id.signUpPassword);
-        confirmPasswordInput = findViewById(R.id.signUpConfirmPassword);
+        backButton = findViewById(R.id.signUpBackButton);
+        signUp = findViewById(R.id.signUpButton);
+        nameInput = findViewById(R.id.signUpNameField);
+        emailInput = findViewById(R.id.signUpEmailField);
+        haveAnAccount = findViewById(R.id.signUpHaveAnAccountButton);
+        passwordInput = findViewById(R.id.signUpPasswordField);
+        confirmPasswordInput = findViewById(R.id.signUpConfirmPasswordField);
         passwordInputLayout = findViewById(R.id.signUpPasswordLayout);
         confirmPasswordInputLayout = findViewById(R.id.signUpConfirmPasswordLayout);
 

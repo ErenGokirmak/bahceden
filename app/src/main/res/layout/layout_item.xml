@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="160dp"
     android:layout_height="250dp"
+    android:layout_gravity="center"
     android:orientation="vertical"
     android:paddingHorizontal="8dp"
     android:weightSum="1"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:layout_gravity="center">
+    app:layout_constraintTop_toTopOf="parent">
 
     <View
         android:layout_width="0dp"
@@ -33,24 +33,24 @@
                 android:layout_height="0dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/milk"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/itemLayoutItemLiked"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:src="@drawable/favorite2"
-                app:layout_constraintVertical_bias="0.05"
-                app:layout_constraintHorizontal_bias="0.95"
-                app:layout_constraintWidth_percent="0.2"
-                app:layout_constraintHeight_percent="0.2"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.2"
+                app:layout_constraintHorizontal_bias="0.95"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintWidth_percent="0.2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -62,8 +62,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
-        android:autoSizeTextType="uniform"
         android:autoSizeMinTextSize="1sp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/nexa_heavy"
         android:text="Beyaz Milk"
         android:textColor="@color/bahceden_green"
@@ -81,8 +81,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.55"
-            android:autoSizeTextType="uniform"
             android:autoSizeMinTextSize="1sp"
+            android:autoSizeTextType="uniform"
 
             android:fontFamily="@font/nexa_heavy"
             android:gravity="center_vertical"
@@ -100,8 +100,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
-            android:autoSizeTextType="uniform"
             android:autoSizeMinTextSize="1sp"
+            android:autoSizeTextType="uniform"
             android:gravity="center_vertical"
             android:text="$10"
             android:textColor="@color/black"
@@ -123,6 +123,6 @@
         android:backgroundTint="@color/bahceden_green"
         android:fontFamily="@font/nexa_heavy"
         android:text="Add to Cart"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white" />
 
 </LinearLayout>

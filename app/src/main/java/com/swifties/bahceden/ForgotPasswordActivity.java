@@ -20,8 +20,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
-        backBt = findViewById(R.id.forgetPasswordBack);
-        fgtContinue = findViewById(R.id.forgetContinue);
+        backBt = findViewById(R.id.forgetPasswordBackButton);
+        fgtContinue = findViewById(R.id.forgotPasswordContinueButton);
 
         changeFragment(new EnterMailFragment());
 
@@ -45,7 +45,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private void changeFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentLayout, fragment);
+        fragmentTransaction.replace(R.id.forgotPasswordFragmentLayout, fragment);
         fragmentTransaction.commit();
     }
 }

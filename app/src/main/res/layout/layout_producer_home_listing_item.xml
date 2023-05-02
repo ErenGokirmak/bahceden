@@ -67,39 +67,39 @@
         android:id="@+id/listingPriceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/cartProductImage"
-        app:layout_constraintTop_toTopOf="@id/price"
-        app:layout_constraintBottom_toBottomOf="@id/price"
         android:layout_marginStart="8dp"
-        android:text="Price: "
         android:fontFamily="@font/nexa_heavy"
+        android:text="Price: "
         android:textColor="@color/bahceden_green"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/price"
+        app:layout_constraintStart_toEndOf="@id/cartProductImage"
+        app:layout_constraintTop_toTopOf="@id/price" />
 
     <TextView
         android:id="@+id/listingRemainingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/cartProductImage"
-        app:layout_constraintTop_toTopOf="@id/listingRemaining"
-        app:layout_constraintBottom_toBottomOf="@id/cartProductImage"
         android:layout_marginStart="8dp"
-        android:text="Remaining: "
         android:fontFamily="@font/nexa_heavy"
+        android:text="Remaining: "
         android:textColor="@color/bahceden_green"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/cartProductImage"
+        app:layout_constraintStart_toEndOf="@id/cartProductImage"
+        app:layout_constraintTop_toTopOf="@id/listingRemaining" />
 
 
     <TextView
         android:id="@+id/listingRemaining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/cartProductImage"
-        app:layout_constraintStart_toEndOf="@id/listingRemainingText"
-        android:text="15KG"
         android:fontFamily="@font/nexa_heavy"
+        android:text="15KG"
         android:textColor="@color/black"
-        android:textSize="22sp"/>
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@id/cartProductImage"
+        app:layout_constraintStart_toEndOf="@id/listingRemainingText" />
 
     <TextView
         android:id="@+id/price"

@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@id/customerEditProfileTopBar">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/customerEditProfileImageHolder"
+            android:id="@+id/producerEditProfileImageHolder"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
@@ -132,8 +132,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@drawable/edit_text_background"
-                app:ccp_defaultPhoneCode="90"
                 android:gravity="center"
+                app:ccp_defaultPhoneCode="90"
                 app:ccp_showNameCode="false" />
 
             <com.google.android.material.textfield.TextInputEditText

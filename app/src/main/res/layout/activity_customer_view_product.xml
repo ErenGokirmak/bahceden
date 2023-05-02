@@ -38,18 +38,18 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/productBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/customerViewProductTopBar"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginBottom="4dp">
+        app:layout_constraintVertical_bias="0.0">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/scrollview"
+            android:id="@+id/customerViewProducerScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -57,6 +57,7 @@
                 android:id="@+id/productSliderHolder"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -69,7 +70,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/itemInfo"
+                android:id="@+id/customerViewProductItemInfoLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +80,7 @@
                 app:layout_constraintVertical_bias="0.0">
 
                 <TextView
-                    android:id="@+id/productName"
+                    android:id="@+id/customerViewProductItemName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
@@ -96,7 +97,7 @@
                     android:layout_margin="8dp"
                     android:src="@drawable/ic_favorite"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/productName" />
+                    app:layout_constraintTop_toTopOf="@id/customerViewProductItemName" />
 
                 <ImageView
                     android:id="@+id/rating"
@@ -104,8 +105,8 @@
                     android:layout_height="25dp"
                     android:layout_marginTop="16dp"
                     android:src="@drawable/ic_star"
-                    app:layout_constraintStart_toStartOf="@id/productName"
-                    app:layout_constraintTop_toBottomOf="@id/productName"
+                    app:layout_constraintStart_toStartOf="@id/customerViewProductItemName"
+                    app:layout_constraintTop_toBottomOf="@id/customerViewProductItemName"
                     app:tint="@color/star_yellow" />
 
                 <TextView
@@ -223,7 +224,7 @@
                 android:layout_height="1dp"
                 android:layout_margin="8dp"
                 android:background="@android:color/darker_gray"
-                app:layout_constraintTop_toBottomOf="@id/itemInfo" />
+                app:layout_constraintTop_toBottomOf="@id/customerViewProductItemInfoLayout" />
 
             <LinearLayout
                 android:id="@+id/commentsTitle"
@@ -250,7 +251,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/commentsTitle"/>
+                app:layout_constraintTop_toBottomOf="@id/commentsTitle" />
 
             <View
                 android:id="@+id/checkoutHorizontalDivider3"
@@ -285,7 +286,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/similarItemsTitle"/>
+                app:layout_constraintTop_toBottomOf="@id/similarItemsTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

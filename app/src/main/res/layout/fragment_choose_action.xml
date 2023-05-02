@@ -11,12 +11,12 @@
         android:layout_height="330dp">
 
         <TextView
-            android:id="@+id/forgetPasswordAction"
+            android:id="@+id/forgetPasswordActionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nexa_heavy"
-            android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nexa_heavy"
             android:text="Choose to Continue"
             android:textColor="@color/bahceden_green"
             android:textSize="26sp"
@@ -35,10 +35,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/forgetPasswordAction">
+            app:layout_constraintTop_toBottomOf="@id/forgetPasswordActionTitle">
 
             <ImageView
-                android:id="@+id/smsImage"
+                android:id="@+id/forgotPasswordSMSImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="16sp"
@@ -48,28 +48,28 @@
                 android:src="@drawable/bt_sms" />
 
             <TextView
-                android:id="@+id/sms"
+                android:id="@+id/forgotPasswordViaSMSText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="26dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="1dp"
-                android:layout_toRightOf="@id/smsImage"
+                android:layout_toRightOf="@id/forgotPasswordSMSImage"
                 android:text="Via SMS"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/phoneNum"
+                android:id="@+id/forgotPasswordPhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/sms"
+                android:layout_below="@id/forgotPasswordViaSMSText"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:layout_toRightOf="@id/smsImage"
+                android:layout_toRightOf="@id/forgotPasswordSMSImage"
                 android:text="+90 534***6232"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -77,7 +77,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/viaMail"
+            android:id="@+id/forgotPasswordViaEmail"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_margin="16dp"
@@ -90,7 +90,7 @@
             app:layout_constraintTop_toBottomOf="@id/viaPhone">
 
             <ImageView
-                android:id="@+id/mailImage"
+                android:id="@+id/forgotPasswordEmailImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="16sp"
@@ -101,28 +101,28 @@
                 android:src="@drawable/bt_mail" />
 
             <TextView
-                android:id="@+id/mail"
+                android:id="@+id/forgotPasswordViaEmailText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="26dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="1dp"
-                android:layout_toRightOf="@id/mailImage"
+                android:layout_toRightOf="@id/forgotPasswordEmailImage"
                 android:text="Via Email"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/mailAdd"
+                android:id="@+id/forgotPasswordViaEmailAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/mail"
+                android:layout_below="@id/forgotPasswordViaEmailText"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:layout_toRightOf="@id/mailImage"
+                android:layout_toRightOf="@id/forgotPasswordEmailImage"
                 android:text="anil****@gmail.com"
                 android:textSize="18sp"
                 android:textStyle="bold" />

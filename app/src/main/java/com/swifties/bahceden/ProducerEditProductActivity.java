@@ -27,8 +27,8 @@ public class ProducerEditProductActivity extends AppCompatActivity {
 
 
 
-        customSubCategoriesSpinner = findViewById(R.id.editItemSubCategoriesSpinner);
-        customCategoriesSpinner = findViewById(R.id.editItemCategoriesSpinner);
+        customSubCategoriesSpinner = findViewById(R.id.producerEditProductItemSubCategoriesSpinner);
+        customCategoriesSpinner = findViewById(R.id.producerEditProductItemCategoriesSpinner);
 
         customItems = getCustomCategoriesList();
         customSubItems = getCustomSubCategoriesList();

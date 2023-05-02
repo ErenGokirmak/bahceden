@@ -7,7 +7,7 @@
     tools:context=".CustomerAddAddressActivity">
 
     <LinearLayout
-        android:id="@+id/addAddressTopBar"
+        android:id="@+id/customerAddAddressTopBar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/bahceden_foreground"
@@ -41,7 +41,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addAddressTopBar">
+        app:layout_constraintTop_toBottomOf="@id/customerAddAddressTopBar">
 
         <EditText
             android:id="@+id/customerAddAddressEditTitleOfAddress"

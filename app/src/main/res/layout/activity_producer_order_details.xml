@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/detailsPImage"
+        android:id="@+id/producerOrderDetailsProductImage"
         android:layout_width="158dp"
         android:layout_height="156dp"
         android:layout_marginTop="36dp"
@@ -17,8 +16,7 @@
 
 
     <TextView
-        android:textSize="30dp"
-        android:id="@+id/detailsPName"
+        android:id="@+id/productOrderDetailsProductName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -26,34 +24,34 @@
         android:fontFamily="@font/nexa_heavy"
         android:text="Keci Sutu"
         android:textColor="@color/black"
+        android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsPImage" />
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsProductImage" />
 
     <TextView
-        android:id="@+id/detailsPID"
+        android:id="@+id/producerOrderDetailsProductID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:text="#71261"
         android:textSize="30dp"
-        app:layout_constraintStart_toEndOf="@+id/detailsPName"
-        app:layout_constraintTop_toBottomOf="@+id/detailsPImage" />
+        app:layout_constraintStart_toEndOf="@+id/productOrderDetailsProductName"
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsProductImage" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:textSize="20dp"
+        android:id="@+id/producerOrderDetailsOrderDeliveryInfoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:text="Date of Purchase - Type of Delivery"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsPName" />
+        app:layout_constraintTop_toBottomOf="@+id/productOrderDetailsProductName" />
 
     <TextView
-        android:id="@+id/detailsDate"
-        android:textSize="20dp"
+        android:id="@+id/producerOrderDetailsOrderDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -61,13 +59,13 @@
         android:fontFamily="@font/nexa_heavy"
         android:text="10/10/2023, 20.14"
         android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsOrderDeliveryInfoText" />
 
 
     <TextView
-        android:id="@+id/detailsDelivery"
-        android:textSize="20dp"
+        android:id="@+id/producerOrderDetailsDeliveryType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -75,8 +73,9 @@
         android:fontFamily="@font/nexa_heavy"
         android:text="Shipment"
         android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@id/detailsDivider"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsOrderDeliveryInfoText" />
 
     <ImageView
         android:id="@+id/detailsDivider"
@@ -84,69 +83,69 @@
         android:layout_height="26dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintStart_toEndOf="@+id/detailsDate"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintStart_toEndOf="@+id/producerOrderDetailsOrderDate"
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsOrderDeliveryInfoText"
         app:srcCompat="@drawable/divider" />
 
     <TextView
-        android:textSize="20dp"
-        android:id="@+id/textView9"
+        android:id="@+id/producerOrderDetailsAmountTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:text="Purchased Amount"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsDate" />
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsOrderDate" />
 
     <TextView
-        android:id="@+id/detailsAmount"
+        android:id="@+id/producerOrderDetailsAmountValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5 L"
-        android:textSize="20dp"
-        android:fontFamily="@font/nexa_heavy"
-        android:textColor="@color/black"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/nexa_heavy"
+        android:text="5 L"
+        android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsAmountTitle" />
 
     <TextView
-        android:id="@+id/textView10"
-        android:textSize="20dp"
+        android:id="@+id/producerOrderDetailsCustomerDetailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:text="Customer Details"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsAmountValue" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/producerOrderDetailsCustomerNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Name: "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsCustomerDetailText" />
 
     <TextView
-        android:id="@+id/detailsCName"
+        android:id="@+id/producerOrderDetailsCustomerNameValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/nexa_heavy"
-        android:textColor="@color/black"
         android:text="Emir Ensar Sevil"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/producerOrderDetailsCustomerNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsCustomerDetailText" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/producerOrderDetailsCustomerPhoneNumberValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -154,18 +153,18 @@
         android:fontFamily="@font/nexa_heavy"
         android:text="+905853677564"
         android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintStart_toEndOf="@+id/producerOrderDetailsCustomerPhoneNumberLabel"
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsCustomerDetailText" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/producerOrderDetailsCustomerPhoneNumberLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Phone Number: "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsCustomerNameLabel" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -173,12 +172,12 @@
         android:layout_height="29dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/detailsPImage"
+        app:layout_constraintStart_toEndOf="@+id/producerOrderDetailsProductImage"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_cross" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/producerOrderDetailsCustomerAddressLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -188,10 +187,10 @@
 
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsCustomerPhoneNumberLabel" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/producerOrderDetailsCustomerAddressValue"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autoSizeMaxTextSize="15sp"
@@ -202,8 +201,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/producerOrderDetailsCustomerAddressLabel"
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsCustomerAddressLabel"
         app:layout_constraintVertical_bias="0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

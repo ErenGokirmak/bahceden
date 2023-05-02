@@ -104,12 +104,12 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/checkoutAddressEdit"
+                    app:layout_constraintEnd_toStartOf="@id/checkoutAddressChangeAddress"
                     app:layout_constraintStart_toStartOf="@id/checkoutCustomerAddressTitle"
                     app:layout_constraintTop_toBottomOf="@id/checkoutCustomerAddressTitle" />
 
                 <ImageView
-                    android:id="@+id/checkoutAddressEdit"
+                    android:id="@+id/checkoutAddressChangeAddress"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_margin="8dp"
