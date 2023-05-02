@@ -7,7 +7,7 @@
     tools:context=".fragments.ProducerProfileFragment">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/customerEditProfileImageHolder"
+        android:id="@+id/producerEditProfileImageHolder"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_margin="18dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/profileImage"
+            android:id="@+id/producerProfileImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -25,28 +25,28 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/profileName"
+        android:id="@+id/producerProfileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nexa_heavy"
         android:text="Rooster"
         android:textColor="@color/bahceden_green"
         android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="@id/customerEditProfileImageHolder"
-        app:layout_constraintStart_toStartOf="@id/customerEditProfileImageHolder"
-        app:layout_constraintTop_toBottomOf="@id/customerEditProfileImageHolder" />
+        app:layout_constraintEnd_toEndOf="@id/producerEditProfileImageHolder"
+        app:layout_constraintStart_toStartOf="@id/producerEditProfileImageHolder"
+        app:layout_constraintTop_toBottomOf="@id/producerEditProfileImageHolder" />
 
     <TextView
-        android:id="@+id/profileEmail"
+        android:id="@+id/producerProfileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nexa_heavy"
         android:text="rooster@hotmail.com"
         android:textColor="@color/darkGray"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@id/profileName"
-        app:layout_constraintStart_toStartOf="@id/profileName"
-        app:layout_constraintTop_toBottomOf="@id/profileName" />
+        app:layout_constraintEnd_toEndOf="@id/producerProfileName"
+        app:layout_constraintStart_toStartOf="@id/producerProfileName"
+        app:layout_constraintTop_toBottomOf="@id/producerProfileName" />
 
     <View
         android:id="@+id/horizontalDivider"
@@ -54,7 +54,7 @@
         android:layout_height="1dp"
         android:layout_margin="8dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintTop_toBottomOf="@id/profileEmail" />
+        app:layout_constraintTop_toBottomOf="@id/producerProfileEmail" />
 
 
     <ScrollView
@@ -72,6 +72,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/producerProfileEditProfileButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -104,6 +105,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/producerProfileAnalyticsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -136,6 +138,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/producerProfileSecurityButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -168,6 +171,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/producerProfileLogOutButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"

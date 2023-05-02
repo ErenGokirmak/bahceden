@@ -12,9 +12,9 @@
 
     <ImageView
         android:id="@+id/checkoutAddressImage"
-        android:layout_marginStart="8dp"
         android:layout_width="55dp"
         android:layout_height="55dp"
+        android:layout_marginStart="8dp"
         android:src="@drawable/bt_location"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +22,6 @@
 
     <TextView
         android:id="@+id/checkoutCustomerAddressTitle"
-        app:layout_constraintStart_toEndOf="@id/checkoutAddressImage"
-        app:layout_constraintTop_toTopOf="@id/checkoutAddressImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -32,17 +30,19 @@
         android:text="TARDIS"
         android:textColor="@color/bahceden_green"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/checkoutAddressImage"
+        app:layout_constraintTop_toTopOf="@id/checkoutAddressImage" />
 
     <TextView
         android:id="@+id/checkoutAdressText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingHorizontal="2dp"
         android:text="232 Earls Ct Rd, Earl's Court, London SW5 9RD"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        android:paddingHorizontal="2dp"
         app:layout_constraintEnd_toStartOf="@id/checkoutAddressEdit"
         app:layout_constraintStart_toStartOf="@id/checkoutCustomerAddressTitle"
         app:layout_constraintTop_toBottomOf="@id/checkoutCustomerAddressTitle" />
@@ -51,22 +51,22 @@
         android:id="@+id/customerAddressItemSelected"
         android:layout_width="35dp"
         android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:src="@drawable/ic_tick_unselected"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        app:tint="@color/black"/>
+        app:tint="@color/black" />
 
     <ImageView
         android:id="@+id/checkoutAddressEdit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="9dp"
         android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/black" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

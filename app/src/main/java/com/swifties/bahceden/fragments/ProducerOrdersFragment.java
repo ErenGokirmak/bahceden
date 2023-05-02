@@ -30,7 +30,7 @@ public class ProducerOrdersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        producerOrdersRV = view.findViewById(R.id.layoutProducerOrdersRV);
+        producerOrdersRV = view.findViewById(R.id.producerOrdersRV);
         producerOrderAdapter = new ProducerOrderAdapter();
         producerOrderLM = new LinearLayoutManager(getActivity());
         producerOrdersRV.setAdapter(producerOrderAdapter);

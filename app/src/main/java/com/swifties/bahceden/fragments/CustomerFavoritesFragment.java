@@ -39,15 +39,15 @@ public class CustomerFavoritesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        productTxt = view.findViewById(R.id.customerFavoritesProductsButton);
-        dukkanTxt = view.findViewById(R.id.customerFavoritesFavoriteDukkansButton);
+        productTxt = view.findViewById(R.id.customerFavoriteProductsButton);
+        dukkanTxt = view.findViewById(R.id.customerFavoriteDukkansButton);
 
 
         ButtonsListener listener = new ButtonsListener();
 
         productTxt.setOnClickListener(listener);
         dukkanTxt.setOnClickListener(listener);
-        customerFavoritesItemsRV = view.findViewById(R.id.customerFavoritesRV);
+        customerFavoritesItemsRV = view.findViewById(R.id.customerFavoriteProductsRV);
         customerFavoritesItemsRV.setHasFixedSize(true);
         customerFavoritesItemsLM = new LinearLayoutManager(getActivity());
         customerFavoritesItemsAdapter = new FavItemAdapter();
@@ -55,7 +55,7 @@ public class CustomerFavoritesFragment extends Fragment {
         customerFavoritesItemsRV.setAdapter(customerFavoritesItemsAdapter);
 
 
-        customerFavoritesDukkansRV = view.findViewById(R.id.favDukkans);
+        customerFavoritesDukkansRV = view.findViewById(R.id.customerFavoritesFavDukkansRV);
         customerFavoritesDukkansRV.setHasFixedSize(true);
         customerFavoritesDukkansAdapter = new FavDukkanAdapter();
         customerFavoritesDukkansLM = new LinearLayoutManager(getActivity());
@@ -68,23 +68,23 @@ public class CustomerFavoritesFragment extends Fragment {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.customerFavoritesProductsButton:
+                case R.id.customerFavoriteProductsButton:
 
                     productTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_green, productTxt.getContext().getTheme()));
                     productTxt.setTextColor(getResources().getColor(R.color.white, productTxt.getContext().getTheme()));
                     dukkanTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_background, dukkanTxt.getContext().getTheme()));
                     dukkanTxt.setTextColor(getResources().getColor(R.color.darkGray, dukkanTxt.getContext().getTheme()));
-                    rootView.findViewById(R.id.favDukkans).setVisibility(View.GONE);
-                    rootView.findViewById(R.id.customerFavoritesRV).setVisibility(View.VISIBLE);
+                    rootView.findViewById(R.id.customerFavoritesFavDukkansRV).setVisibility(View.GONE);
+                    rootView.findViewById(R.id.customerFavoriteProductsRV).setVisibility(View.VISIBLE);
                     break;
-                case R.id.customerFavoritesFavoriteDukkansButton:
+                case R.id.customerFavoriteDukkansButton:
 
                     dukkanTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_green, dukkanTxt.getContext().getTheme()));
                     dukkanTxt.setTextColor(getResources().getColor(R.color.white, dukkanTxt.getContext().getTheme()));
                     productTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_background, productTxt.getContext().getTheme()));
                     productTxt.setTextColor(getResources().getColor(R.color.darkGray, productTxt.getContext().getTheme()));
-                    rootView.findViewById(R.id.favDukkans).setVisibility(View.VISIBLE);
-                    rootView.findViewById(R.id.customerFavoritesRV).setVisibility(View.GONE);
+                    rootView.findViewById(R.id.customerFavoritesFavDukkansRV).setVisibility(View.VISIBLE);
+                    rootView.findViewById(R.id.customerFavoriteProductsRV).setVisibility(View.GONE);
                     break;
             }
         }

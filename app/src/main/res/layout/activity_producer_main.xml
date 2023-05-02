@@ -24,17 +24,17 @@
             android:gravity="center_vertical"
             android:text="Bahçeden"
             android:textColor="@color/bahceden_green"
-            android:textSize="25sp"/>
+            android:textSize="25sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <ImageView
             android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:src="@drawable/bahceden_logo_thick"/>
+            android:src="@drawable/bahceden_logo_thick" />
 
     </LinearLayout>
 
@@ -42,23 +42,23 @@
         android:id="@+id/producerMainFragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/producerBottomNavBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/producerMainTopBar"
-        app:layout_constraintBottom_toTopOf="@id/producerBottomNavBar"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/producerMainTopBar" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/producerBottomNavBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/producer_navbar_menu"
         android:background="@color/bahceden_foreground"
-        app:itemIconTint="@drawable/navbar_item_selector"
-        app:labelVisibilityMode="unlabeled"
         app:itemIconSize="25dp"
+        app:itemIconTint="@drawable/navbar_item_selector"
         app:itemRippleColor="@android:color/transparent"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:menu="@menu/producer_navbar_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

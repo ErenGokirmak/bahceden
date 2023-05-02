@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="8dp"
     android:layout_marginHorizontal="16dp"
-    android:elevation="4dp"
+    android:layout_marginVertical="8dp"
     android:background="@drawable/long_button_background"
     android:backgroundTint="@color/white"
+    android:elevation="4dp"
     android:padding="16dp">
 
 
@@ -95,31 +95,31 @@
         android:text="13 Days ago"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/likeCount"
         app:layout_constraintStart_toEndOf="@id/likeCount"
-        app:layout_constraintTop_toTopOf="@id/likeCount"
-        app:layout_constraintBottom_toBottomOf="@id/likeCount"/>
+        app:layout_constraintTop_toTopOf="@id/likeCount" />
 
     <ImageView
         android:id="@+id/commentReplyButton"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@drawable/ic_reply"
-        app:layout_constraintTop_toTopOf="@id/likeCount"
         app:layout_constraintBottom_toBottomOf="@id/likeCount"
         app:layout_constraintEnd_toEndOf="@id/commentMessage"
+        app:layout_constraintTop_toTopOf="@id/likeCount"
         app:tint="@color/bahceden_green" />
 
     <EditText
         android:id="@+id/commentReplyEditText"
         android:layout_width="0dp"
         android:layout_height="40dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_curved_border"
         android:backgroundTint="@color/gray"
-        app:layout_constraintStart_toStartOf="@id/commentMessage"
-        app:layout_constraintEnd_toEndOf="@id/commentMessage"
-        app:layout_constraintTop_toBottomOf="@id/commentMessage"
-        android:layout_marginTop="8dp"
         android:paddingHorizontal="16dp"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/commentMessage"
+        app:layout_constraintStart_toStartOf="@id/commentMessage"
+        app:layout_constraintTop_toBottomOf="@id/commentMessage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -62,8 +62,8 @@ public class ProducerDataFragment extends Fragment {
         customItems = getCustomCategoriesList();
         customSubItems = getCustomSubCategoriesList();
 
-        customDataCategoriesSpinner = view.findViewById(R.id.dataCategoriesSpinner);
-        customDataSubCategoriesSpinner = view.findViewById(R.id.dataSubCategoriesSpinner);
+        customDataCategoriesSpinner = view.findViewById(R.id.producerDataCategoriesSpinner);
+        customDataSubCategoriesSpinner = view.findViewById(R.id.producerDataSubCategoriesSpinner);
 
         SpinnerCustomAdapter spinnerCategoriesAdapter = new SpinnerCustomAdapter(getActivity(), customItems);
         spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(getActivity(), customSubItems.get(0));

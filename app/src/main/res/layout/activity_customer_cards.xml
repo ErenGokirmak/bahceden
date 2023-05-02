@@ -37,24 +37,24 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/customerCardsYourCardsRV"
-        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/customerCardsTopBar"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@id/customerCardsAddCardButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/customerCardsTopBar" />
 
     <Button
         android:id="@+id/customerCardsAddCardButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/long_button_background"
-        android:text="Add New Card"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/long_button_background"
         android:fontFamily="@font/nexa_heavy"
-        app:backgroundTint="@color/bahceden_green"/>
+        android:text="Add New Card"
+        app:backgroundTint="@color/bahceden_green"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,18 +7,17 @@
     tools:context=".fragments.ProducerAddProductFragment">
 
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@id/updateButton"
+        app:layout_constraintBottom_toTopOf="@id/producerEditProductUpdateButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/newItemInfoFields"
+            android:id="@+id/producerEditProductNewItemInfoFields"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -28,91 +27,91 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:layout_marginVertical="12dp"
                 android:elevation="10dp"
-                android:layout_margin="8dp"
                 app:cardCornerRadius="16dp">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/strawberry"/>
+                    android:src="@drawable/strawberry" />
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_change"
-                    app:tint="@color/white"
+                    android:layout_gravity="end"
                     android:layout_margin="8dp"
-                    android:layout_gravity="end"/>
+                    android:src="@drawable/ic_change"
+                    app:tint="@color/white" />
 
             </androidx.cardview.widget.CardView>
 
             <Spinner
-                android:id="@+id/editItemCategoriesSpinner"
+                android:id="@+id/producerEditProductItemCategoriesSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_curved_border"
-                android:layout_marginVertical="8dp" />
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/bg_curved_border" />
 
             <Spinner
-                android:id="@+id/editItemSubCategoriesSpinner"
+                android:id="@+id/producerEditProductItemSubCategoriesSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_curved_border"
-                android:layout_marginVertical="8dp" />
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/bg_curved_border" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginVertical="8dp">
+                android:layout_marginVertical="8dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Product Name"
+                    android:layout_marginVertical="8dp"
                     android:fontFamily="@font/nexa_heavy"
+                    android:text="Product Name"
                     android:textColor="@color/bahceden_green"
-                    android:textSize="16sp"
-                    android:layout_marginVertical="8dp"/>
+                    android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/producerEditProductName"
+                    android:id="@+id/producerEditProductNameField"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:background="@drawable/edit_text_background"
                     android:hint="Product Name"
-                    android:text="Red Çilek"
-                    android:textSize="20sp"
                     android:padding="8dp"
-                    android:background="@drawable/edit_text_background" />
+                    android:text="Red Çilek"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginVertical="8dp">
+                android:layout_marginVertical="8dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Product Description"
+                    android:layout_marginVertical="8dp"
                     android:fontFamily="@font/nexa_heavy"
+                    android:text="Product Description"
                     android:textColor="@color/bahceden_green"
-                    android:textSize="16sp"
-                    android:layout_marginVertical="8dp"/>
+                    android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/producerEditProductDescription"
+                    android:id="@+id/producerEditProductDescriptionField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_background"
                     android:hint="Product Description"
-                    android:text="@string/loremIpsum"
-                    android:textSize="20sp"
                     android:padding="8dp"
-                    android:background="@drawable/edit_text_background" />
+                    android:text="@string/loremIpsum"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -124,59 +123,59 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="0.5"
+                    android:layout_marginHorizontal="4dp"
                     android:layout_marginVertical="8dp"
-                    android:layout_marginHorizontal="4dp">
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Product Price"
+                        android:layout_marginVertical="8dp"
                         android:fontFamily="@font/nexa_heavy"
+                        android:text="Product Price"
                         android:textColor="@color/bahceden_green"
-                        android:textSize="16sp"
-                        android:layout_marginVertical="8dp"/>
+                        android:textSize="16sp" />
 
                     <EditText
-                        android:id="@+id/producerEditProductPrice"
+                        android:id="@+id/producerEditProductPriceField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/edit_text_background"
                         android:hint="Product Price"
-                        android:text="50"
                         android:inputType="number"
-                        android:textSize="20sp"
                         android:padding="8dp"
-                        android:background="@drawable/edit_text_background" />
+                        android:text="50"
+                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="0.5"
+                    android:layout_marginHorizontal="4dp"
                     android:layout_marginVertical="8dp"
-                    android:layout_marginHorizontal="4dp">
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Product Amount"
+                        android:layout_marginVertical="8dp"
                         android:fontFamily="@font/nexa_heavy"
+                        android:text="Product Amount"
                         android:textColor="@color/bahceden_green"
-                        android:textSize="16sp"
-                        android:layout_marginVertical="8dp"/>
+                        android:textSize="16sp" />
 
                     <EditText
-                        android:id="@+id/producerEditProductAmount"
+                        android:id="@+id/producerEditProductAmountField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/edit_text_background"
                         android:hint="Product Amount"
-                        android:text="500"
                         android:inputType="number"
-                        android:textSize="20sp"
                         android:padding="8dp"
-                        android:background="@drawable/edit_text_background" />
+                        android:text="500"
+                        android:textSize="20sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -185,11 +184,11 @@
     </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/updateButton"
+        android:id="@+id/producerEditProductUpdateButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/long_button_background"
         android:backgroundTint="@color/bahceden_green"
         android:fontFamily="@font/nexa_heavy"
@@ -199,7 +198,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

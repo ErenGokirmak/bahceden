@@ -18,9 +18,9 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        customerButton = findViewById(R.id.introCustomer);
-        producerButton = findViewById(R.id.introProducer);
-        haveAnAccount = findViewById(R.id.haveAnAccount);
+        customerButton = findViewById(R.id.introCustomerButton);
+        producerButton = findViewById(R.id.introProducerButton);
+        haveAnAccount = findViewById(R.id.introAlreadyHaveAnAccountButton);
 
         customerButton.setOnClickListener(new View.OnClickListener() {
             @Override

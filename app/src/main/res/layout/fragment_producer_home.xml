@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginVertical="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -22,7 +22,7 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/sliderHolder"
+                android:id="@+id/producerHomeSliderHolder"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginHorizontal="16dp"
@@ -52,18 +52,17 @@
                 android:textColor="@color/bahceden_green" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/newReviewsRV"
+                android:id="@+id/producerHomeNewReviewsRV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
-                />
+                android:layout_marginVertical="8dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -78,7 +77,7 @@
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/homeNewArrivalsSeeAll"
+                    android:id="@+id/producerHomeNewArrivalsSeeAllButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_heavy"
@@ -88,12 +87,11 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/yourListingsRV"
+                android:id="@+id/producerHomeYourListingsRV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginVertical="8dp"
-                android:orientation="horizontal"
-                />
+                android:orientation="horizontal" />
 
         </LinearLayout>
 

@@ -9,16 +9,16 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:padding="10dp"
-        android:src="@drawable/ic_dairy_products"/>
+        android:src="@drawable/ic_dairy_products" />
 
     <TextView
         android:id="@+id/spinnerItemText"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Dairy"
-        android:padding="10dp"
-        android:textSize="20sp"
         android:fontFamily="@font/nexa_heavy"
-        android:textColor="@color/bahceden_green"/>
+        android:padding="10dp"
+        android:text="Dairy"
+        android:textColor="@color/bahceden_green"
+        android:textSize="20sp" />
 
 </LinearLayout>

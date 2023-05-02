@@ -7,13 +7,13 @@
     tools:context=".SecurityProfileActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/securityLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/yourAddressesTopBar"
+            android:id="@+id/securityTopBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/bahceden_foreground"
@@ -24,14 +24,14 @@
 
 
             <ImageView
-                android:id="@+id/editProfileBack"
+                android:id="@+id/securityBackButton"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/ic_back" />
 
             <TextView
-                android:id="@+id/editProfileTitle"
+                android:id="@+id/securityTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
@@ -57,44 +57,44 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/current_password"
+                android:id="@+id/securityCurrentPasswordField"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
-                android:paddingStart="8dp"
                 android:background="@drawable/edit_text_background"
                 android:hint="Current Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:paddingStart="8dp" />
 
             <EditText
-                android:id="@+id/new_password"
+                android:id="@+id/securityNewPasswordField"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:paddingStart="8dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edit_text_background"
                 android:hint="New Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:paddingStart="8dp" />
 
             <EditText
-                android:id="@+id/confirm_password"
+                android:id="@+id/securityConfirmNewPasswordField"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
-                android:paddingStart="8dp"
                 android:background="@drawable/edit_text_background"
                 android:hint="Confirm New Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:paddingStart="8dp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/change_password_button"
+                android:id="@+id/securityChangePasswordButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:textColor="@color/text_shadow_white"
-                android:backgroundTint="@color/bahceden_green"
                 android:background="@drawable/long_button_background"
-                android:text="Change Password" />
+                android:backgroundTint="@color/bahceden_green"
+                android:text="Change Password"
+                android:textColor="@color/text_shadow_white" />
 
         </LinearLayout>
 

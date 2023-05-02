@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="8dp"
-    android:elevation="8dp"
     android:background="@drawable/long_button_background"
     android:backgroundTint="@color/white"
+    android:elevation="8dp"
     android:orientation="vertical"
     android:paddingHorizontal="4dp"
     android:paddingVertical="12dp">
@@ -21,8 +20,8 @@
         <TextView
             android:id="@+id/order_number"
             android:layout_width="170dp"
-            android:layout_marginLeft="16dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
             android:fontFamily="@font/nexa_heavy"
             android:text="Order #12345"
             android:textColor="@color/bahceden_green"
@@ -34,8 +33,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/nexa_heavy"
-            android:textColor="@color/black"
             android:text="2023-04-24"
+            android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -51,8 +50,8 @@
             android:id="@+id/total_amount"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/nexa_heavy"
             android:text="Total: $50.00"
             android:textColor="@color/bahceden_green"
@@ -65,10 +64,10 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/divider"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="8dp"
-        app:tint="@color/darkGray"/>
+        android:src="@drawable/divider"
+        app:tint="@color/darkGray" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,11 +77,11 @@
 
         <ImageView
             android:id="@+id/product_image"
-            android:layout_marginLeft="16dp"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:src="@drawable/milk"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/milk" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -96,27 +95,27 @@
                 android:id="@+id/product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:fontFamily="@font/nexa_heavy"
                 android:text="Beyaz Milk"
-                android:textSize="24sp"/>
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_weight="0.3"
                 android:gravity="center_vertical"
-                android:layout_weight="0.3">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/nexa_heavy"
+                    android:gravity="center_vertical"
                     android:text="Status:"
                     android:textColor="@color/black"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:gravity="center_vertical"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/order_status"
@@ -124,21 +123,20 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="4dp"
                     android:fontFamily="@font/nexa_heavy"
+                    android:gravity="center_vertical"
                     android:text="Ongoing"
                     android:textColor="@color/eggplant_pink"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:gravity="center_vertical"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
-
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:orientation="horizontal"
                 android:layout_weight="1"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -146,30 +144,29 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.48"
-                    android:backgroundTint="@color/bahceden_foreground"
-                    android:text="Change Status"
-                    android:fontFamily="@font/nexa_heavy"
-                    android:textColor="@color/black"
                     android:background="@drawable/bg_square"
-                    android:padding="4dp"/>
+                    android:backgroundTint="@color/bahceden_foreground"
+                    android:fontFamily="@font/nexa_heavy"
+                    android:padding="4dp"
+                    android:text="Change Status"
+                    android:textColor="@color/black" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.04"/>
+                    android:layout_weight="0.04" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/detailsButton"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.48"
-                    android:backgroundTint="@color/bahceden_foreground"
-                    android:text="Details"
-                    android:fontFamily="@font/nexa_heavy"
-                    android:textColor="@color/black"
                     android:background="@drawable/bg_square"
+                    android:backgroundTint="@color/bahceden_foreground"
+                    android:fontFamily="@font/nexa_heavy"
                     android:paddingHorizontal="4dp"
-                    />
+                    android:text="Details"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -181,75 +178,74 @@
         android:id="@+id/changeStatusButtonsHolder"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
         android:layout_marginTop="8dp"
+        android:orientation="horizontal"
         android:paddingHorizontal="8dp"
         android:visibility="gone">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.8"
-                android:autoSizeTextType="uniform"
-                android:fontFamily="@font/nexa_heavy"
-                android:text="Pending"
-                android:textAlignment="center"
-                android:textColor="@color/orange"
-                android:background="@drawable/bg_curved_border"
-                android:backgroundTint="@color/gray"
-                android:padding="8dp"
-                android:gravity="center"
-                android:layout_marginEnd="8dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="0.8"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/bg_curved_border"
+            android:backgroundTint="@color/gray"
+            android:fontFamily="@font/nexa_heavy"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Pending"
+            android:textAlignment="center"
+            android:textColor="@color/orange" />
 
-            <TextView
-                android:id="@+id/layoutProducerOrdersOngoingCount"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Ongoing"
-                android:layout_weight="0.8"
-                android:fontFamily="@font/nexa_heavy"
-                android:autoSizeTextType="uniform"
-                android:textAlignment="center"
-                android:textColor="@color/eggplant_pink"
-                android:background="@drawable/bg_curved_border"
-                android:backgroundTint="@color/gray"
-                android:padding="8dp"
-                android:gravity="center"
-                android:layout_marginEnd="8dp"/>
-
-
-            <TextView
-                android:id="@+id/layoutProducerOrdersDeliveredCount"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Delivered"
-                android:layout_weight="0.8"
-                android:fontFamily="@font/nexa_heavy"
-                android:autoSizeTextType="uniform"
-                android:textAlignment="center"
-                android:textColor="@color/plus_green"
-                android:background="@drawable/bg_curved_border"
-                android:backgroundTint="@color/gray"
-                android:padding="8dp"
-                android:gravity="center"
-                android:layout_marginEnd="8dp"/>
+        <TextView
+            android:id="@+id/producerOrdersOngoingCount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="0.8"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/bg_curved_border"
+            android:backgroundTint="@color/gray"
+            android:fontFamily="@font/nexa_heavy"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Ongoing"
+            android:textAlignment="center"
+            android:textColor="@color/eggplant_pink" />
 
 
+        <TextView
+            android:id="@+id/producerOrdersDeliveredCount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="0.8"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/bg_curved_border"
+            android:backgroundTint="@color/gray"
+            android:fontFamily="@font/nexa_heavy"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Delivered"
+            android:textAlignment="center"
+            android:textColor="@color/plus_green" />
 
-            <TextView
-                android:id="@+id/layoutProducerOrdersCancelledCount"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Cancelled"
-                android:layout_weight="0.8"
-                android:fontFamily="@font/nexa_heavy"
-                android:autoSizeTextType="uniform"
-                android:textAlignment="center"
-                android:textColor="@color/minus_red"
-                android:background="@drawable/bg_curved_border"
-                android:backgroundTint="@color/gray"
-                android:padding="8dp"
-                android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/producerOrdersCancelledCount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/bg_curved_border"
+            android:backgroundTint="@color/gray"
+            android:fontFamily="@font/nexa_heavy"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Cancelled"
+            android:textAlignment="center"
+            android:textColor="@color/minus_red" />
 
     </LinearLayout>
 

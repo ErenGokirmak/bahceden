@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/forgetPasswordEmail"
+            android:id="@+id/forgetPasswordEmailField"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"

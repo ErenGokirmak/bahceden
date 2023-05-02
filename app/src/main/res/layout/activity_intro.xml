@@ -7,7 +7,7 @@
     tools:context=".IntroActivity">
 
     <TextView
-        android:id="@+id/welcome"
+        android:id="@+id/introWelcomeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
@@ -21,17 +21,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/introImageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome"
+        app:layout_constraintTop_toBottomOf="@+id/introWelcomeText"
         app:srcCompat="@drawable/gardening" />
 
     <TextView
-        android:id="@+id/introSelect"
+        android:id="@+id/introSelectText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -41,10 +41,10 @@
         android:textColor="@color/bahceden_green"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/introImageView" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/introCustomer"
+        android:id="@+id/introCustomerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
@@ -56,12 +56,12 @@
         android:paddingTop="6dp"
         android:text="@string/customer"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/introProducer"
+        app:layout_constraintEnd_toStartOf="@+id/introProducerButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/introSelect" />
+        app:layout_constraintTop_toBottomOf="@+id/introSelectText" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/introProducer"
+        android:id="@+id/introProducerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="26dp"
@@ -72,10 +72,10 @@
         android:text="@string/producer"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/introCustomer" />
+        app:layout_constraintTop_toTopOf="@+id/introCustomerButton" />
 
     <TextView
-        android:id="@+id/haveAnAccount"
+        android:id="@+id/introAlreadyHaveAnAccountButton"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:fontFamily="@font/nexa_heavy"
@@ -85,6 +85,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/introCustomer" />
+        app:layout_constraintTop_toBottomOf="@+id/introCustomerButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

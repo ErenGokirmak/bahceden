@@ -18,7 +18,7 @@ public class CustomerOrdersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_orders);
 
-        ordersRV = (RecyclerView) findViewById(R.id.ordersProfileRecyclerView);
+        ordersRV = (RecyclerView) findViewById(R.id.ordersProfileRV);
         ordersRV.setHasFixedSize(true);
         ordersLayoutManager = new LinearLayoutManager(this);
 

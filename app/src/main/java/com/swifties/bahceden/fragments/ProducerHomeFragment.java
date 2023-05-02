@@ -41,8 +41,8 @@ public class ProducerHomeFragment extends Fragment {
         slideModels.add(new SlideModel(R.drawable.tomato, ScaleTypes.FIT));
         imageSlider.setImageList(slideModels);
 
-        RecyclerView yourListingsRV = view.findViewById(R.id.yourListingsRV);
-        RecyclerView newReviewsRV = view.findViewById(R.id.newReviewsRV);
+        RecyclerView yourListingsRV = view.findViewById(R.id.producerHomeYourListingsRV);
+        RecyclerView newReviewsRV = view.findViewById(R.id.producerHomeNewReviewsRV);
 
         newReviewsRV.setHasFixedSize(true);
         yourListingsRV.setHasFixedSize(true);

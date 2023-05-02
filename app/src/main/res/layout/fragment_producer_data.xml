@@ -9,10 +9,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,27 +20,27 @@
             android:padding="8dp">
 
             <Spinner
-                android:id="@+id/dataCategoriesSpinner"
+                android:id="@+id/producerDataCategoriesSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_curved_border"
                 android:layout_margin="8dp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/bg_curved_border"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Spinner
-                android:id="@+id/dataSubCategoriesSpinner"
+                android:id="@+id/producerDataSubCategoriesSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_curved_border"
                 android:layout_margin="8dp"
-                app:layout_constraintTop_toBottomOf="@id/dataCategoriesSpinner"
+                android:background="@drawable/bg_curved_border"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/producerDataCategoriesSpinner" />
 
             <LinearLayout
-                android:id="@+id/MarketAverageHolder"
+                android:id="@+id/producerDataMarketAverageHolder"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -49,12 +49,12 @@
                 android:backgroundTint="@color/gray"
                 android:orientation="vertical"
                 android:padding="16dp"
-                app:layout_constraintTop_toBottomOf="@id/dataSubCategoriesSpinner"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/producerDataSubCategoriesSpinner">
 
                 <TextView
-                    android:id="@+id/MarketAverageTitle"
+                    android:id="@+id/producerDataMarketAverageTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_heavy"
@@ -68,38 +68,40 @@
                     android:weightSum="3">
 
                     <TextView
-                        android:id="@+id/marketMin"
+                        android:id="@+id/producerDataMarketMin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:fontFamily="@font/nexa_heavy"
                         android:text="$5"
                         android:textColor="@color/minus_red"
-                        android:textSize="26sp"
-                        android:layout_weight="1"/>
+                        android:textSize="26sp" />
+
                     <TextView
-                        android:id="@+id/marketAverage"
+                        android:id="@+id/producerDataMarketAverage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:fontFamily="@font/nexa_heavy"
                         android:text="$10"
                         android:textColor="@color/darkGray"
-                        android:textSize="26sp"
-                        android:layout_weight="1" />
+                        android:textSize="26sp" />
+
                     <TextView
-                        android:id="@+id/marketMax"
+                        android:id="@+id/producerDataMarketMax"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:fontFamily="@font/nexa_heavy"
                         android:text="$23"
                         android:textColor="@color/plus_green"
-                        android:textSize="26sp"
-                        android:layout_weight="1" />
+                        android:textSize="26sp" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/otherSellersAverageHolder"
+                android:id="@+id/producerDataOtherSellersAverageHolder"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -108,12 +110,12 @@
                 android:backgroundTint="@color/gray"
                 android:orientation="vertical"
                 android:padding="16dp"
-                app:layout_constraintTop_toBottomOf="@id/MarketAverageHolder"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/producerDataMarketAverageHolder">
 
                 <TextView
-                    android:id="@+id/OtherAverageTitle"
+                    android:id="@+id/producerDataOtherAverageTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_heavy"
@@ -127,38 +129,40 @@
                     android:weightSum="3">
 
                     <TextView
-                        android:id="@+id/OtherMin"
+                        android:id="@+id/producerDataOtherMin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:fontFamily="@font/nexa_heavy"
                         android:text="$5"
                         android:textColor="@color/minus_red"
-                        android:textSize="26sp"
-                        android:layout_weight="1"/>
+                        android:textSize="26sp" />
+
                     <TextView
-                        android:id="@+id/OtherAverage"
+                        android:id="@+id/producerDataOtherAverage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:fontFamily="@font/nexa_heavy"
                         android:text="$10"
                         android:textColor="@color/darkGray"
-                        android:textSize="26sp"
-                        android:layout_weight="1" />
+                        android:textSize="26sp" />
+
                     <TextView
-                        android:id="@+id/OtherMax"
+                        android:id="@+id/producerDataOtherMax"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:fontFamily="@font/nexa_heavy"
                         android:text="$23"
                         android:textColor="@color/plus_green"
-                        android:textSize="26sp"
-                        android:layout_weight="1" />
+                        android:textSize="26sp" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ourRecommendationHolder"
+                android:id="@+id/producerDataOurRecommendationHolder"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -167,12 +171,12 @@
                 android:backgroundTint="@color/gray"
                 android:orientation="vertical"
                 android:padding="16dp"
-                app:layout_constraintTop_toBottomOf="@id/otherSellersAverageHolder"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/producerDataOtherSellersAverageHolder">
 
                 <TextView
-                    android:id="@+id/ourRecommendationTitle"
+                    android:id="@+id/producerDataOurRecommendationTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_heavy"
@@ -180,7 +184,7 @@
                     android:textSize="22sp" />
 
                 <TextView
-                    android:id="@+id/ourRecommendation"
+                    android:id="@+id/producerDataOurRecommendationValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_heavy"
@@ -195,10 +199,10 @@
                 android:layout_width="0dp"
                 android:layout_height="300dp"
                 android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ourRecommendationHolder"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/producerDataOurRecommendationHolder" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
