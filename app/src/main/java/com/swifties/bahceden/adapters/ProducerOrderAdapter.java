@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.swifties.bahceden.ProducerOrderDetails;
+import com.swifties.bahceden.ProducerOrderDetailsActivity;
 import com.swifties.bahceden.R;
 
 public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdapter.ViewHolder> {
@@ -46,7 +46,7 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
         holder.detailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ProducerOrderDetails.class);
+                Intent intent = new Intent(v.getContext(), ProducerOrderDetailsActivity.class);
                 v.getContext().startActivity(intent);
             }
         });

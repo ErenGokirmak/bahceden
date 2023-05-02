@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Bahceden"
         tools:targetApi="31">
         <activity
-            android:name=".ProducerOrderDetails"
+            android:name=".ProducerOrderDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".ProducerEditProductActivity"
