@@ -27,7 +27,7 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        backButton = findViewById(R.id.loginBack);
+        backButton = findViewById(R.id.loginBackButton);
         emailInput = findViewById(R.id.loginEmail);
         dontHaveAccount = findViewById(R.id.dontHaveAccount);
         passwordInput = findViewById(R.id.loginPassword);

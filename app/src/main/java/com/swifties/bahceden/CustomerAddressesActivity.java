@@ -1,20 +1,32 @@
 package com.swifties.bahceden;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 import com.swifties.bahceden.adapters.YourAddressesAdapter;
 
 public class CustomerAddressesActivity extends AppCompatActivity {
 
-    RecyclerView addressesRV;
+    private RecyclerView addressesRV;
+    private ImageView backButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_addresses);
+
+        backButton = findViewById(R.id.customerAddressesBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CustomerAddressesActivity.super.onBackPressed();
+            }
+        });
 
         addressesRV = findViewById(R.id.customerAddressesYourAddressesRV);
 

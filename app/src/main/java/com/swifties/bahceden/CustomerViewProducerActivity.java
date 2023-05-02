@@ -1,8 +1,8 @@
 package com.swifties.bahceden;
 
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,6 +13,7 @@ import com.swifties.bahceden.classes.GridSpacingItemDecoration;
 
 public class CustomerViewProducerActivity extends AppCompatActivity {
     private RecyclerView producerRV;
+    private ImageView backButton;
     private RecyclerView.Adapter ProducerAdapter;
     RecyclerView.LayoutManager producerLayoutManager;
 
@@ -20,6 +21,14 @@ public class CustomerViewProducerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_view_producer);
+
+        backButton = findViewById(R.id.customerViewProducerBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CustomerViewProducerActivity.super.onBackPressed();
+            }
+        });
 
         producerRV = (RecyclerView) findViewById(R.id.costumerViewProducerProductsRV);
 

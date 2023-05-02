@@ -1,11 +1,11 @@
 package com.swifties.bahceden;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -18,7 +18,6 @@ import com.swifties.bahceden.fragments.CustomerSearchFragment;
 public class CustomerMainActivity extends AppCompatActivity {
 
     BottomNavigationView customerBottomNav;
-
     CustomerHomeFragment customerHomeFragment;
     CustomerSearchFragment customerSearchFragment;
     CustomerFavoritesFragment customerFavoritesFragment;
@@ -45,7 +44,7 @@ public class CustomerMainActivity extends AppCompatActivity {
         customerBottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.customerHome:
                         replaceFragment(customerHomeFragment);
                         return true;
@@ -72,7 +71,7 @@ public class CustomerMainActivity extends AppCompatActivity {
         });
     }
 
-//    Helper method to replace fragments
+    //    Helper method to replace fragments
     private void replaceFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.customerMainFragmentContainer, fragment).commit();
     }

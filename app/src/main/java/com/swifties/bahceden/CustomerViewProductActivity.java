@@ -1,11 +1,12 @@
 package com.swifties.bahceden;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.LayoutInflater;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 
 public class CustomerViewProductActivity extends AppCompatActivity {
 
+    private ImageView backButton;
     private RecyclerView similarItemsRV;
     private RecyclerView.Adapter similarItemsAdapter;
     private RecyclerView.LayoutManager similarItemsLM;
@@ -26,10 +28,19 @@ public class CustomerViewProductActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager commentsLM;
 
     ImageSlider imageSlider;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_view_product);
+
+        backButton = findViewById(R.id.customerViewProductBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CustomerViewProductActivity.super.onBackPressed();
+            }
+        });
 
         imageSlider = findViewById(R.id.productSlider);
         ArrayList<SlideModel> slideModels = new ArrayList<>();
