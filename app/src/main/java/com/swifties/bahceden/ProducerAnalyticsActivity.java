@@ -1,21 +1,22 @@
 package com.swifties.bahceden;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.swifties.bahceden.adapters.AnalyticsProductAdapter;
 
 public class ProducerAnalyticsActivity extends AppCompatActivity {
 
+    ImageView backButton;
     RecyclerView analyticsProductRV;
     RecyclerView.Adapter analyticsProductAdapter;
     RecyclerView.LayoutManager analyticsProductLM;
@@ -30,6 +31,14 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producer_analytics);
+
+        backButton = findViewById(R.id.producerAnalyticsBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProducerAnalyticsActivity.super.onBackPressed();
+            }
+        });
 
         totalText = findViewById(R.id.producerAnalyticsTotalText);
         averageText = findViewById(R.id.producerAnalyticsAverageText);
@@ -52,8 +61,7 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = parent.getItemAtPosition(position).toString();
-                switch (selectedItem)
-                {
+                switch (selectedItem) {
                     case "This Month":
                         break;
                     case "Last Month":
@@ -75,7 +83,7 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = parent.getItemAtPosition(position).toString();
-                switch (selectedItem){
+                switch (selectedItem) {
                     case "Earnings":
                         totalText.setText("Total : 1500$");
                         averageText.setText("Average : 46$");

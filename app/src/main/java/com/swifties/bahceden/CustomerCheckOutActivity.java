@@ -1,19 +1,18 @@
 package com.swifties.bahceden;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.swifties.bahceden.adapters.CheckOutAdapter;
 
 public class CustomerCheckOutActivity extends AppCompatActivity {
 
+    private ImageView backButton;
     private RecyclerView checkOutRc;
     private CheckOutAdapter checkOutAdapter;
     private RecyclerView.LayoutManager rcLayoutManager;
@@ -22,6 +21,14 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_check_out);
+
+        backButton = findViewById(R.id.customerCheckOutBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CustomerCheckOutActivity.super.onBackPressed();
+            }
+        });
 
         checkOutRc = findViewById(R.id.customerCheckOutOrdersRV);
         checkOutRc.setHasFixedSize(true);

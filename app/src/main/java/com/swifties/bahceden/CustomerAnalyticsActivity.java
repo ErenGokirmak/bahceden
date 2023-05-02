@@ -2,9 +2,10 @@ package com.swifties.bahceden;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -16,12 +17,21 @@ import java.util.ArrayList;
 public class CustomerAnalyticsActivity extends AppCompatActivity {
 
 
-    PieChart consumerChart;
+    private ImageView backButton;
+    private PieChart consumerChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_analytics);
+
+        backButton = findViewById(R.id.customerAnalyticsBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CustomerAnalyticsActivity.super.onBackPressed();
+            }
+        });
 
         consumerChart = findViewById(R.id.customerAnalyticsConsumerChart);
 

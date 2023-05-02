@@ -1,11 +1,11 @@
 package com.swifties.bahceden;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
 import com.swifties.bahceden.classes.SpinnerCustomItem;
@@ -13,7 +13,6 @@ import com.swifties.bahceden.classes.SpinnerCustomItem;
 import java.util.ArrayList;
 
 public class ProducerEditProductActivity extends AppCompatActivity {
-
     Spinner customCategoriesSpinner;
     Spinner customSubCategoriesSpinner;
     ArrayList<SpinnerCustomItem> customItems;
@@ -24,7 +23,6 @@ public class ProducerEditProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producer_edit_product);
-
 
 
         customSubCategoriesSpinner = findViewById(R.id.producerEditProductItemSubCategoriesSpinner);
