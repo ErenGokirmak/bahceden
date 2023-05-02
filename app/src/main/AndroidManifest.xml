@@ -64,6 +64,12 @@
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
+            android:name=".ProducerEditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerEditProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
