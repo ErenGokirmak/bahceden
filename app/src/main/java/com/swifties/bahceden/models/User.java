@@ -1,6 +1,4 @@
-package com.swifties.bahceden.models.users;
-
-import android.content.Context;
+package com.swifties.bahceden.models;
 
 public abstract class User {
     /**
@@ -62,6 +60,7 @@ public abstract class User {
 
     /**
      * Checks if a given email is valid.
+     *
      * @return whether the email of a user object is valid.
      */
     public boolean checkEmail() {
