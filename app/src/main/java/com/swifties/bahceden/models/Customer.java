@@ -28,12 +28,4 @@ public class Customer extends User {
     public Set<Address> getAddresses() {
         return addresses;
     }
-
-    public void addItemToCart() {
-
-    }
-
-    public void removeItemFromCart() {
-
-    }
 }

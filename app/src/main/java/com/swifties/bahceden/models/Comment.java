@@ -9,4 +9,28 @@ public class Comment {
     private ArrayList<Comment> replies;
     private int numberOfLikes;
     private double rating;
+
+    public Customer getAuthor() {
+        return author;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public String getContentOfComment() {
+        return contentOfComment;
+    }
+
+    public ArrayList<Comment> getReplies() {
+        return replies;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public int getNumberOfLikes() {
+        return numberOfLikes;
+    }
 }
