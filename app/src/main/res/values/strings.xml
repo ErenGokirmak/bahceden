@@ -51,4 +51,5 @@
     <string name="cvv">CVV</string>
     <string name="card_number">Card Number</string>
     <string name="name_of_the_card_holder">Name of the card holder</string>
+    <string name="turkish_lira">₺%s</string>
 </resources>

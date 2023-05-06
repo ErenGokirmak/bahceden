@@ -1,5 +1,6 @@
 package com.swifties.bahceden.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,12 +15,20 @@ import android.view.ViewGroup;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CartProductAdapter;
+import com.swifties.bahceden.models.Cart;
+import com.swifties.bahceden.models.CartItem;
+import com.swifties.bahceden.models.Producer;
+import com.swifties.bahceden.models.Product;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class CustomerCartFragment extends Fragment {
 
     private RecyclerView cartProductsRV;
     private RecyclerView.Adapter cartProductAdapter;
-    RecyclerView.LayoutManager cartProductLayoutManager;
+    private RecyclerView.LayoutManager cartProductLayoutManager;
+    private Cart cart;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,12 +39,43 @@ public class CustomerCartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        cart = new Cart();
+        fillCart(cart);
+
         cartProductsRV = view.findViewById(R.id.customerCartProductsRV);
         cartProductsRV.setHasFixedSize(true);
         cartProductLayoutManager = new LinearLayoutManager(getActivity());
 
         cartProductsRV.setLayoutManager(cartProductLayoutManager);
-        cartProductAdapter = new CartProductAdapter();
+        cartProductAdapter = new CartProductAdapter(cart, this.getContext());
         cartProductsRV.setAdapter(cartProductAdapter);
+    }
+
+    private void fillCart(Cart cart)
+    {
+        cart.addItem(new CartItem(new Product(Product.UnitType.KILOGRAMS,
+                "Cherry Jam",
+                "delicios",
+                null,
+                new Producer(null,null,"ısparta",null),
+                5,5,
+                "https://anitalianinmykitchen.com/wp-content/uploads/2022/06/cherry-jam-blog-2-1-of-1.jpg"),
+                3));
+        cart.addItem(new CartItem(new Product(Product.UnitType.KILOGRAMS,
+                "Cherry Jam",
+                "delicios",
+                null,
+                new Producer(null,null,"ısparta",null),
+                5,5,
+                "https://anitalianinmykitchen.com/wp-content/uploads/2022/06/cherry-jam-blog-2-1-of-1.jpg"),
+                3));
+        cart.addItem(new CartItem(new Product(Product.UnitType.KILOGRAMS,
+                "Cherry Jam",
+                "delicios",
+                null,
+                new Producer(null,null,"ısparta",null),
+                5,5,
+                "https://anitalianinmykitchen.com/wp-content/uploads/2022/06/cherry-jam-blog-2-1-of-1.jpg"),
+                3));
     }
 }

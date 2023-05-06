@@ -11,7 +11,7 @@
     android:padding="8dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cartProductImage"
+        android:id="@+id/cartProductImageHolder"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_margin="8dp"
@@ -22,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/cartProductImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
@@ -41,10 +42,11 @@
         android:text="Cherry Jam"
         android:textColor="@color/bahceden_green"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@id/cartProductImage"
-        app:layout_constraintTop_toTopOf="@id/cartProductImage" />
+        app:layout_constraintStart_toEndOf="@id/cartProductImageHolder"
+        app:layout_constraintTop_toTopOf="@id/cartProductImageHolder" />
 
     <ImageView
+        android:id="@+id/cartProductDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_delete"
@@ -54,7 +56,7 @@
 
 
     <TextView
-        android:id="@+id/city"
+        android:id="@+id/cartProductCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -75,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/decrement"
+            android:id="@+id/cartProductDecrement"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:background="@drawable/bg_semi_circle_2"
@@ -87,6 +89,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/cartProductAmount"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:background="@drawable/bg_square"
@@ -96,12 +99,12 @@
             android:textColor="@color/bahceden_green"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/increment"
-            app:layout_constraintStart_toEndOf="@id/decrement"
+            app:layout_constraintEnd_toStartOf="@id/cartProductIncrement"
+            app:layout_constraintStart_toEndOf="@id/cartProductDecrement"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/increment"
+            android:id="@+id/cartProductIncrement"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:background="@drawable/bg_semi_circle_1"
@@ -115,7 +118,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/cartProductPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -124,7 +127,7 @@
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/buttonLayout"
-        app:layout_constraintStart_toEndOf="@id/cartProductImage"
+        app:layout_constraintStart_toEndOf="@id/cartProductImageHolder"
         app:layout_constraintTop_toTopOf="@id/buttonLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
