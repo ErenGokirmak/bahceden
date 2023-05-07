@@ -1,31 +1,51 @@
 package com.swifties.bahceden.models;
 
-import java.util.Set;
+import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 public class Customer extends User {
     Cart cart;
-    Set<Product> favoriteProducts;
-    Set<Producer> favoriteProducers;
-    Set<Order> orders;
-    Set<Address> addresses;
+    ArrayList<Integer> favoriteProductIds;
+    ArrayList<Integer> favoriteProducerIds;
+    ArrayList<Order> orders;
+    ArrayList<Address> addresses;
+    ArrayList<Card> cards;
 
     public Cart getCart() {
         return cart;
     }
 
-    public Set<Product> getFavoriteProducts() {
-        return favoriteProducts;
+    public ArrayList<Integer> getFavoriteProducts() {
+        return favoriteProducerIds;
     }
 
-    public Set<Producer> getFavoriteProducers() {
-        return favoriteProducers;
+    public ArrayList<Integer> getFavoriteProducers() {
+        return favoriteProducerIds;
     }
 
-    public Set<Order> getOrders() {
+    public ArrayList<Order> getOrders() {
         return orders;
     }
 
-    public Set<Address> getAddresses() {
+    public ArrayList<Address> getAddresses() {
         return addresses;
+    }
+
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+
+        return "{" +
+                "\"user\":" + super.toString() + "," +
+                "\"cart\":\"" + cart.toString() + "\"," +
+                "\"favoriteProductIds\":\"" + favoriteProductIds.toString() + "\"," +
+                "\"favoriteProducerIds\":\"" + favoriteProducerIds.toString() + "\"," +
+                "\"orders\":" + orders.toString() +
+                "\"addresses\":\"" + addresses.toString() + "\"," +
+                "\"cards\":\"" + addresses.toString() + "\",";
     }
 }

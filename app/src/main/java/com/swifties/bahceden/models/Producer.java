@@ -1,16 +1,18 @@
 package com.swifties.bahceden.models;
 
-import java.util.Set;
+import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
 
 public class Producer extends User {
-    Set<Product> products;
-    Set<Order> orders;
-    String city; // this is tentative we can change this into a location object etc
     private String displayName;
+    String city; // this is tentative we can change this into a location object etc
+    ArrayList<Integer> productIds;
+    ArrayList<Integer> orderIds;
 
-    public Producer(Set<Product> products, Set<Order> orders, String city, String displayName) {
-        this.products = products;
-        this.orders = orders;
+    public Producer(ArrayList<Integer> productIds, ArrayList<Integer> orderIds, String city, String displayName) {
+        this.productIds = productIds;
+        this.orderIds = orderIds;
         this.city = city;
         this.displayName = displayName;
     }
@@ -19,16 +21,27 @@ public class Producer extends User {
         return displayName;
     }
 
-    public Set<Order> getOrders() {
-        return orders;
+    public ArrayList<Integer> getOrderIds() {
+        return orderIds;
     }
 
-    public Set<Product> getProducts() {
-        return products;
+    public ArrayList<Integer> getProductIds() {
+        return productIds;
     }
 
     public String getCity() {
         return city;
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return "{" +
+                " \"user\": " + super.toString() + "," +
+                " \"displayName\": \"" + displayName + "\"," +
+                " \"city\": \"" + city + "\"," +
+                " \"productIds\": " + productIds.toString() + "," +
+                " \"orderIds\":" + orderIds.toString() +
+                '}';
+    }
 }

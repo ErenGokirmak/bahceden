@@ -1,5 +1,7 @@
 package com.swifties.bahceden.models;
 
+import androidx.annotation.NonNull;
+
 public abstract class User {
     /**
      * Unique identification number of the user.
@@ -75,4 +77,15 @@ public abstract class User {
         return true;
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return "{" +
+                "\"id\":" + id +
+                ", \"name\":\"" + name + '\"' +
+                ", \"email\":\"" + email + '\"' +
+                ", \"password\":\"" + password + '\"' +
+                ", \"phoneNumber\":\"" + phoneNumber + '\"' +
+                '}';
+    }
 }
