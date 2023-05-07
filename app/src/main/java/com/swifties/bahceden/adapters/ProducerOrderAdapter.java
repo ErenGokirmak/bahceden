@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.swifties.bahceden.ProducerOrderDetailsActivity;
+import com.swifties.bahceden.activities.ProducerOrderDetailsActivity;
 import com.swifties.bahceden.R;
 
 public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdapter.ViewHolder> {

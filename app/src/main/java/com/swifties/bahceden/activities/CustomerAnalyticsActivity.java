@@ -1,4 +1,4 @@
-package com.swifties.bahceden;
+package com.swifties.bahceden.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.swifties.bahceden.R;
 
 import java.util.ArrayList;
 

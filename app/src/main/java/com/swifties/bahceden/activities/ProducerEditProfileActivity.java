@@ -1,26 +1,26 @@
-package com.swifties.bahceden;
+package com.swifties.bahceden.activities;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CustomerEditProfileActivity extends AppCompatActivity {
+import com.swifties.bahceden.R;
+
+public class ProducerEditProfileActivity extends AppCompatActivity {
 
     ImageView backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_edit_profile);
+        setContentView(R.layout.activity_producer_edit_profile);
 
-        backButton = findViewById(R.id.customerEditProfileBackButton);
-
+        backButton = findViewById(R.id.producerEditProfileBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CustomerEditProfileActivity.super.onBackPressed();
+                ProducerEditProfileActivity.super.onBackPressed();
             }
         });
     }

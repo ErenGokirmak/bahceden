@@ -9,14 +9,14 @@ import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 
-import com.swifties.bahceden.CustomerAddressesActivity;
-import com.swifties.bahceden.CustomerAnalyticsActivity;
-import com.swifties.bahceden.CustomerCardsActivity;
-import com.swifties.bahceden.CustomerEditProfileActivity;
-import com.swifties.bahceden.CustomerOrdersActivity;
-import com.swifties.bahceden.ProducerMainActivity;
+import com.swifties.bahceden.activities.CustomerAddressesActivity;
+import com.swifties.bahceden.activities.CustomerAnalyticsActivity;
+import com.swifties.bahceden.activities.CustomerCardsActivity;
+import com.swifties.bahceden.activities.CustomerEditProfileActivity;
+import com.swifties.bahceden.activities.CustomerOrdersActivity;
+import com.swifties.bahceden.activities.ProducerMainActivity;
 import com.swifties.bahceden.R;
-import com.swifties.bahceden.SecurityProfileActivity;
+import com.swifties.bahceden.activities.SecurityProfileActivity;
 
 public class CustomerProfileFragment extends Fragment {
 

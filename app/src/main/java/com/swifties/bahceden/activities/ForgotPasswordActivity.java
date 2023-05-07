@@ -1,4 +1,4 @@
-package com.swifties.bahceden;
+package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.swifties.bahceden.R;
 import com.swifties.bahceden.fragments.ChooseActionFragment;
 import com.swifties.bahceden.fragments.EnterMailFragment;
 

@@ -1,4 +1,4 @@
-package com.swifties.bahceden;
+package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CheckOutAdapter;
 
 public class CustomerCheckOutActivity extends AppCompatActivity {

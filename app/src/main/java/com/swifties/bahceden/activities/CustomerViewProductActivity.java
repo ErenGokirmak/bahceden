@@ -1,4 +1,4 @@
-package com.swifties.bahceden;
+package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CommentCustomerViewAdapter;
 import com.swifties.bahceden.adapters.HotSalesAdapter;
 

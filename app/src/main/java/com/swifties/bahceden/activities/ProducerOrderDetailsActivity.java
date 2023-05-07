@@ -1,10 +1,12 @@
-package com.swifties.bahceden;
+package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.swifties.bahceden.R;
 
 public class ProducerOrderDetailsActivity extends AppCompatActivity {
 

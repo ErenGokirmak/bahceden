@@ -1,4 +1,4 @@
-package com.swifties.bahceden;
+package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.swifties.bahceden.R;
 import com.swifties.bahceden.fragments.ProducerAddProductFragment;
 import com.swifties.bahceden.fragments.ProducerDataFragment;
 import com.swifties.bahceden.fragments.ProducerHomeFragment;

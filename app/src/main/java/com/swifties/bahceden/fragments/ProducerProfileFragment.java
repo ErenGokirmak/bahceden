@@ -10,13 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.swifties.bahceden.CustomerEditProfileActivity;
-import com.swifties.bahceden.ProducerAnalyticsActivity;
-import com.swifties.bahceden.ProducerEditProfileActivity;
+import com.swifties.bahceden.activities.ProducerAnalyticsActivity;
+import com.swifties.bahceden.activities.ProducerEditProfileActivity;
 import com.swifties.bahceden.R;
-import com.swifties.bahceden.SecurityProfileActivity;
-
-import java.security.Security;
+import com.swifties.bahceden.activities.SecurityProfileActivity;
 
 public class ProducerProfileFragment extends Fragment {
 
