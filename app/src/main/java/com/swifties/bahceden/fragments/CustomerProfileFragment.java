@@ -14,6 +14,7 @@ import com.swifties.bahceden.CustomerAnalyticsActivity;
 import com.swifties.bahceden.CustomerCardsActivity;
 import com.swifties.bahceden.CustomerEditProfileActivity;
 import com.swifties.bahceden.CustomerOrdersActivity;
+import com.swifties.bahceden.ProducerMainActivity;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.SecurityProfileActivity;
 
@@ -41,7 +42,6 @@ public class CustomerProfileFragment extends Fragment {
         logOutButton = view.findViewById(R.id.customerProfileLogOutButton);
 
         // Initializing listeners
-        // TODO: Edit Profile button doesn't work for some reason.
         editProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,7 +89,13 @@ public class CustomerProfileFragment extends Fragment {
             }
         });
 
-        // TODO: Log Out button doesn't do anything right now since we're not logged in.
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ProducerMainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

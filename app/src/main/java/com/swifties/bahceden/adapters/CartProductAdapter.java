@@ -32,7 +32,6 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.layout_customer_cart_item, viewGroup, false);
 

@@ -77,5 +77,12 @@ public class CustomerCartFragment extends Fragment {
                 5,5,
                 "https://anitalianinmykitchen.com/wp-content/uploads/2022/06/cherry-jam-blog-2-1-of-1.jpg"),
                 3));
+        System.out.println(new Product(Product.UnitType.KILOGRAMS,
+                "Cherry Jam",
+                "delicios",
+                null,
+                new Producer(null,null,"ısparta",null),
+                5,5,
+                "https://anitalianinmykitchen.com/wp-content/uploads/2022/06/cherry-jam-blog-2-1-of-1.jpg"));
     }
 }

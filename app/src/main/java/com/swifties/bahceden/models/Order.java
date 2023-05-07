@@ -4,8 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Set;
 
 public class Order {
-    private enum ShipmentType {
+    public enum ShipmentType {
         CUSTOMER_PICKUP, PRODUCER_DELIVERY, SHIPMENT
+    }
+    public enum OrderStatus {
+        IN_CART, PENDING, DELIVERED, CANCELLED
     }
 
     private int id;
@@ -14,6 +17,7 @@ public class Order {
     private Customer receiver;
     private ShipmentType shipmentType;
     private Address address;
+    private OrderStatus orderStatus;
 
     public int getId() {
         return id;

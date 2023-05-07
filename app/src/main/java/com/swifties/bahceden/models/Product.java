@@ -1,9 +1,10 @@
 package com.swifties.bahceden.models;
 
+import androidx.annotation.NonNull;
+
 import java.util.Set;
 
 public class Product {
-    private static int totalNoOfProducts = 0;
     UnitType unitType;
     private int id;
     private String name;
@@ -13,7 +14,6 @@ public class Product {
     private double pricePerUnit;
     private double amountInStock;
     private String imageUrl;
-    private Rating rating;
 
     public Product(UnitType unitType,
                    String name,
@@ -24,7 +24,7 @@ public class Product {
                    double amountInStock,
                    String imageUrl) {
         this.unitType = unitType;
-        this.id = totalNoOfProducts++;
+        this.id = -1;
         this.name = name;
         this.description = description;
         this.comments = comments;
@@ -72,5 +72,19 @@ public class Product {
     }
     public double getPricePerUnit() {
         return pricePerUnit;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "{\"unitType\":\"" + "1" + "\"," +
+                "\"name\":\"" + name + "\"," +
+                "\"desc\":\"" + description + "\"," +
+                "\"comments\":\"" + comments + "\"," +
+                "\"producer\":\"" + producer + "\"," +
+                "\"pricePerUnit\":\"" + pricePerUnit + "\"," +
+                "\"amountInStock\":\"" + amountInStock + "\"," +
+                "\"imageUrl\":\"" + imageUrl + "\"," +
+                "\"description\":\"0\" }";
     }
 }

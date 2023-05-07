@@ -30,4 +30,5 @@ public class Producer extends User {
     public String getCity() {
         return city;
     }
+
 }
