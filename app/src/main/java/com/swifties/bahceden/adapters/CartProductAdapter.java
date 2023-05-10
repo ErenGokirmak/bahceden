@@ -11,13 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.models.Cart;
-import com.swifties.bahceden.models.CartItem;
+import com.swifties.bahceden.models.Order;
+import com.swifties.bahceden.models.PostAction;
+import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.Product;
-
-import java.util.List;
 
 public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.ViewHolder> {
 
@@ -40,19 +40,22 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        List<CartItem> cartItems = cart.getCartItems();
-        CartItem cartItem = cartItems.get(position);
+        Order cartItem = cart.get(position);
         Product product = cartItem.getProduct();
-        Glide.with(context).load(product.getImageUrl()).into(holder.cartProductImage);
+        System.out.println(product.getImageURL());
+        Producer producer = product.getProducer(true);
+        Picasso.get()
+                .load(product.getImageURL())
+                .into(holder.cartProductImage);
         holder.cartProductName.setText(product.getName());
-        holder.cartProductCity.setText(product.getProducer().getCity());
+        //holder.cartProductCity.setText(producer.getCity());
         holder.cartProductPrice.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(cartItem.getTotalPrice())));
         holder.cartProductAmount.setText(String.valueOf(cartItem.getAmount()));
 
         holder.cartProductDecrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cartItem.increseAmountBy(-1);
+                cartItem.increaseAmountBy(-1);
                 notifyItemChanged(holder.getAdapterPosition());
             }
         });
@@ -60,7 +63,7 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         holder.cartProductIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cartItem.increseAmountBy(1);
+                cartItem.increaseAmountBy(1);
                 notifyItemChanged(holder.getAdapterPosition());
             }
         });
@@ -68,10 +71,15 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         holder.cartProductDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cartItems.remove(holder.getAdapterPosition());
+                cart.remove(holder.getAdapterPosition());
                 notifyItemRemoved(holder.getAdapterPosition());
             }
         });
+    }
+
+    private void BindingAction (ViewHolder holder, int position)
+    {
+
     }
 
     @Override
@@ -98,4 +106,6 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
             cartProductDelete = view.findViewById(R.id.cartProductDelete);
         }
     }
+
+
 }

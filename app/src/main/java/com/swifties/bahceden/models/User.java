@@ -1,8 +1,6 @@
 package com.swifties.bahceden.models;
 
-import androidx.annotation.NonNull;
-
-public abstract class User {
+public abstract class User implements Retrievable<User> {
     /**
      * Unique identification number of the user.
      */
@@ -23,6 +21,10 @@ public abstract class User {
      * The phone number of a user will be of the form "countryCode-phoneNumber"
      */
     private String phoneNumber;
+
+    public User(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;
@@ -69,23 +71,14 @@ public abstract class User {
         return true;
     }
 
-    public boolean saveToDatabase() {
-        return true;
-    }
-
-    public boolean retrieveFromDatabase() {
-        return true;
-    }
-
-    @NonNull
     @Override
     public String toString() {
-        return "{" +
-                "\"id\":" + id +
-                ", \"name\":\"" + name + '\"' +
-                ", \"email\":\"" + email + '\"' +
-                ", \"password\":\"" + password + '\"' +
-                ", \"phoneNumber\":\"" + phoneNumber + '\"' +
+        return "\"User\"{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 }

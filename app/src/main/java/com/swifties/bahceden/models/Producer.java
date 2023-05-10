@@ -10,11 +10,8 @@ public class Producer extends User {
     ArrayList<Integer> productIds;
     ArrayList<Integer> orderIds;
 
-    public Producer(ArrayList<Integer> productIds, ArrayList<Integer> orderIds, String city, String displayName) {
-        this.productIds = productIds;
-        this.orderIds = orderIds;
-        this.city = city;
-        this.displayName = displayName;
+    public Producer(int id) {
+        super(id);
     }
 
     public String getDisplayName() {

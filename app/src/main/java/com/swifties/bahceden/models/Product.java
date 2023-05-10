@@ -2,50 +2,65 @@ package com.swifties.bahceden.models;
 
 import androidx.annotation.NonNull;
 
-import java.util.Set;
-
-public class Product {
+public class Product implements Retrievable<Product> {
     UnitType unitType;
     private int id;
     private String name;
     private String description;
-    private Set<Comment> comments;
+    //private ArrayList<Comment> comments;
     private Producer producer;
+    private int producerId;
     private double pricePerUnit;
     private double amountInStock;
-    private String imageUrl;
+    private String imageURL;
 
-    public Product(UnitType unitType,
-                   String name,
-                   String description,
-                   Set<Comment> comments,
-                   Producer producer,
-                   double pricePerUnit,
-                   double amountInStock,
-                   String imageUrl) {
-        this.unitType = unitType;
-        this.id = -1;
+    public Product(int id, String name, String description, int unitType, double pricePerUnit, int producerId,  double amountInStock, String imageURL) {
+        this.unitType = UnitType.fromValue(unitType);
+        this.id = id;
         this.name = name;
         this.description = description;
-        this.comments = comments;
-        this.producer = producer;
+        this.producerId = producerId;
+        this.producer = new Producer(producerId);
         this.pricePerUnit = pricePerUnit;
         this.amountInStock = amountInStock;
-        this.imageUrl = imageUrl;
+        this.imageURL = imageURL;
+    }
+
+    public Product(int id) {
+        this.id = id;
     }
 
     public enum UnitType {
-        KILOGRAMS,
-        LITERS,
-        PACKAGES
+        KILOGRAMS(1),
+        LITERS(2),
+        PACKAGES(3);
+
+        private final int value;
+
+        UnitType(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public static UnitType fromValue(int value) {
+            for (UnitType unitType : UnitType.values()) {
+                if (unitType.value == value) {
+                    return unitType;
+                }
+            }
+            throw new IllegalArgumentException("Invalid unit type value: " + value);
+        }
     }
 
     public String getName() {
         return name;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImageURL() {
+        return imageURL;
     }
     public int getId() {
         return id;
@@ -55,13 +70,17 @@ public class Product {
         return amountInStock;
     }
 
-    public Producer getProducer() {
-        return producer;
+    public Producer getProducer(boolean sync) {
+        //if (sync) producer.retrieveFromDB();
+        return this.producer;
     }
 
-    public Set<Comment> getComments() {
-        return comments;
-    }
+//    public ArrayList<Comment> getComments() {
+//        for (Comment c : comments) {
+//            ConnectionFactory.get(c);
+//        }
+//        return comments;
+//    }
 
     public String getDescription() {
         return description;
@@ -74,17 +93,50 @@ public class Product {
         return pricePerUnit;
     }
 
+    public void setUnitType(UnitType unitType) {
+        this.unitType = unitType;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setProducer(Producer producer) {
+        this.producer = producer;
+    }
+
+    public void setPricePerUnit(double pricePerUnit) {
+        this.pricePerUnit = pricePerUnit;
+    }
+
+    public void setAmountInStock(double amountInStock) {
+        this.amountInStock = amountInStock;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
     @NonNull
     @Override
     public String toString() {
+        //return String.valueOf(id);
         return "{\"unitType\":\"" + "1" + "\"," +
                 "\"name\":\"" + name + "\"," +
                 "\"desc\":\"" + description + "\"," +
-                "\"comments\":\"" + comments + "\"," +
-                "\"producer\":\"" + producer + "\"," +
+                //"\"commentIds\":\"" + comments.toString() + "\"," +
+                //"\"producer\":\"" + producer.getId() + "\"," +
                 "\"pricePerUnit\":\"" + pricePerUnit + "\"," +
                 "\"amountInStock\":\"" + amountInStock + "\"," +
-                "\"imageUrl\":\"" + imageUrl + "\"," +
+                "\"imageUrl\":\"" + imageURL + "\"," +
                 "\"description\":\"0\" }";
     }
 }

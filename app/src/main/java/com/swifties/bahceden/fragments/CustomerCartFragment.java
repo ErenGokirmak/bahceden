@@ -1,6 +1,5 @@
 package com.swifties.bahceden.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,13 +14,11 @@ import android.view.ViewGroup;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CartProductAdapter;
+import com.swifties.bahceden.data.DBConnection;
 import com.swifties.bahceden.models.Cart;
-import com.swifties.bahceden.models.CartItem;
-import com.swifties.bahceden.models.Producer;
+import com.swifties.bahceden.models.Order;
+import com.swifties.bahceden.models.PostAction;
 import com.swifties.bahceden.models.Product;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 
 public class CustomerCartFragment extends Fragment {
 
@@ -39,50 +36,28 @@ public class CustomerCartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        cart = new Cart();
-        fillCart(cart);
+        cart = new Cart(0);
 
-        cartProductsRV = view.findViewById(R.id.customerCartProductsRV);
-        cartProductsRV.setHasFixedSize(true);
-        cartProductLayoutManager = new LinearLayoutManager(getActivity());
+        Order order1 = new Order(0);
+        Product product1 = new Product(1);
+        order1.setProduct(product1);
+        Order order2 = new Order(1);
+        Product product2 = new Product(2);
+        order2.setProduct(product2);
+        cart.getOrders().add(order1);
+        cart.getOrders().add(order2);
 
-        cartProductsRV.setLayoutManager(cartProductLayoutManager);
-        cartProductAdapter = new CartProductAdapter(cart, this.getContext());
-        cartProductsRV.setAdapter(cartProductAdapter);
-    }
+        new DBConnection(new PostAction() {
+            @Override
+            public void Action() {
+                cartProductsRV = view.findViewById(R.id.customerCartProductsRV);
+                cartProductsRV.setHasFixedSize(true);
+                cartProductLayoutManager = new LinearLayoutManager(getActivity());
 
-    private void fillCart(Cart cart)
-    {
-        cart.addItem(new CartItem(new Product(Product.UnitType.KILOGRAMS,
-                "Cherry Jam",
-                "delicios",
-                null,
-                new Producer(null,null,"ısparta",null),
-                5,5,
-                "https://anitalianinmykitchen.com/wp-content/uploads/2022/06/cherry-jam-blog-2-1-of-1.jpg"),
-                3));
-        cart.addItem(new CartItem(new Product(Product.UnitType.KILOGRAMS,
-                "Cherry Jam",
-                "delicios",
-                null,
-                new Producer(null,null,"ısparta",null),
-                5,5,
-                "https://anitalianinmykitchen.com/wp-content/uploads/2022/06/cherry-jam-blog-2-1-of-1.jpg"),
-                3));
-        cart.addItem(new CartItem(new Product(Product.UnitType.KILOGRAMS,
-                "Cherry Jam",
-                "delicios",
-                null,
-                new Producer(null,null,"ısparta",null),
-                5,5,
-                "https://anitalianinmykitchen.com/wp-content/uploads/2022/06/cherry-jam-blog-2-1-of-1.jpg"),
-                3));
-        System.out.println(new Product(Product.UnitType.KILOGRAMS,
-                "Cherry Jam",
-                "delicios",
-                null,
-                new Producer(null,null,"ısparta",null),
-                5,5,
-                "https://anitalianinmykitchen.com/wp-content/uploads/2022/06/cherry-jam-blog-2-1-of-1.jpg"));
+                cartProductsRV.setLayoutManager(cartProductLayoutManager);
+                cartProductAdapter = new CartProductAdapter(cart, CustomerCartFragment.this.getContext());
+                cartProductsRV.setAdapter(cartProductAdapter);
+            }
+        }).execute(product1,product2);
     }
 }

@@ -11,6 +11,11 @@ public class Customer extends User {
     ArrayList<Address> addresses;
     ArrayList<Card> cards;
 
+    public Customer(int id) {
+        super(id);
+    }
+
+
     public Cart getCart() {
         return cart;
     }
@@ -35,17 +40,17 @@ public class Customer extends User {
         return cards;
     }
 
-    @NonNull
     @Override
     public String toString() {
-
-        return "{" +
-                "\"user\":" + super.toString() + "," +
-                "\"cart\":\"" + cart.toString() + "\"," +
-                "\"favoriteProductIds\":\"" + favoriteProductIds.toString() + "\"," +
-                "\"favoriteProducerIds\":\"" + favoriteProducerIds.toString() + "\"," +
-                "\"orders\":" + orders.toString() +
-                "\"addresses\":\"" + addresses.toString() + "\"," +
-                "\"cards\":\"" + addresses.toString() + "\",";
+        String userJson = super.toString();
+        String customerJson = "\"Customer\":{" +
+                "cart=" + cart +
+                ", favoriteProductIds=" + favoriteProductIds +
+                ", favoriteProducerIds=" + favoriteProducerIds +
+                ", orders=" + orders +
+                ", addresses=" + addresses +
+                ", cards=" + cards +
+                '}';
+        return "{" + userJson + ", " + customerJson + "}";
     }
 }
