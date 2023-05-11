@@ -1,6 +1,7 @@
 package com.swifties.bahceden.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.activities.CustomerViewProductActivity;
 import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;
-import com.swifties.bahceden.models.PostAction;
 import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.Product;
 
@@ -75,10 +76,17 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
                 notifyItemRemoved(holder.getAdapterPosition());
             }
         });
+
+        holder.cartProductImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), CustomerViewProductActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
-    private void BindingAction (ViewHolder holder, int position)
-    {
+    private void BindingAction(ViewHolder holder, int position) {
 
     }
 
@@ -96,11 +104,14 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         public ViewHolder(View view) {
             super(view);
 
+            // product information
             cartProductImage = view.findViewById(R.id.cartProductImage);
             cartProductName = view.findViewById(R.id.cartProductName);
-            cartProductCity  = view.findViewById(R.id.cartProductCity);
+            cartProductCity = view.findViewById(R.id.cartProductCity);
             cartProductPrice = view.findViewById(R.id.cartProductPrice);
             cartProductAmount = view.findViewById(R.id.cartProductAmount);
+
+            // buttons
             cartProductDecrement = view.findViewById(R.id.cartProductDecrement);
             cartProductIncrement = view.findViewById(R.id.cartProductIncrement);
             cartProductDelete = view.findViewById(R.id.cartProductDelete);

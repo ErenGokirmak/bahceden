@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.swifties.bahceden.activities.CustomerMainActivity;
 import com.swifties.bahceden.activities.ProducerAnalyticsActivity;
 import com.swifties.bahceden.activities.ProducerEditProfileActivity;
 import com.swifties.bahceden.R;
@@ -54,7 +55,15 @@ public class ProducerProfileFragment extends Fragment {
             }
         });
 
-        // TODO: Log Out Button isn't implemented as we're not logged in at the moment.
+
+        // TODO: Log Out Button currently redirects to the customer main activity for development purposes.
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CustomerMainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
