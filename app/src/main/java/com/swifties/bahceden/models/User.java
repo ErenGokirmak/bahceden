@@ -26,6 +26,14 @@ public abstract class User implements Retrievable<User> {
         this.id = id;
     }
 
+    public User(int id, String name, String email, String password, String phoneNumber) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+    }
+
     public int getId() {
         return id;
     }
@@ -69,6 +77,14 @@ public abstract class User implements Retrievable<User> {
      */
     public boolean checkEmail() {
         return true;
+    }
+
+    public void fillFrom (User u)
+    {
+        setEmail(u.getEmail());
+        setName(u.getName());
+        setPassword(u.getPassword());
+        setPhoneNumber(u.getPhoneNumber());
     }
 
     @Override

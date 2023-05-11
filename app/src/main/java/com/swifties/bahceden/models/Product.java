@@ -65,13 +65,18 @@ public class Product implements Retrievable<Product> {
     public int getId() {
         return id;
     }
-
     public double getAmountInStock() {
         return amountInStock;
     }
 
-    public Producer getProducer(boolean sync) {
+    public Producer getProducer() {
         //if (sync) producer.retrieveFromDB();
+        return this.producer;
+    }
+
+    public Producer getProducer(PostAction postAction)
+    {
+        producer.retrieveFromDB(postAction);
         return this.producer;
     }
 
@@ -123,6 +128,17 @@ public class Product implements Retrievable<Product> {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+    public void fillFrom (Product p)
+    {
+        setId(p.getId());
+        setName(p.getName());
+        setDescription(p.getDescription());
+        setUnitType(p.getUnitType());
+        setPricePerUnit(p.getPricePerUnit());
+        setProducer(p.getProducer());
+        setAmountInStock(p.getAmountInStock());
+        setImageURL(p.getImageURL());
     }
 
     @NonNull

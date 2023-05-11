@@ -15,6 +15,11 @@ public class Comment implements Retrievable<Comment>{
         return id;
     }
 
+    @Override
+    public void fillFrom(Comment obj) {
+
+    }
+
     public Customer getAuthor() {
         return author;
     }

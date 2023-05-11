@@ -4,7 +4,6 @@ package com.swifties.bahceden.data;
 import android.os.AsyncTask;
 
 import com.swifties.bahceden.models.PostAction;
-import com.swifties.bahceden.models.Product;
 import com.swifties.bahceden.models.Retrievable;
 
 import java.io.BufferedReader;
@@ -14,6 +13,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class DBConnection extends AsyncTask <Retrievable, Integer, PostAction> {
+
+    public static void retrieveFromDB (PostAction postAction, Retrievable... retrievables)
+    {
+        new DBConnection(postAction).execute(retrievables);
+    }
     PostAction postAction;
 
     public DBConnection (PostAction postAction)
@@ -34,7 +38,7 @@ public class DBConnection extends AsyncTask <Retrievable, Integer, PostAction> {
                 InputStream inputStream = connection.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 String dataString = reader.readLine();
-                Parser.parseProduct(dataString, (Product) r);
+                Parser.parse(dataString, r);
             }
             catch (Exception e)
             {

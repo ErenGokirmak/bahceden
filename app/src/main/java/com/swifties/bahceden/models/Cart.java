@@ -46,6 +46,11 @@ public class Cart implements Retrievable<Cart> {
         return id;
     }
 
+    @Override
+    public void fillFrom(Cart obj) {
+
+    }
+
     public int size() {
         return orders.size();
     }

@@ -43,12 +43,10 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         Order cartItem = cart.get(position);
         Product product = cartItem.getProduct();
         System.out.println(product.getImageURL());
-        Producer producer = product.getProducer(true);
         Picasso.get()
                 .load(product.getImageURL())
                 .into(holder.cartProductImage);
         holder.cartProductName.setText(product.getName());
-        //holder.cartProductCity.setText(producer.getCity());
         holder.cartProductPrice.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(cartItem.getTotalPrice())));
         holder.cartProductAmount.setText(String.valueOf(cartItem.getAmount()));
 
@@ -77,11 +75,6 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         });
     }
 
-    private void BindingAction (ViewHolder holder, int position)
-    {
-
-    }
-
     @Override
     public int getItemCount() {
         return cart.size();
@@ -90,7 +83,7 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView cartProductImage, cartProductDelete;
-        TextView cartProductName, cartProductCity, cartProductPrice, cartProductAmount;
+        TextView cartProductName, cartProductPrice, cartProductAmount;
         AppCompatButton cartProductDecrement, cartProductIncrement;
 
         public ViewHolder(View view) {
@@ -98,7 +91,6 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
 
             cartProductImage = view.findViewById(R.id.cartProductImage);
             cartProductName = view.findViewById(R.id.cartProductName);
-            cartProductCity  = view.findViewById(R.id.cartProductCity);
             cartProductPrice = view.findViewById(R.id.cartProductPrice);
             cartProductAmount = view.findViewById(R.id.cartProductAmount);
             cartProductDecrement = view.findViewById(R.id.cartProductDecrement);

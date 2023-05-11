@@ -41,6 +41,11 @@ public class Order implements Retrievable<Order> {
         return id;
     }
 
+    @Override
+    public void fillFrom(Order obj) {
+
+    }
+
     public SimpleDateFormat getDateOfPurchase() {
         return dateOfPurchase;
     }

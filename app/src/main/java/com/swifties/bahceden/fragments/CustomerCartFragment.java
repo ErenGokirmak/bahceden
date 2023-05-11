@@ -19,6 +19,7 @@ import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.PostAction;
 import com.swifties.bahceden.models.Product;
+import com.swifties.bahceden.models.Retrievable;
 
 public class CustomerCartFragment extends Fragment {
 
@@ -47,7 +48,7 @@ public class CustomerCartFragment extends Fragment {
         cart.getOrders().add(order1);
         cart.getOrders().add(order2);
 
-        new DBConnection(new PostAction() {
+        DBConnection.retrieveFromDB(new PostAction() {
             @Override
             public void Action() {
                 cartProductsRV = view.findViewById(R.id.customerCartProductsRV);
@@ -58,6 +59,6 @@ public class CustomerCartFragment extends Fragment {
                 cartProductAdapter = new CartProductAdapter(cart, CustomerCartFragment.this.getContext());
                 cartProductsRV.setAdapter(cartProductAdapter);
             }
-        }).execute(product1,product2);
+        }, product1, product2);
     }
 }
