@@ -50,6 +50,6 @@ public class DBConnection extends AsyncTask <Retrievable, Integer, PostAction> {
 
     @Override
     protected void onPostExecute(PostAction postAction) {
-        postAction.Action();
+        postAction.action();
     }
 }

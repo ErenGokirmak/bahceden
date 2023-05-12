@@ -50,7 +50,7 @@ public class CustomerCartFragment extends Fragment {
 
         DBConnection.retrieveFromDB(new PostAction() {
             @Override
-            public void Action() {
+            public void action() {
                 cartProductsRV = view.findViewById(R.id.customerCartProductsRV);
                 cartProductsRV.setHasFixedSize(true);
                 cartProductLayoutManager = new LinearLayoutManager(getActivity());

@@ -40,40 +40,24 @@ public class Producer extends User {
         return displayName;
     }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
     public String getCity() {
         return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public ArrayList<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
-    }
-
     public ArrayList<Order> getOrders() {
         return orders;
-    }
-
-    public void setOrders(ArrayList<Order> orders) {
-        this.orders = orders;
     }
 
     public void fillFrom(Producer p)
     {
         super.fillFrom(p);
-        setCity(p.getCity());
-        setDisplayName(p.getName());
-        setOrders(p.getOrders());
-        setProducts(p.getProducts());
+        city = p.getCity();
+        displayName = p.getDisplayName();
+        orders = p.getOrders();
+        products = p.getProducts();
     }
 }
