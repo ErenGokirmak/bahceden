@@ -23,6 +23,7 @@ public class Order implements Retrievable<Order> {
 
     public Order(int id) {
         this.id = id;
+        this.amount = 1;
     }
 
     private void calculateTotalPrice ()
@@ -32,6 +33,7 @@ public class Order implements Retrievable<Order> {
 
     public boolean increaseAmountBy (int increment)
     {
+        if (amount + increment < 1) return false;
         amount += increment;
         if (amount == 0) return false;
         return true;

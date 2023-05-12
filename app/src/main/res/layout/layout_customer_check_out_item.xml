@@ -11,7 +11,7 @@
     android:padding="8dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cartProductImage"
+        android:id="@+id/checkoutProductImageCard"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_margin="8dp"
@@ -22,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/checkoutProductImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -32,7 +33,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/cartProductName"
+        android:id="@+id/checkoutProductName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -41,8 +42,8 @@
         android:text="Red Çilek"
         android:textColor="@color/bahceden_green"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@id/cartProductImage"
-        app:layout_constraintTop_toTopOf="@id/cartProductImage" />
+        app:layout_constraintStart_toEndOf="@id/checkoutProductImageCard"
+        app:layout_constraintTop_toTopOf="@id/checkoutProductImageCard" />
 
     <TextView
         android:id="@+id/city"
@@ -52,12 +53,12 @@
         android:text="Samsun"
         android:textColor="@color/darkGray"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/cartProductName"
-        app:layout_constraintTop_toBottomOf="@id/cartProductName" />
+        app:layout_constraintStart_toStartOf="@id/checkoutProductName"
+        app:layout_constraintTop_toBottomOf="@id/checkoutProductName" />
 
 
     <TextView
-        android:id="@+id/itemCount"
+        android:id="@+id/checkoutProductAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
@@ -74,7 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/checkoutProductPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -84,6 +85,6 @@
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/cartProductImage" />
+        app:layout_constraintStart_toEndOf="@id/checkoutProductImageCard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

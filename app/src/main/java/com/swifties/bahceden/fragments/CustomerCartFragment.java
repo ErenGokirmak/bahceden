@@ -1,5 +1,6 @@
 package com.swifties.bahceden.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.activities.CustomerCheckOutActivity;
 import com.swifties.bahceden.adapters.CartProductAdapter;
 import com.swifties.bahceden.data.DBConnection;
 import com.swifties.bahceden.models.Cart;
@@ -24,8 +27,9 @@ import com.swifties.bahceden.models.Retrievable;
 public class CustomerCartFragment extends Fragment {
 
     private RecyclerView cartProductsRV;
-    private RecyclerView.Adapter cartProductAdapter;
+    private RecyclerView.Adapter<CartProductAdapter.ViewHolder> cartProductAdapter;
     private RecyclerView.LayoutManager cartProductLayoutManager;
+    private Button buyNowButton;
     private Cart cart;
 
     @Override
@@ -37,6 +41,14 @@ public class CustomerCartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        buyNowButton = view.findViewById(R.id.customerCartBuyNowButton);
+        buyNowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CustomerCheckOutActivity.class);
+                startActivity(intent);
+            }
+        });
         cart = new Cart(0);
 
         Order order1 = new Order(0);
