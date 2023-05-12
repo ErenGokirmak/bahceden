@@ -49,7 +49,7 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
 
         DBConnection.retrieveFromDB(new PostAction() {
             @Override
-            public void Action() {
+            public void action() {
                 checkOutRc = findViewById(R.id.customerCheckOutOrdersRV);
                 checkOutRc.setHasFixedSize(true);
                 rcLayoutManager = new LinearLayoutManager(CustomerCheckOutActivity.this);
