@@ -2,11 +2,13 @@ package com.swifties.bahceden.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -15,15 +17,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.CustomerViewProductActivity;
+import com.swifties.bahceden.data.CartApi;
+import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.Product;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.ViewHolder> {
 
     Cart cart;
     Context context;
+    RetrofitService retrofitService;
 
     public CartProductAdapter(Cart cart, Context context) {
         this.cart = cart;
@@ -36,6 +45,7 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.layout_customer_cart_item, viewGroup, false);
 
+        retrofitService = new RetrofitService();
         return new ViewHolder(view);
     }
 
@@ -70,6 +80,24 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         holder.cartProductDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CartApi cartApi = retrofitService.getRetrofit().create(CartApi.class);
+
+                // TODO: customer id implementation
+
+                // This part will be in order after
+                 /*cartApi.deleteOrderFromCart( ___ , cart.get(holder.getBindingAdapterPosition()).getId()).enqueue(new Callback<Order>() {
+                    @Override
+                    public void onResponse(Call<Order> call, Response<Order> response) {
+                        // TODO: Move cart.remove(...) to here
+                    }
+
+                    @Override
+                    public void onFailure(Call<Order> call, Throwable t) {
+                        Toast.makeText(v.getContext(), "Removal attempt from cart was unsuccessful", Toast.LENGTH_SHORT).show();
+                        Log.d("apiError", t.getMessage());
+                    }
+                });*/
+
                 cart.remove(holder.getBindingAdapterPosition());
                 notifyItemRemoved(holder.getBindingAdapterPosition());
             }

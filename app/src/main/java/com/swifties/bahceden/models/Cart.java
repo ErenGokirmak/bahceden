@@ -55,6 +55,14 @@ public class Cart implements Retrievable<Cart> {
         this.orders = orders;
     }
 
+    public double calculateTotalCost() {
+        double totalPrice = 0;
+        for (Order o: orders) {
+            totalPrice += o.getTotalPrice();
+        }
+        return totalPrice;
+    }
+
     public int size() {
         return orders.size();
     }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,7 +54,7 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
 
         cartApi.getAllOrders().enqueue(new Callback<List<Order>>() {
             @Override
-            public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
+            public void onResponse(@NonNull Call<List<Order>> call, @NonNull Response<List<Order>> response) {
                 cart.setOrders((ArrayList<Order>) response.body());
 
                 checkOutRc = findViewById(R.id.customerCheckOutOrdersRV);

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.swifties.bahceden.R;
@@ -34,6 +35,7 @@ import retrofit2.Response;
 public class CustomerCartFragment extends Fragment {
 
     private RecyclerView cartProductsRV;
+    private TextView totalPriceText;
     private RecyclerView.Adapter<CartProductAdapter.ViewHolder> cartProductAdapter;
     private RecyclerView.LayoutManager cartProductLayoutManager;
     private Button buyNowButton;
@@ -50,6 +52,7 @@ public class CustomerCartFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         buyNowButton = view.findViewById(R.id.customerCartBuyNowButton);
+        totalPriceText = view.findViewById(R.id.customerCartTotalPriceValue);
         buyNowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +74,7 @@ public class CustomerCartFragment extends Fragment {
         // TODO: implement retrieving only one customer's orders
         cartApi.getAllOrders().enqueue(new Callback<List<Order>>() {
             @Override
-            public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
+            public void onResponse(@NonNull Call<List<Order>> call, @NonNull Response<List<Order>> response) {
                 // setting the cart's orders to the server's response
                 cart.setOrders((ArrayList<Order>) response.body());
                 cartProductsRV = view.findViewById(R.id.customerCartProductsRV);
@@ -82,6 +85,11 @@ public class CustomerCartFragment extends Fragment {
                 cartProductsRV.setLayoutManager(cartProductLayoutManager);
                 cartProductAdapter = new CartProductAdapter(cart, CustomerCartFragment.this.getContext());
                 cartProductsRV.setAdapter(cartProductAdapter);
+
+                // setting the total price
+                totalPriceText.setText(String.format(getContext().getString(R.string.turkish_lira), String.valueOf(cart.calculateTotalCost())));
+
+
                 System.out.println(response);
             }
 
