@@ -55,7 +55,7 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
             @Override
             public void onClick(View v) {
                 cartItem.increaseAmountBy(-1);
-                notifyItemChanged(holder.getAdapterPosition());
+                notifyItemChanged(holder.getBindingAdapterPosition());
             }
         });
 
@@ -63,15 +63,15 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
             @Override
             public void onClick(View v) {
                 cartItem.increaseAmountBy(1);
-                notifyItemChanged(holder.getAdapterPosition());
+                notifyItemChanged(holder.getBindingAdapterPosition());
             }
         });
 
         holder.cartProductDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cart.remove(holder.getAdapterPosition());
-                notifyItemRemoved(holder.getAdapterPosition());
+                cart.remove(holder.getBindingAdapterPosition());
+                notifyItemRemoved(holder.getBindingAdapterPosition());
             }
         });
 

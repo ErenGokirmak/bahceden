@@ -9,6 +9,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface ProducerApi {
     @GET("/producers")
@@ -17,8 +18,8 @@ public interface ProducerApi {
     @GET("/producers/")
     Call<Producer> getProducerById(int id);
 
-    @POST("/producers")
-    Call<Producer> save(@Body Producer producer);
+    @POST("/producers/{producerId}")
+    Call<Producer> save(@Path("producerId") int id, @Body Producer producer);
 
     @PUT("/producers")
     Call<Producer> updateProducer(@Body Producer producer);

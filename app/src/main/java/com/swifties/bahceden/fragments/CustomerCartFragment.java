@@ -58,19 +58,27 @@ public class CustomerCartFragment extends Fragment {
             }
         });
         cart = new Cart(0);
+
+        // set up a new retroFitService
         retrofitService = new RetrofitService();
 
+        // create a new cartApi instance
         OrderApi cartApi = retrofitService.getRetrofit().create(OrderApi.class);
 
+        // get orders from the backend, set the cart's orders to said list, and
+        // populate the RecyclerView using that cart (this method will change
+        // in the future, for now it just retrieves all orders in the database).
+        // TODO: implement retrieving only one customer's orders
         cartApi.getAllOrders().enqueue(new Callback<List<Order>>() {
             @Override
             public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
+                // setting the cart's orders to the server's response
                 cart.setOrders((ArrayList<Order>) response.body());
-                System.out.println("Did work");
                 cartProductsRV = view.findViewById(R.id.customerCartProductsRV);
                 cartProductsRV.setHasFixedSize(true);
                 cartProductLayoutManager = new LinearLayoutManager(getActivity());
 
+                // populating the RecyclerView
                 cartProductsRV.setLayoutManager(cartProductLayoutManager);
                 cartProductAdapter = new CartProductAdapter(cart, CustomerCartFragment.this.getContext());
                 cartProductsRV.setAdapter(cartProductAdapter);
@@ -79,15 +87,12 @@ public class CustomerCartFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Order>> call, Throwable t) {
-                System.out.println(call.request());
+                // notify the user about the error
                 Toast.makeText(getContext(),
-                        "Didn't work for some reason", Toast.LENGTH_SHORT).show();
-                Log.e("debugPurposes" ,t.getMessage());
+                        "Cart retrieval from the server was unsuccessful", Toast.LENGTH_SHORT).show();
+                Log.e("debugPurposes", t.getMessage());
             }
         });
-
-        System.out.println(cart.getOrders());
-
 
     }
 }
