@@ -51,6 +51,10 @@ public class Cart implements Retrievable<Cart> {
 
     }
 
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = orders;
+    }
+
     public int size() {
         return orders.size();
     }

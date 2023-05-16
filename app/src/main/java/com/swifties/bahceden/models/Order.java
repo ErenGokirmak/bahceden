@@ -12,7 +12,7 @@ public class Order implements Retrievable<Order> {
     }
 
     private int id;
-    private SimpleDateFormat dateOfPurchase;
+    private String dateOfPurchase;
     private Product product;
     private int amount;
     private double totalPrice;
@@ -48,7 +48,7 @@ public class Order implements Retrievable<Order> {
 
     }
 
-    public SimpleDateFormat getDateOfPurchase() {
+    public String getDateOfPurchase() {
         return dateOfPurchase;
     }
 
@@ -85,7 +85,7 @@ public class Order implements Retrievable<Order> {
         this.id = id;
     }
 
-    public void setDateOfPurchase(SimpleDateFormat dateOfPurchase) {
+    public void setDateOfPurchase(String dateOfPurchase) {
         this.dateOfPurchase = dateOfPurchase;
     }
 

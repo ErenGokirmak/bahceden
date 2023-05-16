@@ -1,5 +1,6 @@
 package com.swifties.bahceden.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,19 +11,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CheckOutAdapter;
-import com.swifties.bahceden.data.DBConnection;
+import com.swifties.bahceden.data.OrderApi;
+import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;
-import com.swifties.bahceden.models.PostAction;
-import com.swifties.bahceden.models.Product;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CustomerCheckOutActivity extends AppCompatActivity {
 
     private ImageView backButton;
     private RecyclerView checkOutRc;
     private CheckOutAdapter checkOutAdapter;
-    private RecyclerView.LayoutManager rcLayoutManager;
+    private RecyclerView.LayoutManager checkOutRcLayoutManager;
     private Cart cart;
+    private RetrofitService retrofitService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,27 +44,33 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
                 CustomerCheckOutActivity.super.onBackPressed();
             }
         });
+
+        retrofitService = new RetrofitService();
+
         cart = new Cart(0);
 
-        Order order1 = new Order(0);
-        Product product1 = new Product(1);
-        order1.setProduct(product1);
-        Order order2 = new Order(1);
-        Product product2 = new Product(2);
-        order2.setProduct(product2);
-        cart.getOrders().add(order1);
-        cart.getOrders().add(order2);
+        OrderApi cartApi = retrofitService.getRetrofit().create(OrderApi.class);
 
-        DBConnection.retrieveFromDB(new PostAction() {
+        cartApi.getAllOrders().enqueue(new Callback<List<Order>>() {
             @Override
-            public void action() {
+            public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
+                cart.setOrders((ArrayList<Order>) response.body());
+
                 checkOutRc = findViewById(R.id.customerCheckOutOrdersRV);
                 checkOutRc.setHasFixedSize(true);
-                rcLayoutManager = new LinearLayoutManager(CustomerCheckOutActivity.this);
-                checkOutRc.setLayoutManager(rcLayoutManager);
+                checkOutRcLayoutManager = new LinearLayoutManager(CustomerCheckOutActivity.this);
+
+                checkOutRc.setLayoutManager(checkOutRcLayoutManager);
                 checkOutAdapter = new CheckOutAdapter(cart, CustomerCheckOutActivity.this);
                 checkOutRc.setAdapter(checkOutAdapter);
+
             }
-        }, product1, product2);
+
+            @Override
+            public void onFailure(Call<List<Order>> call, Throwable t) {
+
+            }
+        });
+
     }
 }
