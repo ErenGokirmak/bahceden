@@ -60,7 +60,8 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
             changeStatusButtonsHolder = itemView.findViewById(R.id.changeStatusButtonsHolder);
             detailsButton = itemView.findViewById(R.id.detailsButton);
 
-            itemView.setOnClickListener(v -> Toast.makeText(itemView.getContext(), "BaS:" + getAdapterPosition(), Toast.LENGTH_SHORT).show());
+            itemView.setOnClickListener(v ->
+                    Toast.makeText(itemView.getContext(), "BaS:" + getBindingAdapterPosition(), Toast.LENGTH_SHORT).show());
         }
     }
 }

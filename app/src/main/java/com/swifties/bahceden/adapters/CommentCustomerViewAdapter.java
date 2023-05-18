@@ -34,7 +34,8 @@ public class CommentCustomerViewAdapter extends RecyclerView.Adapter<CommentCust
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            itemView.setOnClickListener(v -> Toast.makeText(itemView.getContext(), "BaS:" + getAdapterPosition(), Toast.LENGTH_SHORT).show());
+            itemView.setOnClickListener(v ->
+                    Toast.makeText(itemView.getContext(), "BaS:" + getBindingAdapterPosition(), Toast.LENGTH_SHORT).show());
         }
     }
 }

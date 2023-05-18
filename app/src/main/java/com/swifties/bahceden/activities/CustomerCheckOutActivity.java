@@ -38,7 +38,7 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_check_out);
 
         backButton = findViewById(R.id.customerCheckOutBackButton);
-        backButton.setOnClickListener(view -> CustomerCheckOutActivity.super.onBackPressed());
+        backButton.setOnClickListener(backView -> CustomerCheckOutActivity.super.onBackPressed());
 
         retrofitService = new RetrofitService();
 
@@ -62,7 +62,7 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Order>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Order>> call, @NonNull Throwable t) {
 
             }
         });

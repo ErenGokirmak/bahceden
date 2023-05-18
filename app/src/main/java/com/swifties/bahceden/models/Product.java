@@ -151,18 +151,4 @@ public class Product implements Retrievable<Product>, Serializable {
         setImageURL(p.getImageURL());
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        //return String.valueOf(id);
-        return "{\"unitType\":\"" + "1" + "\"," +
-                "\"name\":\"" + name + "\"," +
-                "\"desc\":\"" + description + "\"," +
-                //"\"commentIds\":\"" + comments.toString() + "\"," +
-                //"\"producer\":\"" + producer.getId() + "\"," +
-                "\"pricePerUnit\":\"" + pricePerUnit + "\"," +
-                "\"amountInStock\":\"" + amountInStock + "\"," +
-                "\"imageUrl\":\"" + imageURL + "\"," +
-                "\"description\":\"0\" }";
-    }
 }

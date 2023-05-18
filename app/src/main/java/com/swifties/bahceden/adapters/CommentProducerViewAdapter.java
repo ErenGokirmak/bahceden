@@ -67,7 +67,8 @@ public class CommentProducerViewAdapter extends RecyclerView.Adapter<CommentProd
             likeCount = view.findViewById(R.id.likeCount);
             commentDate = view.findViewById(R.id.commentDate);
 
-            view.setOnClickListener(v -> Toast.makeText(view.getContext(), "BaS:" + getAdapterPosition(), Toast.LENGTH_SHORT).show());
+            view.setOnClickListener(v ->
+                    Toast.makeText(view.getContext(), "BaS:" + getBindingAdapterPosition(), Toast.LENGTH_SHORT).show());
         }
     }
 }

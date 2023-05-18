@@ -14,14 +14,14 @@ import java.net.URL;
 
 public class DBConnection extends AsyncTask<Retrievable, Integer, PostAction> {
 
-    public static void retrieveFromDB(PostAction postAction, Retrievable... retrievables) {
-        new DBConnection(postAction).execute(retrievables);
-    }
-
     PostAction postAction;
 
     public DBConnection(PostAction postAction) {
         this.postAction = postAction;
+    }
+
+    public static void retrieveFromDB(PostAction postAction, Retrievable... retrievables) {
+        new DBConnection(postAction).execute(retrievables);
     }
 
     @Override

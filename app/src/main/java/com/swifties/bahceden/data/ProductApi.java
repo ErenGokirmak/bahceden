@@ -1,7 +1,5 @@
 package com.swifties.bahceden.data;
 
-import androidx.annotation.HalfFloat;
-
 import com.swifties.bahceden.models.Product;
 
 import java.util.List;
@@ -34,6 +32,12 @@ public interface ProductApi {
     @GET("products/{productId}")
     Call<Product> getProductById(@Path("productId") int id);
 
+    /**
+     * Deletes the product from the database
+     *
+     * @param id the id of the product
+     * @return whether deletion was successful or not
+     */
     @DELETE("products/{productId}")
-    Call<Product> deleteProductById(@Path("productId") int id);
+    Call<String> deleteProductById(@Path("productId") int id);
 }

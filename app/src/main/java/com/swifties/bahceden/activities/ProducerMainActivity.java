@@ -43,33 +43,30 @@ public class ProducerMainActivity extends AppCompatActivity {
         replaceFragment(producerHomeFragment);
 
 //        Set listener for navBar
-        producerBottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.producerHome:
-                        replaceFragment(producerHomeFragment);
-                        return true;
+        producerBottomNav.setOnItemSelectedListener(menuSelectionView -> {
+            switch (menuSelectionView.getItemId()) {
+                case R.id.producerHome:
+                    replaceFragment(producerHomeFragment);
+                    return true;
 
-                    case R.id.producerAdd:
-                        replaceFragment(producerAddProductFragment);
-                        return true;
+                case R.id.producerAdd:
+                    replaceFragment(producerAddProductFragment);
+                    return true;
 
-                    case R.id.producerData:
-                        replaceFragment(producerDataFragment);
-                        return true;
+                case R.id.producerData:
+                    replaceFragment(producerDataFragment);
+                    return true;
 
-                    case R.id.producerOrder:
-                        replaceFragment(producerOrdersFragment);
-                        return true;
+                case R.id.producerOrder:
+                    replaceFragment(producerOrdersFragment);
+                    return true;
 
-                    case R.id.producerProfile:
-                        replaceFragment(producerProfileFragment);
-                        return true;
-                }
-
-                return false;
+                case R.id.producerProfile:
+                    replaceFragment(producerProfileFragment);
+                    return true;
             }
+
+            return false;
         });
     }
 

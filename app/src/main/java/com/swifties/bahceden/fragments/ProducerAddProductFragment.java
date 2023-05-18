@@ -41,8 +41,8 @@ public class ProducerAddProductFragment extends Fragment {
         customItems = getCustomCategoriesList();
         customSubItems = getCustomSubCategoriesList();
 
-        SpinnerCustomAdapter spinnerCategoriesAdapter = new SpinnerCustomAdapter(getActivity(), customItems);
-        spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(getActivity(), customSubItems.get(0));
+        SpinnerCustomAdapter spinnerCategoriesAdapter = new SpinnerCustomAdapter(requireActivity(), customItems);
+        spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(requireActivity(), customSubItems.get(0));
 
         if (customCategoriesSpinner != null) {
             customCategoriesSpinner.setAdapter(spinnerCategoriesAdapter);

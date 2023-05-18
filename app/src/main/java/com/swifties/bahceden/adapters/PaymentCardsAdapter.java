@@ -45,7 +45,8 @@ public class PaymentCardsAdapter extends RecyclerView.Adapter<PaymentCardsAdapte
 
             selectedImage = view.findViewById(R.id.layoutCreditCartSelected);
 
-            view.setOnClickListener(v -> Toast.makeText(view.getContext(), "BaS:" + getAdapterPosition(), Toast.LENGTH_SHORT).show());
+            view.setOnClickListener(v ->
+                    Toast.makeText(view.getContext(), "BaS:" + getBindingAdapterPosition(), Toast.LENGTH_SHORT).show());
         }
     }
 }

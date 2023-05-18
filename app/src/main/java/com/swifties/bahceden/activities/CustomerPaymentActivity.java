@@ -21,14 +21,14 @@ public class CustomerPaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_payment);
 
         backButton = findViewById(R.id.customerPaymentBackButton);
-        backButton.setOnClickListener(view -> CustomerPaymentActivity.super.onBackPressed());
+        backButton.setOnClickListener(backView -> CustomerPaymentActivity.super.onBackPressed());
 
         RecyclerView paymentCardsRV = findViewById(R.id.customerPaymentCardRV);
 
-        RecyclerView.LayoutManager lam = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        PaymentCardsAdapter ca = new PaymentCardsAdapter();
+        RecyclerView.LayoutManager paymentCardsLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        PaymentCardsAdapter cardsAdapter = new PaymentCardsAdapter();
 
-        paymentCardsRV.setLayoutManager(lam);
-        paymentCardsRV.setAdapter(ca);
+        paymentCardsRV.setLayoutManager(paymentCardsLayoutManager);
+        paymentCardsRV.setAdapter(cardsAdapter);
     }
 }

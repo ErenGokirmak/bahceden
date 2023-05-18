@@ -1,7 +1,6 @@
 package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +13,7 @@ import com.swifties.bahceden.adapters.OrdersAdapter;
 public class CustomerOrdersActivity extends AppCompatActivity {
     private RecyclerView ordersRV;
     private ImageView backButton;
-    private RecyclerView.Adapter OrdersAdapter;
+    private RecyclerView.Adapter<OrdersAdapter.ViewHolder> OrdersAdapter;
     RecyclerView.LayoutManager ordersLayoutManager;
 
     @Override
@@ -23,7 +22,7 @@ public class CustomerOrdersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_orders);
 
         backButton = findViewById(R.id.customerOrdersBackButton);
-        backButton.setOnClickListener(view -> CustomerOrdersActivity.super.onBackPressed());
+        backButton.setOnClickListener(backView -> CustomerOrdersActivity.super.onBackPressed());
 
         ordersRV = findViewById(R.id.ordersProfileRV);
         ordersRV.setHasFixedSize(true);

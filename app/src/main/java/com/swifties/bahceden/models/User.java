@@ -26,13 +26,6 @@ public abstract class User implements Retrievable<User> {
         this.id = id;
     }
 
-    public User(int id, String name, String email, String password, String phoneNumber) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-    }
 
     public int getId() {
         return id;
@@ -70,14 +63,4 @@ public abstract class User implements Retrievable<User> {
         phoneNumber = u.getPhoneNumber();
     }
 
-    @Override
-    public String toString() {
-        return "\"User\"{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
-    }
 }

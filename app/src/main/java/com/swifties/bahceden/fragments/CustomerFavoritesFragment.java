@@ -1,5 +1,6 @@
 package com.swifties.bahceden.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,8 +23,8 @@ public class CustomerFavoritesFragment extends Fragment {
     private TextView productTxt, dukkanTxt;
     private RecyclerView customerFavoritesItemsRV;
     private RecyclerView customerFavoritesDukkansRV;
-    private RecyclerView.Adapter customerFavoritesItemsAdapter;
-    private RecyclerView.Adapter customerFavoritesDukkansAdapter;
+    private RecyclerView.Adapter<FavItemAdapter.ViewHolder> customerFavoritesItemsAdapter;
+    private RecyclerView.Adapter<FavDukkanAdapter.ViewHolder> customerFavoritesDukkansAdapter;
     private RecyclerView.LayoutManager customerFavoritesItemsLM;
     private RecyclerView.LayoutManager customerFavoritesDukkansLM;
 
@@ -65,6 +66,7 @@ public class CustomerFavoritesFragment extends Fragment {
 
     private class ButtonsListener implements View.OnClickListener {
 
+        @SuppressLint("NonConstantResourceId")
         @Override
         public void onClick(View v) {
             switch (v.getId()) {

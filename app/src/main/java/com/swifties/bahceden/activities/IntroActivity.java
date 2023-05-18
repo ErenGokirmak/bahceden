@@ -26,16 +26,19 @@ public class IntroActivity extends AppCompatActivity {
 
         customerButton.setOnClickListener(v -> {
             Intent intent = new Intent(IntroActivity.this, SignUpActivity.class);
+            intent.putExtra("method", "customer");
             startActivity(intent);
         });
 
         producerButton.setOnClickListener(v -> {
             Intent intent = new Intent(IntroActivity.this, SignUpActivity.class);
+            intent.putExtra("method", "producer");
             startActivity(intent);
         });
 
         haveAnAccount.setOnClickListener(v -> {
             Intent intent = new Intent(IntroActivity.this, LogInActivity.class);
+            intent.putExtra("method", "login");
             startActivity(intent);
         });
     }
