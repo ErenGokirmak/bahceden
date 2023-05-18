@@ -112,4 +112,5 @@ public class Order implements Retrievable<Order> {
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
+
 }

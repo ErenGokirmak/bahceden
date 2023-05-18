@@ -13,15 +13,6 @@ public class Customer extends User {
         super(id);
     }
 
-    public Customer(int id, String name, String email, String password, String phoneNumber, Cart cart, ArrayList<Product> favoriteProducts, ArrayList<Producer> favoriteProducers, ArrayList<Order> orders, ArrayList<Address> addresses) {
-        super(id, name, email, password, phoneNumber);
-        this.cart = cart;
-        this.favoriteProducts = favoriteProducts;
-        this.favoriteProducers = favoriteProducers;
-        this.orders = orders;
-        this.addresses = addresses;
-    }
-
     public void fillFrom(Customer c) {
         super.fillFrom(c);
         addresses = c.getAddresses();

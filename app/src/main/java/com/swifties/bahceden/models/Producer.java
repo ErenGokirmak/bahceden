@@ -14,27 +14,6 @@ public class Producer extends User {
         super(id);
     }
 
-    public Producer(int id, String name, String email, String password, String phoneNumber, String displayName, String city, ArrayList<Product> products, ArrayList<Order> orders) {
-        super(id, name, email, password, phoneNumber);
-        this.displayName = displayName;
-        this.city = city;
-        this.products = products;
-        this.orders = orders;
-    }
-
-    @NonNull
-    @Override
-    public String toString() {
-        //TODO
-        return "TODO";
-//        return "{" +
-//                " \"user\": " + super.toString() + "," +
-//                " \"displayName\": \"" + displayName + "\"," +
-//                " \"city\": \"" + city + "\"," +
-//                " \"productIds\": " + productIds.toString() + "," +
-//                " \"orderIds\":" + orderIds.toString() +
-//                '}';
-    }
 
     public String getDisplayName() {
         return displayName;
