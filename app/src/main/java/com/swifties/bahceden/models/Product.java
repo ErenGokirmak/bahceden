@@ -2,7 +2,9 @@ package com.swifties.bahceden.models;
 
 import androidx.annotation.NonNull;
 
-public class Product implements Retrievable<Product> {
+import java.io.Serializable;
+
+public class Product implements Retrievable<Product>, Serializable {
     UnitType unitType;
     private int id;
     private String name;

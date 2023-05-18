@@ -34,25 +34,20 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_producer_analytics);
 
         backButton = findViewById(R.id.producerAnalyticsBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ProducerAnalyticsActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> ProducerAnalyticsActivity.super.onBackPressed());
 
         totalText = findViewById(R.id.producerAnalyticsTotalText);
         averageText = findViewById(R.id.producerAnalyticsAverageText);
 
-        analyticsProductRV = (RecyclerView) findViewById(R.id.producerAnalyticsRV);
+        analyticsProductRV = findViewById(R.id.producerAnalyticsRV);
         analyticsProductRV.setHasFixedSize(true);
         analyticsProductLM = new LinearLayoutManager(this);
         analyticsProductRV.setLayoutManager(analyticsProductLM);
         analyticsProductAdapter = new AnalyticsProductAdapter();
         analyticsProductRV.setAdapter(analyticsProductAdapter);
 
-        spinner1 = (Spinner) findViewById(R.id.producerAnalyticsSpinner1);
-        spinner2 = (Spinner) findViewById(R.id.producerAnalyticsSpinner2);
+        spinner1 = findViewById(R.id.producerAnalyticsSpinner1);
+        spinner2 = findViewById(R.id.producerAnalyticsSpinner2);
 
         ArrayAdapter<CharSequence> spinner1Adapter = ArrayAdapter.createFromResource(this, R.array.analytics_spinner_1, android.R.layout.simple_spinner_dropdown_item);
         spinner1Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -104,7 +99,7 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
             }
         });
 
-        spinner2 = (Spinner) findViewById(R.id.producerAnalyticsSpinner2);
+        spinner2 = findViewById(R.id.producerAnalyticsSpinner2);
 
         ArrayAdapter<CharSequence> spinner2Adapter = ArrayAdapter.createFromResource(this, R.array.analytics_spinner_2, android.R.layout.simple_spinner_dropdown_item);
         spinner2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

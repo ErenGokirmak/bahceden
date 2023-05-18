@@ -31,38 +31,26 @@ public class ProducerProfileFragment extends Fragment {
         securityButton = view.findViewById(R.id.producerProfileSecurityButton);
         logOutButton = view.findViewById(R.id.producerProfileLogOutButton);
 
-        editProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProducerEditProfileActivity.class);
-                startActivity(intent);
-            }
+        editProfileButton.setOnClickListener(view14 -> {
+            Intent intent = new Intent(getActivity(), ProducerEditProfileActivity.class);
+            startActivity(intent);
         });
 
-        analyticsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProducerAnalyticsActivity.class);
-                startActivity(intent);
-            }
+        analyticsButton.setOnClickListener(view13 -> {
+            Intent intent = new Intent(getActivity(), ProducerAnalyticsActivity.class);
+            startActivity(intent);
         });
 
-        securityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SecurityProfileActivity.class);
-                startActivity(intent);
-            }
+        securityButton.setOnClickListener(view12 -> {
+            Intent intent = new Intent(getActivity(), SecurityProfileActivity.class);
+            startActivity(intent);
         });
 
 
         // TODO: Log Out Button currently redirects to the customer main activity for development purposes.
-        logOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CustomerMainActivity.class);
-                startActivity(intent);
-            }
+        logOutButton.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getActivity(), CustomerMainActivity.class);
+            startActivity(intent);
         });
 
         return view;

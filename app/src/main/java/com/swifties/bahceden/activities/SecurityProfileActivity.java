@@ -17,11 +17,6 @@ public class SecurityProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_security_profile);
 
         backButton = findViewById(R.id.securityBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SecurityProfileActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> SecurityProfileActivity.super.onBackPressed());
     }
 }

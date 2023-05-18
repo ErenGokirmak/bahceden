@@ -121,38 +121,27 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (nameInput.getText().toString().isEmpty()) {
-                    nameInput.setError("Name Can't be Empty!");
-                } else if (emailInput.getText().toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailInput.getText().toString()).matches()) {
-                    emailInput.setError("Enter a Valid Email Address!");
-                } else if (passwordInput.getText().toString().isEmpty()) {
-                    passwordInput.setError("Password Can't be Empty!");
-                } else if (confirmPasswordInput.getText().toString().isEmpty()) {
-                    confirmPasswordInput.setError("Confirm Password Can't be Empty!");
-                } else if (!passwordInput.getText().toString().equals(confirmPasswordInput.getText().toString())) {
-                    confirmPasswordInputLayout.setEndIconVisible(false);
-                    confirmPasswordInput.setError("Passwords Don't Match!");
-                }
+        signUp.setOnClickListener(v -> {
+            if (nameInput.getText().toString().isEmpty()) {
+                nameInput.setError("Name Can't be Empty!");
+            } else if (emailInput.getText().toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailInput.getText().toString()).matches()) {
+                emailInput.setError("Enter a Valid Email Address!");
+            } else if (passwordInput.getText().toString().isEmpty()) {
+                passwordInput.setError("Password Can't be Empty!");
+            } else if (confirmPasswordInput.getText().toString().isEmpty()) {
+                confirmPasswordInput.setError("Confirm Password Can't be Empty!");
+            } else if (!passwordInput.getText().toString().equals(confirmPasswordInput.getText().toString())) {
+                confirmPasswordInputLayout.setEndIconVisible(false);
+                confirmPasswordInput.setError("Passwords Don't Match!");
             }
         });
 
-        haveAnAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
-                startActivity(intent);
-            }
+        haveAnAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
+            startActivity(intent);
         });
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SignUpActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(v -> SignUpActivity.super.onBackPressed());
 
     }
 }

@@ -22,12 +22,7 @@ public class CustomerAddressesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_addresses);
 
         backButton = findViewById(R.id.customerAddressesBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CustomerAddressesActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> CustomerAddressesActivity.super.onBackPressed());
 
         addressesRV = findViewById(R.id.customerAddressesYourAddressesRV);
 

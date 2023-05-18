@@ -24,28 +24,19 @@ public class IntroActivity extends AppCompatActivity {
         producerButton = findViewById(R.id.introProducerButton);
         haveAnAccount = findViewById(R.id.introAlreadyHaveAnAccountButton);
 
-        customerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
+        customerButton.setOnClickListener(v -> {
+            Intent intent = new Intent(IntroActivity.this, SignUpActivity.class);
+            startActivity(intent);
         });
 
-        producerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
+        producerButton.setOnClickListener(v -> {
+            Intent intent = new Intent(IntroActivity.this, SignUpActivity.class);
+            startActivity(intent);
         });
 
-        haveAnAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this, LogInActivity.class);
-                startActivity(intent);
-            }
+        haveAnAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(IntroActivity.this, LogInActivity.class);
+            startActivity(intent);
         });
     }
 }

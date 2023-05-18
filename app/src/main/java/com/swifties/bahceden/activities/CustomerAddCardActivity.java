@@ -17,11 +17,6 @@ public class CustomerAddCardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_add_card);
 
         backButton = findViewById(R.id.customerAddCardBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CustomerAddCardActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> CustomerAddCardActivity.super.onBackPressed());
     }
 }

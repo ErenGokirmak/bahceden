@@ -31,12 +31,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), "asma" + getAdapterPosition(), Toast.LENGTH_SHORT).show();
-                }
-
-            });
+            itemView.setOnClickListener(v -> Toast.makeText(itemView.getContext(), "asma" + getAdapterPosition(), Toast.LENGTH_SHORT).show());
         }
     }
 }

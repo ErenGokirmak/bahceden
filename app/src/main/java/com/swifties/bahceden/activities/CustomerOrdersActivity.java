@@ -23,14 +23,9 @@ public class CustomerOrdersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_orders);
 
         backButton = findViewById(R.id.customerOrdersBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CustomerOrdersActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> CustomerOrdersActivity.super.onBackPressed());
 
-        ordersRV = (RecyclerView) findViewById(R.id.ordersProfileRV);
+        ordersRV = findViewById(R.id.ordersProfileRV);
         ordersRV.setHasFixedSize(true);
         ordersLayoutManager = new LinearLayoutManager(this);
 

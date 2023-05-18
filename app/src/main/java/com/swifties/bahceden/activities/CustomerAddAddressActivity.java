@@ -19,12 +19,7 @@ public class CustomerAddAddressActivity extends AppCompatActivity {
 
         // Back button and listener initialization
         backButton = findViewById(R.id.customerAddAddressBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CustomerAddAddressActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> CustomerAddAddressActivity.super.onBackPressed());
 
 
     }

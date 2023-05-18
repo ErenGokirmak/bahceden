@@ -1,6 +1,5 @@
 package com.swifties.bahceden.fragments;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -8,12 +7,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -28,7 +26,7 @@ public class CustomerSearchFragment extends Fragment {
 
     ArrayList<String> searchHistoryList = new ArrayList<>();
     PopupWindow searchHistoryPopup;
-
+    RecyclerView productSearchRV;
     EditText searchHistoryEditText;
 
     @Override
@@ -41,6 +39,10 @@ public class CustomerSearchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Create the RecyclerView and its adapter
+        productSearchRV = view.findViewById(R.id.customerSearchResultsRV);
+        productSearchRV.setHasFixedSize(false);
+
         // Fill the search history list
         fillSearchHistory();
 
@@ -52,27 +54,21 @@ public class CustomerSearchFragment extends Fragment {
         searchHistoryListView.setAdapter(searchHistoryAdapter);
 
         // Set a click listener for the search history items
-        searchHistoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedSearchHistory = searchHistoryList.get(position);
-                EditText editText = getView().findViewById(R.id.customerSearchHistoryEditText);
-                editText.setText(selectedSearchHistory);
-                searchHistoryPopup.dismiss();
-            }
+        searchHistoryListView.setOnItemClickListener((parent, view12, position, id) -> {
+            String selectedSearchHistory = searchHistoryList.get(position);
+            EditText editText = getView().findViewById(R.id.customerSearchHistoryEditText);
+            editText.setText(selectedSearchHistory);
+            searchHistoryPopup.dismiss();
         });
 
         // Create a ListView for the search history popup
         ListView popupListView = new ListView(requireActivity());
         popupListView.setAdapter(searchHistoryAdapter);
-        popupListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedSearchHistory = searchHistoryList.get(position);
-                EditText editText = getView().findViewById(R.id.customerSearchHistoryEditText);
-                editText.setText(selectedSearchHistory);
-                searchHistoryPopup.dismiss();
-            }
+        popupListView.setOnItemClickListener((parent, view1, position, id) -> {
+            String selectedSearchHistory = searchHistoryList.get(position);
+            EditText editText = getView().findViewById(R.id.customerSearchHistoryEditText);
+            editText.setText(selectedSearchHistory);
+            searchHistoryPopup.dismiss();
         });
 
         // Create a PopupWindow for the search history popup
@@ -84,14 +80,11 @@ public class CustomerSearchFragment extends Fragment {
         searchHistoryEditText = view.findViewById(R.id.customerSearchHistoryEditText);
 
         // Set a focus change listener for the search history EditText
-        searchHistoryEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    searchHistoryPopup.showAsDropDown(searchHistoryEditText);
-                } else {
-                    searchHistoryPopup.dismiss();
-                }
+        searchHistoryEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                searchHistoryPopup.showAsDropDown(searchHistoryEditText);
+            } else {
+                searchHistoryPopup.dismiss();
             }
         });
 

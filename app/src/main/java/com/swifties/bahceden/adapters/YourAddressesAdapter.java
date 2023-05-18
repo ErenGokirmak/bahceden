@@ -42,12 +42,7 @@ public class YourAddressesAdapter extends RecyclerView.Adapter<YourAddressesAdap
 
             selected = view.findViewById(R.id.customerAddressItemSelected);
 
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(view.getContext(), "BaS:" + getAdapterPosition(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            view.setOnClickListener(v -> Toast.makeText(view.getContext(), "BaS:" + getAdapterPosition(), Toast.LENGTH_SHORT).show());
         }
     }
 }

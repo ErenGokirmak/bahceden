@@ -78,38 +78,24 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
-        logIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (emailInput.getText().toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailInput.getText().toString()).matches()) {
-                    emailInput.setError("Enter Valid Email Address!");
-                } else if (passwordInput.getText().toString().isEmpty()) {
-                    passwordInput.setError("Password Can't be Empty!");
-                }
+        logIn.setOnClickListener(v -> {
+            if (emailInput.getText().toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailInput.getText().toString()).matches()) {
+                emailInput.setError("Enter Valid Email Address!");
+            } else if (passwordInput.getText().toString().isEmpty()) {
+                passwordInput.setError("Password Can't be Empty!");
             }
         });
 
-        dontHaveAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
+        dontHaveAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
+            startActivity(intent);
         });
 
-        forgetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LogInActivity.this, ForgotPasswordActivity.class);
-                startActivity(intent);
-            }
+        forgetPassword.setOnClickListener(v -> {
+            Intent intent = new Intent(LogInActivity.this, ForgotPasswordActivity.class);
+            startActivity(intent);
         });
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LogInActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(v -> LogInActivity.super.onBackPressed());
     }
 }

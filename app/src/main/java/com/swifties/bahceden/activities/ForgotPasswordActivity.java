@@ -26,20 +26,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         changeFragment(new EnterMailFragment());
 
-        fgtContinue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (true)
-                    changeFragment(new ChooseActionFragment());
-            }
-        });
+        fgtContinue.setOnClickListener(v -> changeFragment(new ChooseActionFragment()));
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ForgotPasswordActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(v -> ForgotPasswordActivity.super.onBackPressed());
     }
 
 
