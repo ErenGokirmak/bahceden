@@ -11,16 +11,18 @@ public class Product implements Retrievable<Product>, Serializable {
     private String description;
     //private ArrayList<Comment> comments;
     private Producer producer;
+    private double rating;
     private int producerId;
     private double pricePerUnit;
     private double amountInStock;
     private String imageURL;
 
-    public Product(int id, String name, String description, int unitType, double pricePerUnit, int producerId,  double amountInStock, String imageURL) {
+    public Product(int id, String name, String description, int unitType, double rating, double pricePerUnit, int producerId, double amountInStock, String imageURL) {
         this.unitType = UnitType.fromValue(unitType);
         this.id = id;
         this.name = name;
         this.description = description;
+        this.rating = rating;
         this.producerId = producerId;
         this.producer = new Producer(producerId);
         this.pricePerUnit = pricePerUnit;
@@ -64,9 +66,11 @@ public class Product implements Retrievable<Product>, Serializable {
     public String getImageURL() {
         return imageURL;
     }
+
     public int getId() {
         return id;
     }
+
     public double getAmountInStock() {
         return amountInStock;
     }
@@ -76,13 +80,16 @@ public class Product implements Retrievable<Product>, Serializable {
         return this.producer;
     }
 
-    public Producer getProducer(PostAction postAction)
-    {
+    public Producer getProducer(PostAction postAction) {
         producer.retrieveFromDB(postAction);
         return this.producer;
     }
 
-//    public ArrayList<Comment> getComments() {
+    public double getRating() {
+        return rating;
+    }
+
+    //    public ArrayList<Comment> getComments() {
 //        for (Comment c : comments) {
 //            ConnectionFactory.get(c);
 //        }
@@ -96,6 +103,7 @@ public class Product implements Retrievable<Product>, Serializable {
     public UnitType getUnitType() {
         return unitType;
     }
+
     public double getPricePerUnit() {
         return pricePerUnit;
     }
@@ -131,8 +139,8 @@ public class Product implements Retrievable<Product>, Serializable {
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
-    public void fillFrom (Product p)
-    {
+
+    public void fillFrom(Product p) {
         setId(p.getId());
         setName(p.getName());
         setDescription(p.getDescription());

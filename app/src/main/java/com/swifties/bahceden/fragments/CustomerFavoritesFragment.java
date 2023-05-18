@@ -67,7 +67,7 @@ public class CustomerFavoritesFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.customerFavoriteProductsButton:
 
                     productTxt.setBackgroundColor(getResources().getColor(R.color.bahceden_green, productTxt.getContext().getTheme()));

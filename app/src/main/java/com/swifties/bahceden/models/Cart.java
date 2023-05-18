@@ -10,37 +10,34 @@ public class Cart implements Retrievable<Cart> {
         this.id = id;
         orders = new ArrayList<>();
     }
-    public Order get(int index)
-    {
+
+    public Order get(int index) {
         return orders.get(index);
     }
 
-    public Order get(int index, PostAction postAction)
-    {
+    public Order get(int index, PostAction postAction) {
         orders.get(index).getProduct().retrieveFromDB(postAction);
         return orders.get(index);
     }
-    public Order getById(int id)
-    {
-        for (Order o : orders)
-        {
-            if (o.getId() == id)
-            {
+
+    public Order getById(int id) {
+        for (Order o : orders) {
+            if (o.getId() == id) {
                 return o;
             }
         }
         return null;
     }
-    public boolean remove(int index)
-    {
+
+    public boolean remove(int index) {
         return orders.remove(index) != null;
         //TODO sync with db
     }
 
-    public ArrayList<Order> getOrders()
-    {
+    public ArrayList<Order> getOrders() {
         return orders;
     }
+
     @Override
     public int getId() {
         return id;
@@ -57,7 +54,7 @@ public class Cart implements Retrievable<Cart> {
 
     public double calculateTotalCost() {
         double totalPrice = 0;
-        for (Order o: orders) {
+        for (Order o : orders) {
             totalPrice += o.getTotalPrice();
         }
         return totalPrice;

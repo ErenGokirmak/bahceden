@@ -63,8 +63,7 @@ public abstract class User implements Retrievable<User> {
         return true;
     }
 
-    public void fillFrom (User u)
-    {
+    public void fillFrom(User u) {
         email = u.getEmail();
         name = u.getName();
         password = u.getPassword();

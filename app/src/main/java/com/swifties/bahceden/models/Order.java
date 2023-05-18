@@ -5,6 +5,7 @@ public class Order implements Retrievable<Order> {
     public enum ShipmentType {
         CUSTOMER_PICKUP, PRODUCER_DELIVERY, SHIPMENT
     }
+
     public enum OrderStatus {
         IN_CART, PENDING, DELIVERED, CANCELLED
     }
@@ -24,13 +25,11 @@ public class Order implements Retrievable<Order> {
         this.amount = 1;
     }
 
-    private void calculateTotalPrice ()
-    {
+    private void calculateTotalPrice() {
         totalPrice = amount * product.getPricePerUnit();
     }
 
-    public boolean offsetAmountBy(int offset)
-    {
+    public boolean offsetAmountBy(int offset) {
         if (amount + offset < 1) return false;
         amount += offset;
         return true;

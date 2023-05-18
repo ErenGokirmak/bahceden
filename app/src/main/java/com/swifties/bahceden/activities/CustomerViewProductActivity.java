@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CommentCustomerViewAdapter;
 import com.swifties.bahceden.adapters.HotSalesAdapter;
@@ -48,22 +49,26 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_view_product);
 
+        // Setting up productApi
         retrofitService = new RetrofitService();
-
         ProductApi productApi = retrofitService.getRetrofit().create(ProductApi.class);
 
+        // Getting product from the backend
         intent = getIntent();
-
         productApi.getProductById(Integer.parseInt(intent.getStringExtra("productId"))).enqueue(new Callback<Product>() {
             @Override
             public void onResponse(Call<Product> call, Response<Product> response) {
-                product = (Product) response.body();
+                // Getting product & finding appropriate fields
+                product = response.body();
                 productNameText = findViewById(R.id.customerViewProductItemName);
                 productDescriptionText = findViewById(R.id.customerViewProductDescriptionText);
                 productRatingText = findViewById(R.id.customerViewProductRatingText);
 
+                // Setting appropriate fields to the product's information
                 productNameText.setText(product.getName());
                 productDescriptionText.setText(product.getDescription());
+                productRatingText.setText(String.valueOf(product.getRating()));
+
             }
 
             @Override

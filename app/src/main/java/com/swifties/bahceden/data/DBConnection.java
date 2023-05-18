@@ -12,25 +12,22 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class DBConnection extends AsyncTask <Retrievable, Integer, PostAction> {
+public class DBConnection extends AsyncTask<Retrievable, Integer, PostAction> {
 
-    public static void retrieveFromDB (PostAction postAction, Retrievable... retrievables)
-    {
+    public static void retrieveFromDB(PostAction postAction, Retrievable... retrievables) {
         new DBConnection(postAction).execute(retrievables);
     }
+
     PostAction postAction;
 
-    public DBConnection (PostAction postAction)
-    {
+    public DBConnection(PostAction postAction) {
         this.postAction = postAction;
     }
 
     @Override
     protected PostAction doInBackground(Retrievable... retrievables) {
-        for (Retrievable r : retrievables)
-        {
-            try
-            {
+        for (Retrievable r : retrievables) {
+            try {
                 String urlString = "http://10.0.2.2:8080/" + r.getClass().getSimpleName().toLowerCase() + "s/" + r.getId();
                 URL url = new URL(urlString);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -39,9 +36,7 @@ public class DBConnection extends AsyncTask <Retrievable, Integer, PostAction> {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 String dataString = reader.readLine();
                 Parser.parse(dataString, r);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }

@@ -52,8 +52,7 @@ public class Producer extends User {
         return orders;
     }
 
-    public void fillFrom(Producer p)
-    {
+    public void fillFrom(Producer p) {
         super.fillFrom(p);
         city = p.getCity();
         displayName = p.getDisplayName();

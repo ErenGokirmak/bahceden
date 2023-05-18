@@ -12,8 +12,8 @@ import retrofit2.http.Path;
 public interface CartApi {
 
     // FIXME: I'm not sure if this method should exist, it does exist on the backend so it will stay here for
+
     /**
-     *
      * I'm
      *
      * @return all orders in the database
@@ -40,7 +40,7 @@ public interface CartApi {
      * product_id set to productId.
      *
      * @param customerId the id of the customer
-     * @param productId the id of the product
+     * @param productId  the id of the product
      * @return the deleted Order
      */
     @DELETE("customer/c{customerId}p{productId}")

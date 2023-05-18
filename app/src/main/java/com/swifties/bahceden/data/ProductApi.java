@@ -27,6 +27,7 @@ public interface ProductApi {
 
     /**
      * Retrieves a single product from the backend
+     *
      * @param id the desired product's id
      * @return the desired product
      */

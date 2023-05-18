@@ -1,6 +1,7 @@
 package com.swifties.bahceden.models;
 
 import java.util.ArrayList;
+
 public class Customer extends User {
     Cart cart;
     ArrayList<Product> favoriteProducts;
@@ -21,8 +22,7 @@ public class Customer extends User {
         this.addresses = addresses;
     }
 
-    public void fillFrom(Customer c)
-    {
+    public void fillFrom(Customer c) {
         super.fillFrom(c);
         addresses = c.getAddresses();
         cart = c.getCart();
@@ -30,6 +30,7 @@ public class Customer extends User {
         favoriteProducers = c.getFavoriteProducers();
         favoriteProducts = c.getFavoriteProducts();
     }
+
     public Cart getCart() {
         return cart;
     }
