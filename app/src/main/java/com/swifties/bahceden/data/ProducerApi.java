@@ -12,16 +12,19 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ProducerApi {
-    @GET("/producers")
+    @GET("producers")
     Call<List<Producer>> getAllProducers();
 
-    @GET("/producers/")
-    Call<Producer> getProducerById(int id);
+    @GET("producers/{producerId}")
+    Call<Producer> getProducerById(@Path("producerId") int producerId);
 
-    @POST("/producers/{producerId}")
+    @GET("producers/{keyword}/search")
+    Call<List<Producer>> getProducerByKeyword(@Path("keyword") String keyword);
+
+    @POST("producers/{producerId}")
     Call<Producer> save(@Path("producerId") int id, @Body Producer producer);
 
-    @PUT("/producers")
+    @PUT("producers")
     Call<Producer> updateProducer(@Body Producer producer);
 
 

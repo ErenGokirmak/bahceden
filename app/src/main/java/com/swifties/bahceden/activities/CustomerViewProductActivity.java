@@ -2,9 +2,11 @@ package com.swifties.bahceden.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,9 +18,15 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CommentCustomerViewAdapter;
 import com.swifties.bahceden.adapters.HotSalesAdapter;
+import com.swifties.bahceden.data.ProductApi;
+import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.models.Product;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CustomerViewProductActivity extends AppCompatActivity {
 
@@ -32,23 +40,38 @@ public class CustomerViewProductActivity extends AppCompatActivity {
     private RecyclerView commentsRV;
     private RecyclerView.Adapter commentsAdapter;
     private RecyclerView.LayoutManager commentsLM;
-
     ImageSlider imageSlider;
+    private RetrofitService retrofitService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_view_product);
+
+        retrofitService = new RetrofitService();
+
+        ProductApi productApi = retrofitService.getRetrofit().create(ProductApi.class);
+
         intent = getIntent();
 
-        product = (Product) intent.getSerializableExtra("product");
+        productApi.getProductById(Integer.parseInt(intent.getStringExtra("productId"))).enqueue(new Callback<Product>() {
+            @Override
+            public void onResponse(Call<Product> call, Response<Product> response) {
+                product = (Product) response.body();
+                productNameText = findViewById(R.id.customerViewProductItemName);
+                productDescriptionText = findViewById(R.id.customerViewProductDescriptionText);
+                productRatingText = findViewById(R.id.customerViewProductRatingText);
 
-        productNameText = findViewById(R.id.customerViewProductItemName);
-        productDescriptionText = findViewById(R.id.customerViewProductDescriptionText);
-        productRatingText = findViewById(R.id.customerViewProductRatingText);
+                productNameText.setText(product.getName());
+                productDescriptionText.setText(product.getDescription());
+            }
 
-        // productNameText.setText(product.getName());
-        // productDescriptionText.setText(product.getDescription());
+            @Override
+            public void onFailure(Call<Product> call, Throwable t) {
+                Toast.makeText(CustomerViewProductActivity.this, "Didn't work for some reason", Toast.LENGTH_SHORT).show();
+                Log.d("debugpurposes", t.getMessage());
+            }
+        });
 
 
         backButton = findViewById(R.id.customerViewProductBackButton);

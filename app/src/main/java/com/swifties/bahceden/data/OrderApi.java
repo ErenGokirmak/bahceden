@@ -15,5 +15,5 @@ public interface OrderApi {
     Call<List<Order>> getAllOrders();
 
     @DELETE("orders/{orderId}")
-    Call<Order> deleteById(@Path("orderId") int id);
+    Call<Order> deleteById(@Path("orderId") int orderId);
 }

@@ -90,7 +90,7 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         // takes the user to the product page of the order
         holder.cartProductImage.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), CustomerViewProductActivity.class);
-            intent.putExtra("product", cart.getOrders().get(holder.getBindingAdapterPosition()).getProduct());
+            intent.putExtra("productId", String.valueOf(cart.getOrders().get(holder.getBindingAdapterPosition()).getProduct().getId()));
             context.startActivity(intent);
         });
     }
