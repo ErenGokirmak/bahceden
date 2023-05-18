@@ -55,8 +55,8 @@ public class CustomerCartFragment extends Fragment {
         totalPriceText = view.findViewById(R.id.customerCartTotalPriceValue);
         totalPriceText.setText(String.format(getString(R.string.turkish_lira), String.valueOf(0.0)));
 
-        buyNowButton.setOnClickListener(view1 -> {
-            Intent intent = new Intent(view1.getContext(), CustomerCheckOutActivity.class);
+        buyNowButton.setOnClickListener(buyView -> {
+            Intent intent = new Intent(buyView.getContext(), CustomerCheckOutActivity.class);
             startActivity(intent);
         });
         cart = new Cart(0);

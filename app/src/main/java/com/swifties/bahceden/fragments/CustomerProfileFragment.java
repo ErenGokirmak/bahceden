@@ -42,36 +42,36 @@ public class CustomerProfileFragment extends Fragment {
         logOutButton = view.findViewById(R.id.customerProfileLogOutButton);
 
         // Initializing listeners
-        editProfileButton.setOnClickListener(view16 -> {
+        editProfileButton.setOnClickListener(profileView -> {
             Intent intent = new Intent(getActivity(), CustomerEditProfileActivity.class);
             startActivity(intent);
         });
-        myOrdersButton.setOnClickListener(view15 -> {
+        myOrdersButton.setOnClickListener(ordersView -> {
             Intent intent = new Intent(getActivity(), CustomerOrdersActivity.class);
             startActivity(intent);
         });
 
-        addressesButton.setOnClickListener(view14 -> {
+        addressesButton.setOnClickListener(addressesView -> {
             Intent intent = new Intent(getActivity(), CustomerAddressesActivity.class);
             startActivity(intent);
         });
 
-        paymentMethodsButton.setOnClickListener(view13 -> {
+        paymentMethodsButton.setOnClickListener(cardsView -> {
             Intent intent = new Intent(getActivity(), CustomerCardsActivity.class);
             startActivity(intent);
         });
 
-        analyticsButton.setOnClickListener(view12 -> {
+        analyticsButton.setOnClickListener(analyticsView -> {
             Intent intent = new Intent(getActivity(), CustomerAnalyticsActivity.class);
             startActivity(intent);
         });
 
-        securityButton.setOnClickListener(view1 -> {
+        securityButton.setOnClickListener(securityView -> {
             Intent intent = new Intent(getActivity(), SecurityProfileActivity.class);
             startActivity(intent);
         });
 
-        logOutButton.setOnClickListener(v -> {
+        logOutButton.setOnClickListener(logOutView -> {
             Intent intent = new Intent(getActivity(), ProducerMainActivity.class);
             startActivity(intent);
         });

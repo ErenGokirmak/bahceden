@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Cart implements Retrievable<Cart> {
     private ArrayList<Order> orders;
-    private int id;
+    private final int id;
 
     public Cart(int id) {
         this.id = id;

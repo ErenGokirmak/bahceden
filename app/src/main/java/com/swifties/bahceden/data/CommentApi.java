@@ -15,15 +15,17 @@ public interface CommentApi {
 
     /**
      * Retrieves all the comments in the database
+     *
      * @return a list of all the comments in the database
+     * @apiNote probably will be deleted further in development
      */
     @GET("comments")
     Call<List<Comment>> getAllComments();
 
-
     /**
      * Retrieves the comment with the given id (if it exists)
      * from the backend
+     *
      * @param commentId the id of the comment
      * @return the comment with the given id
      */
@@ -32,9 +34,14 @@ public interface CommentApi {
 
     /**
      * Saves a comment to the database
+     *
      * @param comment the comment to be saved
      * @return the comment that was saved
      */
     @POST("comments")
     Call<Comment> saveComment(@Body Comment comment);
+
+    @DELETE("comments/{commentId}")
+    Call<Comment> deleteCommentById(@Path("commentId") int id);
+
 }

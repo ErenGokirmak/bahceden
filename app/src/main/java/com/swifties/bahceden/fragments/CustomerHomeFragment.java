@@ -16,19 +16,16 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.swifties.bahceden.R;
-import com.swifties.bahceden.adapters.HotSalesAdapter;
+import com.swifties.bahceden.adapters.ProductListingAdapter;
 
 import java.util.ArrayList;
 
 public class CustomerHomeFragment extends Fragment {
     private RecyclerView newArrivalsRV;
-    private RecyclerView.Adapter arrivalsAdapter;
+    private RecyclerView.Adapter<ProductListingAdapter.ViewHolder> arrivalsAdapter;
 
     private ImageSlider imageSlider;
-
-    RecyclerView.LayoutManager cLayoutManager;
-    RecyclerView.LayoutManager aLayoutManager;
-    RecyclerView.LayoutManager hLayoutManager;
+    RecyclerView.LayoutManager newArrivalsLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,10 +46,10 @@ public class CustomerHomeFragment extends Fragment {
 
         newArrivalsRV = view.findViewById(R.id.customerHomeNewArrivalsRV);
         newArrivalsRV.setHasFixedSize(true);
-        aLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        newArrivalsLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
-        newArrivalsRV.setLayoutManager(aLayoutManager);
-        arrivalsAdapter = new HotSalesAdapter();
+        newArrivalsRV.setLayoutManager(newArrivalsLayoutManager);
+        arrivalsAdapter = new ProductListingAdapter();
         newArrivalsRV.setAdapter(arrivalsAdapter);
     }
 }

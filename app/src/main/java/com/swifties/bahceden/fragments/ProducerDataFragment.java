@@ -65,8 +65,8 @@ public class ProducerDataFragment extends Fragment {
         customDataCategoriesSpinner = view.findViewById(R.id.producerDataCategoriesSpinner);
         customDataSubCategoriesSpinner = view.findViewById(R.id.producerDataSubCategoriesSpinner);
 
-        SpinnerCustomAdapter spinnerCategoriesAdapter = new SpinnerCustomAdapter(getActivity(), customItems);
-        spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(getActivity(), customSubItems.get(0));
+        SpinnerCustomAdapter spinnerCategoriesAdapter = new SpinnerCustomAdapter(requireActivity(), customItems);
+        spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(requireActivity(), customSubItems.get(0));
 
         if (customDataCategoriesSpinner != null) {
             customDataCategoriesSpinner.setAdapter(spinnerCategoriesAdapter);
@@ -80,7 +80,7 @@ public class ProducerDataFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // Handle the selected item here
-                spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(getActivity(), customSubItems.get(position));
+                spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(requireActivity(), customSubItems.get(position));
                 customDataSubCategoriesSpinner.setAdapter(spinnerSubCategoriesAdapter);
             }
 

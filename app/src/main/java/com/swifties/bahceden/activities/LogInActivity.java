@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,7 +18,7 @@ import com.swifties.bahceden.R;
 public class LogInActivity extends AppCompatActivity {
 
     Button backButton, logIn;
-    TextView dontHaveAccount, forgetPassword;
+    TextView doNotHaveAnAccount, forgetPassword;
     EditText emailInput, passwordInput;
     TextInputLayout textInputLayout;
 
@@ -30,7 +29,7 @@ public class LogInActivity extends AppCompatActivity {
 
         backButton = findViewById(R.id.loginBackButton);
         emailInput = findViewById(R.id.loginEmail);
-        dontHaveAccount = findViewById(R.id.dontHaveAccount);
+        doNotHaveAnAccount = findViewById(R.id.dontHaveAccount);
         passwordInput = findViewById(R.id.loginPassword);
         textInputLayout = findViewById(R.id.loginPasswordLayout);
         forgetPassword = findViewById(R.id.forgetPassword);
@@ -38,7 +37,7 @@ public class LogInActivity extends AppCompatActivity {
 
         textInputLayout.setEndIconVisible(false);
 
-//        Text watcher for email Input
+        //Text watcher for email Input
         emailInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -78,7 +77,7 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
-        logIn.setOnClickListener(v -> {
+        logIn.setOnClickListener(logInView -> {
             if (emailInput.getText().toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailInput.getText().toString()).matches()) {
                 emailInput.setError("Enter Valid Email Address!");
             } else if (passwordInput.getText().toString().isEmpty()) {
@@ -86,16 +85,16 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
-        dontHaveAccount.setOnClickListener(v -> {
+        doNotHaveAnAccount.setOnClickListener(doNotHaveAccountView -> {
             Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
             startActivity(intent);
         });
 
-        forgetPassword.setOnClickListener(v -> {
+        forgetPassword.setOnClickListener(forgetPasswordView -> {
             Intent intent = new Intent(LogInActivity.this, ForgotPasswordActivity.class);
             startActivity(intent);
         });
 
-        backButton.setOnClickListener(v -> LogInActivity.super.onBackPressed());
+        backButton.setOnClickListener(backView -> LogInActivity.super.onBackPressed());
     }
 }

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
 
-public class HotSalesAdapter extends RecyclerView.Adapter<HotSalesAdapter.ViewHolder> {
+public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAdapter.ViewHolder> {
 
     @NonNull
     @Override
@@ -37,7 +37,7 @@ public class HotSalesAdapter extends RecyclerView.Adapter<HotSalesAdapter.ViewHo
         public ViewHolder(View view) {
             super(view);
 
-            view.setOnClickListener(v -> Toast.makeText(view.getContext(), "BaS:" + getAdapterPosition(), Toast.LENGTH_SHORT).show());
+            view.setOnClickListener(v -> Toast.makeText(view.getContext(), "BaS:" + getBindingAdapterPosition(), Toast.LENGTH_SHORT).show());
         }
     }
 }

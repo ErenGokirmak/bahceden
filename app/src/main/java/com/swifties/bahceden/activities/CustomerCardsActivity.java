@@ -21,14 +21,14 @@ public class CustomerCardsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_cards);
 
         backButton = findViewById(R.id.customerCardsBackButton);
-        backButton.setOnClickListener(view -> CustomerCardsActivity.super.onBackPressed());
+        backButton.setOnClickListener(backView -> CustomerCardsActivity.super.onBackPressed());
 
         RecyclerView yourCardsRV = findViewById(R.id.customerCardsYourCardsRV);
 
-        RecyclerView.LayoutManager lam = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        CardsAdapter ca = new CardsAdapter();
+        RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        CardsAdapter cardsAdapter = new CardsAdapter();
 
-        yourCardsRV.setLayoutManager(lam);
-        yourCardsRV.setAdapter(ca);
+        yourCardsRV.setLayoutManager(linearLayoutManager);
+        yourCardsRV.setAdapter(cardsAdapter);
     }
 }

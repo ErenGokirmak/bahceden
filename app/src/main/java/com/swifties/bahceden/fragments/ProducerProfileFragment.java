@@ -32,24 +32,24 @@ public class ProducerProfileFragment extends Fragment {
         securityButton = view.findViewById(R.id.producerProfileSecurityButton);
         logOutButton = view.findViewById(R.id.producerProfileLogOutButton);
 
-        editProfileButton.setOnClickListener(view14 -> {
+        editProfileButton.setOnClickListener(editProfileView -> {
             Intent intent = new Intent(getActivity(), ProducerEditProfileActivity.class);
             startActivity(intent);
         });
 
-        analyticsButton.setOnClickListener(view13 -> {
+        analyticsButton.setOnClickListener(analyticsView -> {
             Intent intent = new Intent(getActivity(), ProducerAnalyticsActivity.class);
             startActivity(intent);
         });
 
-        securityButton.setOnClickListener(view12 -> {
+        securityButton.setOnClickListener(securityView -> {
             Intent intent = new Intent(getActivity(), SecurityProfileActivity.class);
             startActivity(intent);
         });
 
 
         // TODO: Log Out Button currently redirects to the customer main activity for development purposes.
-        logOutButton.setOnClickListener(view1 -> {
+        logOutButton.setOnClickListener(logOutView -> {
             Intent intent = new Intent(getActivity(), CustomerMainActivity.class);
             startActivity(intent);
         });

@@ -17,7 +17,7 @@ public interface CustomerApi {
      * Retrieves all the customers in the
      * database
      *
-     * @return a list containing all the
+     * @return A list containing all the
      * customers
      */
     @GET("customers")
@@ -27,8 +27,8 @@ public interface CustomerApi {
      * Retrieves a customer from the backend
      * with the given id (if it exists)
      *
-     * @param id the id of the customer
-     * @return the customer with the given id
+     * @param id The id of the customer
+     * @return The customer with the given id
      */
     @GET("customers/{customerId}")
     Call<Customer> getCustomerById(@Path("customerId") int id);
@@ -36,8 +36,8 @@ public interface CustomerApi {
     /**
      * Saves a new customer to the database
      *
-     * @param customer the new customer data
-     * @return the new customer
+     * @param customer The new customer data
+     * @return The new customer
      */
     @POST("customers")
     Call<Customer> save(@Body Customer customer);
@@ -46,17 +46,19 @@ public interface CustomerApi {
      * Updates a customer's data on the backend
      * using the data given
      *
-     * @param customer the updated customer data
-     * @return the updated customer
+     * @param customer The updated customer data
+     * @return The updated customer
      */
     @PUT("customers")
     Call<Customer> updateCustomer(@Body Customer customer);
 
     /**
      * Deletes a customer from the database
-     * @param id the id of the customer
-     * @return whether deletion attempt was successful or not
+     *
+     * @param id The id of the customer
+     * @return Whether deletion attempt was successful or not
      */
     @DELETE("customer/{customerId}")
     Call<String> deleteCustomer(@Path("customerId") int id);
+
 }

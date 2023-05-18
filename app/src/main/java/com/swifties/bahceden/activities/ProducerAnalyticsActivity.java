@@ -19,7 +19,7 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
 
     ImageView backButton;
     RecyclerView analyticsProductRV;
-    RecyclerView.Adapter analyticsProductAdapter;
+    RecyclerView.Adapter<AnalyticsProductAdapter.ViewHolder> analyticsProductAdapter;
     RecyclerView.LayoutManager analyticsProductLM;
 
     Spinner spinner1;

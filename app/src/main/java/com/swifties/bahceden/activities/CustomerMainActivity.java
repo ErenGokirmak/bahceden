@@ -1,5 +1,6 @@
 package com.swifties.bahceden.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -43,6 +44,7 @@ public class CustomerMainActivity extends AppCompatActivity {
 
 //        Set listener for navBar
         customerBottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {

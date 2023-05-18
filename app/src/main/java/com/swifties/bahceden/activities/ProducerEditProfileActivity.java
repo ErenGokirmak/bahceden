@@ -17,6 +17,6 @@ public class ProducerEditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_producer_edit_profile);
 
         backButton = findViewById(R.id.producerEditProfileBackButton);
-        backButton.setOnClickListener(view -> ProducerEditProfileActivity.super.onBackPressed());
+        backButton.setOnClickListener(backView -> ProducerEditProfileActivity.super.onBackPressed());
     }
 }

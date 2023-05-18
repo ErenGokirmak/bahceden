@@ -26,9 +26,9 @@ public class CustomerAddressesActivity extends AppCompatActivity {
 
         addressesRV = findViewById(R.id.customerAddressesYourAddressesRV);
 
-        RecyclerView.LayoutManager lam = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        addressesRV.setLayoutManager(lam);
-        YourAddressesAdapter yaa = new YourAddressesAdapter();
-        addressesRV.setAdapter(yaa);
+        RecyclerView.LayoutManager addressesRVLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        addressesRV.setLayoutManager(addressesRVLayoutManager);
+        YourAddressesAdapter yourAddressesAdapter = new YourAddressesAdapter();
+        addressesRV.setAdapter(yourAddressesAdapter);
     }
 }

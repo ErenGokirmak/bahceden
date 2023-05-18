@@ -3,8 +3,11 @@ package com.swifties.bahceden.data;
 import com.swifties.bahceden.models.Address;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface AddressApi {
@@ -29,4 +32,23 @@ public interface AddressApi {
     @DELETE("addresses/{addressId}")
     Call<String> deleteAddressById(@Path("addressId") int addressId);
 
+    /**
+     * Updates the address in the database
+     *
+     * @param address the address to update the
+     *                database with
+     * @return the updated address
+     */
+    @PUT("addresses")
+    Call<Address> updateAddressById(@Body Address address);
+
+
+    /**
+     * Saves a new address to the database
+     *
+     * @param address address to be saved
+     * @return the saved address
+     */
+    @POST("addresses")
+    Call<Address> saveAddress(@Body Address address);
 }
