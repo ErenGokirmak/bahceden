@@ -24,14 +24,9 @@ public class CustomerViewProducerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_view_producer);
 
         backButton = findViewById(R.id.customerViewProducerBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CustomerViewProducerActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> CustomerViewProducerActivity.super.onBackPressed());
 
-        producerRV = (RecyclerView) findViewById(R.id.costumerViewProducerProductsRV);
+        producerRV = findViewById(R.id.costumerViewProducerProductsRV);
 
         int spanCount = 2;
         int dp_spacing = 30;

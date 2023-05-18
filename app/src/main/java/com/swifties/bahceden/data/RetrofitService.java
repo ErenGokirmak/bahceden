@@ -1,8 +1,5 @@
 package com.swifties.bahceden.data;
 
-import com.google.gson.Gson;
-import com.swifties.bahceden.models.Order;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

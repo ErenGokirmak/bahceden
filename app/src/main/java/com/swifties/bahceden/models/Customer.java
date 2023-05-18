@@ -1,7 +1,5 @@
 package com.swifties.bahceden.models;
 
-import androidx.annotation.NonNull;
-
 import java.util.ArrayList;
 public class Customer extends User {
     Cart cart;

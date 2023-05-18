@@ -53,12 +53,11 @@ public class CustomerCartFragment extends Fragment {
 
         buyNowButton = view.findViewById(R.id.customerCartBuyNowButton);
         totalPriceText = view.findViewById(R.id.customerCartTotalPriceValue);
-        buyNowButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), CustomerCheckOutActivity.class);
-                startActivity(intent);
-            }
+        totalPriceText.setText(String.format(getString(R.string.turkish_lira), String.valueOf(0.0)));
+
+        buyNowButton.setOnClickListener(view1 -> {
+            Intent intent = new Intent(view1.getContext(), CustomerCheckOutActivity.class);
+            startActivity(intent);
         });
         cart = new Cart(0);
 
@@ -87,10 +86,11 @@ public class CustomerCartFragment extends Fragment {
                 cartProductsRV.setAdapter(cartProductAdapter);
 
                 // setting the total price
-                totalPriceText.setText(String.format(getContext().getString(R.string.turkish_lira), String.valueOf(cart.calculateTotalCost())));
+                // TODO: this only updates the total price once.
+                //  there needs to be an update every time the
+                //  cart gets updated.
+                totalPriceText.setText(String.format(requireContext().getString(R.string.turkish_lira), String.valueOf(cart.calculateTotalCost())));
 
-
-                System.out.println(response);
             }
 
             @Override

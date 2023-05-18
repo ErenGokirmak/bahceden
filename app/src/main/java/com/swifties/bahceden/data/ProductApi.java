@@ -1,5 +1,7 @@
 package com.swifties.bahceden.data;
 
+import androidx.annotation.HalfFloat;
+
 import com.swifties.bahceden.models.Product;
 
 import java.util.List;
@@ -13,7 +15,15 @@ public interface ProductApi {
     @GET("products")
     Call<List<Product>> getAllProducts();
 
-
+    /**
+     * Retrieves a list of products that
+     * correspond to a given keyword
+     *
+     * @param keyword keyword to be searched for
+     * @return a list of products
+     */
+    @GET("products/{keyword}/search")
+    Call<List<Product>> getProductsByKeyword(@Path("keyword") String keyword);
 
     /**
      * Retrieves a single product from the backend

@@ -27,12 +27,7 @@ public class CustomerAnalyticsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_analytics);
 
         backButton = findViewById(R.id.customerAnalyticsBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CustomerAnalyticsActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> CustomerAnalyticsActivity.super.onBackPressed());
 
         consumerChart = findViewById(R.id.customerAnalyticsConsumerChart);
 

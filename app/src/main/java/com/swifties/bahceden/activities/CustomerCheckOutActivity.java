@@ -1,6 +1,5 @@
 package com.swifties.bahceden.activities;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -39,12 +38,7 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_check_out);
 
         backButton = findViewById(R.id.customerCheckOutBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CustomerCheckOutActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> CustomerCheckOutActivity.super.onBackPressed());
 
         retrofitService = new RetrofitService();
 

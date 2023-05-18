@@ -1,7 +1,6 @@
 package com.swifties.bahceden.data;
 
 import com.swifties.bahceden.models.Order;
-import com.swifties.bahceden.models.Product;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ public interface CartApi {
      *
      * I'm
      *
-     * @return
+     * @return all orders in the database
      */
     @GET("products")
     Call<List<Order>> getAllOrders();

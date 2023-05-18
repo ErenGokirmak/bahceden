@@ -18,11 +18,6 @@ public class ProducerOrderDetailsActivity extends AppCompatActivity {
 
         backButton = findViewById(R.id.producerOrderDetailsBackButton);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ProducerOrderDetailsActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> ProducerOrderDetailsActivity.super.onBackPressed());
     }
 }

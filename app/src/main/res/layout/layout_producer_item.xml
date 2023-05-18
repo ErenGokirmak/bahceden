@@ -57,9 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:drawableStart="@drawable/ic_star"
         android:drawablePadding="4dp"
-        android:drawableTint="@color/bahceden_green"
         android:paddingVertical="8dp"
         android:text="5"
         android:textColor="@color/bahceden_green"
@@ -67,7 +65,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/layoutProducerItemName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/layoutProducerItemName" />
+        app:layout_constraintTop_toTopOf="@id/layoutProducerItemName"
+        app:drawableTint="@color/bahceden_green"
+        app:drawableStartCompat="@drawable/ic_star" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

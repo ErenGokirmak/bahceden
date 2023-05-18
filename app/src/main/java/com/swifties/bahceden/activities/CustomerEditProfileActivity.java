@@ -18,11 +18,6 @@ public class CustomerEditProfileActivity extends AppCompatActivity {
 
         backButton = findViewById(R.id.customerEditProfileBackButton);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CustomerEditProfileActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> CustomerEditProfileActivity.super.onBackPressed());
     }
 }

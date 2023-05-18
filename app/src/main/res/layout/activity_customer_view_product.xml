@@ -110,7 +110,7 @@
                     app:tint="@color/star_yellow" />
 
                 <TextView
-                    android:id="@+id/ratingNum"
+                    android:id="@+id/customerViewProductRatingText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -142,7 +142,7 @@
                     app:layout_constraintTop_toBottomOf="@id/horizontalDivider" />
 
                 <TextView
-                    android:id="@+id/desc"
+                    android:id="@+id/customerViewProductDescriptionText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
@@ -164,8 +164,8 @@
                     android:textColor="@color/bahceden_green"
                     android:textSize="32sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/desc"
-                    app:layout_constraintTop_toBottomOf="@id/desc" />
+                    app:layout_constraintStart_toStartOf="@id/customerViewProductDescriptionText"
+                    app:layout_constraintTop_toBottomOf="@id/customerViewProductDescriptionText" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/buttonLayout"

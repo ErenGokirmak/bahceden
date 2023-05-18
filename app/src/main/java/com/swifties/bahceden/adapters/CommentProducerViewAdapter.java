@@ -28,27 +28,21 @@ public class CommentProducerViewAdapter extends RecyclerView.Adapter<CommentProd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.replyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.replyEdit.setVisibility(View.VISIBLE);
-                holder.replyButton.setVisibility(View.GONE);
-                Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
-                holder.replyEdit.startAnimation(animation);
-                holder.likeCount.setVisibility(View.GONE);
-                holder.commentDate.setVisibility(View.GONE);
-            }
+        holder.replyButton.setOnClickListener(v -> {
+            holder.replyEdit.setVisibility(View.VISIBLE);
+            holder.replyButton.setVisibility(View.GONE);
+            Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
+            holder.replyEdit.startAnimation(animation);
+            holder.likeCount.setVisibility(View.GONE);
+            holder.commentDate.setVisibility(View.GONE);
         });
 
-        holder.replyEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                holder.replyEdit.setVisibility(View.GONE);
-                holder.replyButton.setVisibility(View.VISIBLE);
-                holder.likeCount.setVisibility(View.VISIBLE);
-                holder.commentDate.setVisibility(View.VISIBLE);
-                return true;
-            }
+        holder.replyEdit.setOnEditorActionListener((v, actionId, event) -> {
+            holder.replyEdit.setVisibility(View.GONE);
+            holder.replyButton.setVisibility(View.VISIBLE);
+            holder.likeCount.setVisibility(View.VISIBLE);
+            holder.commentDate.setVisibility(View.VISIBLE);
+            return true;
         });
     }
 
@@ -73,12 +67,7 @@ public class CommentProducerViewAdapter extends RecyclerView.Adapter<CommentProd
             likeCount = view.findViewById(R.id.likeCount);
             commentDate = view.findViewById(R.id.commentDate);
 
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(view.getContext(), "BaS:" + getAdapterPosition(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            view.setOnClickListener(v -> Toast.makeText(view.getContext(), "BaS:" + getAdapterPosition(), Toast.LENGTH_SHORT).show());
         }
     }
 }

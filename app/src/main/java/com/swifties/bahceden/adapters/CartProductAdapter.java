@@ -2,13 +2,11 @@ package com.swifties.bahceden.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -21,12 +19,7 @@ import com.swifties.bahceden.data.CartApi;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;
-import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.Product;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.ViewHolder> {
 
@@ -61,54 +54,44 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         holder.cartProductPrice.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(cartItem.getTotalPrice())));
         holder.cartProductAmount.setText(String.valueOf(cartItem.getAmount()));
 
-        holder.cartProductDecrement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cartItem.increaseAmountBy(-1);
-                notifyItemChanged(holder.getBindingAdapterPosition());
-            }
+        holder.cartProductDecrement.setOnClickListener(v -> {
+            cartItem.offsetAmountBy(-1);
+            notifyItemChanged(holder.getBindingAdapterPosition());
         });
 
-        holder.cartProductIncrement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cartItem.increaseAmountBy(1);
-                notifyItemChanged(holder.getBindingAdapterPosition());
-            }
+        holder.cartProductIncrement.setOnClickListener(v -> {
+            cartItem.offsetAmountBy(1);
+            notifyItemChanged(holder.getBindingAdapterPosition());
         });
 
-        holder.cartProductDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CartApi cartApi = retrofitService.getRetrofit().create(CartApi.class);
+        holder.cartProductDelete.setOnClickListener(v -> {
+            CartApi cartApi = retrofitService.getRetrofit().create(CartApi.class);
 
-                // TODO: customer id implementation
+            // TODO: customer id implementation
 
-                // This part will be in order after
-                 /*cartApi.deleteOrderFromCart( ___ , cart.get(holder.getBindingAdapterPosition()).getId()).enqueue(new Callback<Order>() {
-                    @Override
-                    public void onResponse(Call<Order> call, Response<Order> response) {
-                        // TODO: Move cart.remove(...) to here
-                    }
+            // This part will be in order after
+             /*cartApi.deleteOrderFromCart( ___ , cart.get(holder.getBindingAdapterPosition()).getId()).enqueue(new Callback<Order>() {
+                @Override
+                public void onResponse(Call<Order> call, Response<Order> response) {
+                    // TODO: Move cart.remove(...) to here
+                }
 
-                    @Override
-                    public void onFailure(Call<Order> call, Throwable t) {
-                        Toast.makeText(v.getContext(), "Removal attempt from cart was unsuccessful", Toast.LENGTH_SHORT).show();
-                        Log.d("apiError", t.getMessage());
-                    }
-                });*/
+                @Override
+                public void onFailure(Call<Order> call, Throwable t) {
+                    Toast.makeText(v.getContext(), "Removal attempt from cart was unsuccessful", Toast.LENGTH_SHORT).show();
+                    Log.d("apiError", t.getMessage());
+                }
+            });*/
 
-                cart.remove(holder.getBindingAdapterPosition());
-                notifyItemRemoved(holder.getBindingAdapterPosition());
-            }
+            cart.remove(holder.getBindingAdapterPosition());
+            notifyItemRemoved(holder.getBindingAdapterPosition());
         });
 
-        holder.cartProductImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), CustomerViewProductActivity.class);
-                context.startActivity(intent);
-            }
+        // takes the user to the product page of the order
+        holder.cartProductImage.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), CustomerViewProductActivity.class);
+            intent.putExtra("product", cart.getOrders().get(holder.getBindingAdapterPosition()).getProduct());
+            context.startActivity(intent);
         });
     }
 

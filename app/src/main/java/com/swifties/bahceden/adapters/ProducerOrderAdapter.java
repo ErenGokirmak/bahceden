@@ -28,27 +28,16 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
 
     @Override
     public void onBindViewHolder(@NonNull ProducerOrderAdapter.ViewHolder holder, int position) {
-        holder.changeStatusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.changeStatusButtonsHolder.setVisibility(View.VISIBLE);
-                Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
-                holder.changeStatusButtonsHolder.startAnimation(animation);
-            }
+        holder.changeStatusButton.setOnClickListener(v -> {
+            holder.changeStatusButtonsHolder.setVisibility(View.VISIBLE);
+            Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
+            holder.changeStatusButtonsHolder.startAnimation(animation);
         });
-        holder.changeStatusButtonsHolder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.changeStatusButtonsHolder.setVisibility(View.GONE);
-            }
-        });
+        holder.changeStatusButtonsHolder.setOnClickListener(v -> holder.changeStatusButtonsHolder.setVisibility(View.GONE));
 
-        holder.detailsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ProducerOrderDetailsActivity.class);
-                v.getContext().startActivity(intent);
-            }
+        holder.detailsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), ProducerOrderDetailsActivity.class);
+            v.getContext().startActivity(intent);
         });
     }
 
@@ -71,15 +60,7 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
             changeStatusButtonsHolder = itemView.findViewById(R.id.changeStatusButtonsHolder);
             detailsButton = itemView.findViewById(R.id.detailsButton);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-
-
-
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), "BaS:" + getAdapterPosition(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            itemView.setOnClickListener(v -> Toast.makeText(itemView.getContext(), "BaS:" + getAdapterPosition(), Toast.LENGTH_SHORT).show());
         }
     }
 }

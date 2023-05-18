@@ -21,12 +21,7 @@ public class CustomerCardsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_cards);
 
         backButton = findViewById(R.id.customerCardsBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CustomerCardsActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> CustomerCardsActivity.super.onBackPressed());
 
         RecyclerView yourCardsRV = findViewById(R.id.customerCardsYourCardsRV);
 

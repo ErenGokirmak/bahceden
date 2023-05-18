@@ -21,12 +21,7 @@ public class CustomerPaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_payment);
 
         backButton = findViewById(R.id.customerPaymentBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CustomerPaymentActivity.super.onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(view -> CustomerPaymentActivity.super.onBackPressed());
 
         RecyclerView paymentCardsRV = findViewById(R.id.customerPaymentCardRV);
 

@@ -1,7 +1,5 @@
 package com.swifties.bahceden.models;
 
-import java.text.SimpleDateFormat;
-
 public class Order implements Retrievable<Order> {
 
     public enum ShipmentType {
@@ -31,11 +29,10 @@ public class Order implements Retrievable<Order> {
         totalPrice = amount * product.getPricePerUnit();
     }
 
-    public boolean increaseAmountBy (int increment)
+    public boolean offsetAmountBy(int offset)
     {
-        if (amount + increment < 1) return false;
-        amount += increment;
-        if (amount == 0) return false;
+        if (amount + offset < 1) return false;
+        amount += offset;
         return true;
     }
 

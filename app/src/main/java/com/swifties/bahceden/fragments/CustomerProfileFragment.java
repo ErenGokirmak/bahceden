@@ -42,59 +42,38 @@ public class CustomerProfileFragment extends Fragment {
         logOutButton = view.findViewById(R.id.customerProfileLogOutButton);
 
         // Initializing listeners
-        editProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CustomerEditProfileActivity.class);
-                startActivity(intent);
-            }
+        editProfileButton.setOnClickListener(view16 -> {
+            Intent intent = new Intent(getActivity(), CustomerEditProfileActivity.class);
+            startActivity(intent);
         });
-        myOrdersButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CustomerOrdersActivity.class);
-                startActivity(intent);
-            }
+        myOrdersButton.setOnClickListener(view15 -> {
+            Intent intent = new Intent(getActivity(), CustomerOrdersActivity.class);
+            startActivity(intent);
         });
 
-        addressesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CustomerAddressesActivity.class);
-                startActivity(intent);
-            }
+        addressesButton.setOnClickListener(view14 -> {
+            Intent intent = new Intent(getActivity(), CustomerAddressesActivity.class);
+            startActivity(intent);
         });
 
-        paymentMethodsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CustomerCardsActivity.class);
-                startActivity(intent);
-            }
+        paymentMethodsButton.setOnClickListener(view13 -> {
+            Intent intent = new Intent(getActivity(), CustomerCardsActivity.class);
+            startActivity(intent);
         });
 
-        analyticsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CustomerAnalyticsActivity.class);
-                startActivity(intent);
-            }
+        analyticsButton.setOnClickListener(view12 -> {
+            Intent intent = new Intent(getActivity(), CustomerAnalyticsActivity.class);
+            startActivity(intent);
         });
 
-        securityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SecurityProfileActivity.class);
-                startActivity(intent);
-            }
+        securityButton.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getActivity(), SecurityProfileActivity.class);
+            startActivity(intent);
         });
 
-        logOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ProducerMainActivity.class);
-                startActivity(intent);
-            }
+        logOutButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), ProducerMainActivity.class);
+            startActivity(intent);
         });
 
         return view;
