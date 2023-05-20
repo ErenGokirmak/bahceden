@@ -1,6 +1,6 @@
 package com.swifties.bahceden.models;
 
-public abstract class User implements Retrievable<User> {
+public abstract class User {
     /**
      * Unique identification number of the user.
      */
@@ -26,6 +26,13 @@ public abstract class User implements Retrievable<User> {
         this.id = id;
     }
 
+    public User(int id, String name, String email, String password, String phoneNumber) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+    }
 
     public int getId() {
         return id;

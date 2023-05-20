@@ -41,7 +41,6 @@ public class CustomerViewProductActivity extends AppCompatActivity {
     private RecyclerView.Adapter<CommentCustomerViewAdapter.ViewHolder> commentsAdapter;
     private RecyclerView.LayoutManager commentsLM;
     ImageSlider imageSlider;
-    private RetrofitService retrofitService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +48,10 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_view_product);
 
         // Setting up productApi
-        retrofitService = new RetrofitService();
-        ProductApi productApi = retrofitService.getRetrofit().create(ProductApi.class);
 
         // Getting product from the backend
         intent = getIntent();
-        productApi.getProductById(Integer.parseInt(intent.getStringExtra("productId"))).enqueue(new Callback<Product>() {
+        RetrofitService.getApi(ProductApi.class).getProductById(Integer.parseInt(intent.getStringExtra("productId"))).enqueue(new Callback<Product>() {
             @Override
             public void onResponse(@NonNull Call<Product> call, @NonNull Response<Product> response) {
                 // Getting product & finding appropriate fields
@@ -95,8 +92,8 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         similarItemsLM = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
         similarItemsRV.setLayoutManager(similarItemsLM);
-        similarItemsAdapter = new ProductListingAdapter();
-        similarItemsRV.setAdapter(similarItemsAdapter);
+        //similarItemsAdapter = new ProductListingAdapter(products, this);
+        //similarItemsRV.setAdapter(similarItemsAdapter);
 
         commentsRV = findViewById(R.id.commentItems);
         commentsRV.setHasFixedSize(true);

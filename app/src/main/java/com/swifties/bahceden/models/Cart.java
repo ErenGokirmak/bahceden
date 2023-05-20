@@ -2,7 +2,7 @@ package com.swifties.bahceden.models;
 
 import java.util.ArrayList;
 
-public class Cart implements Retrievable<Cart> {
+public class Cart {
     private ArrayList<Order> orders;
     private final int id;
 
@@ -15,10 +15,6 @@ public class Cart implements Retrievable<Cart> {
         return orders.get(index);
     }
 
-    public Order get(int index, PostAction postAction) {
-        orders.get(index).getProduct().retrieveFromDB(postAction);
-        return orders.get(index);
-    }
 
     public Order getById(int id) {
         for (Order o : orders) {
@@ -38,14 +34,8 @@ public class Cart implements Retrievable<Cart> {
         return orders;
     }
 
-    @Override
     public int getId() {
         return id;
-    }
-
-    @Override
-    public void fillFrom(Cart obj) {
-
     }
 
     public void setOrders(ArrayList<Order> orders) {

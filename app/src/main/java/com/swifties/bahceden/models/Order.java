@@ -1,6 +1,6 @@
 package com.swifties.bahceden.models;
 
-public class Order implements Retrievable<Order> {
+public class Order {
 
     public enum ShipmentType {
         CUSTOMER_PICKUP, PRODUCER_DELIVERY, SHIPMENT
@@ -37,11 +37,6 @@ public class Order implements Retrievable<Order> {
 
     public int getId() {
         return id;
-    }
-
-    @Override
-    public void fillFrom(Order obj) {
-
     }
 
     public String getDateOfPurchase() {

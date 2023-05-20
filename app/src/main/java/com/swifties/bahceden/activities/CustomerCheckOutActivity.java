@@ -30,7 +30,6 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
     private CheckOutAdapter checkOutAdapter;
     private RecyclerView.LayoutManager checkOutRcLayoutManager;
     private Cart cart;
-    private RetrofitService retrofitService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +39,9 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
         backButton = findViewById(R.id.customerCheckOutBackButton);
         backButton.setOnClickListener(backView -> CustomerCheckOutActivity.super.onBackPressed());
 
-        retrofitService = new RetrofitService();
-
         cart = new Cart(0);
 
-        OrderApi cartApi = retrofitService.getRetrofit().create(OrderApi.class);
-
-        cartApi.getAllOrders().enqueue(new Callback<List<Order>>() {
+        RetrofitService.getApi(OrderApi.class).getAllOrders().enqueue(new Callback<List<Order>>() {
             @Override
             public void onResponse(@NonNull Call<List<Order>> call, @NonNull Response<List<Order>> response) {
                 cart.setOrders((ArrayList<Order>) response.body());

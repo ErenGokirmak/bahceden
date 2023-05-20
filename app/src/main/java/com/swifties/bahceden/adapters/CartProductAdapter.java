@@ -25,7 +25,6 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
 
     Cart cart;
     Context context;
-    RetrofitService retrofitService;
 
     public CartProductAdapter(Cart cart, Context context) {
         this.cart = cart;
@@ -38,7 +37,6 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.layout_customer_cart_item, viewGroup, false);
 
-        retrofitService = new RetrofitService();
         return new ViewHolder(view);
     }
 
@@ -65,7 +63,7 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         });
 
         holder.cartProductDelete.setOnClickListener(v -> {
-            CartApi cartApi = retrofitService.getRetrofit().create(CartApi.class);
+            CartApi cartApi = RetrofitService.getApi(CartApi.class);
 
             // TODO: customer id implementation
 

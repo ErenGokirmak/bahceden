@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class Product implements Retrievable<Product>, Serializable {
+public class Product {
     UnitType unitType;
     private int id;
     private String name;
@@ -77,11 +77,6 @@ public class Product implements Retrievable<Product>, Serializable {
 
     public Producer getProducer() {
         //if (sync) producer.retrieveFromDB();
-        return this.producer;
-    }
-
-    public Producer getProducer(PostAction postAction) {
-        producer.retrieveFromDB(postAction);
         return this.producer;
     }
 

@@ -13,6 +13,10 @@ public class Customer extends User {
         super(id);
     }
 
+    public Customer(int id, String name, String email, String password, String phoneNumber) {
+        super(id, name, email, password, phoneNumber);
+    }
+
     public void fillFrom(Customer c) {
         super.fillFrom(c);
         addresses = c.getAddresses();

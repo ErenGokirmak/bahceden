@@ -17,8 +17,17 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.ProductListingAdapter;
+import com.swifties.bahceden.data.ProductApi;
+import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.models.Order;
+import com.swifties.bahceden.models.Product;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CustomerHomeFragment extends Fragment {
     private RecyclerView newArrivalsRV;
@@ -27,6 +36,7 @@ public class CustomerHomeFragment extends Fragment {
     private ImageSlider imageSlider;
     RecyclerView.LayoutManager newArrivalsLayoutManager;
 
+    List<Product> products;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_customer_home, container, false);
@@ -39,17 +49,28 @@ public class CustomerHomeFragment extends Fragment {
         imageSlider = view.findViewById(R.id.customerHomeSlider);
         ArrayList<SlideModel> slideModels = new ArrayList<>();
 
-        slideModels.add(new SlideModel(R.drawable.banana, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.cucumber, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.tomato, ScaleTypes.FIT));
-        imageSlider.setImageList(slideModels);
+        RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                products = response.body();
+                for (Product p : products) {
+                    slideModels.add(new SlideModel(p.getImageURL(), ScaleTypes.FIT));
+                    imageSlider.setImageList(slideModels);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+
+            }
+        });
 
         newArrivalsRV = view.findViewById(R.id.customerHomeNewArrivalsRV);
         newArrivalsRV.setHasFixedSize(true);
         newArrivalsLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
         newArrivalsRV.setLayoutManager(newArrivalsLayoutManager);
-        arrivalsAdapter = new ProductListingAdapter();
+        arrivalsAdapter = new ProductListingAdapter(products, this.getContext());
         newArrivalsRV.setAdapter(arrivalsAdapter);
     }
 }

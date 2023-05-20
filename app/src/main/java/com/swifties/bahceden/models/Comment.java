@@ -2,7 +2,7 @@ package com.swifties.bahceden.models;
 
 import java.util.ArrayList;
 
-public class Comment implements Retrievable<Comment> {
+public class Comment {
     private Customer author;
     private Product product;
     private String contentOfComment;
@@ -14,12 +14,6 @@ public class Comment implements Retrievable<Comment> {
     public int getId() {
         return id;
     }
-
-    @Override
-    public void fillFrom(Comment obj) {
-
-    }
-
     public Customer getAuthor() {
         return author;
     }

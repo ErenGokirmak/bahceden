@@ -6,6 +6,10 @@ android {
     namespace 'com.swifties.bahceden'
     compileSdk 33
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.swifties.bahceden"
         minSdk 24

@@ -20,6 +20,15 @@ public interface OrderApi {
     Call<List<Order>> getAllOrders();
 
     /**
+     * Retrieves order by id
+     *
+     * @param orderId
+     * @return An order by id
+     */
+    @GET("orders/{orderId}")
+    Call<Order> getOrderByID(@Path("orderId") int orderId);
+
+    /**
      * Deletes an order from the database
      *
      * @param orderId the order's id

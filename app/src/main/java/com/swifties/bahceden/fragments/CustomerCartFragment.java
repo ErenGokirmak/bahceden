@@ -40,7 +40,6 @@ public class CustomerCartFragment extends Fragment {
     private RecyclerView.LayoutManager cartProductLayoutManager;
     private Button buyNowButton;
     private Cart cart;
-    private RetrofitService retrofitService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,17 +60,12 @@ public class CustomerCartFragment extends Fragment {
         });
         cart = new Cart(0);
 
-        // set up a new retroFitService
-        retrofitService = new RetrofitService();
-
         // create a new cartApi instance
-        OrderApi cartApi = retrofitService.getRetrofit().create(OrderApi.class);
-
         // get orders from the backend, set the cart's orders to said list, and
         // populate the RecyclerView using that cart (this method will change
         // in the future, for now it just retrieves all orders in the database).
         // TODO: implement retrieving only one customer's orders
-        cartApi.getAllOrders().enqueue(new Callback<List<Order>>() {
+        RetrofitService.getApi(OrderApi.class).getAllOrders().enqueue(new Callback<List<Order>>() {
             @Override
             public void onResponse(@NonNull Call<List<Order>> call, @NonNull Response<List<Order>> response) {
                 // setting the cart's orders to the server's response
