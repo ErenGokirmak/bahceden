@@ -21,6 +21,15 @@ public abstract class User {
      * The phone number of a user will be of the form "countryCode-phoneNumber"
      */
     private String phoneNumber;
+    private String profileImageUrl;
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
 
     public void setId(int id) {
         this.id = id;

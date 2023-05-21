@@ -8,7 +8,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.swifties.bahceden.R;
-import com.swifties.bahceden.data.AuthCustomer;
+import com.swifties.bahceden.data.AuthUser;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
@@ -17,8 +17,6 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        AuthCustomer.initializeCustomer(0);
 
         // TODO: Make this into the "logged in" check
         new Handler().postDelayed(() -> {

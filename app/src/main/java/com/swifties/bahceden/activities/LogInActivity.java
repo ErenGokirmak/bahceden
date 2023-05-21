@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.data.AuthUser;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -123,12 +124,13 @@ public class LogInActivity extends AppCompatActivity {
                                                         startActivity(new Intent(LogInActivity.this, ProducerMainActivity.class));
                                                     else if (userType == IntroActivity.CUSTOMER_TYPE)
                                                         startActivity(new Intent(LogInActivity.this, CustomerMainActivity.class));
+                                                    AuthUser.getInstance().createUser(email, userType);
                                                 }
                                             }
                                         });
                                 Toast.makeText(LogInActivity.this, "Logging In...", Toast.LENGTH_SHORT).show();
-                                }
-                            })
+                            }
+                        })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.swifties.bahceden.activities.CustomerMainActivity;
+import com.swifties.bahceden.activities.IntroActivity;
 import com.swifties.bahceden.activities.ProducerAnalyticsActivity;
 import com.swifties.bahceden.activities.ProducerEditProfileActivity;
 import com.swifties.bahceden.R;
@@ -50,7 +51,7 @@ public class ProducerProfileFragment extends Fragment {
 
         // TODO: Log Out Button currently redirects to the customer main activity for development purposes.
         logOutButton.setOnClickListener(logOutView -> {
-            Intent intent = new Intent(getActivity(), CustomerMainActivity.class);
+            Intent intent = new Intent(getActivity(), IntroActivity.class);
             startActivity(intent);
         });
 

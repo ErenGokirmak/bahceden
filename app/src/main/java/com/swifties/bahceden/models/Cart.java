@@ -1,13 +1,13 @@
 package com.swifties.bahceden.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Cart {
-    private ArrayList<Order> orders;
-    private final int id;
-
-    public Cart(int id) {
-        this.id = id;
+    private List<Order> orders;
+    private final int customerId;
+    public Cart(int customerId) {
+        this.customerId = customerId;
         orders = new ArrayList<>();
     }
 
@@ -30,15 +30,11 @@ public class Cart {
         //TODO sync with db
     }
 
-    public ArrayList<Order> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setOrders(ArrayList<Order> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 

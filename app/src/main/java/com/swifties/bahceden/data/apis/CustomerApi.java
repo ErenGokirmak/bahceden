@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface CustomerApi {
     /**
@@ -32,6 +33,14 @@ public interface CustomerApi {
      */
     @GET("customers/{customerId}")
     Call<Customer> getCustomerById(@Path("customerId") int id);
+
+    /**
+     * retrieve customer according to the email for the log in purposes
+     * @param email
+     * @return customer with given email
+     */
+    @GET("customers/email")
+    Call<Customer> getCustomerByEmail(@Query("email") String email);
 
     /**
      * Saves a new customer to the database

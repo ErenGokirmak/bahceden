@@ -14,6 +14,7 @@ import com.swifties.bahceden.activities.CustomerAnalyticsActivity;
 import com.swifties.bahceden.activities.CustomerCardsActivity;
 import com.swifties.bahceden.activities.CustomerEditProfileActivity;
 import com.swifties.bahceden.activities.CustomerOrdersActivity;
+import com.swifties.bahceden.activities.IntroActivity;
 import com.swifties.bahceden.activities.ProducerMainActivity;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.SecurityProfileActivity;
@@ -72,7 +73,7 @@ public class CustomerProfileFragment extends Fragment {
         });
 
         logOutButton.setOnClickListener(logOutView -> {
-            Intent intent = new Intent(getActivity(), ProducerMainActivity.class);
+            Intent intent = new Intent(getActivity(), IntroActivity.class);
             startActivity(intent);
         });
 

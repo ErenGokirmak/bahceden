@@ -1,9 +1,18 @@
 package com.swifties.bahceden.models;
 
 public class Address {
+    private int id;
     private String title;
     private String fullAddress;
     private String phoneNumberOfRecipient;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

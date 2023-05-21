@@ -1,5 +1,6 @@
 package com.swifties.bahceden.data.apis;
 
+import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Producer;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ProducerApi {
 
@@ -32,6 +34,14 @@ public interface ProducerApi {
      */
     @GET("producers/{producerId}")
     Call<Producer> getProducerById(@Path("producerId") int producerId);
+
+    /**
+     * retrieve producer according to the email for the log in purposes
+     * @param email
+     * @return producer with given email
+     */
+    @GET("producers/email")
+    Call<Customer> getProducerByEmail(@Query("email") String email);
 
     /**
      * Retrieves all the producers that

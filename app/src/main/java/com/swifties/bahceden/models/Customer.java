@@ -1,61 +1,57 @@
 package com.swifties.bahceden.models;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Customer extends User {
     Cart cart;
-    ArrayList<Product> favoriteProducts;
-    ArrayList<Producer> favoriteProducers;
-    ArrayList<Order> orders;
-    ArrayList<Address> addresses;
+    List<Product> favoriteProducts;
+    List<Producer> favoriteProducers;
+    List<Order> orders;
+    List<Address> addresses;
 
     public void setCart(Cart cart) {
         this.cart = cart;
     }
 
-    public void setFavoriteProducts(ArrayList<Product> favoriteProducts) {
+    public void setFavoriteProducts(List<Product> favoriteProducts) {
         this.favoriteProducts = favoriteProducts;
     }
 
-    public void setFavoriteProducers(ArrayList<Producer> favoriteProducers) {
+    public void setFavoriteProducers(List<Producer> favoriteProducers) {
         this.favoriteProducers = favoriteProducers;
     }
 
-    public void setOrders(ArrayList<Order> orders) {
+
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
+        this.cart = new Cart(getId());
+        this.cart.setOrders(orders.stream().filter(order -> order.getOrderStatus() == Order.OrderStatus.IN_CART).collect(Collectors.toList()));
     }
 
-    public void setAddresses(ArrayList<Address> addresses) {
+    public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
-    }
-
-    public void fillFrom(Customer c) {
-        super.fillFrom(c);
-        addresses = c.getAddresses();
-        cart = c.getCart();
-        orders = c.getOrders();
-        favoriteProducers = c.getFavoriteProducers();
-        favoriteProducts = c.getFavoriteProducts();
     }
 
     public Cart getCart() {
         return cart;
     }
 
-    public ArrayList<Product> getFavoriteProducts() {
+    public List<Product> getFavoriteProducts() {
         return favoriteProducts;
     }
 
 
-    public ArrayList<Producer> getFavoriteProducers() {
+    public List<Producer> getFavoriteProducers() {
         return favoriteProducers;
     }
 
-    public ArrayList<Order> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public ArrayList<Address> getAddresses() {
+    public List<Address> getAddresses() {
         return addresses;
     }
 }

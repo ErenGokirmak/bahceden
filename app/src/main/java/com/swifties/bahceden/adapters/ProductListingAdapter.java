@@ -1,21 +1,18 @@
 package com.swifties.bahceden.adapters;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
-import com.swifties.bahceden.data.AuthCustomer;
+import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.databinding.LayoutItemBinding;
-import com.swifties.bahceden.models.Order;
+
 import com.swifties.bahceden.models.Product;
 
 import java.util.List;
@@ -25,33 +22,31 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
     List<Product> products;
     Context context;
 
-    public ProductListingAdapter(List<Product> products, Context context) {
+    LayoutInflater inflater;
+    public ProductListingAdapter(List<Product> products, Context context, LayoutInflater inflater) {
         this.products = products;
         this.context = context;
+        this.inflater = inflater;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        // Create a new view, which defines the UI of the list item
-        View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.layout_item, viewGroup, false);
-
-        return new ViewHolder(view, LayoutItemBinding.inflate(LayoutInflater.from(context)));
+        LayoutItemBinding binding = LayoutItemBinding.inflate(inflater, viewGroup, false);
+        return new ProductListingAdapter.ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product product = products.get(holder.getBindingAdapterPosition());
-        System.out.println(product);
-        holder.binding.itemLayoutProducerNameText.setText(product.getName());
+        holder.binding.itemLayoutItemName.setText(product.getName());
         holder.binding.itemLayoutPriceText.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit())));
         holder.binding.itemLayoutProducerNameText.setText(product.getProducer().getName());
         Picasso.get()
             .load(product.getImageURL())
                 .into(holder.binding.itemLayoutItemImage);
         holder.binding.itemLayoutItemLiked.setOnClickListener(v -> {
-            if (AuthCustomer.getCustomer().getFavoriteProducts().remove(product))
+            if (AuthUser.getCustomer().getFavoriteProducts().remove(product))
             {
                 Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
                 drawable.setTint(context.getResources().getColor(R.color.white));
@@ -59,7 +54,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
             }
             else
             {
-                AuthCustomer.getCustomer().getFavoriteProducts().add(product);
+                AuthUser.getCustomer().getFavoriteProducts().add(product);
                 Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
                 drawable.setTint(context.getResources().getColor(R.color.minus_red));
                 holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
@@ -67,7 +62,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
         });
 
         holder.binding.itemLayoutAddToCart.setOnClickListener(v -> {
-            AuthCustomer.getCustomer().getCart().addProduct(product);
+            AuthUser.getCustomer().getCart().addProduct(product);
         });
     }
 
@@ -80,10 +75,9 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
 
         LayoutItemBinding binding;
 
-        public ViewHolder(View view, LayoutItemBinding binding) {
-            super(view);
+        public ViewHolder(LayoutItemBinding binding) {
+            super(binding.getRoot());
             this.binding = binding;
-            view.setOnClickListener(v -> Toast.makeText(view.getContext(), "BaS:" + getBindingAdapterPosition(), Toast.LENGTH_SHORT).show());
         }
     }
 }

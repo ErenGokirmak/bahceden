@@ -19,6 +19,7 @@ import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.ProductListingAdapter;
 import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.databinding.FragmentCustomerHomeBinding;
 import com.swifties.bahceden.models.Product;
 
 import java.util.ArrayList;
@@ -35,35 +36,46 @@ public class CustomerHomeFragment extends Fragment {
     private ImageSlider imageSlider;
     RecyclerView.LayoutManager newArrivalsLayoutManager;
 
-    View view;
     List<Product> products;
+
+    FragmentCustomerHomeBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_customer_home, container, false);
+        binding = FragmentCustomerHomeBinding.inflate(inflater, container, false);
+        products = new ArrayList<>();
+
+        newArrivalsRV = binding.customerHomeNewArrivalsRV;
+        arrivalsAdapter = new ProductListingAdapter(products, getContext(), inflater);
+
+        newArrivalsRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        newArrivalsRV.setAdapter(arrivalsAdapter);
+
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        this.view = view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        imageSlider = view.findViewById(R.id.customerHomeSlider);
+        imageSlider = binding.customerHomeSlider;
         ArrayList<SlideModel> slideModels = new ArrayList<>();
 
+
         RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                products = response.body();
+                products.removeAll(products);
+                products.addAll(response.body());
+                arrivalsAdapter.notifyDataSetChanged();
                 for (Product p : products) {
                     slideModels.add(new SlideModel(p.getImageURL(), ScaleTypes.FIT));
-                    imageSlider.setImageList(slideModels);
                 }
+                imageSlider.setImageList(slideModels);
             }
 
             @Override
@@ -72,23 +84,6 @@ public class CustomerHomeFragment extends Fragment {
             }
         });
 
-        RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
-            @Override
-            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                products = response.body();
-                newArrivalsRV = view.findViewById(R.id.customerHomeNewArrivalsRV);
-                newArrivalsRV.setHasFixedSize(true);
-                newArrivalsLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
-                newArrivalsRV.setLayoutManager(newArrivalsLayoutManager);
-                arrivalsAdapter = new ProductListingAdapter(products, CustomerHomeFragment.this.getContext());
-                newArrivalsRV.setAdapter(arrivalsAdapter);
-            }
-
-            @Override
-            public void onFailure(Call<List<Product>> call, Throwable t) {
-
-            }
-        });
     }
 }
