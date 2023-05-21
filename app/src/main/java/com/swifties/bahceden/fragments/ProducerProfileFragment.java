@@ -16,6 +16,7 @@ import com.swifties.bahceden.activities.ProducerAnalyticsActivity;
 import com.swifties.bahceden.activities.ProducerEditProfileActivity;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.SecurityProfileActivity;
+import com.swifties.bahceden.data.AuthUser;
 
 public class ProducerProfileFragment extends Fragment {
 
@@ -49,8 +50,8 @@ public class ProducerProfileFragment extends Fragment {
         });
 
 
-        // TODO: Log Out Button currently redirects to the customer main activity for development purposes.
         logOutButton.setOnClickListener(logOutView -> {
+            AuthUser.getInstance().deleteUser();
             Intent intent = new Intent(getActivity(), IntroActivity.class);
             startActivity(intent);
         });

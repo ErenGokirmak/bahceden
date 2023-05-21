@@ -120,11 +120,11 @@ public class LogInActivity extends AppCompatActivity {
                                                     DocumentSnapshot document = task.getResult();
                                                     int userType = Integer.parseInt(document.getString("userType"));
 
+                                                    AuthUser.getInstance().createUser(email, userType);
                                                     if (userType == IntroActivity.PRODUCER_TYPE)
                                                         startActivity(new Intent(LogInActivity.this, ProducerMainActivity.class));
                                                     else if (userType == IntroActivity.CUSTOMER_TYPE)
                                                         startActivity(new Intent(LogInActivity.this, CustomerMainActivity.class));
-                                                    AuthUser.getInstance().createUser(email, userType);
                                                 }
                                             }
                                         });

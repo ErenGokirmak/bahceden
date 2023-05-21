@@ -17,22 +17,39 @@ import android.widget.TextView;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.FavDukkanAdapter;
 import com.swifties.bahceden.adapters.FavItemAdapter;
+import com.swifties.bahceden.models.Producer;
+import com.swifties.bahceden.models.Product;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerFavoritesFragment extends Fragment {
 
     private TextView productTxt, dukkanTxt;
     private RecyclerView customerFavoritesItemsRV;
     private RecyclerView customerFavoritesDukkansRV;
-    private RecyclerView.Adapter<FavItemAdapter.ViewHolder> customerFavoritesItemsAdapter;
-    private RecyclerView.Adapter<FavDukkanAdapter.ViewHolder> customerFavoritesDukkansAdapter;
-    private RecyclerView.LayoutManager customerFavoritesItemsLM;
-    private RecyclerView.LayoutManager customerFavoritesDukkansLM;
 
     View rootView;
+    List<Product> favProducts;
+    List<Producer> favProducers;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_customer_favorites, container, false);
+
+        favProducts = new ArrayList<>();
+        favProducers = new ArrayList<>();
+
+        customerFavoritesItemsRV = rootView.findViewById(R.id.customerFavoriteProductsRV);
+        FavItemAdapter customerFavItemAdapter = new FavItemAdapter(favProducts, getContext(), inflater);
+        customerFavoritesItemsRV.setLayoutManager(new LinearLayoutManager(getActivity()));
+        customerFavoritesItemsRV.setAdapter(customerFavItemAdapter);
+
+        customerFavoritesDukkansRV = rootView.findViewById(R.id.customerFavoritesFavDukkansRV);
+        FavDukkanAdapter customerFavDukkanAdapter = new FavDukkanAdapter(favProducers, getContext(), inflater);
+        customerFavoritesDukkansRV.setLayoutManager(new LinearLayoutManager(getActivity()));
+        customerFavoritesDukkansRV.setAdapter(customerFavDukkanAdapter);
+
         return rootView;
     }
 
@@ -42,26 +59,9 @@ public class CustomerFavoritesFragment extends Fragment {
 
         productTxt = view.findViewById(R.id.customerFavoriteProductsButton);
         dukkanTxt = view.findViewById(R.id.customerFavoriteDukkansButton);
-
-
         ButtonsListener listener = new ButtonsListener();
-
         productTxt.setOnClickListener(listener);
         dukkanTxt.setOnClickListener(listener);
-        customerFavoritesItemsRV = view.findViewById(R.id.customerFavoriteProductsRV);
-        customerFavoritesItemsRV.setHasFixedSize(true);
-        customerFavoritesItemsLM = new LinearLayoutManager(getActivity());
-        customerFavoritesItemsAdapter = new FavItemAdapter();
-        customerFavoritesItemsRV.setLayoutManager(customerFavoritesItemsLM);
-        customerFavoritesItemsRV.setAdapter(customerFavoritesItemsAdapter);
-
-
-        customerFavoritesDukkansRV = view.findViewById(R.id.customerFavoritesFavDukkansRV);
-        customerFavoritesDukkansRV.setHasFixedSize(true);
-        customerFavoritesDukkansAdapter = new FavDukkanAdapter();
-        customerFavoritesDukkansLM = new LinearLayoutManager(getActivity());
-        customerFavoritesDukkansRV.setLayoutManager(customerFavoritesDukkansLM);
-        customerFavoritesDukkansRV.setAdapter(customerFavoritesDukkansAdapter);
     }
 
     private class ButtonsListener implements View.OnClickListener {

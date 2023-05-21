@@ -21,7 +21,6 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
 
     List<Product> products;
     Context context;
-
     LayoutInflater inflater;
     public ProductListingAdapter(List<Product> products, Context context, LayoutInflater inflater) {
         this.products = products;

@@ -1,5 +1,7 @@
 package com.swifties.bahceden.adapters;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,38 +10,64 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.data.AuthUser;
+import com.swifties.bahceden.databinding.LayoutProducerItemBinding;
+import com.swifties.bahceden.models.Producer;
+import com.swifties.bahceden.models.Product;
+
+import java.util.List;
 
 public class FavDukkanAdapter extends RecyclerView.Adapter<FavDukkanAdapter.ViewHolder> {
+
+    List<Producer> producers;
+    Context context;
+    LayoutInflater inflater;
+
+    public FavDukkanAdapter(List<Producer> producers, Context context, LayoutInflater inflater) {
+        this.producers = producers;
+        this.context = context;
+        this.inflater = inflater;
+    }
 
     @NonNull
     @Override
     public FavDukkanAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        // Create a new view, which defines the UI of the list item
-        View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.layout_producer_item, viewGroup, false);
-
-        return new FavDukkanAdapter.ViewHolder(view);
+        LayoutProducerItemBinding binding = LayoutProducerItemBinding.inflate(inflater, viewGroup, false);
+        return new ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull FavDukkanAdapter.ViewHolder holder, int position) {
-
+        Producer producer = producers.get(position);
+        Picasso.get().load(producer.getBackgroundImageUrl()).into(holder.binding.producerBgImage);
+        holder.binding.layoutProducerItemName.setText(producer.getName());
+        holder.binding.rating.setText(String.valueOf(producer.getRating()));
+        holder.binding.itemLayoutItemLiked.setOnClickListener(v -> {
+            if (AuthUser.getCustomer().getFavoriteProducers().remove(producer))
+            {
+                Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
+                drawable.setTint(context.getResources().getColor(R.color.white));
+                holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
+                producers.remove(producer);
+                notifyItemRemoved(position);
+            }
+        });
     }
 
 
     @Override
     public int getItemCount() {
-        return 20;
+        return producers.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ViewHolder(View view) {
-            super(view);
-
-            view.setOnClickListener(v ->
-                    Toast.makeText(view.getContext(), "BaS:" + getBindingAdapterPosition(), Toast.LENGTH_SHORT).show());
+        LayoutProducerItemBinding binding;
+        public ViewHolder(LayoutProducerItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

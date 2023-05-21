@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.CustomerApi;
 import com.swifties.bahceden.data.apis.ProducerApi;
@@ -208,6 +209,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(Call<Producer> call, Response<Producer> response) {
                                     Toast.makeText(SignUpActivity.this, "User Sent Successfully", Toast.LENGTH_SHORT).show();
+                                    AuthUser.getInstance().createUser(email, userType);
                                     startActivity(new Intent(SignUpActivity.this, ProducerMainActivity.class));
                                 }
 
@@ -226,6 +228,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(Call<Customer> call, Response<Customer> response) {
                                     Toast.makeText(SignUpActivity.this, "User Sent Successfully", Toast.LENGTH_SHORT).show();
+                                    AuthUser.getInstance().createUser(email, userType);
                                     startActivity(new Intent(SignUpActivity.this, CustomerMainActivity.class));
                                 }
 

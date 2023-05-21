@@ -5,7 +5,26 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 
 public class Producer extends User {
-    private String displayName;
+    String displayName;
+    String backgroundImageUrl;
+    double rating;
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public String getBackgroundImageUrl() {
+        return backgroundImageUrl;
+    }
+
+    public void setBackgroundImageUrl(String backgroundImageUrl) {
+        this.backgroundImageUrl = backgroundImageUrl;
+    }
+
     String city; // TODO this is tentative we can change this into a location object etc
     ArrayList<Product> products;
     ArrayList<Order> orders;

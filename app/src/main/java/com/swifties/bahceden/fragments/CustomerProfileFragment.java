@@ -18,6 +18,7 @@ import com.swifties.bahceden.activities.IntroActivity;
 import com.swifties.bahceden.activities.ProducerMainActivity;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.SecurityProfileActivity;
+import com.swifties.bahceden.data.AuthUser;
 
 public class CustomerProfileFragment extends Fragment {
 
@@ -73,6 +74,7 @@ public class CustomerProfileFragment extends Fragment {
         });
 
         logOutButton.setOnClickListener(logOutView -> {
+            AuthUser.getInstance().deleteUser();
             Intent intent = new Intent(getActivity(), IntroActivity.class);
             startActivity(intent);
         });

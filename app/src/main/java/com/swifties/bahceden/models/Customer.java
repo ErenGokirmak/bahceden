@@ -11,6 +11,13 @@ public class Customer extends User {
     List<Order> orders;
     List<Address> addresses;
 
+    public Customer() {
+        favoriteProducts = new ArrayList<>();
+        favoriteProducers = new ArrayList<>();
+        orders = new ArrayList<>();
+        addresses = new ArrayList<>();
+    }
+
     public void setCart(Cart cart) {
         this.cart = cart;
     }
@@ -41,7 +48,6 @@ public class Customer extends User {
     public List<Product> getFavoriteProducts() {
         return favoriteProducts;
     }
-
 
     public List<Producer> getFavoriteProducers() {
         return favoriteProducers;
