@@ -2,7 +2,11 @@ package com.swifties.bahceden.data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.swifties.bahceden.data.deserializers.OrderStatusDeserializer;
+import com.swifties.bahceden.data.deserializers.ShipmentTypeDeserializer;
+import com.swifties.bahceden.data.deserializers.UnitTypeDeserializer;
 import com.swifties.bahceden.models.Order;
+import com.swifties.bahceden.models.Product;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -19,6 +23,8 @@ public class RetrofitService {
             Gson gson = new GsonBuilder()
                     .registerTypeAdapter(Order.ShipmentType.class, new ShipmentTypeDeserializer())
                     .registerTypeAdapter(Order.OrderStatus.class, new OrderStatusDeserializer())
+                    .registerTypeAdapter(Product.UnitType.class, new UnitTypeDeserializer())
+                    //.registerTypeAdapter(Customer.class, new CustomerDeserializer())
                     .create();
             retrofit = new Retrofit.Builder()
                     .baseUrl("http://10.0.2.2:8080/")

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.CustomerViewProductActivity;
-import com.swifties.bahceden.data.CartApi;
+import com.swifties.bahceden.data.apis.CartApi;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;

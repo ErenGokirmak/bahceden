@@ -17,9 +17,8 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.ProductListingAdapter;
-import com.swifties.bahceden.data.ProductApi;
+import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.data.RetrofitService;
-import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Product;
 
 import java.util.ArrayList;

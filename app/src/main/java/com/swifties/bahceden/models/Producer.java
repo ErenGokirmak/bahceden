@@ -10,10 +10,21 @@ public class Producer extends User {
     ArrayList<Product> products;
     ArrayList<Order> orders;
 
-    public Producer(int id) {
-        super(id);
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setProducts(ArrayList<Product> products) {
+        this.products = products;
+    }
+
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = orders;
+    }
 
     public String getDisplayName() {
         return displayName;

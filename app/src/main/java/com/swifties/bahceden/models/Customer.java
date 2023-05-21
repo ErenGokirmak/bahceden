@@ -9,12 +9,24 @@ public class Customer extends User {
     ArrayList<Order> orders;
     ArrayList<Address> addresses;
 
-    public Customer(int id) {
-        super(id);
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
-    public Customer(int id, String name, String email, String password, String phoneNumber) {
-        super(id, name, email, password, phoneNumber);
+    public void setFavoriteProducts(ArrayList<Product> favoriteProducts) {
+        this.favoriteProducts = favoriteProducts;
+    }
+
+    public void setFavoriteProducers(ArrayList<Producer> favoriteProducers) {
+        this.favoriteProducers = favoriteProducers;
+    }
+
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = orders;
+    }
+
+    public void setAddresses(ArrayList<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public void fillFrom(Customer c) {

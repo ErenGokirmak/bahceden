@@ -17,19 +17,6 @@ public class Product {
     private double amountInStock;
     private String imageURL;
 
-    public Product(int id, String name, String description, int unitType, double rating, double pricePerUnit, int producerId, double amountInStock, String imageURL) {
-        this.unitType = UnitType.fromValue(unitType);
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.rating = rating;
-        this.producerId = producerId;
-        this.producer = new Producer(producerId);
-        this.pricePerUnit = pricePerUnit;
-        this.amountInStock = amountInStock;
-        this.imageURL = imageURL;
-    }
-
     public Product(int id) {
         this.id = id;
     }
@@ -133,17 +120,6 @@ public class Product {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
-    }
-
-    public void fillFrom(Product p) {
-        setId(p.getId());
-        setName(p.getName());
-        setDescription(p.getDescription());
-        setUnitType(p.getUnitType());
-        setPricePerUnit(p.getPricePerUnit());
-        setProducer(p.getProducer());
-        setAmountInStock(p.getAmountInStock());
-        setImageURL(p.getImageURL());
     }
 
 }

@@ -1,7 +1,6 @@
 package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CheckOutAdapter;
-import com.swifties.bahceden.data.OrderApi;
+import com.swifties.bahceden.data.apis.OrderApi;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;

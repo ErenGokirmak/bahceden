@@ -1,4 +1,4 @@
-package com.swifties.bahceden.data;
+package com.swifties.bahceden.data.deserializers;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -8,19 +8,17 @@ import com.swifties.bahceden.models.Order;
 
 import java.lang.reflect.Type;
 
-public class OrderStatusDeserializer implements JsonDeserializer<Order.OrderStatus> {
+public class ShipmentTypeDeserializer implements JsonDeserializer<Order.ShipmentType> {
     @Override
-    public Order.OrderStatus deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public Order.ShipmentType deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         int typeInt = json.getAsInt();
         switch (typeInt) {
             case 1:
-                return Order.OrderStatus.IN_CART;
+                return Order.ShipmentType.CUSTOMER_PICKUP;
             case 2:
-                return Order.OrderStatus.PENDING;
+                return Order.ShipmentType.PRODUCER_DELIVERY;
             case 3:
-                return Order.OrderStatus.DELIVERED;
-            case 4:
-                return Order.OrderStatus.CANCELLED;
+                return Order.ShipmentType.SHIPMENT;
             default:
                 throw new IllegalArgumentException("Invalid ShipmentType value: " + typeInt);
         }

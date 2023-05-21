@@ -1,4 +1,4 @@
-package com.swifties.bahceden.data;
+package com.swifties.bahceden.data.apis;
 
 import com.swifties.bahceden.models.Comment;
 

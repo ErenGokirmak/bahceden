@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.CustomerCheckOutActivity;
 import com.swifties.bahceden.adapters.CartProductAdapter;
-import com.swifties.bahceden.data.OrderApi;
+import com.swifties.bahceden.data.apis.OrderApi;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;
