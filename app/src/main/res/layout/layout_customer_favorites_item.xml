@@ -54,8 +54,7 @@
         android:src="@drawable/ic_favorite"
         app:layout_constraintBottom_toBottomOf="@id/favoritesProductName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/favoritesProductName"
-        app:tint="@color/bahceden_green" />
+        app:layout_constraintTop_toTopOf="@id/favoritesProductName"/>
 
 
     <TextView

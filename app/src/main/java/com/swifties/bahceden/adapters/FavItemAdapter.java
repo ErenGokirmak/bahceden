@@ -1,6 +1,7 @@
 package com.swifties.bahceden.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.activities.CustomerViewProductActivity;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.databinding.LayoutCustomerFavoritesItemBinding;
 import com.swifties.bahceden.models.Product;
@@ -52,6 +54,11 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
             {
                 notifyItemRemoved(position);
             }
+        });
+        holder.binding.getRoot().setOnClickListener(v -> {
+            Intent intent = new Intent(context, CustomerViewProductActivity.class);
+            intent.putExtra("product_id", product.getId());
+            context.startActivity(intent);
         });
     }
 

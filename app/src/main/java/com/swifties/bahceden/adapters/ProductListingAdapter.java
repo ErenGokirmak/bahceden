@@ -44,15 +44,12 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
         holder.binding.itemLayoutProducerNameText.setText(product.getProducer().getName());
         if (AuthUser.getCustomer().getFavoriteProducts().contains(product))
         {
-            Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
-            drawable.setTint(context.getResources().getColor(R.color.minus_red));
-            holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
+            holder.binding.itemLayoutItemLiked.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite));
         }
         else
         {
-            Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
-            drawable.setTint(context.getResources().getColor(R.color.white));
-            holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
+            holder.binding.itemLayoutItemLiked.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_unfavorite));
+
         }
         Picasso.get()
             .load(product.getImageURL())
@@ -60,16 +57,13 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
         holder.binding.itemLayoutItemLiked.setOnClickListener(v -> {
             if (AuthUser.getCustomer().removeFavProduct(product))
             {
-                Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
-                drawable.setTint(context.getResources().getColor(R.color.white));
-                holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
+                holder.binding.itemLayoutItemLiked.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_unfavorite));
             }
             else
             {
                 AuthUser.getCustomer().addNewFavProduct(product);
-                Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
-                drawable.setTint(context.getResources().getColor(R.color.minus_red));
-                holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
+                holder.binding.itemLayoutItemLiked.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite));
+
             }
         });
 

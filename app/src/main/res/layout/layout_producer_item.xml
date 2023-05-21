@@ -34,8 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_margin="8dp"
-            android:src="@drawable/ic_favorite"
-            app:tint="@color/bahceden_green" />
+            android:src="@drawable/ic_favorite" />
     </androidx.cardview.widget.CardView>
 
     <TextView
