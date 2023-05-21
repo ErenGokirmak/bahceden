@@ -50,6 +50,12 @@ public class Cart {
         return totalPrice;
     }
 
+    public boolean addProduct (Product product)
+    {
+        //Order order = new Order();
+        return true;
+    }
+
     public int size() {
         return orders.size();
     }

@@ -20,11 +20,6 @@ public class Order {
     private Address address;
     private OrderStatus orderStatus;
 
-    public Order(int id) {
-        this.id = id;
-        this.amount = 1;
-    }
-
     private void calculateTotalPrice() {
         totalPrice = amount * product.getPricePerUnit();
     }

@@ -43,36 +43,31 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product product = products.get(holder.getBindingAdapterPosition());
+        System.out.println(product);
         holder.binding.itemLayoutProducerNameText.setText(product.getName());
         holder.binding.itemLayoutPriceText.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit())));
         holder.binding.itemLayoutProducerNameText.setText(product.getProducer().getName());
         Picasso.get()
             .load(product.getImageURL())
                 .into(holder.binding.itemLayoutItemImage);
-        holder.binding.itemLayoutItemLiked.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (AuthCustomer.getCustomer().getFavoriteProducts().remove(product))
-                {
-                    Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
-                    drawable.setTint(context.getResources().getColor(R.color.white));
-                    holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
-                }
-                else
-                {
-                    AuthCustomer.getCustomer().getFavoriteProducts().add(product);
-                    Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
-                    drawable.setTint(context.getResources().getColor(R.color.minus_red));
-                    holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
-                }
+        holder.binding.itemLayoutItemLiked.setOnClickListener(v -> {
+            if (AuthCustomer.getCustomer().getFavoriteProducts().remove(product))
+            {
+                Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
+                drawable.setTint(context.getResources().getColor(R.color.white));
+                holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
+            }
+            else
+            {
+                AuthCustomer.getCustomer().getFavoriteProducts().add(product);
+                Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
+                drawable.setTint(context.getResources().getColor(R.color.minus_red));
+                holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
             }
         });
 
-        holder.binding.itemLayoutAddToCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //AuthCustomer.getCustomer().getCart().getOrders().add(//TODO);
-            }
+        holder.binding.itemLayoutAddToCart.setOnClickListener(v -> {
+            AuthCustomer.getCustomer().getCart().addProduct(product);
         });
     }
 

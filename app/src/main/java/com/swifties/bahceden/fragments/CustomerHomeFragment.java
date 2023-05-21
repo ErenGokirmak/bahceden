@@ -36,6 +36,7 @@ public class CustomerHomeFragment extends Fragment {
     private ImageSlider imageSlider;
     RecyclerView.LayoutManager newArrivalsLayoutManager;
 
+    View view;
     List<Product> products;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +46,13 @@ public class CustomerHomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        this.view = view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
         imageSlider = view.findViewById(R.id.customerHomeSlider);
         ArrayList<SlideModel> slideModels = new ArrayList<>();

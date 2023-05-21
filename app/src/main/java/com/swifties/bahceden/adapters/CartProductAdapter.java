@@ -44,7 +44,6 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Order cartItem = cart.get(position);
         Product product = cartItem.getProduct();
-        System.out.println(product.getImageURL());
         Picasso.get()
                 .load(product.getImageURL())
                 .into(holder.cartProductImage);
