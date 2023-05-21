@@ -13,6 +13,7 @@ import com.swifties.bahceden.R;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.databinding.LayoutItemBinding;
 
+import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Product;
 
 import java.util.List;
@@ -41,6 +42,18 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
         holder.binding.itemLayoutItemName.setText(product.getName());
         holder.binding.itemLayoutPriceText.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit())));
         holder.binding.itemLayoutProducerNameText.setText(product.getProducer().getName());
+        if (AuthUser.getCustomer().getFavoriteProducts().contains(product))
+        {
+            Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
+            drawable.setTint(context.getResources().getColor(R.color.minus_red));
+            holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
+        }
+        else
+        {
+            Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
+            drawable.setTint(context.getResources().getColor(R.color.white));
+            holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);2
+        }
         Picasso.get()
             .load(product.getImageURL())
                 .into(holder.binding.itemLayoutItemImage);

@@ -17,6 +17,8 @@ import android.widget.TextView;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.FavDukkanAdapter;
 import com.swifties.bahceden.adapters.FavItemAdapter;
+import com.swifties.bahceden.data.AuthUser;
+import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.Product;
 
@@ -37,8 +39,8 @@ public class CustomerFavoritesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_customer_favorites, container, false);
 
-        favProducts = new ArrayList<>();
-        favProducers = new ArrayList<>();
+        favProducts = AuthUser.getCustomer().getFavoriteProducts();
+        favProducers = AuthUser.getCustomer().getFavoriteProducers();
 
         customerFavoritesItemsRV = rootView.findViewById(R.id.customerFavoriteProductsRV);
         FavItemAdapter customerFavItemAdapter = new FavItemAdapter(favProducts, getContext(), inflater);

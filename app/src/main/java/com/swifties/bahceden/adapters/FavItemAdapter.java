@@ -50,10 +50,6 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
         holder.binding.favButton.setOnClickListener(v -> {
             if (AuthUser.getCustomer().getFavoriteProducts().remove(product))
             {
-                Drawable drawable = holder.binding.favButton.getDrawable();
-                drawable.setTint(context.getResources().getColor(R.color.white));
-                holder.binding.favButton.setImageDrawable(drawable);
-                products.remove(product);
                 notifyItemRemoved(position);
             }
         });

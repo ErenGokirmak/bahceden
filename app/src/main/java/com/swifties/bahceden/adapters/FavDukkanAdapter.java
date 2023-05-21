@@ -47,10 +47,6 @@ public class FavDukkanAdapter extends RecyclerView.Adapter<FavDukkanAdapter.View
         holder.binding.itemLayoutItemLiked.setOnClickListener(v -> {
             if (AuthUser.getCustomer().getFavoriteProducers().remove(producer))
             {
-                Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
-                drawable.setTint(context.getResources().getColor(R.color.white));
-                holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
-                producers.remove(producer);
                 notifyItemRemoved(position);
             }
         });
