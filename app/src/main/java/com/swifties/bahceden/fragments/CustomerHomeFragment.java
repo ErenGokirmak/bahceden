@@ -65,12 +65,23 @@ public class CustomerHomeFragment extends Fragment {
             }
         });
 
-        newArrivalsRV = view.findViewById(R.id.customerHomeNewArrivalsRV);
-        newArrivalsRV.setHasFixedSize(true);
-        newArrivalsLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                products = response.body();
+                newArrivalsRV = view.findViewById(R.id.customerHomeNewArrivalsRV);
+                newArrivalsRV.setHasFixedSize(true);
+                newArrivalsLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
-        newArrivalsRV.setLayoutManager(newArrivalsLayoutManager);
-        arrivalsAdapter = new ProductListingAdapter(products, this.getContext());
-        newArrivalsRV.setAdapter(arrivalsAdapter);
+                newArrivalsRV.setLayoutManager(newArrivalsLayoutManager);
+                arrivalsAdapter = new ProductListingAdapter(products, CustomerHomeFragment.this.getContext());
+                newArrivalsRV.setAdapter(arrivalsAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+
+            }
+        });
     }
 }
