@@ -14,7 +14,7 @@ import android.widget.Spinner;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
-import com.swifties.bahceden.classes.SpinnerCustomItem;
+import com.swifties.bahceden.uiclasses.SpinnerCustomItem;
 
 import java.util.ArrayList;
 

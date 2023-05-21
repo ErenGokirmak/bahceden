@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.swifties.bahceden.R;
-import com.swifties.bahceden.classes.SpinnerCustomItem;
+import com.swifties.bahceden.uiclasses.SpinnerCustomItem;
 
 import java.util.ArrayList;
 

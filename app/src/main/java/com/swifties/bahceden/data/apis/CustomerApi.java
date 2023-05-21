@@ -51,6 +51,18 @@ public interface CustomerApi {
     @POST("customers")
     Call<Customer> save(@Body Customer customer);
 
+    @POST("customers/favorites/products")
+    Call<Customer> postNewFavoriteProduct(@Query("customer") int customer_id, @Query("product") int product_id);
+
+    @DELETE("customers/favorites/products")
+    Call<Customer> deleteNewFavoriteProduct(@Query("customer") int customer_id, @Query("product") int product_id);
+
+    @POST("customers/favorites/producers")
+    Call<Customer> postNewFavoriteProducer(@Query("customer") int customer_id, @Query("producer") int producer_id);
+
+    @DELETE("customers/favorites/producers")
+    Call<Customer> deleteNewFavoriteProducer(@Query("customer") int customer_id, @Query("producer") int producer_id);
+
     /**
      * Updates a customer's data on the backend
      * using the data given

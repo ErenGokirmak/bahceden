@@ -52,13 +52,13 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
         {
             Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
             drawable.setTint(context.getResources().getColor(R.color.white));
-            holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);2
+            holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);
         }
         Picasso.get()
             .load(product.getImageURL())
                 .into(holder.binding.itemLayoutItemImage);
         holder.binding.itemLayoutItemLiked.setOnClickListener(v -> {
-            if (AuthUser.getCustomer().getFavoriteProducts().remove(product))
+            if (AuthUser.getCustomer().removeFavProduct(product))
             {
                 Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
                 drawable.setTint(context.getResources().getColor(R.color.white));
@@ -66,7 +66,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
             }
             else
             {
-                AuthUser.getCustomer().getFavoriteProducts().add(product);
+                AuthUser.getCustomer().addNewFavProduct(product);
                 Drawable drawable = holder.binding.itemLayoutItemLiked.getDrawable();
                 drawable.setTint(context.getResources().getColor(R.color.minus_red));
                 holder.binding.itemLayoutItemLiked.setImageDrawable(drawable);

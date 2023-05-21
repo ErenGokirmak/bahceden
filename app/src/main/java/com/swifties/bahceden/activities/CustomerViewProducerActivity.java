@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.ProducerAdapter;
-import com.swifties.bahceden.classes.GridSpacingItemDecoration;
+import com.swifties.bahceden.uiclasses.GridSpacingItemDecoration;
 
 public class CustomerViewProducerActivity extends AppCompatActivity {
     private RecyclerView producerRV;

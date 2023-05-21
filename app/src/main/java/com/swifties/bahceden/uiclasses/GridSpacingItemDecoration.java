@@ -1,4 +1,4 @@
-package com.swifties.bahceden.classes;
+package com.swifties.bahceden.uiclasses;
 
 
 import android.graphics.Rect;

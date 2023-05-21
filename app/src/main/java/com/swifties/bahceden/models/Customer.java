@@ -1,8 +1,17 @@
 package com.swifties.bahceden.models;
 
+import android.util.Log;
+
+import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.CustomerApi;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Customer extends User {
     Cart cart;
@@ -47,6 +56,83 @@ public class Customer extends User {
 
     public List<Product> getFavoriteProducts() {
         return favoriteProducts;
+    }
+    public boolean addNewFavProduct (Product product)
+    {
+        if (getFavoriteProducts().add(product))
+        {
+            RetrofitService.getApi(CustomerApi.class).postNewFavoriteProduct(getId(), product.getId()).enqueue(new Callback<Customer>() {
+                @Override
+                public void onResponse(Call<Customer> call, Response<Customer> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<Customer> call, Throwable t) {
+
+                }
+            });
+            return true;
+        }
+        return false;
+    }
+    public boolean removeFavProduct (Product product)
+    {
+        if (getFavoriteProducts().remove(product))
+        {
+            RetrofitService.getApi(CustomerApi.class).deleteNewFavoriteProduct(getId(), product.getId()).enqueue(new Callback<Customer>() {
+                @Override
+                public void onResponse(Call<Customer> call, Response<Customer> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<Customer> call, Throwable t) {
+
+                }
+            });
+            return true;
+        }
+        return false;
+    }
+
+    public boolean addNewFavProducer (Producer producer)
+    {
+        if (getFavoriteProducers().add(producer))
+        {
+            RetrofitService.getApi(CustomerApi.class).postNewFavoriteProduct(getId(), producer.getId()).enqueue(new Callback<Customer>() {
+                @Override
+                public void onResponse(Call<Customer> call, Response<Customer> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<Customer> call, Throwable t) {
+
+                }
+            });
+            return true;
+        }
+        return false;
+    }
+    public boolean removeFavProducer (Producer producer)
+    {
+        if (getFavoriteProducers().remove(producer))
+        {
+            RetrofitService.getApi(CustomerApi.class).deleteNewFavoriteProduct(getId(), producer.getId()).enqueue(new Callback<Customer>() {
+                @Override
+                public void onResponse(Call<Customer> call, Response<Customer> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<Customer> call, Throwable t) {
+
+                }
+            });
+            return true;
+        }
+        return false;
     }
 
     public List<Producer> getFavoriteProducers() {
