@@ -1,5 +1,7 @@
 package com.swifties.bahceden.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Order {
 
     public enum ShipmentType {
@@ -18,6 +20,7 @@ public class Order {
     private Customer customer;
     private ShipmentType shipmentType;
     private Address address;
+    @SerializedName("status")
     private OrderStatus orderStatus;
 
     private void calculateTotalPrice() {
