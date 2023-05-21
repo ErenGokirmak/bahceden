@@ -41,12 +41,4 @@ public class Producer extends User {
     public ArrayList<Order> getOrders() {
         return orders;
     }
-
-    public void fillFrom(Producer p) {
-        super.fillFrom(p);
-        city = p.getCity();
-        displayName = p.getDisplayName();
-        orders = p.getOrders();
-        products = p.getProducts();
-    }
 }

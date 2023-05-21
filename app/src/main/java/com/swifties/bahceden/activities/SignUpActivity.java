@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,9 +24,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.CustomerApi;
+import com.swifties.bahceden.data.apis.ProducerApi;
+import com.swifties.bahceden.data.apis.ProductApi;
+import com.swifties.bahceden.models.Customer;
+import com.swifties.bahceden.models.Producer;
+import com.swifties.bahceden.models.User;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -141,54 +153,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        signUp.setOnClickListener(v -> {
-            String name = nameInput.getText().toString().trim();
-            String email = emailInput.getText().toString().trim();
-            String password = passwordInput.getText().toString().trim();
-            String confirmPassword = confirmPasswordInput.getText().toString().trim();
-
-            if (name.isEmpty()) {
-                nameInput.setError("Name Can't be Empty!");
-            } else if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                emailInput.setError("Enter a Valid Email Address!");
-            } else if (password.isEmpty()) {
-                passwordInput.setError("Password Can't be Empty!");
-            } else if (confirmPassword.isEmpty()) {
-                confirmPasswordInput.setError("Confirm Password Can't be Empty!");
-            } else if (!password.equals(confirmPassword)) {
-                confirmPasswordInputLayout.setEndIconVisible(false);
-                confirmPasswordInput.setError("Passwords Don't Match!");
-            } else {
-                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Map<String, String> user = new HashMap<>();
-                            user.put("userType", userType + "");
-                            user.put("email", email);
-                            user.put("password", password);
-
-                            firebaseFirestore.collection("user")
-                                    .document(FirebaseAuth.getInstance().getUid())
-                                    .set(user);
-
-                            Toast.makeText(SignUpActivity.this, "User Created Successfully.", Toast.LENGTH_SHORT).show();
-
-                            if (userType == IntroActivity.PRODUCER_TYPE)
-                                startActivity(new Intent(SignUpActivity.this, ProducerMainActivity.class));
-                            else if (userType == IntroActivity.CUSTOMER_TYPE)
-                                startActivity(new Intent(SignUpActivity.this, CustomerMainActivity.class));
-                        } else {
-                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                                Toast.makeText(SignUpActivity.this, "Email address is already registered.", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(SignUpActivity.this, "Failed " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-                });
-            }
-        });
+        signUp.setOnClickListener(this::onClick);
 
         haveAnAccount.setOnClickListener(v -> {
             Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
@@ -197,5 +162,88 @@ public class SignUpActivity extends AppCompatActivity {
 
         backButton.setOnClickListener(v -> SignUpActivity.super.onBackPressed());
 
+    }
+
+    private void onClick(View v) {
+        String name = nameInput.getText().toString().trim();
+        String email = emailInput.getText().toString().trim();
+        String password = passwordInput.getText().toString().trim();
+        String confirmPassword = confirmPasswordInput.getText().toString().trim();
+
+        final User[] appUser = new User[1];
+
+        if (name.isEmpty()) {
+            nameInput.setError("Name Can't be Empty!");
+        } else if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailInput.setError("Enter a Valid Email Address!");
+        } else if (password.isEmpty()) {
+            passwordInput.setError("Password Can't be Empty!");
+        } else if (confirmPassword.isEmpty()) {
+            confirmPasswordInput.setError("Confirm Password Can't be Empty!");
+        } else if (!password.equals(confirmPassword)) {
+            confirmPasswordInputLayout.setEndIconVisible(false);
+            confirmPasswordInput.setError("Passwords Don't Match!");
+        } else {
+            firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Map<String, String> user = new HashMap<>();
+                        user.put("userType", userType + "");
+                        user.put("email", email);
+                        user.put("password", password);
+
+                        firebaseFirestore.collection("user")
+                                .document(FirebaseAuth.getInstance().getUid())
+                                .set(user);
+
+                        Toast.makeText(SignUpActivity.this, "User Created Successfully.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUpActivity.this, "User Sending to Database.", Toast.LENGTH_SHORT).show();
+
+                        if (userType == IntroActivity.PRODUCER_TYPE) {
+                            appUser[0] = new Producer();
+                            appUser[0].setName(name);
+                            appUser[0].setEmail(email);
+                            RetrofitService.getApi(ProducerApi.class).save((Producer) appUser[0]).enqueue(new Callback<Producer>() {
+                                @Override
+                                public void onResponse(Call<Producer> call, Response<Producer> response) {
+                                    Toast.makeText(SignUpActivity.this, "User Sent Successfully", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(SignUpActivity.this, ProducerMainActivity.class));
+                                }
+
+                                @Override
+                                public void onFailure(Call<Producer> call, Throwable t) {
+                                    Toast.makeText(SignUpActivity.this, "Error sending user to database", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        else if (userType == IntroActivity.CUSTOMER_TYPE) {
+                            appUser[0] = new Customer();
+                            appUser[0].setName(name);
+                            appUser[0].setEmail(email);
+
+                            RetrofitService.getApi(CustomerApi.class).save((Customer) appUser[0]).enqueue(new Callback<Customer>() {
+                                @Override
+                                public void onResponse(Call<Customer> call, Response<Customer> response) {
+                                    Toast.makeText(SignUpActivity.this, "User Sent Successfully", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(SignUpActivity.this, CustomerMainActivity.class));
+                                }
+
+                                @Override
+                                public void onFailure(Call<Customer> call, Throwable t) {
+                                    Toast.makeText(SignUpActivity.this, "Error sending user to database", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    } else {
+                        if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                            Toast.makeText(SignUpActivity.this, "Email address is already registered.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(SignUpActivity.this, "Failed " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            });
+        }
     }
 }
