@@ -5,16 +5,26 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.swifties.bahceden.R;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -22,6 +32,10 @@ public class SignUpActivity extends AppCompatActivity {
     TextView haveAnAccount;
     EditText nameInput, emailInput, passwordInput, confirmPasswordInput;
     TextInputLayout passwordInputLayout, confirmPasswordInputLayout;
+
+    private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firebaseFirestore;
+    private int userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +51,10 @@ public class SignUpActivity extends AppCompatActivity {
         confirmPasswordInput = findViewById(R.id.signUpConfirmPasswordField);
         passwordInputLayout = findViewById(R.id.signUpPasswordLayout);
         confirmPasswordInputLayout = findViewById(R.id.signUpConfirmPasswordLayout);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        userType = getIntent().getIntExtra("userType", -1);
 
         passwordInputLayout.setEndIconVisible(false);
         confirmPasswordInputLayout.setEndIconVisible(false);
@@ -122,17 +140,51 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
         signUp.setOnClickListener(v -> {
-            if (nameInput.getText().toString().isEmpty()) {
+            String name = nameInput.getText().toString().trim();
+            String email = emailInput.getText().toString().trim();
+            String password = passwordInput.getText().toString().trim();
+            String confirmPassword = confirmPasswordInput.getText().toString().trim();
+
+            if (name.isEmpty()) {
                 nameInput.setError("Name Can't be Empty!");
-            } else if (emailInput.getText().toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailInput.getText().toString()).matches()) {
+            } else if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 emailInput.setError("Enter a Valid Email Address!");
-            } else if (passwordInput.getText().toString().isEmpty()) {
+            } else if (password.isEmpty()) {
                 passwordInput.setError("Password Can't be Empty!");
-            } else if (confirmPasswordInput.getText().toString().isEmpty()) {
+            } else if (confirmPassword.isEmpty()) {
                 confirmPasswordInput.setError("Confirm Password Can't be Empty!");
-            } else if (!passwordInput.getText().toString().equals(confirmPasswordInput.getText().toString())) {
+            } else if (!password.equals(confirmPassword)) {
                 confirmPasswordInputLayout.setEndIconVisible(false);
                 confirmPasswordInput.setError("Passwords Don't Match!");
+            } else {
+                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Map<String, String> user = new HashMap<>();
+                            user.put("userType", userType + "");
+                            user.put("email", email);
+                            user.put("password", password);
+
+                            firebaseFirestore.collection("user")
+                                    .document(FirebaseAuth.getInstance().getUid())
+                                    .set(user);
+
+                            Toast.makeText(SignUpActivity.this, "User Created Successfully.", Toast.LENGTH_SHORT).show();
+
+                            if (userType == IntroActivity.PRODUCER_TYPE)
+                                startActivity(new Intent(SignUpActivity.this, ProducerMainActivity.class));
+                            else if (userType == IntroActivity.CUSTOMER_TYPE)
+                                startActivity(new Intent(SignUpActivity.this, CustomerMainActivity.class));
+                        } else {
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(SignUpActivity.this, "Email address is already registered.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(SignUpActivity.this, "Failed " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
             }
         });
 

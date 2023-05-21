@@ -12,6 +12,8 @@ import com.swifties.bahceden.R;
 
 public class IntroActivity extends AppCompatActivity {
 
+    public static final int PRODUCER_TYPE = 1;
+    public static final int CUSTOMER_TYPE = 2;
     Button customerButton, producerButton;
     TextView haveAnAccount;
 
@@ -26,19 +28,18 @@ public class IntroActivity extends AppCompatActivity {
 
         customerButton.setOnClickListener(v -> {
             Intent intent = new Intent(IntroActivity.this, SignUpActivity.class);
-            intent.putExtra("method", "customer");
+            intent.putExtra("userType", 2);
             startActivity(intent);
         });
 
         producerButton.setOnClickListener(v -> {
             Intent intent = new Intent(IntroActivity.this, SignUpActivity.class);
-            intent.putExtra("method", "producer");
+            intent.putExtra("userType", 1);
             startActivity(intent);
         });
 
         haveAnAccount.setOnClickListener(v -> {
             Intent intent = new Intent(IntroActivity.this, LogInActivity.class);
-            intent.putExtra("method", "login");
             startActivity(intent);
         });
     }

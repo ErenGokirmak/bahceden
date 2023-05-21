@@ -11,9 +11,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_margin="10dp"
         android:backgroundTint="@color/white"
         android:drawableTop="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,8 +27,7 @@
         android:fontFamily="@font/nexa_heavy"
         android:text="Create Your Account"
         android:textColor="@color/bahceden_green"
-        android:textSize="36dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="48dp"
         app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/signUpBackButton" />
@@ -147,67 +144,17 @@
         app:layout_constraintStart_toStartOf="@+id/signUpConfirmPasswordLayout"
         app:layout_constraintTop_toBottomOf="@+id/signUpConfirmPasswordLayout" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/darkGray"
-        app:layout_constraintBottom_toBottomOf="@+id/signUpContinueWith"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/signUpContinueWith" />
-
-    <TextView
-        android:id="@+id/signUpContinueWith"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:background="@color/white"
-        android:padding="8dp"
-        android:text="@string/or_continue_with"
-        android:textColor="@color/darkGray"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/signUpButton"
-        app:layout_constraintStart_toStartOf="@+id/signUpButton"
-        app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
-
-
-    <LinearLayout
-        android:id="@+id/signUpThirdParties"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpContinueWith">
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="16dp"
-            android:src="@drawable/google" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="16dp"
-            android:src="@drawable/facebook" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/signUpHaveAnAccountButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/nexa_heavy"
         android:text="@string/already_have_an_account"
         android:textAlignment="center"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpThirdParties" />
+        app:layout_constraintEnd_toEndOf="@+id/signUpButton"
+        app:layout_constraintStart_toStartOf="@+id/signUpButton"
+        app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -130,56 +130,6 @@
         app:layout_constraintStart_toStartOf="@id/logIn"
         app:layout_constraintTop_toBottomOf="@id/logIn" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/darkGray"
-        app:layout_constraintBottom_toBottomOf="@+id/logInContinueWith"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/logInContinueWith" />
-
-    <TextView
-        android:id="@+id/logInContinueWith"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:background="@color/white"
-        android:padding="8dp"
-        android:text="@string/or_continue_with"
-        android:textColor="@color/darkGray"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/forgetPassword"
-        app:layout_constraintStart_toStartOf="@+id/forgetPassword"
-        app:layout_constraintTop_toBottomOf="@+id/forgetPassword" />
-
-
-    <LinearLayout
-        android:id="@+id/thirdParties"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logInContinueWith">
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="16dp"
-            android:src="@drawable/google" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="16dp"
-            android:src="@drawable/facebook" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/dontHaveAccount"
         android:layout_width="wrap_content"
@@ -191,6 +141,6 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thirdParties" />
+        app:layout_constraintTop_toBottomOf="@+id/forgetPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

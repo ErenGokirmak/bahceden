@@ -8,11 +8,21 @@ import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.swifties.bahceden.R;
 
 public class LogInActivity extends AppCompatActivity {
@@ -21,6 +31,10 @@ public class LogInActivity extends AppCompatActivity {
     TextView doNotHaveAnAccount, forgetPassword;
     EditText emailInput, passwordInput;
     TextInputLayout textInputLayout;
+
+    private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firebaseFirestore;
+    private int userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +48,10 @@ public class LogInActivity extends AppCompatActivity {
         textInputLayout = findViewById(R.id.loginPasswordLayout);
         forgetPassword = findViewById(R.id.forgetPassword);
         logIn = findViewById(R.id.logIn);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        userType = getIntent().getIntExtra("userType", -1);
 
         textInputLayout.setEndIconVisible(false);
 
@@ -78,10 +96,45 @@ public class LogInActivity extends AppCompatActivity {
         });
 
         logIn.setOnClickListener(logInView -> {
-            if (emailInput.getText().toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailInput.getText().toString()).matches()) {
+            String email = emailInput.getText().toString().trim();
+            String password = passwordInput.getText().toString().trim();
+
+            if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 emailInput.setError("Enter Valid Email Address!");
-            } else if (passwordInput.getText().toString().isEmpty()) {
+            } else if (password.isEmpty()) {
                 passwordInput.setError("Password Can't be Empty!");
+            } else {
+                firebaseAuth.signInWithEmailAndPassword(email, password)
+                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                            @Override
+                            public void onSuccess(AuthResult authResult) {
+                                String userId = FirebaseAuth.getInstance().getUid();
+                                firebaseFirestore.collection("user")
+                                        .document(userId)
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                    DocumentSnapshot document = task.getResult();
+                                                    int userType = Integer.parseInt(document.getString("userType"));
+
+                                                    if (userType == IntroActivity.PRODUCER_TYPE)
+                                                        startActivity(new Intent(LogInActivity.this, ProducerMainActivity.class));
+                                                    else if (userType == IntroActivity.CUSTOMER_TYPE)
+                                                        startActivity(new Intent(LogInActivity.this, CustomerMainActivity.class));
+                                                }
+                                            }
+                                        });
+                                Toast.makeText(LogInActivity.this, "Logging In...", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(LogInActivity.this, "Incorrect email or password.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
 

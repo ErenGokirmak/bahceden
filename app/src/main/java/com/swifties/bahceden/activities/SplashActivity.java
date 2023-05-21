@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity {
 
         // TODO: Make this into the "logged in" check
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, CustomerMainActivity.class);
+            Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
             startActivity(intent);
             finish();
         }, 1000);
