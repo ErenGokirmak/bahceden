@@ -209,8 +209,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(Call<Producer> call, Response<Producer> response) {
                                     Toast.makeText(SignUpActivity.this, "User Sent Successfully", Toast.LENGTH_SHORT).show();
-                                    AuthUser.getInstance().createUser(email, userType);
-                                    startActivity(new Intent(SignUpActivity.this, ProducerMainActivity.class));
+                                    AuthUser.getInstance().createUser(email, userType, SignUpActivity.this);
                                 }
 
                                 @Override
@@ -228,8 +227,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(Call<Customer> call, Response<Customer> response) {
                                     Toast.makeText(SignUpActivity.this, "User Sent Successfully", Toast.LENGTH_SHORT).show();
-                                    AuthUser.getInstance().createUser(email, userType);
-                                    startActivity(new Intent(SignUpActivity.this, CustomerMainActivity.class));
+                                    AuthUser.getInstance().createUser(email, userType, SignUpActivity.this);
                                 }
 
                                 @Override

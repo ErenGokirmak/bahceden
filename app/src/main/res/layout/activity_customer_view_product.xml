@@ -109,8 +109,9 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="45dp"
                     android:src="@drawable/ic_star"
-                    app:layout_constraintStart_toStartOf="@id/customerViewProductItemName"
+                    app:layout_constraintEnd_toEndOf="@id/favButton"
                     app:layout_constraintTop_toBottomOf="@id/customerViewProductItemName"
                     app:tint="@color/star_yellow" />
 
@@ -147,6 +148,17 @@
                     app:layout_constraintTop_toBottomOf="@id/horizontalDivider" />
 
                 <TextView
+                    android:id="@+id/producerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ali Baba"
+                    android:textColor="@color/darkGray"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/customerViewProductItemName"
+                    app:layout_constraintTop_toBottomOf="@id/customerViewProductItemName" />
+
+                <TextView
                     android:id="@+id/customerViewProductDescriptionText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -167,7 +179,7 @@
                     android:layout_marginTop="16dp"
                     android:text="Amount"
                     android:textColor="@color/bahceden_green"
-                    android:textSize="32sp"
+                    android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/customerViewProductDescriptionText"
                     app:layout_constraintTop_toBottomOf="@id/customerViewProductDescriptionText" />
@@ -184,26 +196,27 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/decrement"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:background="@drawable/bg_semi_circle_2"
                         android:backgroundTint="@color/minus_red"
                         android:drawableTop="@drawable/minus"
                         android:drawableTint="@color/white"
-                        android:padding="18dp"
+                        android:padding="11dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
+                        android:id="@+id/productCount"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_marginBottom="2dp"
                         android:background="@drawable/bg_square"
                         android:backgroundTint="@color/white"
                         android:gravity="center"
                         android:text="0"
                         android:textColor="@color/black"
-                        android:textSize="36sp"
+                        android:textSize="24sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toStartOf="@id/increment"
                         app:layout_constraintStart_toEndOf="@id/decrement"
@@ -211,13 +224,13 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/increment"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:background="@drawable/bg_semi_circle_1"
                         android:backgroundTint="@color/plus_green"
                         android:drawableTop="@drawable/plus"
                         android:drawableTint="@color/white"
-                        android:padding="18dp"
+                        android:padding="11dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>

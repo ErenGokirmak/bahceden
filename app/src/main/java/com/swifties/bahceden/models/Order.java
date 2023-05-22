@@ -1,7 +1,5 @@
 package com.swifties.bahceden.models;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Order {
 
     public enum ShipmentType {
@@ -17,11 +15,9 @@ public class Order {
     private Product product;
     private int amount;
     private double totalPrice;
-    private Customer customer;
     private ShipmentType shipmentType;
-    private Address address;
-    @SerializedName("status")
-    private OrderStatus orderStatus;
+    private Address deliveryAddress;
+    private OrderStatus status;
 
     private void calculateTotalPrice() {
         totalPrice = amount * product.getPricePerUnit();
@@ -31,6 +27,11 @@ public class Order {
         if (amount + offset < 1) return false;
         amount += offset;
         return true;
+    }
+
+    public Customer getCustomer ()
+    {
+        return deliveryAddress.getCustomer();
     }
 
     public int getId() {
@@ -54,20 +55,16 @@ public class Order {
         return totalPrice;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
     public ShipmentType getShipmentType() {
         return shipmentType;
     }
 
-    public Address getAddress() {
-        return address;
+    public Address getDeliveryAddress() {
+        return deliveryAddress;
     }
 
-    public OrderStatus getOrderStatus() {
-        return orderStatus;
+    public OrderStatus getStatus() {
+        return status;
     }
 
     public void setId(int id) {
@@ -90,20 +87,16 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public void setShipmentType(ShipmentType shipmentType) {
         this.shipmentType = shipmentType;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setDeliveryAddress(Address deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
     }
 
-    public void setOrderStatus(OrderStatus orderStatus) {
-        this.orderStatus = orderStatus;
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 
 }

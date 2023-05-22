@@ -6,9 +6,10 @@ import java.util.List;
 public class Cart {
     private List<Order> orders;
     private final int customerId;
-    public Cart(int customerId) {
+
+    public Cart(List<Order> orders, int customerId) {
+        this.orders = orders;
         this.customerId = customerId;
-        orders = new ArrayList<>();
     }
 
     public Order get(int index) {

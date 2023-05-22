@@ -5,8 +5,11 @@ import com.swifties.bahceden.models.Order;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface OrderApi {
@@ -27,6 +30,12 @@ public interface OrderApi {
      */
     @GET("orders/{orderId}")
     Call<Order> getOrderByID(@Path("orderId") int orderId);
+
+    @POST("orders")
+    Call<Order> postOrder(@Body Order order);
+
+    @PUT("orders")
+    Call<Order> putOrder(@Body Order order);
 
     /**
      * Deletes an order from the database

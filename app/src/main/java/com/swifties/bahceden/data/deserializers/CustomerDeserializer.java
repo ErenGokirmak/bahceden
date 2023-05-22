@@ -1,11 +1,13 @@
 package com.swifties.bahceden.data.deserializers;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.swifties.bahceden.models.Address;
+import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Producer;
@@ -18,7 +20,11 @@ import java.util.List;
 public class CustomerDeserializer implements JsonDeserializer <Customer> {
     @Override
     public Customer deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Order.ShipmentType.class, new ShipmentTypeDeserializer())
+                .registerTypeAdapter(Order.OrderStatus.class, new OrderStatusDeserializer())
+                .registerTypeAdapter(Product.UnitType.class, new UnitTypeDeserializer())
+                .create();
 
         Customer customer = new Customer();
 
@@ -37,7 +43,7 @@ public class CustomerDeserializer implements JsonDeserializer <Customer> {
             customer.setAddresses(addressList);
         }
 
-        JsonElement favProductsJson = json.getAsJsonObject().get("favProducts");
+        JsonElement favProductsJson = json.getAsJsonObject().get("favoriteProducts");
         if (favProductsJson.isJsonArray()) {
             List<Product> productList = new ArrayList<>();
             for (JsonElement productElement : favProductsJson.getAsJsonArray()) {
@@ -47,7 +53,7 @@ public class CustomerDeserializer implements JsonDeserializer <Customer> {
             customer.setFavoriteProducts(productList);
         }
 
-        JsonElement favProducersJson = json.getAsJsonObject().get("favProducers");
+        JsonElement favProducersJson = json.getAsJsonObject().get("favoriteProducers");
         if (favProducersJson.isJsonArray()) {
             List<Producer> producerList = new ArrayList<>();
             for (JsonElement producerElement : favProducersJson.getAsJsonArray()) {

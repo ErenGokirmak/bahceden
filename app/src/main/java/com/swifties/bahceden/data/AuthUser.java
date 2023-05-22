@@ -1,6 +1,11 @@
 package com.swifties.bahceden.data;
 
+import android.content.Context;
+import android.content.Intent;
+
+import com.swifties.bahceden.activities.CustomerMainActivity;
 import com.swifties.bahceden.activities.IntroActivity;
+import com.swifties.bahceden.activities.ProducerMainActivity;
 import com.swifties.bahceden.data.apis.CustomerApi;
 import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Producer;
@@ -22,17 +27,19 @@ public class AuthUser {
         return instance;
     }
 
-    public void createUser(String email, int userType) {
+    public void createUser(String email, int userType, Context context) {
         if (userType == IntroActivity.CUSTOMER_TYPE)
         {
             RetrofitService.getApi(CustomerApi.class).getCustomerByEmail(email).enqueue(new Callback<Customer>() {
                 @Override
                 public void onResponse(Call<Customer> call, Response<Customer> response) {
                     user = response.body();
+                    context.startActivity(new Intent(context, CustomerMainActivity.class));
                 }
 
                 @Override
                 public void onFailure(Call<Customer> call, Throwable t) {
+                    throw new RuntimeException(t);
                 }
             });
         }
@@ -42,6 +49,7 @@ public class AuthUser {
                 @Override
                 public void onResponse(Call<Customer> call, Response<Customer> response) {
                     user = response.body();
+                    context.startActivity(new Intent(context, ProducerMainActivity.class));
                 }
 
                 @Override

@@ -1,6 +1,7 @@
 package com.swifties.bahceden.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.activities.CustomerViewProductActivity;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.databinding.LayoutItemBinding;
 
@@ -69,6 +71,13 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
 
         holder.binding.itemLayoutAddToCart.setOnClickListener(v -> {
             AuthUser.getCustomer().getCart().addProduct(product);
+        });
+
+        holder.binding.getRoot().setOnClickListener(v ->
+        {
+            Intent intent = new Intent(context, CustomerViewProductActivity.class);
+            intent.putExtra("product_id", product.getId());
+            context.startActivity(intent);
         });
     }
 

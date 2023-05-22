@@ -24,6 +24,7 @@ import com.swifties.bahceden.models.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -72,9 +73,7 @@ public class CustomerHomeFragment extends Fragment {
                 products.removeAll(products);
                 products.addAll(response.body());
                 arrivalsAdapter.notifyDataSetChanged();
-                for (Product p : products) {
-                    slideModels.add(new SlideModel(p.getImageURL(), ScaleTypes.FIT));
-                }
+                slideModels.addAll(products.stream().map(p -> new SlideModel(p.getImageURL(), ScaleTypes.FIT)).collect(Collectors.toList()));
                 imageSlider.setImageList(slideModels);
             }
 

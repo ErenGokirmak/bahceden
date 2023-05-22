@@ -48,7 +48,7 @@ public class FavDukkanAdapter extends RecyclerView.Adapter<FavDukkanAdapter.View
         holder.binding.layoutProducerItemName.setText(producer.getName());
         holder.binding.rating.setText(String.valueOf(producer.getRating()));
         holder.binding.itemLayoutItemLiked.setOnClickListener(v -> {
-            if (AuthUser.getCustomer().getFavoriteProducers().remove(producer))
+            if (AuthUser.getCustomer().removeFavProducer(producer))
             {
                 notifyItemRemoved(position);
             }

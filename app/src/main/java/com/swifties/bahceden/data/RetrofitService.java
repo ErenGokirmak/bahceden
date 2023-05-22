@@ -2,9 +2,13 @@ package com.swifties.bahceden.data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.swifties.bahceden.data.deserializers.CustomerDeserializer;
 import com.swifties.bahceden.data.deserializers.OrderStatusDeserializer;
 import com.swifties.bahceden.data.deserializers.ShipmentTypeDeserializer;
 import com.swifties.bahceden.data.deserializers.UnitTypeDeserializer;
+import com.swifties.bahceden.data.serializers.OrderStatusSerializer;
+import com.swifties.bahceden.data.serializers.ShipmentTypeSerializer;
+import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Product;
 
@@ -23,8 +27,10 @@ public class RetrofitService {
             Gson gson = new GsonBuilder()
                     .registerTypeAdapter(Order.ShipmentType.class, new ShipmentTypeDeserializer())
                     .registerTypeAdapter(Order.OrderStatus.class, new OrderStatusDeserializer())
+                    .registerTypeAdapter(Order.ShipmentType.class, new ShipmentTypeSerializer())
+                    .registerTypeAdapter(Order.OrderStatus.class, new OrderStatusSerializer())
                     .registerTypeAdapter(Product.UnitType.class, new UnitTypeDeserializer())
-                    //.registerTypeAdapter(Customer.class, new CustomerDeserializer())
+                    .registerTypeAdapter(Customer.class, new CustomerDeserializer())
                     .create();
             retrofit = new Retrofit.Builder()
                     .baseUrl("http://10.0.2.2:8080/")

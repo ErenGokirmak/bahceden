@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.CustomerCheckOutActivity;
 import com.swifties.bahceden.adapters.CartProductAdapter;
+import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.apis.OrderApi;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.models.Cart;
@@ -50,6 +51,8 @@ public class CustomerCartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        cart = AuthUser.getCustomer().getCart();
+
         buyNowButton = view.findViewById(R.id.customerCartBuyNowButton);
         totalPriceText = view.findViewById(R.id.customerCartTotalPriceValue);
         totalPriceText.setText(String.format(getString(R.string.turkish_lira), String.valueOf(0.0)));
@@ -58,43 +61,17 @@ public class CustomerCartFragment extends Fragment {
             Intent intent = new Intent(buyView.getContext(), CustomerCheckOutActivity.class);
             startActivity(intent);
         });
-        cart = new Cart(0);
 
-        // create a new cartApi instance
-        // get orders from the backend, set the cart's orders to said list, and
-        // populate the RecyclerView using that cart (this method will change
-        // in the future, for now it just retrieves all orders in the database).
-        // TODO: implement retrieving only one customer's orders
-        RetrofitService.getApi(OrderApi.class).getAllOrders().enqueue(new Callback<List<Order>>() {
-            @Override
-            public void onResponse(@NonNull Call<List<Order>> call, @NonNull Response<List<Order>> response) {
-                // setting the cart's orders to the server's response
-                cart.setOrders((ArrayList<Order>) response.body());
-                cartProductsRV = view.findViewById(R.id.customerCartProductsRV);
-                cartProductsRV.setHasFixedSize(true);
-                cartProductLayoutManager = new LinearLayoutManager(getActivity());
+        cartProductsRV = view.findViewById(R.id.customerCartProductsRV);
+        cartProductsRV.setHasFixedSize(true);
+        cartProductLayoutManager = new LinearLayoutManager(getActivity());
 
-                // populating the RecyclerView
-                cartProductsRV.setLayoutManager(cartProductLayoutManager);
-                cartProductAdapter = new CartProductAdapter(cart, CustomerCartFragment.this.getContext());
-                cartProductsRV.setAdapter(cartProductAdapter);
+        cartProductsRV.setLayoutManager(cartProductLayoutManager);
+        cartProductAdapter = new CartProductAdapter(cart, CustomerCartFragment.this.getContext());
+        cartProductsRV.setAdapter(cartProductAdapter);
 
-                // setting the total price
-                // TODO: this only updates the total price once.
-                //  there needs to be an update every time the
-                //  cart gets updated.
-                totalPriceText.setText(String.format(requireContext().getString(R.string.turkish_lira), String.valueOf(cart.calculateTotalCost())));
+        totalPriceText.setText(String.format(requireContext().getString(R.string.turkish_lira), String.valueOf(cart.calculateTotalCost())));
 
-            }
-
-            @Override
-            public void onFailure(Call<List<Order>> call, Throwable t) {
-                // notify the user about the error
-                Toast.makeText(getContext(),
-                        "Cart retrieval from the server was unsuccessful", Toast.LENGTH_SHORT).show();
-                Log.e("debugPurposes", t.getMessage());
-            }
-        });
 
     }
 }

@@ -39,6 +39,7 @@ public class CustomerViewProductActivity extends AppCompatActivity {
     Intent intent;
     Product product;
     int productID;
+    int productCount = 0;
     ActivityCustomerViewProductBinding binding;
 
     @Override
@@ -60,11 +61,12 @@ public class CustomerViewProductActivity extends AppCompatActivity {
             setViews();
             binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
         } else {
-            List<Product> productsFromOrders = AuthUser.getCustomer().getOrders()
+            List<Order> orders = AuthUser.getCustomer().getOrders()
                     .stream().filter(o -> o.getProduct().getId() == productID)
-                    .map(Order::getProduct).collect(Collectors.toList());
-            if (productsFromOrders.size() > 0) {
-                product = productsFromOrders.get(0);
+                    .collect(Collectors.toList());
+            if (orders.size() > 0) {
+                product = orders.get(0).getProduct();
+                productCount = orders.get(0).getAmount();
                 setViews();
             } else
             {
@@ -116,6 +118,13 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         binding.customerViewProductItemName.setText(product.getName());
         binding.customerViewProductDescriptionText.setText(product.getDescription());
         binding.customerViewProductRatingText.setText(String.valueOf(product.getRating()));
+        binding.producerName.setText(product.getProducer().getName());
+        binding.producerName.setOnClickListener(v -> {
+            Intent intent = new Intent(this, CustomerViewProducerActivity.class);
+            intent.putExtra("producer_id", product.getProducer().getId());
+            this.startActivity(intent);
+        });
+        binding.productCount.setText(String.valueOf(productCount));
         Picasso.get().load(product.getImageURL()).into(binding.productImage);
         binding.favButton.setOnClickListener(v -> {
             if (AuthUser.getCustomer().removeFavProduct(product))
@@ -128,5 +137,21 @@ public class CustomerViewProductActivity extends AppCompatActivity {
                 binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
             }
         });
+        binding.decrement.setOnClickListener(v -> {
+            if (productCount > 0)
+                productCount--;
+            binding.productCount.setText(String.valueOf(productCount));
+            binding.totalPrice.setText(String.format(getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit() * productCount)));
+        });
+        binding.increment.setOnClickListener(v -> {
+            productCount++;
+            binding.productCount.setText(String.valueOf(productCount));
+            binding.totalPrice.setText(String.format(getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit() * productCount)));
+        });
+        binding.addToCart.setOnClickListener(v -> {
+            AuthUser.getCustomer().addNewOrder(product, productCount);
+        });
+        binding.customerViewProductBackButton.setOnClickListener(v -> CustomerViewProductActivity.super.onBackPressed());
+        binding.totalPrice.setText(String.format(getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit() * productCount)));
     }
 }

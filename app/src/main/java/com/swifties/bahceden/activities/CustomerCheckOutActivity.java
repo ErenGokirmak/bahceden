@@ -38,7 +38,7 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
         backButton = findViewById(R.id.customerCheckOutBackButton);
         backButton.setOnClickListener(backView -> CustomerCheckOutActivity.super.onBackPressed());
 
-        cart = new Cart(0);
+        //cart = new Cart(0);
 
         RetrofitService.getApi(OrderApi.class).getAllOrders().enqueue(new Callback<List<Order>>() {
             @Override

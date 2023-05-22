@@ -1,12 +1,13 @@
 package com.swifties.bahceden.models;
 
-import android.util.Log;
-
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.CustomerApi;
+import com.swifties.bahceden.data.apis.OrderApi;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import retrofit2.Call;
@@ -27,10 +28,6 @@ public class Customer extends User {
         addresses = new ArrayList<>();
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
-
     public void setFavoriteProducts(List<Product> favoriteProducts) {
         this.favoriteProducts = favoriteProducts;
     }
@@ -42,8 +39,7 @@ public class Customer extends User {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
-        this.cart = new Cart(getId());
-        this.cart.setOrders(orders.stream().filter(order -> order.getOrderStatus() == Order.OrderStatus.IN_CART).collect(Collectors.toList()));
+        this.cart = new Cart(orders.stream().filter(order -> order.getStatus() == Order.OrderStatus.IN_CART).collect(Collectors.toList()), getId());
     }
 
     public void setAddresses(List<Address> addresses) {
@@ -57,6 +53,51 @@ public class Customer extends User {
     public List<Product> getFavoriteProducts() {
         return favoriteProducts;
     }
+
+    public void addNewOrder (Product p, int amount)
+    {
+        Optional<Order> orderOptional = this.orders.stream().filter(o -> o.getProduct().equals(p)).findFirst();
+        if (orderOptional.isPresent())
+        {
+            Order oldOrder = orderOptional.get();
+            RetrofitService.getApi(OrderApi.class).putOrder(oldOrder).enqueue(new Callback<Order>() {
+                @Override
+                public void onResponse(Call<Order> call, Response<Order> response) {
+                    Order newOrder = response.body();
+                    Customer.this.orders.remove(oldOrder);
+                    Customer.this.orders.add(newOrder);
+                }
+
+                @Override
+                public void onFailure(Call<Order> call, Throwable t) {
+                    throw new RuntimeException(t);
+                }
+            });
+        }
+        else
+        {
+            Order newOrder = new Order();
+            newOrder.setProduct(p);
+            newOrder.setDeliveryAddress(addresses.get(0));
+            newOrder.setStatus(Order.OrderStatus.IN_CART);
+            newOrder.setAmount(amount);
+            newOrder.setDateOfPurchase(new Date().toString());
+            RetrofitService.getApi(OrderApi.class).postOrder(newOrder).enqueue(new Callback<Order>() {
+                @Override
+                public void onResponse(Call<Order> call, Response<Order> response) {
+                    Order order = response.body();
+                    Customer.this.orders.add(order);
+                }
+
+                @Override
+                public void onFailure(Call<Order> call, Throwable t) {
+
+                }
+            });
+        }
+    }
+
+
     public boolean addNewFavProduct (Product product)
     {
         if (getFavoriteProducts().add(product))
