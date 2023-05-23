@@ -46,4 +46,11 @@ public class Address {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public Address(String title, String fullAddress, String phoneNumberOfRecipient, Customer customer) {
+        this.title = title;
+        this.fullAddress = fullAddress;
+        this.phoneNumberOfRecipient = phoneNumberOfRecipient;
+        this.customer = customer;
+    }
 }

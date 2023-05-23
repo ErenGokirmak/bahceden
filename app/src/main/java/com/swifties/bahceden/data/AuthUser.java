@@ -2,11 +2,15 @@ package com.swifties.bahceden.data;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.google.android.material.badge.BadgeState;
 import com.swifties.bahceden.activities.CustomerMainActivity;
 import com.swifties.bahceden.activities.IntroActivity;
 import com.swifties.bahceden.activities.ProducerMainActivity;
 import com.swifties.bahceden.data.apis.CustomerApi;
+import com.swifties.bahceden.data.apis.ProducerApi;
 import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.User;
@@ -27,6 +31,38 @@ public class AuthUser {
         return instance;
     }
 
+    public void updateUser() {
+        if (user instanceof Customer) {
+            RetrofitService.getApi(CustomerApi.class).getCustomerById(user.getId()).enqueue(new Callback<Customer>() {
+                @Override
+                public void onResponse(Call<Customer> call, Response<Customer> response) {
+                    if (response.body() != null) {
+                        user = response.body();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Customer> call, Throwable t) {
+                    Log.d("debug", "There was a problem updating the user: " + t.getMessage());
+                }
+            });
+        }
+        else {
+            RetrofitService.getApi(ProducerApi.class).getProducerById(user.getId()).enqueue(new Callback<Producer>() {
+                @Override
+                public void onResponse(Call<Producer> call, Response<Producer> response) {
+                    if (response.body() != null) {
+                        user = response.body();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Producer> call, Throwable t) {
+                    Log.d("debug", "There was a problem updating the user: " + t.getMessage());
+                }
+            });
+        }
+    }
     public void createUser(String email, int userType, Context context) {
         if (userType == IntroActivity.CUSTOMER_TYPE)
         {
