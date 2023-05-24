@@ -3,9 +3,7 @@ package com.swifties.bahceden.data;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.google.android.material.badge.BadgeState;
 import com.swifties.bahceden.activities.CustomerMainActivity;
 import com.swifties.bahceden.activities.IntroActivity;
 import com.swifties.bahceden.activities.ProducerMainActivity;
@@ -46,8 +44,7 @@ public class AuthUser {
                     Log.d("debug", "There was a problem updating the user: " + t.getMessage());
                 }
             });
-        }
-        else {
+        } else {
             RetrofitService.getApi(ProducerApi.class).getProducerById(user.getId()).enqueue(new Callback<Producer>() {
                 @Override
                 public void onResponse(Call<Producer> call, Response<Producer> response) {
@@ -63,9 +60,9 @@ public class AuthUser {
             });
         }
     }
+
     public void createUser(String email, int userType, Context context) {
-        if (userType == IntroActivity.CUSTOMER_TYPE)
-        {
+        if (userType == IntroActivity.CUSTOMER_TYPE) {
             RetrofitService.getApi(CustomerApi.class).getCustomerByEmail(email).enqueue(new Callback<Customer>() {
                 @Override
                 public void onResponse(Call<Customer> call, Response<Customer> response) {
@@ -78,9 +75,7 @@ public class AuthUser {
                     throw new RuntimeException(t);
                 }
             });
-        }
-        else if (userType == IntroActivity.PRODUCER_TYPE)
-        {
+        } else if (userType == IntroActivity.PRODUCER_TYPE) {
             RetrofitService.getApi(CustomerApi.class).getCustomerByEmail(email).enqueue(new Callback<Customer>() {
                 @Override
                 public void onResponse(Call<Customer> call, Response<Customer> response) {
@@ -92,9 +87,7 @@ public class AuthUser {
                 public void onFailure(Call<Customer> call, Throwable t) {
                 }
             });
-        }
-        else
-        {
+        } else {
             throw new RuntimeException("userType must be either customer or producer");
         }
     }
@@ -111,8 +104,11 @@ public class AuthUser {
         }
     }
 
-    public static Customer getCustomer()
-    {
+    public User getUser() {
+        return user;
+    }
+
+    public static Customer getCustomer() {
         return getInstance().getCustomerInstance();
     }
 
@@ -124,8 +120,7 @@ public class AuthUser {
         }
     }
 
-    public static Producer getProducer()
-    {
+    public static Producer getProducer() {
         return getInstance().getProducerInstance();
     }
 }
