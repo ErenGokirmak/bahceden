@@ -18,8 +18,10 @@ public class OrderStatusDeserializer implements JsonDeserializer<Order.OrderStat
             case 2:
                 return Order.OrderStatus.PENDING;
             case 3:
-                return Order.OrderStatus.DELIVERED;
+                return Order.OrderStatus.ONGOING;
             case 4:
+                return Order.OrderStatus.DELIVERED;
+            case 5:
                 return Order.OrderStatus.CANCELLED;
             default:
                 throw new IllegalArgumentException("Invalid ShipmentType value: " + typeInt);
