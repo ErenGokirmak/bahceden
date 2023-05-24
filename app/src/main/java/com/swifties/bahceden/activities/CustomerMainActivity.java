@@ -74,6 +74,11 @@ public class CustomerMainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
     //    Helper method to replace fragments
     private void replaceFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.customerMainFragmentContainer, fragment).commit();

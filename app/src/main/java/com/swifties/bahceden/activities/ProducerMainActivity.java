@@ -70,6 +70,11 @@ public class ProducerMainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
     //    Helper method to replace fragments
     private void replaceFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.producerMainFragmentContainer, fragment).commit();
