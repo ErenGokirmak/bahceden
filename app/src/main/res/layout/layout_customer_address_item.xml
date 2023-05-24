@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="@id/checkoutAddressImage" />
 
     <TextView
-        android:id="@+id/checkoutAdressText"
+        android:id="@+id/adressText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -48,17 +48,6 @@
         app:layout_constraintTop_toBottomOf="@id/checkoutCustomerAddressTitle" />
 
     <ImageView
-        android:id="@+id/customerAddressItemSelected"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:src="@drawable/ic_tick_unselected"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/black" />
-
-    <ImageView
         android:id="@+id/checkoutAddressEdit"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -68,5 +57,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/black" />
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,12 @@
 package com.swifties.bahceden.models;
 
+import java.util.Objects;
+
 public class Address {
     private int id;
     private String title;
     private String fullAddress;
-    private String phoneNumberOfRecipient;
+    private String phoneNumber;
     private Customer customer;
 
     public Customer getCustomer() {
@@ -31,26 +33,47 @@ public class Address {
         return fullAddress;
     }
 
-    public String getPhoneNumberOfRecipient() {
-        return phoneNumberOfRecipient;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public void setFullAddress(String fullAddress) {
         this.fullAddress = fullAddress;
     }
 
-    public void setPhoneNumberOfRecipient(String phoneNumberOfRecipient) {
-        this.phoneNumberOfRecipient = phoneNumberOfRecipient;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return id == address.id && Objects.equals(title, address.title) && Objects.equals(fullAddress, address.fullAddress) && Objects.equals(phoneNumber, address.phoneNumber) && Objects.equals(customer, address.customer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, fullAddress, phoneNumber, customer);
+    }
+
     public Address(String title, String fullAddress, String phoneNumberOfRecipient, Customer customer) {
         this.title = title;
         this.fullAddress = fullAddress;
-        this.phoneNumberOfRecipient = phoneNumberOfRecipient;
+        this.phoneNumber = phoneNumberOfRecipient;
+        this.customer = customer;
+    }
+
+    public Address(int id, String title, String fullAddress, String phoneNumber, Customer customer) {
+        this.id = id;
+        this.title = title;
+        this.fullAddress = fullAddress;
+        this.phoneNumber = phoneNumber;
         this.customer = customer;
     }
 }

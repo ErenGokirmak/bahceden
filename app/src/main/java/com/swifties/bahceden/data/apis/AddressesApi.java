@@ -40,7 +40,7 @@ public interface AddressesApi {
      * @return the updated address
      */
     @PUT("addresses")
-    Call<Address> updateAddressById(@Body Address address);
+    Call<Address> updateAddress(@Body Address address);
 
 
     /**
