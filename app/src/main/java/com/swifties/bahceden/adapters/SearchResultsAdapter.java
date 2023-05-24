@@ -77,9 +77,27 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
             holder.binding.city.setText(product.getProducer().getCity());
             holder.binding.price.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit())));
             holder.binding.favoritesProductName.setText(product.getName());
+            holder.binding.rating.setText(String.valueOf(product.getRating()));
+            if (AuthUser.getCustomer().getFavoriteProducts().contains(product))
+            {
+                holder.binding.favButton.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite));
+            }
+            else
+            {
+                holder.binding.favButton.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_unfavorite));
+
+            }
+
             holder.binding.favButton.setOnClickListener(v -> {
-                if(AuthUser.getCustomer().removeFavProduct(product)){
-                    notifyItemRemoved(position);
+                if (AuthUser.getCustomer().removeFavProduct(product))
+                {
+                    holder.binding.favButton.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_unfavorite));
+                }
+                else
+                {
+                    AuthUser.getCustomer().addNewFavProduct(product);
+                    holder.binding.favButton.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite));
+
                 }
             });
             holder.binding.getRoot().setOnClickListener(v -> {
