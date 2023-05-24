@@ -49,6 +49,7 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
         holder.binding.favoritesProductName.setText(product.getName());
         holder.binding.price.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit())));
         holder.binding.city.setText(product.getProducer().getCity());
+        holder.binding.rating.setText(String.valueOf(product.getRating()));
         holder.binding.favButton.setOnClickListener(v -> {
             if (AuthUser.getCustomer().removeFavProduct(product))
             {
