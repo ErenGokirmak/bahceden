@@ -3,7 +3,6 @@ package com.swifties.bahceden.activities;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,8 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SecurityProfileActivity extends AppCompatActivity {
-
-    private ImageView backButton;
     private ActivitySecurityProfileBinding binding;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
@@ -47,11 +44,13 @@ public class SecurityProfileActivity extends AppCompatActivity {
                 return;
             }
 
+            // TODO: the getEmail() returns null and I can't figure out why.
+            //  will need further investigation
+
             // Try to sign in with old password
             firebaseAuth.signInWithEmailAndPassword(AuthUser.getInstance().getUser().getEmail(), oldPassword)
                     .addOnSuccessListener(authResult -> {
                         User user = AuthUser.getInstance().getUser();
-                        Log.d("debug", user.getEmail());
                         Map<String, String> updatedUser = new HashMap<>();
 
                         // Cursed way of determining user type
@@ -61,12 +60,14 @@ public class SecurityProfileActivity extends AppCompatActivity {
                             updatedUser.put("userType", "2");
                         }
                         updatedUser.put("password", newPassword);
-                        updatedUser.put("email", user.getEmail());
+                        updatedUser.put("email", user.getEmail()); // FIXME: <- this getEmail() returns null
 
                         String userId = FirebaseAuth.getInstance().getUid();
                         firebaseFirestore.collection("user")
                                 .document(userId)
                                 .set(updatedUser);
+                    }).addOnFailureListener(authResult -> {
+                        Log.e("error", authResult.getMessage());
                     });
 
         });
