@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -40,7 +41,9 @@ public class CustomerSearchFragment extends Fragment {
     EditText searchHistoryEditText;
     LinearLayout filtersMenu;
 
-    SwitchCompat producerSwitch, productSwitch;
+    RadioButton priceSortButton, ratingSortButton;
+
+    SwitchCompat producerSwitch, productSwitch, ascDscSwitch;
     Spinner categorySpinner;
 
     @Override
@@ -61,6 +64,9 @@ public class CustomerSearchFragment extends Fragment {
         filtersButton = view.findViewById(R.id.customerSearchFiltersButton);
         sortByButton = view.findViewById(R.id.customerSearchSortByButton);
         filtersMenu = view.findViewById(R.id.filtersMenu);
+        ascDscSwitch = view.findViewById(R.id.ascendingSortSwitch);
+        ratingSortButton = view.findViewById(R.id.ratingSortSwitch);
+        priceSortButton = view.findViewById(R.id.priceSortSwitch);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +97,29 @@ public class CustomerSearchFragment extends Fragment {
             else {
                 filtersMenu.setVisibility(View.GONE);
             }
+        });
+
+        sortByButton.setOnClickListener(v -> {
+            if(sortByButton.getVisibility() == View.VISIBLE){
+                sortByButton.setVisibility(View.GONE);
+                Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
+                filtersMenu.startAnimation(animation);
+            }else{
+                sortByButton.setVisibility(View.VISIBLE);
+            }
+        });
+
+        priceSortButton.setOnClickListener(v -> {
+            ratingSortButton.setChecked(false);
+        });
+
+        ratingSortButton.setOnClickListener(v -> {
+                priceSortButton.setChecked(false);
+
+        });
+
+        ascDscSwitch.setOnClickListener(v -> {
+            ascDscSwitch.setChecked(!ascDscSwitch.isChecked());
         });
 
         producerSwitch = view.findViewById(R.id.producerSwitch);
