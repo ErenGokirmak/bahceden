@@ -39,7 +39,7 @@ public class CustomerSearchFragment extends Fragment {
     Button filtersButton, sortByButton;
     ImageView searchButton;
     EditText searchHistoryEditText;
-    LinearLayout filtersMenu;
+    LinearLayout filtersMenu, sortByMenu;
 
     RadioButton priceSortButton, ratingSortButton;
 
@@ -67,6 +67,7 @@ public class CustomerSearchFragment extends Fragment {
         ascDscSwitch = view.findViewById(R.id.ascendingSortSwitch);
         ratingSortButton = view.findViewById(R.id.ratingSortSwitch);
         priceSortButton = view.findViewById(R.id.priceSortSwitch);
+        sortByMenu = view.findViewById(R.id.sortByMenu);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +90,7 @@ public class CustomerSearchFragment extends Fragment {
 
 
         filtersButton.setOnClickListener(v -> {
+            if(sortByMenu.getVisibility() == View.VISIBLE) sortByMenu.setVisibility(View.GONE);
             if (filtersMenu.getVisibility() == View.GONE) {
                 filtersMenu.setVisibility(View.VISIBLE);
                 Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
@@ -100,12 +102,13 @@ public class CustomerSearchFragment extends Fragment {
         });
 
         sortByButton.setOnClickListener(v -> {
-            if(sortByButton.getVisibility() == View.VISIBLE){
-                sortByButton.setVisibility(View.GONE);
-                Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
-                filtersMenu.startAnimation(animation);
+            if(filtersMenu.getVisibility() == View.VISIBLE) filtersMenu.setVisibility(View.GONE);
+            if(sortByMenu.getVisibility() == View.VISIBLE){
+                sortByMenu.setVisibility(View.GONE);
             }else{
-                sortByButton.setVisibility(View.VISIBLE);
+                sortByMenu.setVisibility(View.VISIBLE);
+                Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
+                sortByMenu.startAnimation(animation);
             }
         });
 
@@ -116,10 +119,6 @@ public class CustomerSearchFragment extends Fragment {
         ratingSortButton.setOnClickListener(v -> {
                 priceSortButton.setChecked(false);
 
-        });
-
-        ascDscSwitch.setOnClickListener(v -> {
-            ascDscSwitch.setChecked(!ascDscSwitch.isChecked());
         });
 
         producerSwitch = view.findViewById(R.id.producerSwitch);
