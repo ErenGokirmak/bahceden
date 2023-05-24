@@ -7,8 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.activities.CustomerAddressesActivity;
 import com.swifties.bahceden.activities.CustomerAnalyticsActivity;
 import com.swifties.bahceden.activities.CustomerCardsActivity;
@@ -19,6 +22,7 @@ import com.swifties.bahceden.activities.ProducerMainActivity;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.SecurityProfileActivity;
 import com.swifties.bahceden.data.AuthUser;
+import com.swifties.bahceden.databinding.FragmentCustomerProfileBinding;
 
 public class CustomerProfileFragment extends Fragment {
 
@@ -30,9 +34,12 @@ public class CustomerProfileFragment extends Fragment {
     LinearLayout securityButton;
     LinearLayout logOutButton;
 
+    FragmentCustomerProfileBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_customer_profile, container, false);
+        binding = FragmentCustomerProfileBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
         // Initializing buttons
         editProfileButton = view.findViewById(R.id.customerProfileEditProfileButton);
@@ -80,5 +87,14 @@ public class CustomerProfileFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Picasso.get().load(AuthUser.getCustomer().getProfileImageUrl()).into(binding.customerProfileImage);
+        binding.customerProfileName.setText(AuthUser.getCustomer().getName());
+        binding.customerProfileEmail.setText(AuthUser.getCustomer().getEmail());
     }
 }
