@@ -9,6 +9,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ProductApi {
     @GET("products")
@@ -21,8 +22,8 @@ public interface ProductApi {
      * @param keyword keyword to be searched for
      * @return a list of products
      */
-    @GET("products/{keyword}/search")
-    Call<List<Product>> getProductsByKeyword(@Path("keyword") String keyword);
+    @GET("products/searchParam")
+    Call<List<Product>> searchProduct(@Query("keyword") String keyword, @Query("sortBy") String sortBy, @Query("ascending") boolean isAscending);
 
     /**
      * Retrieves a single product from the backend
@@ -41,4 +42,6 @@ public interface ProductApi {
      */
     @DELETE("products/{productId}")
     Call<String> deleteProductById(@Path("productId") int id);
+
+
 }

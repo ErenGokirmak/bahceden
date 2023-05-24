@@ -3,6 +3,7 @@ package com.swifties.bahceden.fragments;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,19 +18,30 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.adapters.FavItemAdapter;
+import com.swifties.bahceden.adapters.SearchResultsAdapter;
 import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
 import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.ProductApi;
+import com.swifties.bahceden.models.Product;
 import com.swifties.bahceden.uiclasses.SpinnerCustomItem;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CustomerSearchFragment extends Fragment {
 
@@ -45,6 +57,7 @@ public class CustomerSearchFragment extends Fragment {
 
     SwitchCompat producerSwitch, productSwitch, ascDscSwitch;
     Spinner categorySpinner;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -178,6 +191,78 @@ public class CustomerSearchFragment extends Fragment {
                 searchHistoryPopup.showAsDropDown(searchHistoryEditText);
             } else {
                 searchHistoryPopup.dismiss();
+            }
+        });
+
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(producerSwitch.isChecked()){
+
+                }else{
+                    RetrofitService.getApi(ProductApi.class).searchProduct(searchHistoryEditText.getText().toString(), ratingSortButton.isChecked() ? "rating" : "pricePerUnit", !ascDscSwitch.isChecked())
+                            .enqueue(new Callback<List<Product>>() {
+                                @Override
+                                public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                                    RecyclerView rv = view.findViewById(R.id.customerSearchResultsRV);
+                                    rv.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                                    rv.setAdapter(SearchResultsAdapter.fromProductList(response.body(), view.getContext(), getLayoutInflater()));
+                                }
+
+                                @Override
+                                public void onFailure(Call<List<Product>> call, Throwable t) {
+
+                                }
+                            });
+
+                }
+            }
+        };
+        searchHistoryEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(producerSwitch.isChecked()){
+
+                }else{
+                    RetrofitService.getApi(ProductApi.class).searchProduct(searchHistoryEditText.getText().toString(), ratingSortButton.isChecked() ? "rating" : "pricePerUnit", !ascDscSwitch.isChecked())
+                            .enqueue(new Callback<List<Product>>() {
+                                @Override
+                                public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                                    RecyclerView rv = view.findViewById(R.id.customerSearchResultsRV);
+                                    rv.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                                    rv.setAdapter(SearchResultsAdapter.fromProductList(response.body(), view.getContext(), getLayoutInflater()));
+                                }
+
+                                @Override
+                                public void onFailure(Call<List<Product>> call, Throwable t) {
+
+                                }
+                            });
+
+                }
+                return true;
+            }
+        });
+
+        searchButton.setOnClickListener(v -> {
+            if(producerSwitch.isChecked()){
+
+            }else{
+                RetrofitService.getApi(ProductApi.class).searchProduct(searchHistoryEditText.getText().toString(), ratingSortButton.isChecked() ? "rating" : "pricePerUnit", !ascDscSwitch.isChecked())
+                        .enqueue(new Callback<List<Product>>() {
+                            @Override
+                            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                                RecyclerView rv = view.findViewById(R.id.customerSearchResultsRV);
+                                rv.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                                rv.setAdapter(SearchResultsAdapter.fromProductList(response.body(), view.getContext(), getLayoutInflater()));
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<Product>> call, Throwable t) {
+
+                            }
+                        });
+
             }
         });
 
