@@ -55,4 +55,5 @@
     <string name="orderWithId">Order #%d</string>
     <string name="totalCost">Total: ₺%s</string>
     <string name="status">Status: %s</string>
+    <string name="update_address">UPDATE ADDRESS</string>
 </resources>
