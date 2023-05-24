@@ -31,7 +31,12 @@ public class CustomerDeserializer implements JsonDeserializer <Customer> {
         customer.setId(json.getAsJsonObject().get("id").getAsInt());
         customer.setName(json.getAsJsonObject().get("name").getAsString());
         customer.setEmail(json.getAsJsonObject().get("email").getAsString());
-        customer.setProfileImageUrl(json.getAsJsonObject().get("profileImageURL").getAsString());
+        JsonElement profileImageElement = json.getAsJsonObject().get("profileImageURL");
+        if(profileImageElement != null && !profileImageElement.isJsonNull()){
+            customer.setProfileImageUrl(profileImageElement.getAsString());
+        } else {
+            customer.setProfileImageUrl("http://10.0.2.2:8080/images/noProfile.png");
+        }
 
         JsonElement addressesJson = json.getAsJsonObject().get("addresses");
         if (addressesJson.isJsonArray()) {

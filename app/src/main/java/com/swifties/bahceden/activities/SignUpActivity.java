@@ -232,7 +232,8 @@ public class SignUpActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onFailure(Call<Customer> call, Throwable t) {
-                                    Toast.makeText(SignUpActivity.this, "Error sending user to database", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(SignUpActivity.this, "Error sending user to database", Toast.LENGTH_SHORT).show();
+                                    throw new RuntimeException(t);
                                 }
                             });
                         }

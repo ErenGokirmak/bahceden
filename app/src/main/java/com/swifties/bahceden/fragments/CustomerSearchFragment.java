@@ -6,20 +6,27 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
 import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.uiclasses.SpinnerCustomItem;
 
 import java.util.ArrayList;
 
@@ -31,6 +38,10 @@ public class CustomerSearchFragment extends Fragment {
     Button filtersButton, sortByButton;
     ImageView searchButton;
     EditText searchHistoryEditText;
+    LinearLayout filtersMenu;
+
+    SwitchCompat producerSwitch, productSwitch;
+    Spinner categorySpinner;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,6 +60,7 @@ public class CustomerSearchFragment extends Fragment {
         searchButton = view.findViewById(R.id.customerSearchImg);
         filtersButton = view.findViewById(R.id.customerSearchFiltersButton);
         sortByButton = view.findViewById(R.id.customerSearchSortByButton);
+        filtersMenu = view.findViewById(R.id.filtersMenu);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +80,34 @@ public class CustomerSearchFragment extends Fragment {
             }
         });
 
+
+
+        filtersButton.setOnClickListener(v -> {
+            if (filtersMenu.getVisibility() == View.GONE) {
+                filtersMenu.setVisibility(View.VISIBLE);
+                Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
+                filtersMenu.startAnimation(animation);
+            }
+            else {
+                filtersMenu.setVisibility(View.GONE);
+            }
+        });
+
+        producerSwitch = view.findViewById(R.id.producerSwitch);
+        productSwitch = view.findViewById(R.id.productSwitch);
+
+        producerSwitch.setOnClickListener(v -> {
+            productSwitch.setChecked(!productSwitch.isChecked());
+        });
+
+        productSwitch.setOnClickListener(v -> {
+            producerSwitch.setChecked(!producerSwitch.isChecked());
+        });
+
+        categorySpinner = view.findViewById(R.id.searchCategoriesSpinner);
+        SpinnerCustomAdapter spinnerAdapter = new SpinnerCustomAdapter(getActivity(), getCustomCategoriesList());
+        categorySpinner.setAdapter(spinnerAdapter);
+
         // Fill the search history list
         fillSearchHistory();
 
@@ -81,7 +121,7 @@ public class CustomerSearchFragment extends Fragment {
         // Set a click listener for the search history items
         searchHistoryListView.setOnItemClickListener((parent, view12, position, id) -> {
             String selectedSearchHistory = searchHistoryList.get(position);
-            EditText editText = getView().findViewById(R.id.customerSearchHistoryEditText);
+            EditText editText = getView().findViewById(R.id.customerSearchEditText);
             editText.setText(selectedSearchHistory);
             searchHistoryPopup.dismiss();
         });
@@ -91,7 +131,7 @@ public class CustomerSearchFragment extends Fragment {
         popupListView.setAdapter(searchHistoryAdapter);
         popupListView.setOnItemClickListener((parent, view1, position, id) -> {
             String selectedSearchHistory = searchHistoryList.get(position);
-            EditText editText = getView().findViewById(R.id.customerSearchHistoryEditText);
+            EditText editText = getView().findViewById(R.id.customerSearchEditText);
             editText.setText(selectedSearchHistory);
             searchHistoryPopup.dismiss();
         });
@@ -102,7 +142,7 @@ public class CustomerSearchFragment extends Fragment {
         searchHistoryPopup.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
 
         // Find the EditText view for the search history
-        searchHistoryEditText = view.findViewById(R.id.customerSearchHistoryEditText);
+        searchHistoryEditText = view.findViewById(R.id.customerSearchEditText);
 
         // Set a focus change listener for the search history EditText
         searchHistoryEditText.setOnFocusChangeListener((v, hasFocus) -> {
@@ -139,5 +179,17 @@ public class CustomerSearchFragment extends Fragment {
         searchHistoryList.add("Honey");
         searchHistoryList.add("Şifa Gıda");
         searchHistoryList.add("Herbs");
+    }
+
+    private ArrayList<SpinnerCustomItem> getCustomCategoriesList() {
+        ArrayList<SpinnerCustomItem> items = new ArrayList<>();
+        items.add(new SpinnerCustomItem("Dairy", R.drawable.ic_dairy_products));
+        items.add(new SpinnerCustomItem("Meat", R.drawable.ic_meat));
+        items.add(new SpinnerCustomItem("Vegetable", R.drawable.ic_fruit));
+        items.add(new SpinnerCustomItem("Nuts", R.drawable.ic_peanut));
+        items.add(new SpinnerCustomItem("Bakery", R.drawable.ic_bread));
+        items.add(new SpinnerCustomItem("Other", R.drawable.ic_honey));
+
+        return items;
     }
 }
