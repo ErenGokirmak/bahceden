@@ -16,10 +16,12 @@ public class OrderStatusSerializer implements JsonSerializer<Order.OrderStatus> 
                 return new JsonPrimitive(1);
             case PENDING:
                 return new JsonPrimitive(2);
-            case DELIVERED:
+            case ONGOING:
                 return new JsonPrimitive(3);
-            case CANCELLED:
+            case DELIVERED:
                 return new JsonPrimitive(4);
+            case CANCELLED:
+                return new JsonPrimitive(5);
             default:
                 throw new IllegalArgumentException("Invalid OrderStatus value: " + src);
         }

@@ -7,7 +7,7 @@ public class Order {
     }
 
     public enum OrderStatus {
-        IN_CART, PENDING, DELIVERED, CANCELLED
+        IN_CART, PENDING, ONGOING, DELIVERED, CANCELLED;
     }
 
     private int id;
