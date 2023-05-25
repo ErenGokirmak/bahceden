@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -19,8 +21,10 @@ import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CommentProducerViewAdapter;
 import com.swifties.bahceden.adapters.YourListingsAdapter;
 import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.CommentApi;
 import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.databinding.FragmentProducerHomeBinding;
+import com.swifties.bahceden.models.Comment;
 import com.swifties.bahceden.models.Product;
 
 
@@ -37,6 +41,8 @@ public class ProducerHomeFragment extends Fragment {
     FragmentProducerHomeBinding binding;
     RecyclerView reviewsRV, listingsRV;
     ImageSlider imageSlider;
+    ArrayList<Comment> comments;
+    ArrayList<Product> listings;
     ArrayList<Product> productsInSlider;
 
     @Override
@@ -57,11 +63,46 @@ public class ProducerHomeFragment extends Fragment {
         RecyclerView.LayoutManager listingsLM = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         listingsRV.setLayoutManager(listingsLM);
 
+
+        // retrieving reviews and listings TODO: Change api requests
+        RetrofitService.getApi(CommentApi.class).getAllComments().enqueue(new Callback<List<Comment>>() {
+            @Override
+            public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
+                if (response.body() != null) {
+                    comments = (ArrayList<Comment>) (response.body());
+                    CommentProducerViewAdapter reviewsAdapter = new CommentProducerViewAdapter(comments, getContext());
+                    reviewsRV.setAdapter(reviewsAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Comment>> call, Throwable t) {
+                Toast.makeText(getContext(), "There was a problem retrieving reviews", Toast.LENGTH_SHORT).show();
+                Log.d("debugPurposes", t.getMessage());
+            }
+        });
+
+        // TODO: Change api requests
+        RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if (response.body() != null) {
+                    listings = (ArrayList<Product>) response.body();
+                    YourListingsAdapter yourListingsAdapter = new YourListingsAdapter(listings, getContext());
+                    listingsRV.setAdapter(yourListingsAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Toast.makeText(getContext(), "There was a problem retrieving your listings", Toast.LENGTH_SHORT).show();
+                Log.d("debugPurposes", t.getMessage());
+            }
+        });
+
         // adapters
-        CommentProducerViewAdapter reviewsAdapter = new CommentProducerViewAdapter();
-        reviewsRV.setAdapter(reviewsAdapter);
-        YourListingsAdapter yourListingsAdapter = new YourListingsAdapter();
-        listingsRV.setAdapter(yourListingsAdapter);
+
+
 
         // image slider
         imageSlider = binding.producerHomeSlider;

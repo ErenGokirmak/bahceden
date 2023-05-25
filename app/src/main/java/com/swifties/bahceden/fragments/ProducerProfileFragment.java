@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.swifties.bahceden.activities.CustomerMainActivity;
 import com.swifties.bahceden.activities.IntroActivity;
 import com.swifties.bahceden.activities.ProducerAnalyticsActivity;
 import com.swifties.bahceden.activities.ProducerEditProfileActivity;
