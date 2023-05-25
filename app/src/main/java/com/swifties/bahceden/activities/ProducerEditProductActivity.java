@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
+import com.swifties.bahceden.databinding.ActivityProducerEditProductBinding;
 import com.swifties.bahceden.uiclasses.SpinnerCustomItem;
 
 import java.util.ArrayList;
@@ -19,18 +20,21 @@ public class ProducerEditProductActivity extends AppCompatActivity {
     ArrayList<SpinnerCustomItem> customItems;
     ArrayList<ArrayList<SpinnerCustomItem>> customSubItems;
     SpinnerCustomAdapter spinnerSubCategoriesAdapter;
+    ActivityProducerEditProductBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_producer_edit_product);
+        binding = ActivityProducerEditProductBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
 
-        customSubCategoriesSpinner = findViewById(R.id.producerEditProductItemSubCategoriesSpinner);
-        customCategoriesSpinner = findViewById(R.id.producerEditProductItemCategoriesSpinner);
+        customSubCategoriesSpinner = binding.producerEditProductItemSubCategoriesSpinner;
+        customCategoriesSpinner = binding.producerEditProductItemCategoriesSpinner;
 
         customItems = getCustomCategoriesList();
         customSubItems = getCustomSubCategoriesList();
+
 
         SpinnerCustomAdapter spinnerCategoriesAdapter = new SpinnerCustomAdapter(this, customItems);
         spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(this, customSubItems.get(0));

@@ -1,23 +1,20 @@
 package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.swifties.bahceden.R;
+import com.swifties.bahceden.databinding.ActivityProducerOrderDetailsBinding;
 
 public class ProducerOrderDetailsActivity extends AppCompatActivity {
 
-    ImageView backButton;
+    ActivityProducerOrderDetailsBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_producer_order_details);
+        binding = ActivityProducerOrderDetailsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        backButton = findViewById(R.id.producerOrderDetailsBackButton);
-
-        backButton.setOnClickListener(backView -> ProducerOrderDetailsActivity.super.onBackPressed());
+        binding.producerOrderDetailsBackButton.setOnClickListener(backView -> ProducerOrderDetailsActivity.super.onBackPressed());
     }
 }

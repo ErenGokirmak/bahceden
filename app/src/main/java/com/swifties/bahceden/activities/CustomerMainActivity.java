@@ -74,6 +74,8 @@ public class CustomerMainActivity extends AppCompatActivity {
         });
     }
 
+    // This is here to prevent the user from pressing the back button
+    // on their phone, as that would redirect them to the login page
     @Override
     public void onBackPressed() {
 
