@@ -71,7 +71,11 @@ public class CustomerCartFragment extends Fragment {
         cartProductsRV.setAdapter(cartProductAdapter);
 
         totalPriceText.setText(String.format(requireContext().getString(R.string.turkish_lira), String.valueOf(cart.calculateTotalCost())));
+    }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        cartProductAdapter.notifyDataSetChanged();
     }
 }

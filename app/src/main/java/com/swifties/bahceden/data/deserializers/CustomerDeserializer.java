@@ -6,6 +6,8 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
+import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.serializers.AddressSerializer;
 import com.swifties.bahceden.models.Address;
 import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Customer;
@@ -20,11 +22,7 @@ import java.util.List;
 public class CustomerDeserializer implements JsonDeserializer <Customer> {
     @Override
     public Customer deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Order.ShipmentType.class, new ShipmentTypeDeserializer())
-                .registerTypeAdapter(Order.OrderStatus.class, new OrderStatusDeserializer())
-                .registerTypeAdapter(Product.UnitType.class, new UnitTypeDeserializer())
-                .create();
+        Gson gson = RetrofitService.getGson();
 
         Customer customer = new Customer();
 
