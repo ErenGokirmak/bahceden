@@ -4,12 +4,15 @@ import com.swifties.bahceden.models.Customer;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -62,6 +65,13 @@ public interface CustomerApi {
 
     @DELETE("customers/favorites/producers")
     Call<Customer> deleteNewFavoriteProducer(@Query("customerId") int customer_id, @Query("producerId") int producer_id);
+
+    @Multipart
+    @POST("customers/{customerId}/image")
+    Call<Customer> uploadCustomerImage(
+            @Path("customerId") int customerId,
+            @Part MultipartBody.Part image
+    );
 
     /**
      * Updates a customer's data on the backend

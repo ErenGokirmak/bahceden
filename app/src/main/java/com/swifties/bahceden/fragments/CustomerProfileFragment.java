@@ -93,6 +93,12 @@ public class CustomerProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         Picasso.get().load(AuthUser.getCustomer().getProfileImageUrl()).into(binding.customerProfileImage);
         binding.customerProfileName.setText(AuthUser.getCustomer().getName());
         binding.customerProfileEmail.setText(AuthUser.getCustomer().getEmail());

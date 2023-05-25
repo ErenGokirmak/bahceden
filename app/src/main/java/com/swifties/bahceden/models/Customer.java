@@ -65,12 +65,11 @@ public class Customer extends User {
         if (orderOptional.isPresent())
         {
             Order oldOrder = orderOptional.get();
-            RetrofitService.getApi(OrderApi.class).putOrder(oldOrder).enqueue(new Callback<Order>() {
+            oldOrder.setAmount(amount);
+            RetrofitService.getApi(OrderApi.class).putOrder(oldOrder, oldOrder.getId()).enqueue(new Callback<Order>() {
                 @Override
                 public void onResponse(Call<Order> call, Response<Order> response) {
-                    Order newOrder = response.body();
-                    Customer.this.orders.remove(oldOrder);
-                    Customer.this.orders.add(newOrder);
+
                 }
 
                 @Override

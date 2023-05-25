@@ -34,8 +34,8 @@ public interface OrderApi {
     @POST("orders")
     Call<Order> postOrder(@Body Order order);
 
-    @PUT("orders")
-    Call<Order> putOrder(@Body Order order);
+    @PUT("orders/{orderId}")
+    Call<Order> putOrder(@Body Order order, @Path("orderId") int orderId);
 
     /**
      * Deletes an order from the database

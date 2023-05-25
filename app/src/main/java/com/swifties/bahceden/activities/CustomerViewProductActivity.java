@@ -143,6 +143,7 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         });
         binding.addToCart.setOnClickListener(v -> {
             AuthUser.getCustomer().addNewOrder(product, productCount);
+            CustomerViewProductActivity.super.onBackPressed();
         });
         binding.customerViewProductBackButton.setOnClickListener(v -> CustomerViewProductActivity.super.onBackPressed());
         binding.totalPrice.setText(String.format(getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit() * productCount)));
