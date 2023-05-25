@@ -19,6 +19,10 @@ public class Product {
     private double amountInStock;
     private String imageURL;
 
+
+    public Product() {
+
+    }
     public Product(int id) {
         this.id = id;
     }

@@ -85,7 +85,6 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
             else
             {
                 holder.binding.favButton.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_unfavorite));
-
             }
 
             holder.binding.favButton.setOnClickListener(v -> {
@@ -97,7 +96,6 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
                 {
                     AuthUser.getCustomer().addNewFavProduct(product);
                     holder.binding.favButton.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite));
-
                 }
             });
             holder.binding.getRoot().setOnClickListener(v -> {

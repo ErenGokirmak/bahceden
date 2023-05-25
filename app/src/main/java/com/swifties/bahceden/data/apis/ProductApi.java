@@ -5,6 +5,7 @@ import com.swifties.bahceden.models.Product;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -42,6 +43,14 @@ public interface ProductApi {
      */
     @DELETE("products/{productId}")
     Call<String> deleteProductById(@Path("productId") int id);
+
+    /**
+     * Saves a product to the database
+     * @param product the product to be saved
+     * @return a copy of the saved product
+     */
+    @POST("products")
+    Call<Product> saveProduct(@Body Product product);
 
 
 }

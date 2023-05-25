@@ -28,7 +28,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
-import com.swifties.bahceden.adapters.FavItemAdapter;
 import com.swifties.bahceden.adapters.SearchResultsAdapter;
 import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
 import com.swifties.bahceden.data.RetrofitService;
@@ -52,7 +51,7 @@ public class CustomerSearchFragment extends Fragment {
     RecyclerView productSearchRV;
     Button filtersButton, sortByButton;
     ImageView searchButton;
-    EditText searchHistoryEditText;
+    EditText searchEditText;
     LinearLayout filtersMenu, sortByMenu;
 
     RadioButton priceSortButton, ratingSortButton;
@@ -83,44 +82,23 @@ public class CustomerSearchFragment extends Fragment {
         ratingSortButton = view.findViewById(R.id.ratingSortSwitch);
         priceSortButton = view.findViewById(R.id.priceSortSwitch);
         sortByMenu = view.findViewById(R.id.sortByMenu);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String searchKeyword = String.valueOf(searchHistoryEditText.getText());
-                // TODO: Make filters and sort by work, and add them to the request
-                //  (probably make filters button into a spinner)
-
-                // TODO:
-                //  if ([filter is "products"]
-                //      RetrofitService.getApi(ProductApi.class)...
-                //  else if ([filter is "producers"])
-                //      RetrofitService.getApi(ProducerApi.class)...
-                //  else if ([filter is "all"])
-                //      List<Producer> producers; (fill this using a request)
-                //      List<Product> products; (again, with ta request)
-                //      productSearchRV.setAdapter(
-            }
-        });
-
-
 
         filtersButton.setOnClickListener(v -> {
-            if(sortByMenu.getVisibility() == View.VISIBLE) sortByMenu.setVisibility(View.GONE);
+            if (sortByMenu.getVisibility() == View.VISIBLE) sortByMenu.setVisibility(View.GONE);
             if (filtersMenu.getVisibility() == View.GONE) {
                 filtersMenu.setVisibility(View.VISIBLE);
                 Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
                 filtersMenu.startAnimation(animation);
-            }
-            else {
+            } else {
                 filtersMenu.setVisibility(View.GONE);
             }
         });
 
         sortByButton.setOnClickListener(v -> {
-            if(filtersMenu.getVisibility() == View.VISIBLE) filtersMenu.setVisibility(View.GONE);
-            if(sortByMenu.getVisibility() == View.VISIBLE){
+            if (filtersMenu.getVisibility() == View.VISIBLE) filtersMenu.setVisibility(View.GONE);
+            if (sortByMenu.getVisibility() == View.VISIBLE) {
                 sortByMenu.setVisibility(View.GONE);
-            }else{
+            } else {
                 sortByMenu.setVisibility(View.VISIBLE);
                 Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
                 sortByMenu.startAnimation(animation);
@@ -132,7 +110,7 @@ public class CustomerSearchFragment extends Fragment {
         });
 
         ratingSortButton.setOnClickListener(v -> {
-                priceSortButton.setChecked(false);
+            priceSortButton.setChecked(false);
 
         });
 
@@ -202,23 +180,23 @@ public class CustomerSearchFragment extends Fragment {
         searchHistoryPopup.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
 
         // Find the EditText view for the search history
-        searchHistoryEditText = view.findViewById(R.id.customerSearchEditText);
+        searchEditText = view.findViewById(R.id.customerSearchEditText);
 
         // Set a focus change listener for the search history EditText
-        searchHistoryEditText.setOnFocusChangeListener((v, hasFocus) -> {
+        searchEditText.setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus) {
-                searchHistoryPopup.showAsDropDown(searchHistoryEditText);
+                searchHistoryPopup.showAsDropDown(searchEditText);
             } else {
                 searchHistoryPopup.dismiss();
             }
         });
 
 
-        searchHistoryEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if(producerSwitch.isChecked()){
-                    RetrofitService.getApi(ProducerApi.class).searchProducer(searchHistoryEditText.getText().toString(),
+                    RetrofitService.getApi(ProducerApi.class).searchProducer(searchEditText.getText().toString(),
                                     "rating",
                                     !ascDscSwitch.isChecked())
                             .enqueue(new Callback<List<Producer>>() {
@@ -235,7 +213,7 @@ public class CustomerSearchFragment extends Fragment {
                                 }
                             });
                 }else{
-                    RetrofitService.getApi(ProductApi.class).searchProduct(searchHistoryEditText.getText().toString(), ratingSortButton.isChecked() ? "rating" : "pricePerUnit", !ascDscSwitch.isChecked())
+                    RetrofitService.getApi(ProductApi.class).searchProduct(searchEditText.getText().toString(), ratingSortButton.isChecked() ? "rating" : "pricePerUnit", !ascDscSwitch.isChecked())
                             .enqueue(new Callback<List<Product>>() {
                                 @Override
                                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
@@ -256,9 +234,9 @@ public class CustomerSearchFragment extends Fragment {
         });
 
         searchButton.setOnClickListener(v -> {
-            if(producerSwitch.isChecked()){
+            if (producerSwitch.isChecked()) {
 
-                RetrofitService.getApi(ProducerApi.class).searchProducer(searchHistoryEditText.getText().toString(),
+                RetrofitService.getApi(ProducerApi.class).searchProducer(searchEditText.getText().toString(),
                                 "rating",
                                 !ascDscSwitch.isChecked())
                         .enqueue(new Callback<List<Producer>>() {
@@ -276,7 +254,7 @@ public class CustomerSearchFragment extends Fragment {
                         });
             }else{
                 priceSortButton.setEnabled(true);
-                RetrofitService.getApi(ProductApi.class).searchProduct(searchHistoryEditText.getText().toString(), ratingSortButton.isChecked() ? "rating" : "pricePerUnit", !ascDscSwitch.isChecked())
+                RetrofitService.getApi(ProductApi.class).searchProduct(searchEditText.getText().toString(), ratingSortButton.isChecked() ? "rating" : "pricePerUnit", !ascDscSwitch.isChecked())
                         .enqueue(new Callback<List<Product>>() {
                             @Override
                             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {

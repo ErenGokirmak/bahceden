@@ -1,6 +1,5 @@
 package com.swifties.bahceden.adapters;
 
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
