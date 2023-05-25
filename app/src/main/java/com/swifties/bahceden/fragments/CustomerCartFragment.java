@@ -40,7 +40,7 @@ public class CustomerCartFragment extends Fragment {
     private RecyclerView.Adapter<CartProductAdapter.ViewHolder> cartProductAdapter;
     private RecyclerView.LayoutManager cartProductLayoutManager;
     private Button buyNowButton;
-    private Cart cart;
+    private List<Order> cart;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +70,7 @@ public class CustomerCartFragment extends Fragment {
         cartProductAdapter = new CartProductAdapter(cart, CustomerCartFragment.this.getContext());
         cartProductsRV.setAdapter(cartProductAdapter);
 
-        totalPriceText.setText(String.format(requireContext().getString(R.string.turkish_lira), String.valueOf(cart.calculateTotalCost())));
+        totalPriceText.setText(String.format(requireContext().getString(R.string.turkish_lira), String.valueOf(cart.stream().map(Order::getTotalPrice).reduce(0.0, Double::sum))));
     }
 
     @Override

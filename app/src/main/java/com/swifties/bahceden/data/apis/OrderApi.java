@@ -46,5 +46,5 @@ public interface OrderApi {
      * and nowhere else. All orders that are out of a customer's cart should stay in the database
      */
     @DELETE("orders/{orderId}")
-    Call<String> deleteById(@Path("orderId") int orderId);
+    Call<Order> deleteById(@Path("orderId") int orderId);
 }

@@ -19,7 +19,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Customer extends User {
-    Cart cart;
     List<Product> favoriteProducts;
     List<Producer> favoriteProducers;
     List<Order> orders;
@@ -44,15 +43,14 @@ public class Customer extends User {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
-        this.cart = new Cart(orders.stream().filter(order -> order.getStatus() == Order.OrderStatus.IN_CART).collect(Collectors.toList()), getId());
     }
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
 
-    public Cart getCart() {
-        return cart;
+    public List<Order> getCart() {
+        return orders.stream().filter(o -> o.getStatus().equals(Order.OrderStatus.IN_CART)).collect(Collectors.toList());
     }
 
     public List<Product> getFavoriteProducts() {
@@ -61,7 +59,7 @@ public class Customer extends User {
 
     public void addNewOrder (Product p, int amount)
     {
-        Optional<Order> orderOptional = this.orders.stream().filter(o -> o.getStatus() == Order.OrderStatus.IN_CART).filter(o -> o.getProduct().equals(p)).findFirst();
+        Optional<Order> orderOptional = this.orders.stream().filter(o -> o.getStatus() == Order.OrderStatus.IN_CART && o.getProduct().equals(p)).findFirst();
         if (orderOptional.isPresent())
         {
             Order oldOrder = orderOptional.get();
@@ -87,11 +85,10 @@ public class Customer extends User {
             newOrder.setShipmentType(Order.ShipmentType.CUSTOMER_PICKUP);
             newOrder.setAmount(amount);
             newOrder.setDateOfPurchase(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()));
+            orders.add(newOrder);
             RetrofitService.getApi(OrderApi.class).postOrder(newOrder).enqueue(new Callback<Order>() {
                 @Override
                 public void onResponse(Call<Order> call, Response<Order> response) {
-                    Order order = response.body();
-                    Customer.this.orders.add(order);
                 }
 
                 @Override

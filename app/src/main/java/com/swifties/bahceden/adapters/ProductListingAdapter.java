@@ -70,7 +70,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
         });
 
         holder.binding.itemLayoutAddToCart.setOnClickListener(v -> {
-            AuthUser.getCustomer().getCart().addProduct(product);
+            AuthUser.getCustomer().addNewOrder(product, 1);
         });
 
         holder.binding.getRoot().setOnClickListener(v ->
