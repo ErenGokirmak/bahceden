@@ -76,15 +76,15 @@ public class AuthUser {
                 }
             });
         } else if (userType == IntroActivity.PRODUCER_TYPE) {
-            RetrofitService.getApi(ProducerApi.class).getProducerByEmail(email).enqueue(new Callback<Customer>() {
+            RetrofitService.getApi(ProducerApi.class).getProducerByEmail(email).enqueue(new Callback<Producer>() {
                 @Override
-                public void onResponse(Call<Customer> call, Response<Customer> response) {
+                public void onResponse(Call<Producer> call, Response<Producer> response) {
                     user = response.body();
                     context.startActivity(new Intent(context, ProducerMainActivity.class));
                 }
 
                 @Override
-                public void onFailure(Call<Customer> call, Throwable t) {
+                public void onFailure(Call<Producer> call, Throwable t) {
                 }
             });
         } else {
