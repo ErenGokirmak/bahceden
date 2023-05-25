@@ -54,7 +54,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
 
         }
         Picasso.get()
-            .load(product.getImageURL())
+            .load(product.getImageURL().replace("localhost", "10.0.2.2"))
                 .into(holder.binding.itemLayoutItemImage);
         holder.binding.itemLayoutItemLiked.setOnClickListener(v -> {
             if (AuthUser.getCustomer().removeFavProduct(product))

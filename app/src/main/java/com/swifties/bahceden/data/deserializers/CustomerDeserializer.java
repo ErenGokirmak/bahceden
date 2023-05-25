@@ -1,15 +1,12 @@
 package com.swifties.bahceden.data.deserializers;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.swifties.bahceden.data.RetrofitService;
-import com.swifties.bahceden.data.serializers.AddressSerializer;
 import com.swifties.bahceden.models.Address;
-import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Producer;
@@ -31,9 +28,9 @@ public class CustomerDeserializer implements JsonDeserializer <Customer> {
         customer.setEmail(json.getAsJsonObject().get("email").getAsString());
         JsonElement profileImageElement = json.getAsJsonObject().get("profileImageURL");
         if(profileImageElement != null && !profileImageElement.isJsonNull()){
-            customer.setProfileImageUrl(profileImageElement.getAsString());
+            customer.setProfileImageURL(profileImageElement.getAsString());
         } else {
-            customer.setProfileImageUrl("http://10.0.2.2:8080/images/noProfile.png");
+            customer.setProfileImageURL("http://10.0.2.2:8080/images/noProfile.png");
         }
 
         JsonElement addressesJson = json.getAsJsonObject().get("addresses");

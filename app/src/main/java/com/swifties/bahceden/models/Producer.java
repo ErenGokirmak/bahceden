@@ -1,12 +1,10 @@
 package com.swifties.bahceden.models;
 
-import androidx.annotation.NonNull;
-
 import java.util.ArrayList;
 
 public class Producer extends User {
-    String displayName;
-    String backgroundImageUrl;
+    String shopName;
+    String backgroundImageURL;
     double rating;
 
     public double getRating() {
@@ -17,20 +15,20 @@ public class Producer extends User {
         this.rating = rating;
     }
 
-    public String getBackgroundImageUrl() {
-        return backgroundImageUrl;
+    public String getBackgroundImageURL() {
+        return backgroundImageURL;
     }
 
-    public void setBackgroundImageUrl(String backgroundImageUrl) {
-        this.backgroundImageUrl = backgroundImageUrl;
+    public void setBackgroundImageURL(String backgroundImageURL) {
+        this.backgroundImageURL = backgroundImageURL;
     }
 
     String city; // TODO this is tentative we can change this into a location object etc
     ArrayList<Product> products;
     ArrayList<Order> orders;
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 
     public void setCity(String city) {
@@ -45,8 +43,8 @@ public class Producer extends User {
         this.orders = orders;
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public String getShopName() {
+        return shopName;
     }
 
     public String getCity() {

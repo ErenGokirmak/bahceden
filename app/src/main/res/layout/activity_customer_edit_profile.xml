@@ -103,18 +103,18 @@
             android:padding="12dp"
             android:textColorHint="@color/darkGray" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/customerEditProfileEditEmail"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/edit_text_background"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:padding="12dp"
-            android:textColorHint="@color/darkGray" />
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/customerEditProfileEditEmail"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:background="@drawable/edit_text_background"-->
+<!--            android:hint="Email"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:padding="12dp"-->
+<!--            android:textColorHint="@color/darkGray" />-->
 
 <!--        <LinearLayout-->
 <!--            android:id="@+id/customerEditProfileEditPhoneNumberHolder"-->

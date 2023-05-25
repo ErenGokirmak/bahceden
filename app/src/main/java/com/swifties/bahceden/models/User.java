@@ -18,14 +18,14 @@ public abstract class User {
      * The phone number of a user will be of the form "countryCode-phoneNumber"
      */
     private String phoneNumber;
-    private String profileImageUrl;
+    private String profileImageURL;
 
-    public String getProfileImageUrl() {
-        return profileImageUrl;
+    public String getProfileImageURL() {
+        return profileImageURL;
     }
 
-    public void setProfileImageUrl(String profileImageUrl) {
-        this.profileImageUrl = profileImageUrl;
+    public void setProfileImageURL(String profileImageURL) {
+        this.profileImageURL = profileImageURL;
     }
 
     public void setId(int id) {

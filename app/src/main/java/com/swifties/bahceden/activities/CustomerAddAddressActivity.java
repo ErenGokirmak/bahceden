@@ -99,13 +99,10 @@ public class CustomerAddAddressActivity extends AppCompatActivity {
                     RetrofitService.getApi(AddressesApi.class).saveAddress(newAddress).enqueue(new Callback<Address>() {
                         @Override
                         public void onResponse(@NonNull Call<Address> call, @NonNull Response<Address> response) {
-                            assert response.body() != null;
-                            if (response.body().equals(newAddress)) {
-                                Toast.makeText(CustomerAddAddressActivity.this,
-                                        "successful", Toast.LENGTH_SHORT).show();
-                                AuthUser.getInstance().updateUser();
-                                CustomerAddAddressActivity.super.onBackPressed();
-                            }
+                            Toast.makeText(CustomerAddAddressActivity.this,
+                                    "successful", Toast.LENGTH_SHORT).show();
+                            AuthUser.getInstance().updateUser();
+                            CustomerAddAddressActivity.super.onBackPressed();
                         }
 
                         @Override

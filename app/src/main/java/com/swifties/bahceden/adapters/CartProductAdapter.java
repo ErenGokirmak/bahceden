@@ -52,7 +52,7 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         Order cartItem = cart.get(position);
         Product product = cartItem.getProduct();
         Picasso.get()
-                .load(product.getImageURL())
+                .load(product.getImageURL().replace("localhost", "10.0.2.2"))
                 .into(holder.cartProductImage);
         holder.cartProductName.setText(product.getName());
         holder.cartProductPrice.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(cartItem.getTotalPrice())));

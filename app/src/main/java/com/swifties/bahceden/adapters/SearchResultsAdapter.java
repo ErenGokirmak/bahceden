@@ -72,7 +72,7 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
             ProductViewHolder holder = (ProductViewHolder) viewHolder;
             Product product = products.get(position);
             Picasso.get()
-                    .load(product.getImageURL())
+                    .load(product.getImageURL().replace("localhost", "10.0.2.2"))
                     .into(holder.binding.cartProductImage);
             holder.binding.city.setText(product.getProducer().getCity());
             holder.binding.price.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit())));
@@ -109,7 +109,7 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
             ProducerViewHolder holder = (ProducerViewHolder) viewHolder;
             Producer producer = producers.get(position);
             Picasso.get()
-                    .load(producer.getBackgroundImageUrl())
+                    .load(producer.getBackgroundImageURL().replace("localhost", "10.0.2.2"))
                     .into(holder.binding.producerBgImage);
             holder.binding.layoutProducerItemName.setText(producer.getName());
             holder.binding.rating.setText(String.valueOf(producer.getRating()));

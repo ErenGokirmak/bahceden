@@ -2,23 +2,17 @@ package com.swifties.bahceden.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
-import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.CustomerViewProducerActivity;
-import com.swifties.bahceden.activities.CustomerViewProductActivity;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.databinding.LayoutProducerItemBinding;
 import com.swifties.bahceden.models.Producer;
-import com.swifties.bahceden.models.Product;
 
 import java.util.List;
 
@@ -44,7 +38,7 @@ public class FavDukkanAdapter extends RecyclerView.Adapter<FavDukkanAdapter.View
     @Override
     public void onBindViewHolder(@NonNull FavDukkanAdapter.ViewHolder holder, int position) {
         Producer producer = producers.get(position);
-        Picasso.get().load(producer.getBackgroundImageUrl()).into(holder.binding.producerBgImage);
+        Picasso.get().load(producer.getBackgroundImageURL().replace("localhost", "10.0.2.2")).into(holder.binding.producerBgImage);
         holder.binding.layoutProducerItemName.setText(producer.getName());
         holder.binding.rating.setText(String.valueOf(producer.getRating()));
         holder.binding.itemLayoutItemLiked.setOnClickListener(v -> {

@@ -41,7 +41,7 @@ public class CheckOutAdapter extends RecyclerView.Adapter<CheckOutAdapter.ViewHo
         Order checkoutItem = cart.get(position);
         Product product = checkoutItem.getProduct();
         Picasso.get()
-                .load(product.getImageURL())
+                .load(product.getImageURL().replace("localhost", "10.0.2.2"))
                 .into(holder.checkoutProductImage);
         holder.checkoutProductName.setText(product.getName());
         holder.checkoutProductAmount.setText(String.valueOf(checkoutItem.getAmount()));

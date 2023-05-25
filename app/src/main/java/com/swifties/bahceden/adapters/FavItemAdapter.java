@@ -44,7 +44,7 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
     public void onBindViewHolder(@NonNull FavItemAdapter.ViewHolder holder, int position) {
         Product product = products.get(position);
         Picasso.get()
-                .load(product.getImageURL())
+                .load(product.getImageURL().replace("localhost", "10.0.2.2"))
                 .into(holder.binding.cartProductImage);
         holder.binding.favoritesProductName.setText(product.getName());
         holder.binding.price.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit())));

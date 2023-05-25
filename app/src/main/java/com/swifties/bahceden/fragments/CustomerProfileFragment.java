@@ -18,7 +18,6 @@ import com.swifties.bahceden.activities.CustomerCardsActivity;
 import com.swifties.bahceden.activities.CustomerEditProfileActivity;
 import com.swifties.bahceden.activities.CustomerOrdersActivity;
 import com.swifties.bahceden.activities.IntroActivity;
-import com.swifties.bahceden.activities.ProducerMainActivity;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.SecurityProfileActivity;
 import com.swifties.bahceden.data.AuthUser;
@@ -99,7 +98,7 @@ public class CustomerProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Picasso.get().load(AuthUser.getCustomer().getProfileImageUrl()).into(binding.customerProfileImage);
+        Picasso.get().load(AuthUser.getCustomer().getProfileImageURL().replace("localhost", "10.0.2.2")).into(binding.customerProfileImage);
         binding.customerProfileName.setText(AuthUser.getCustomer().getName());
         binding.customerProfileEmail.setText(AuthUser.getCustomer().getEmail());
     }
