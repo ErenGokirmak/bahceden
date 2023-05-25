@@ -56,4 +56,6 @@
     <string name="totalCost">Total: ₺%s</string>
     <string name="status">Status: %s</string>
     <string name="update_address">UPDATE ADDRESS</string>
+    <string name="change_password_information_text">Press the button below to change your password.</string>
+    <string name="change_password_button_text">change password via email</string>
 </resources>
