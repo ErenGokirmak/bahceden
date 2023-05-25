@@ -32,7 +32,9 @@ import com.swifties.bahceden.adapters.FavItemAdapter;
 import com.swifties.bahceden.adapters.SearchResultsAdapter;
 import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
 import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.ProducerApi;
 import com.swifties.bahceden.data.apis.ProductApi;
+import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.Product;
 import com.swifties.bahceden.uiclasses.SpinnerCustomItem;
 
@@ -139,11 +141,28 @@ public class CustomerSearchFragment extends Fragment {
 
         producerSwitch.setOnClickListener(v -> {
             productSwitch.setChecked(!productSwitch.isChecked());
+            if(producerSwitch.isChecked()){
+                priceSortButton.setEnabled(false);
+                ratingSortButton.setChecked(true);
+                priceSortButton.setChecked(false);
+            }
+            else{
+                priceSortButton.setEnabled(true);
+            }
         });
 
         productSwitch.setOnClickListener(v -> {
             producerSwitch.setChecked(!producerSwitch.isChecked());
+            if(productSwitch.isChecked()){
+                priceSortButton.setEnabled(true);
+            }else{
+                priceSortButton.setEnabled(false);
+                ratingSortButton.setChecked(true);
+                priceSortButton.setChecked(false);
+            }
         });
+
+
 
         categorySpinner = view.findViewById(R.id.searchCategoriesSpinner);
         SpinnerCustomAdapter spinnerAdapter = new SpinnerCustomAdapter(getActivity(), getCustomCategoriesList());
@@ -194,35 +213,27 @@ public class CustomerSearchFragment extends Fragment {
             }
         });
 
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(producerSwitch.isChecked()){
 
-                }else{
-                    RetrofitService.getApi(ProductApi.class).searchProduct(searchHistoryEditText.getText().toString(), ratingSortButton.isChecked() ? "rating" : "pricePerUnit", !ascDscSwitch.isChecked())
-                            .enqueue(new Callback<List<Product>>() {
-                                @Override
-                                public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                                    RecyclerView rv = view.findViewById(R.id.customerSearchResultsRV);
-                                    rv.setLayoutManager(new LinearLayoutManager(view.getContext()));
-                                    rv.setAdapter(SearchResultsAdapter.fromProductList(response.body(), view.getContext(), getLayoutInflater()));
-                                }
-
-                                @Override
-                                public void onFailure(Call<List<Product>> call, Throwable t) {
-
-                                }
-                            });
-
-                }
-            }
-        };
         searchHistoryEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if(producerSwitch.isChecked()){
+                    RetrofitService.getApi(ProducerApi.class).searchProducer(searchHistoryEditText.getText().toString(),
+                                    "rating",
+                                    !ascDscSwitch.isChecked())
+                            .enqueue(new Callback<List<Producer>>() {
+                                @Override
+                                public void onResponse(Call<List<Producer>> call, Response<List<Producer>> response) {
+                                    RecyclerView rv = view.findViewById(R.id.customerSearchResultsRV);
+                                    rv.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                                    rv.setAdapter(SearchResultsAdapter.fromProducerList(response.body(), view.getContext(), getLayoutInflater()));
+                                }
 
+                                @Override
+                                public void onFailure(Call<List<Producer>> call, Throwable t) {
+
+                                }
+                            });
                 }else{
                     RetrofitService.getApi(ProductApi.class).searchProduct(searchHistoryEditText.getText().toString(), ratingSortButton.isChecked() ? "rating" : "pricePerUnit", !ascDscSwitch.isChecked())
                             .enqueue(new Callback<List<Product>>() {
@@ -247,7 +258,24 @@ public class CustomerSearchFragment extends Fragment {
         searchButton.setOnClickListener(v -> {
             if(producerSwitch.isChecked()){
 
+                RetrofitService.getApi(ProducerApi.class).searchProducer(searchHistoryEditText.getText().toString(),
+                                "rating",
+                                !ascDscSwitch.isChecked())
+                        .enqueue(new Callback<List<Producer>>() {
+                            @Override
+                            public void onResponse(Call<List<Producer>> call, Response<List<Producer>> response) {
+                                RecyclerView rv = view.findViewById(R.id.customerSearchResultsRV);
+                                rv.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                                rv.setAdapter(SearchResultsAdapter.fromProducerList(response.body(), view.getContext(), getLayoutInflater()));
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<Producer>> call, Throwable t) {
+                                throw new RuntimeException(t);
+                            }
+                        });
             }else{
+                priceSortButton.setEnabled(true);
                 RetrofitService.getApi(ProductApi.class).searchProduct(searchHistoryEditText.getText().toString(), ratingSortButton.isChecked() ? "rating" : "pricePerUnit", !ascDscSwitch.isChecked())
                         .enqueue(new Callback<List<Product>>() {
                             @Override

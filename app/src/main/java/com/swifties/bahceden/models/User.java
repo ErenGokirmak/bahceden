@@ -1,5 +1,7 @@
 package com.swifties.bahceden.models;
 
+import java.util.Objects;
+
 public abstract class User {
     /**
      * Unique identification number of the user.
@@ -57,5 +59,18 @@ public abstract class User {
     }
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

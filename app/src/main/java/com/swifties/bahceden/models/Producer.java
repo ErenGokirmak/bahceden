@@ -3,6 +3,7 @@ package com.swifties.bahceden.models;
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Producer extends User {
     String displayName;
@@ -59,5 +60,15 @@ public class Producer extends User {
 
     public ArrayList<Order> getOrders() {
         return orders;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }
