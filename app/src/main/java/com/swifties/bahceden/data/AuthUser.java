@@ -76,7 +76,7 @@ public class AuthUser {
                 }
             });
         } else if (userType == IntroActivity.PRODUCER_TYPE) {
-            RetrofitService.getApi(CustomerApi.class).getCustomerByEmail(email).enqueue(new Callback<Customer>() {
+            RetrofitService.getApi(ProducerApi.class).getProducerByEmail(email).enqueue(new Callback<Customer>() {
                 @Override
                 public void onResponse(Call<Customer> call, Response<Customer> response) {
                     user = response.body();
