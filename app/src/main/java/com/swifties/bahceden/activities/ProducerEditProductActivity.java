@@ -24,6 +24,7 @@ public class ProducerEditProductActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // TODO: Make a back button for edit product activity
         super.onCreate(savedInstanceState);
         binding = ActivityProducerEditProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

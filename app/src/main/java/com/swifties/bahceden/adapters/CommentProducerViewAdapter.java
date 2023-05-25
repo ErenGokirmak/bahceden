@@ -1,6 +1,6 @@
 package com.swifties.bahceden.adapters;
 
-import android.view.KeyEvent;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +15,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.models.Comment;
+
+import java.util.ArrayList;
 
 public class CommentProducerViewAdapter extends RecyclerView.Adapter<CommentProducerViewAdapter.ViewHolder> {
+
+    ArrayList<Comment> comments;
+    Context context;
+
+    public CommentProducerViewAdapter(ArrayList<Comment> comments, Context context) {
+        this.comments = comments;
+        this.context = context;
+    }
 
     @NonNull
     @Override
@@ -55,9 +66,7 @@ public class CommentProducerViewAdapter extends RecyclerView.Adapter<CommentProd
 
         EditText replyEdit;
         ImageView replyButton;
-
         TextView likeCount;
-
         TextView commentDate;
         public ViewHolder(View view) {
             super(view);

@@ -2,6 +2,7 @@ package com.swifties.bahceden.data.apis;
 
 import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Producer;
+import com.swifties.bahceden.models.Product;
 
 import java.util.List;
 
@@ -52,8 +53,8 @@ public interface ProducerApi {
      * @return all producers that contain
      * the keyword in their name
      */
-    @GET("producers/{keyword}/search")
-    Call<List<Producer>> getProducerByKeyword(@Path("keyword") String keyword);
+    @GET("producers/searchParam")
+    Call<List<Producer>> searchProducer(@Query("keyword") String keyword, @Query("sortBy") String sortBy, @Query("ascending") boolean isAscending);
 
     /**
      * Saves a new producer onto the database
@@ -73,6 +74,8 @@ public interface ProducerApi {
      */
     @PUT("producers")
     Call<Producer> updateProducer(@Body Producer producer);
+
+
 
 
 

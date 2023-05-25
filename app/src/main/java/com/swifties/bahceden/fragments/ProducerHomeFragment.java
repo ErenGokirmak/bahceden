@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -18,43 +20,117 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CommentProducerViewAdapter;
 import com.swifties.bahceden.adapters.YourListingsAdapter;
+import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.CommentApi;
+import com.swifties.bahceden.data.apis.ProductApi;
+import com.swifties.bahceden.databinding.FragmentProducerHomeBinding;
+import com.swifties.bahceden.models.Comment;
+import com.swifties.bahceden.models.Product;
+
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProducerHomeFragment extends Fragment {
 
+    FragmentProducerHomeBinding binding;
+    RecyclerView reviewsRV, listingsRV;
+    ImageSlider imageSlider;
+    ArrayList<Comment> comments;
+    ArrayList<Product> listings;
+    ArrayList<Product> productsInSlider;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_producer_home, container, false);
+        binding = FragmentProducerHomeBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
+        // RecyclerView initializations
+        reviewsRV = binding.producerHomeNewReviewsRV;
+        listingsRV = binding.producerHomeYourListingsRV;
+
+        reviewsRV.setHasFixedSize(true);
+        listingsRV.setHasFixedSize(true);
+
+        // layout managers
+        RecyclerView.LayoutManager reviewsLM = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        reviewsRV.setLayoutManager(reviewsLM);
+        RecyclerView.LayoutManager listingsLM = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        listingsRV.setLayoutManager(listingsLM);
+
+
+        // retrieving reviews and listings TODO: Change api requests
+        RetrofitService.getApi(CommentApi.class).getAllComments().enqueue(new Callback<List<Comment>>() {
+            @Override
+            public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
+                if (response.body() != null) {
+                    comments = (ArrayList<Comment>) (response.body());
+                    CommentProducerViewAdapter reviewsAdapter = new CommentProducerViewAdapter(comments, getContext());
+                    reviewsRV.setAdapter(reviewsAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Comment>> call, Throwable t) {
+                Toast.makeText(getContext(), "There was a problem retrieving reviews", Toast.LENGTH_SHORT).show();
+                Log.d("debugPurposes", t.getMessage());
+            }
+        });
+
+        // TODO: Change api requests
+        RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if (response.body() != null) {
+                    listings = (ArrayList<Product>) response.body();
+                    YourListingsAdapter yourListingsAdapter = new YourListingsAdapter(listings, getContext());
+                    listingsRV.setAdapter(yourListingsAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Toast.makeText(getContext(), "There was a problem retrieving your listings", Toast.LENGTH_SHORT).show();
+                Log.d("debugPurposes", t.getMessage());
+            }
+        });
+
+        // adapters
+
+
+
+        // image slider
+        imageSlider = binding.producerHomeSlider;
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+
+        // TODO: This will need to be changed to a more appropriate request
+        RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                productsInSlider = new ArrayList<>();
+                productsInSlider.addAll(response.body());
+                slideModels.addAll(productsInSlider.stream().map(p -> new SlideModel(p.getImageURL(), ScaleTypes.FIT)).collect(Collectors.toList()));
+                imageSlider.setImageList(slideModels);
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+
+            }
+        });
+
+
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ImageSlider imageSlider = view.findViewById(R.id.producerHomeSlider);
-
-        ArrayList<SlideModel> slideModels = new ArrayList<>();
-
-        slideModels.add(new SlideModel(R.drawable.banana, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.cucumber, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.tomato, ScaleTypes.FIT));
-        imageSlider.setImageList(slideModels);
-
-        RecyclerView yourListingsRV = view.findViewById(R.id.producerHomeYourListingsRV);
-        RecyclerView newReviewsRV = view.findViewById(R.id.producerHomeNewReviewsRV);
-
-        newReviewsRV.setHasFixedSize(true);
-        yourListingsRV.setHasFixedSize(true);
-
-        RecyclerView.LayoutManager reviewsLM = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        newReviewsRV.setLayoutManager(reviewsLM);
-        RecyclerView.LayoutManager listingsLM = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        yourListingsRV.setLayoutManager(listingsLM);
-
-        CommentProducerViewAdapter nra = new CommentProducerViewAdapter();
-        newReviewsRV.setAdapter(nra);
-        YourListingsAdapter yla = new YourListingsAdapter();
-        yourListingsRV.setAdapter(yla);
     }
 }

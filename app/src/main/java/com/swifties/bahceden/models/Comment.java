@@ -1,14 +1,11 @@
 package com.swifties.bahceden.models;
 
-import java.util.ArrayList;
-
 public class Comment {
     private Customer author;
     private Product product;
-    private String contentOfComment;
-    private ArrayList<Comment> replies;
-    private int numberOfLikes;
-    private double rating;
+    private String message;
+    private Comment parent;
+    private int countOfLikes;
     private int id;
 
     public int getId() {
@@ -17,24 +14,13 @@ public class Comment {
     public Customer getAuthor() {
         return author;
     }
-
     public Product getProduct() {
         return product;
     }
-
     public String getContentOfComment() {
-        return contentOfComment;
+        return message;
     }
-
-    public ArrayList<Comment> getReplies() {
-        return replies;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
     public int getNumberOfLikes() {
-        return numberOfLikes;
+        return countOfLikes;
     }
 }

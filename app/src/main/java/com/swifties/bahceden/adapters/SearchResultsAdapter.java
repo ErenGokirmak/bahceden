@@ -23,9 +23,8 @@ import java.util.List;
 public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 
-    private final int VIEW_TYPE_PRODUCER = 1;
-    private final int VIEW_TYPE_PRODUCT = 2;
 
+    boolean isProduct = false;
     private List<Product> products;
     private List<Producer> producers;
     Context context;
@@ -39,6 +38,7 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
     public static SearchResultsAdapter fromProductList(List<Product> list, Context context, LayoutInflater inflater) {
         SearchResultsAdapter instance = new SearchResultsAdapter();
         instance.products = list;
+        instance.isProduct = true;
         instance.inflater = inflater;
         instance.context = context;
         return instance;
@@ -56,7 +56,7 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        if(viewType == VIEW_TYPE_PRODUCER){
+        if(!isProduct){
             LayoutProducerItemBinding binding = LayoutProducerItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
             return new ProducerViewHolder(binding);
         } else{
@@ -85,7 +85,6 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
             else
             {
                 holder.binding.favButton.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_unfavorite));
-
             }
 
             holder.binding.favButton.setOnClickListener(v -> {
@@ -97,7 +96,6 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
                 {
                     AuthUser.getCustomer().addNewFavProduct(product);
                     holder.binding.favButton.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite));
-
                 }
             });
             holder.binding.getRoot().setOnClickListener(v -> {
@@ -105,7 +103,8 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
                 intent.putExtra("product_id", product.getId());
                 context.startActivity(intent);
             });
-        } else {
+        }
+        else {
             ProducerViewHolder holder = (ProducerViewHolder) viewHolder;
             Producer producer = producers.get(position);
             Picasso.get()
@@ -113,14 +112,36 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
                     .into(holder.binding.producerBgImage);
             holder.binding.layoutProducerItemName.setText(producer.getName());
             holder.binding.rating.setText(String.valueOf(producer.getRating()));
+            List<Producer>  SSSSSSSSSSS = AuthUser.getCustomer().getFavoriteProducers();
+            boolean f = AuthUser.getCustomer().getFavoriteProducers().contains(producer);
+            if (AuthUser.getCustomer().getFavoriteProducers().contains(producer))
+            {
+                holder.binding.itemLayoutItemLiked.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite));
+            }
+            else
+            {
+                holder.binding.itemLayoutItemLiked.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_unfavorite));
+            }
+
+
+
+
             holder.binding.itemLayoutItemLiked.setOnClickListener(v -> {
-                if(AuthUser.getCustomer().removeFavProducer(producer)){
+                if (AuthUser.getCustomer().removeFavProducer(producer))
+                {
+                    holder.binding.itemLayoutItemLiked.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_unfavorite));
                     notifyItemRemoved(position);
+                }
+                else
+                {
+                    AuthUser.getCustomer().addNewFavProducer(producer);
+                    holder.binding.itemLayoutItemLiked.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite));
+
                 }
             });
             holder.binding.getRoot().setOnClickListener(v -> {
                 Intent intent = new Intent(context, CustomerViewProducerActivity.class);
-                intent.putExtra("product_id", producer.getId());
+                intent.putExtra("producer_id", producer.getId());
                 context.startActivity(intent);
             });
         }
