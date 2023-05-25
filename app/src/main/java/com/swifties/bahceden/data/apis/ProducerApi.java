@@ -42,7 +42,7 @@ public interface ProducerApi {
      * @return producer with given email
      */
     @GET("producers/email")
-    Call<Customer> getProducerByEmail(@Query("email") String email);
+    Call<Producer> getProducerByEmail(@Query("email") String email);
 
     /**
      * Retrieves all the producers that
