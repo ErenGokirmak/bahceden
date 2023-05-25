@@ -4,9 +4,13 @@ import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.CustomerApi;
 import com.swifties.bahceden.data.apis.OrderApi;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -15,13 +19,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Customer extends User {
-    Cart cart;
     List<Product> favoriteProducts;
     List<Producer> favoriteProducers;
     List<Order> orders;
     List<Address> addresses;
 
     public Customer() {
+        super();
         favoriteProducts = new ArrayList<>();
         favoriteProducers = new ArrayList<>();
         orders = new ArrayList<>();
@@ -39,15 +43,14 @@ public class Customer extends User {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
-        this.cart = new Cart(orders.stream().filter(order -> order.getStatus() == Order.OrderStatus.IN_CART).collect(Collectors.toList()), getId());
     }
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
 
-    public Cart getCart() {
-        return cart;
+    public List<Order> getCart() {
+        return orders.stream().filter(o -> o.getStatus().equals(Order.OrderStatus.IN_CART)).collect(Collectors.toList());
     }
 
     public List<Product> getFavoriteProducts() {
@@ -56,16 +59,15 @@ public class Customer extends User {
 
     public void addNewOrder (Product p, int amount)
     {
-        Optional<Order> orderOptional = this.orders.stream().filter(o -> o.getProduct().equals(p)).findFirst();
+        Optional<Order> orderOptional = this.orders.stream().filter(o -> o.getStatus() == Order.OrderStatus.IN_CART && o.getProduct().equals(p)).findFirst();
         if (orderOptional.isPresent())
         {
             Order oldOrder = orderOptional.get();
-            RetrofitService.getApi(OrderApi.class).putOrder(oldOrder).enqueue(new Callback<Order>() {
+            oldOrder.setAmount(amount);
+            RetrofitService.getApi(OrderApi.class).putOrder(oldOrder, oldOrder.getId()).enqueue(new Callback<Order>() {
                 @Override
                 public void onResponse(Call<Order> call, Response<Order> response) {
-                    Order newOrder = response.body();
-                    Customer.this.orders.remove(oldOrder);
-                    Customer.this.orders.add(newOrder);
+
                 }
 
                 @Override
@@ -80,18 +82,18 @@ public class Customer extends User {
             newOrder.setProduct(p);
             newOrder.setDeliveryAddress(addresses.get(0));
             newOrder.setStatus(Order.OrderStatus.IN_CART);
+            newOrder.setShipmentType(Order.ShipmentType.CUSTOMER_PICKUP);
             newOrder.setAmount(amount);
-            newOrder.setDateOfPurchase(new Date().toString());
+            newOrder.setDateOfPurchase(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()));
+            orders.add(newOrder);
             RetrofitService.getApi(OrderApi.class).postOrder(newOrder).enqueue(new Callback<Order>() {
                 @Override
                 public void onResponse(Call<Order> call, Response<Order> response) {
-                    Order order = response.body();
-                    Customer.this.orders.add(order);
                 }
 
                 @Override
                 public void onFailure(Call<Order> call, Throwable t) {
-
+                    throw new RuntimeException(t);
                 }
             });
         }

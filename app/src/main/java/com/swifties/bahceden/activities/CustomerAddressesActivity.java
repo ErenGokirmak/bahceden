@@ -2,14 +2,10 @@ package com.swifties.bahceden.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.YourAddressesAdapter;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.databinding.ActivityCustomerAddressesBinding;

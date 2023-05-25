@@ -1,14 +1,11 @@
 package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.fragments.ProducerAddProductFragment;
 import com.swifties.bahceden.fragments.ProducerDataFragment;
@@ -70,6 +67,8 @@ public class ProducerMainActivity extends AppCompatActivity {
         });
     }
 
+    // This is here to prevent the user from pressing the back button
+    // on their phone, as that would redirect them to the login page
     @Override
     public void onBackPressed() {
 

@@ -3,11 +3,33 @@ package com.swifties.bahceden.models;
 public class Order {
 
     public enum ShipmentType {
-        CUSTOMER_PICKUP, PRODUCER_DELIVERY, SHIPMENT
+        CUSTOMER_PICKUP(1), PRODUCER_DELIVERY(2), SHIPMENT(3);
+
+        final int value;
+
+        ShipmentType (int value) {
+            this.value = value;
+        }
+
+        public int getValue()
+        {
+            return this.value;
+        }
     }
 
     public enum OrderStatus {
-        IN_CART, PENDING, ONGOING, DELIVERED, CANCELLED;
+        IN_CART(1), PENDING(2), ONGOING(3), DELIVERED(4), CANCELLED(5);
+
+        final int value;
+
+        OrderStatus (int value)
+        {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 
     private int id;

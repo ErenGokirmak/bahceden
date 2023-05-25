@@ -16,6 +16,11 @@ public class Address {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+    public void setCustomerId(int id) {
+        Customer c = new Customer();
+        c.setId(id);
+        this.customer = c;
+    }
 
     public int getId() {
         return id;

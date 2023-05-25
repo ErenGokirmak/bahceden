@@ -17,16 +17,23 @@ import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.CustomerViewProductActivity;
 import com.swifties.bahceden.data.apis.CartApi;
 import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.OrderApi;
 import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Product;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.ViewHolder> {
 
-    Cart cart;
+    List<Order> cart;
     Context context;
 
-    public CartProductAdapter(Cart cart, Context context) {
+    public CartProductAdapter(List<Order> cart, Context context) {
         this.cart = cart;
         this.context = context;
     }
@@ -52,7 +59,11 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         holder.cartProductAmount.setText(String.valueOf(cartItem.getAmount()));
 
         holder.cartProductDecrement.setOnClickListener(v -> {
-            cartItem.offsetAmountBy(-1);
+            if (!cartItem.offsetAmountBy(-1))
+            {
+                cart.remove(holder.getBindingAdapterPosition());
+                notifyItemRemoved(holder.getBindingAdapterPosition());
+            }
             notifyItemChanged(holder.getBindingAdapterPosition());
         });
 
@@ -62,24 +73,6 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         });
 
         holder.cartProductDelete.setOnClickListener(v -> {
-            CartApi cartApi = RetrofitService.getApi(CartApi.class);
-
-            // TODO: customer id implementation
-
-            // This part will be in order after
-             /*cartApi.deleteOrderFromCart( ___ , cart.get(holder.getBindingAdapterPosition()).getId()).enqueue(new Callback<Order>() {
-                @Override
-                public void onResponse(Call<Order> call, Response<Order> response) {
-                    // TODO: Move cart.remove(...) to here
-                }
-
-                @Override
-                public void onFailure(Call<Order> call, Throwable t) {
-                    Toast.makeText(v.getContext(), "Removal attempt from cart was unsuccessful", Toast.LENGTH_SHORT).show();
-                    Log.d("apiError", t.getMessage());
-                }
-            });*/
-
             cart.remove(holder.getBindingAdapterPosition());
             notifyItemRemoved(holder.getBindingAdapterPosition());
         });
@@ -87,7 +80,7 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         // takes the user to the product page of the order
         holder.cartProductImage.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), CustomerViewProductActivity.class);
-            intent.putExtra("productId", String.valueOf(product.getId()));
+            intent.putExtra("product_id", product.getId());
             context.startActivity(intent);
         });
     }

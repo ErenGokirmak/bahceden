@@ -1,13 +1,11 @@
 package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.OrdersAdapter;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.databinding.ActivityCustomerOrdersBinding;
