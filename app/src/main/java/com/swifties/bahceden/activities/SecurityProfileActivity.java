@@ -2,7 +2,6 @@ package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 

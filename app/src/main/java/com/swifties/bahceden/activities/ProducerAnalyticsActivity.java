@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -14,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.AnalyticsProductAdapter;
+import com.swifties.bahceden.databinding.ActivityProducerAnalyticsBinding;
 
 public class ProducerAnalyticsActivity extends AppCompatActivity {
 
-    ImageView backButton;
     RecyclerView analyticsProductRV;
     RecyclerView.Adapter<AnalyticsProductAdapter.ViewHolder> analyticsProductAdapter;
     RecyclerView.LayoutManager analyticsProductLM;
@@ -27,27 +26,29 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
 
     TextView totalText;
     TextView averageText;
+    ActivityProducerAnalyticsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_producer_analytics);
+        binding = ActivityProducerAnalyticsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        backButton = findViewById(R.id.producerAnalyticsBackButton);
-        backButton.setOnClickListener(view -> ProducerAnalyticsActivity.super.onBackPressed());
 
-        totalText = findViewById(R.id.producerAnalyticsTotalText);
-        averageText = findViewById(R.id.producerAnalyticsAverageText);
+        binding.producerAnalyticsBackButton.setOnClickListener(view -> ProducerAnalyticsActivity.super.onBackPressed());
 
-        analyticsProductRV = findViewById(R.id.producerAnalyticsRV);
+        totalText = binding.producerAnalyticsTotalText;
+        averageText = binding.producerAnalyticsAverageText;
+
+        analyticsProductRV = binding.producerAnalyticsRV;
         analyticsProductRV.setHasFixedSize(true);
         analyticsProductLM = new LinearLayoutManager(this);
         analyticsProductRV.setLayoutManager(analyticsProductLM);
         analyticsProductAdapter = new AnalyticsProductAdapter();
         analyticsProductRV.setAdapter(analyticsProductAdapter);
 
-        spinner1 = findViewById(R.id.producerAnalyticsSpinner1);
-        spinner2 = findViewById(R.id.producerAnalyticsSpinner2);
+        spinner1 = binding.producerAnalyticsSpinner1;
+        spinner2 = binding.producerAnalyticsSpinner2;
 
         ArrayAdapter<CharSequence> spinner1Adapter = ArrayAdapter.createFromResource(this, R.array.analytics_spinner_1, android.R.layout.simple_spinner_dropdown_item);
         spinner1Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

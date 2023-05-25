@@ -2,7 +2,6 @@ package com.swifties.bahceden.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +11,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.databinding.ActivityCustomerAnalyticsBinding;
 
 import java.util.ArrayList;
 
@@ -20,16 +20,17 @@ public class CustomerAnalyticsActivity extends AppCompatActivity {
 
     private ImageView backButton;
     private PieChart consumerChart;
+    private ActivityCustomerAnalyticsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_analytics);
+        binding = ActivityCustomerAnalyticsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        backButton = findViewById(R.id.customerAnalyticsBackButton);
-        backButton.setOnClickListener(view -> CustomerAnalyticsActivity.super.onBackPressed());
+        binding.customerAnalyticsBackButton.setOnClickListener(view -> CustomerAnalyticsActivity.super.onBackPressed());
 
-        consumerChart = findViewById(R.id.customerAnalyticsConsumerChart);
+        consumerChart = binding.customerAnalyticsConsumerChart;
 
         ArrayList<PieEntry> dataEntries = new ArrayList<>();
         dataEntries.add(new PieEntry(10, "Benefits"));

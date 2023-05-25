@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +15,7 @@ import com.swifties.bahceden.R;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.AddressesApi;
+import com.swifties.bahceden.databinding.ActivityCustomerAddAddressBinding;
 import com.swifties.bahceden.models.Address;
 import com.swifties.bahceden.models.Customer;
 
@@ -27,27 +27,31 @@ public class CustomerAddAddressActivity extends AppCompatActivity {
 
     private EditText addressNameField, fullAddressField, phoneNumberField;
     private CountryCodePicker countryCodePicker;
+    private ActivityCustomerAddAddressBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_add_address);
+        binding = ActivityCustomerAddAddressBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         // Back button and listener initialization
-        ImageView backButton = findViewById(R.id.customerAddAddressBackButton);
-        backButton.setOnClickListener(backView -> CustomerAddAddressActivity.super.onBackPressed());
+        binding.customerAddAddressBackButton.setOnClickListener(backView -> CustomerAddAddressActivity.super.onBackPressed());
 
         // Fields
-        addressNameField = findViewById(R.id.customerAddAddressEditTitleOfAddress);
-        fullAddressField = findViewById(R.id.customerAddAddressEditFullAddress);
+        addressNameField = binding.customerAddAddressEditTitleOfAddress;
+        fullAddressField = binding.customerAddAddressEditFullAddress;
 
         // Phone number
-        phoneNumberField = findViewById(R.id.customerAddAddressEditPhoneNumber);
-        countryCodePicker = findViewById(R.id.customerAddAddressEditCountryCode);
+        phoneNumberField = binding.customerAddAddressEditPhoneNumber;
+        countryCodePicker = binding.customerAddAddressEditCountryCode;
 
         Button addAddressButton = findViewById(R.id.customerAddAddressButton);
 
+
         Intent intent = getIntent();
+        // If this activity gets an address_id on its intent,
+        // it should be used to update the address
         if (intent.hasExtra("address_id"))
         {
             int addressId = intent.getIntExtra("address_id", 0);
@@ -80,6 +84,7 @@ public class CustomerAddAddressActivity extends AppCompatActivity {
                 });
             });
         }
+        // Otherwise, add a new address
         else
         {
             addAddressButton.setOnClickListener(addAddressView -> {

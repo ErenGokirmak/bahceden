@@ -28,7 +28,6 @@ import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.CustomerApi;
 import com.swifties.bahceden.data.apis.ProducerApi;
-import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.User;
