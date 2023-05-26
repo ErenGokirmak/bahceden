@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.ProductListingAdapter;
 import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.data.RetrofitService;

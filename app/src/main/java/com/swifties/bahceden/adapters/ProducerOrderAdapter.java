@@ -1,5 +1,6 @@
 package com.swifties.bahceden.adapters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,22 +13,63 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.activities.ProducerOrderDetailsActivity;
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.databinding.LayoutCustomerOrderBinding;
+import com.swifties.bahceden.models.Order;
+
+import java.util.List;
 
 public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdapter.ViewHolder> {
+    List<Order> orders;
+    Context context;
+    LayoutInflater inflater;
 
+    public ProducerOrderAdapter(List<Order> orders, Context context, LayoutInflater inflater) {
+        this.orders = orders;
+        this.context = context;
+        this.inflater = inflater;
+    }
     @NonNull
     @Override
     public ProducerOrderAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.layout_producer_orders_item, parent, false);
-
-        return new ProducerOrderAdapter.ViewHolder(view);
+        LayoutCustomerOrderBinding binding = LayoutCustomerOrderBinding.inflate(inflater, parent, false);
+        return new ProducerOrderAdapter.ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProducerOrderAdapter.ViewHolder holder, int position) {
+        Order order = orders.get(position);
+        Picasso.get().load(order.getProduct().getImageURL())
+                .into(holder.binding.productImage);
+        holder.binding.productName.setText(order.getProduct().getName());
+        holder.binding.orderNumber.setText(String.format(context.getResources().getText(R.string.orderWithId).toString(), order.getId()));
+        holder.binding.orderDate.setText(order.getDateOfPurchase());
+        holder.binding.totalAmount.setText(String.format(context.getResources().getText(R.string.totalCost).toString(), order.getTotalPrice()));
+        int color = context.getColor(R.color.black);
+        switch (order.getStatus())
+        {
+            case PENDING:
+                color = context.getColor(R.color.orange);
+                break;
+            case ONGOING:
+                color = context.getColor(R.color.eggplant_pink);
+                break;
+            case CANCELLED:
+                color = context.getColor(R.color.plus_green);
+                break;
+            case DELIVERED:
+                color = context.getColor(R.color.minus_red);
+                break;
+        }
+        holder.binding.orderStatus.setText(String.format(context.getResources().getText(R.string.status).toString(), order.getStatus()));
+        holder.binding.orderStatus.setTextColor(color);
+
+
+
+
+
         holder.changeStatusButton.setOnClickListener(v -> {
             holder.changeStatusButtonsHolder.setVisibility(View.VISIBLE);
             Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
@@ -43,7 +85,7 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
 
     @Override
     public int getItemCount() {
-        return 5;
+        return orders.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -52,16 +94,10 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
         AppCompatButton detailsButton;
         View changeStatusButtonsHolder;
 
-        View itemView;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            this.itemView =
-            changeStatusButton = itemView.findViewById(R.id.changeStatusButton);
-            changeStatusButtonsHolder = itemView.findViewById(R.id.changeStatusButtonsHolder);
-            detailsButton = itemView.findViewById(R.id.detailsButton);
-
-            itemView.setOnClickListener(v ->
-                    Toast.makeText(itemView.getContext(), "BaS:" + getBindingAdapterPosition(), Toast.LENGTH_SHORT).show());
+        LayoutCustomerOrderBinding binding;
+        public ViewHolder(LayoutCustomerOrderBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

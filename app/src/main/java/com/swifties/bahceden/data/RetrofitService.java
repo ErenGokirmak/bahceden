@@ -16,7 +16,6 @@ import com.swifties.bahceden.data.serializers.ShipmentTypeSerializer;
 import com.swifties.bahceden.models.Address;
 import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Order;
-import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.Product;
 
 import retrofit2.Retrofit;

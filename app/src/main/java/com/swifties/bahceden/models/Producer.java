@@ -1,7 +1,6 @@
 package com.swifties.bahceden.models;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Producer extends User {
     String shopName;

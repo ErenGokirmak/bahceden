@@ -12,13 +12,11 @@ import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.CustomerApi;
-import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.databinding.ActivityCustomerEditProfileBinding;
 import com.swifties.bahceden.models.Customer;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.function.Function;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
