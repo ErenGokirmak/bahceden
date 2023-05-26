@@ -3,6 +3,8 @@ package com.swifties.bahceden.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,12 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.activities.IntroActivity;
 import com.swifties.bahceden.activities.ProducerAnalyticsActivity;
 import com.swifties.bahceden.activities.ProducerEditProfileActivity;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.SecurityProfileActivity;
 import com.swifties.bahceden.data.AuthUser;
+import com.swifties.bahceden.databinding.FragmentProducerProfileBinding;
 
 public class ProducerProfileFragment extends Fragment {
 
@@ -24,37 +28,42 @@ public class ProducerProfileFragment extends Fragment {
     LinearLayout securityButton;
     LinearLayout logOutButton;
 
+    FragmentProducerProfileBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_producer_profile, container, false);
+        binding = FragmentProducerProfileBinding.inflate(inflater, container, false);
 
-        editProfileButton = view.findViewById(R.id.producerProfileEditProfileButton);
-        analyticsButton = view.findViewById(R.id.producerProfileAnalyticsButton);
-        securityButton = view.findViewById(R.id.producerProfileSecurityButton);
-        logOutButton = view.findViewById(R.id.producerProfileLogOutButton);
-
-        editProfileButton.setOnClickListener(editProfileView -> {
+        binding.producerProfileEditProfileButton.setOnClickListener(editProfileView -> {
             Intent intent = new Intent(getActivity(), ProducerEditProfileActivity.class);
             startActivity(intent);
         });
 
-        analyticsButton.setOnClickListener(analyticsView -> {
+        binding.producerProfileAnalyticsButton.setOnClickListener(analyticsView -> {
             Intent intent = new Intent(getActivity(), ProducerAnalyticsActivity.class);
             startActivity(intent);
         });
 
-        securityButton.setOnClickListener(securityView -> {
+        binding.producerProfileSecurityButton.setOnClickListener(securityView -> {
             Intent intent = new Intent(getActivity(), SecurityProfileActivity.class);
             startActivity(intent);
         });
 
 
-        logOutButton.setOnClickListener(logOutView -> {
+        binding.producerProfileLogOutButton.setOnClickListener(logOutView -> {
             AuthUser.getInstance().deleteUser();
             Intent intent = new Intent(getActivity(), IntroActivity.class);
             startActivity(intent);
         });
 
-        return view;
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Picasso.get().load(AuthUser.getProducer().getProfileImageURL().replace("localhost", "10.0.2.2")).into(binding.producerProfileImage);
+        binding.producerProfileName.setText(AuthUser.getProducer().getName());
+        binding.producerProfileEmail.setText(AuthUser.getProducer().getEmail());
     }
 }

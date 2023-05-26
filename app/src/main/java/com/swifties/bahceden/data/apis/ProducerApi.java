@@ -6,11 +6,14 @@ import com.swifties.bahceden.models.Product;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -75,7 +78,13 @@ public interface ProducerApi {
     @PUT("producers")
     Call<Producer> updateProducer(@Body Producer producer);
 
-
+    @Multipart
+    @POST("producers/{producersId}/image")
+    Call<Producer> uploadImage(
+            @Path("producersId") int producerId,
+            @Part MultipartBody.Part image,
+            @Query("type") String type
+    );
 
 
 
