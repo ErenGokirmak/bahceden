@@ -15,28 +15,43 @@ import android.view.ViewGroup;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.ProducerOrderAdapter;
+import com.swifties.bahceden.adapters.ProductListingAdapter;
+import com.swifties.bahceden.data.AuthUser;
+import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.CustomerApi;
 import com.swifties.bahceden.databinding.FragmentCustomerProfileBinding;
 import com.swifties.bahceden.databinding.FragmentProducerOrdersBinding;
+import com.swifties.bahceden.models.Customer;
+import com.swifties.bahceden.models.Order;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProducerOrdersFragment extends Fragment {
 
-    private RecyclerView producerOrdersRV;
-    private ProducerOrderAdapter producerOrderAdapter;
-    private RecyclerView.LayoutManager producerOrderLM;
+
 
     private FragmentProducerOrdersBinding binding;
 
-    private AppCompatButton changeStatus;
-
-    private AppCompatButton detailsButton;
-
+    private RecyclerView ordersRV;
+    private RecyclerView.Adapter<ProducerOrderAdapter.ViewHolder> ordersAdapter;
+    List<Order> orders;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentProducerOrdersBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+//        orders = AuthUser.getProducer().getOrders().stream().filter(order -> order.getStatus() != Order.OrderStatus.IN_CART).collect(Collectors.toList());
+        ordersRV = binding.producerOrdersRV;
+        ordersAdapter = new ProducerOrderAdapter(orders, getContext(), inflater);
+        ordersRV.setLayoutManager(new LinearLayoutManager(getActivity()));
+        ordersRV.setAdapter(ordersAdapter);
 
-        return inflater.inflate(R.layout.fragment_producer_orders, container, false);
+
+        return binding.getRoot();
     }
 
     @Override
@@ -44,5 +59,23 @@ public class ProducerOrdersFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        RetrofitService.getApi(CustomerApi.class).getCustomerById(1).enqueue(new Callback<Customer>() {
+            @Override
+            public void onResponse(Call<Customer> call, Response<Customer> response) {
+                orders = response.body().getOrders();
+                ordersAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onFailure(Call<Customer> call, Throwable t) {
+                throw new RuntimeException(t);
+            }
+        });
     }
 }
