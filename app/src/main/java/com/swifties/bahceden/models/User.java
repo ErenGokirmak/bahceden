@@ -16,10 +16,6 @@ public abstract class User {
      */
     private String email;
 
-    /**
-     * The phone number of a user will be of the form "countryCode-phoneNumber"
-     */
-    private String phoneNumber;
     private String profileImageURL;
 
     public String getProfileImageURL() {
@@ -42,10 +38,6 @@ public abstract class User {
         this.email = email;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public int getId() {
         return id;
     }
@@ -56,9 +48,6 @@ public abstract class User {
 
     public String getEmail() {
         return email;
-    }
-    public String getPhoneNumber() {
-        return phoneNumber;
     }
 
     @Override

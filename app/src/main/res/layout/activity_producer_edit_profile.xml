@@ -58,8 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_profile"
-                app:tint="@color/gray" />
+                android:src="@drawable/ic_profile"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -106,8 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_profile"
-                app:tint="@color/gray" />
+                android:src="@drawable/ic_profile"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -175,11 +173,14 @@
             android:orientation="horizontal">
 
             <com.hbb20.CountryCodePicker
+                android:id="@+id/countryCodePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@drawable/edit_text_background"
                 android:gravity="center"
-                app:ccp_showNameCode="false" />
+                app:ccp_areaCodeDetectedCountry="true"
+                app:ccp_defaultPhoneCode="90"
+                app:ccp_showNameCode="false"/>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/customerEditNumber"

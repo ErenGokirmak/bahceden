@@ -7,6 +7,16 @@ public class Producer extends User {
     String backgroundImageURL;
     double rating;
 
+    String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public double getRating() {
         return rating;
     }

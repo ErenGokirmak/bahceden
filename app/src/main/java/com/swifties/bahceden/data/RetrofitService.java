@@ -11,6 +11,7 @@ import com.swifties.bahceden.data.serializers.AddressSerializer;
 import com.swifties.bahceden.data.serializers.CustomerSerializer;
 import com.swifties.bahceden.data.serializers.OrderSerializer;
 import com.swifties.bahceden.data.serializers.OrderStatusSerializer;
+import com.swifties.bahceden.data.serializers.ProducerSerializer;
 import com.swifties.bahceden.data.serializers.ShipmentTypeSerializer;
 import com.swifties.bahceden.models.Address;
 import com.swifties.bahceden.models.Customer;
@@ -52,6 +53,7 @@ public class RetrofitService {
                     .registerTypeAdapter(Address.class, new AddressSerializer())
                     .registerTypeAdapter(Order.class, new OrderSerializer())
                     .registerTypeAdapter(Customer.class, new CustomerSerializer())
+                    .registerTypeAdapter(Producer.class, new ProducerSerializer())
                     .create();
         }
         return gson;

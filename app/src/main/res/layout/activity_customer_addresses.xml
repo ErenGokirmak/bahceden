@@ -41,7 +41,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/customerAddressesTopBar" />
+        app:layout_constraintTop_toBottomOf="@id/customerAddressesTopBar"
+        app:layout_constraintBottom_toTopOf="@id/customerAddressesAddAddressButton"
+        app:layout_constraintVertical_bias="0"/>
 
     <Button
         android:id="@+id/customerAddressesAddAddressButton"
