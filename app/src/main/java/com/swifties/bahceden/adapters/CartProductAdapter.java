@@ -15,18 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.CustomerViewProductActivity;
-import com.swifties.bahceden.data.apis.CartApi;
-import com.swifties.bahceden.data.RetrofitService;
-import com.swifties.bahceden.data.apis.OrderApi;
-import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Product;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.ViewHolder> {
 

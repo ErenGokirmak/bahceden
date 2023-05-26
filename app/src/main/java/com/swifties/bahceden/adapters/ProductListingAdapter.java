@@ -2,7 +2,6 @@ package com.swifties.bahceden.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -15,7 +14,6 @@ import com.swifties.bahceden.activities.CustomerViewProductActivity;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.databinding.LayoutItemBinding;
 
-import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Product;
 
 import java.util.List;

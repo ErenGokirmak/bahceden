@@ -1,8 +1,6 @@
 package com.swifties.bahceden.data.apis;
 
-import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Producer;
-import com.swifties.bahceden.models.Product;
 
 import java.util.List;
 

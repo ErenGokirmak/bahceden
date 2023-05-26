@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.ProducerOrderAdapter;
-import com.swifties.bahceden.databinding.FragmentProducerOrdersBinding;
 
 public class ProducerOrdersFragment extends Fragment {
 
