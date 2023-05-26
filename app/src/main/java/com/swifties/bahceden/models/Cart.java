@@ -3,7 +3,6 @@ package com.swifties.bahceden.models;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.OrderApi;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

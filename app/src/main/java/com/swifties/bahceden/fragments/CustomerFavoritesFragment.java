@@ -18,11 +18,9 @@ import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.FavDukkanAdapter;
 import com.swifties.bahceden.adapters.FavItemAdapter;
 import com.swifties.bahceden.data.AuthUser;
-import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerFavoritesFragment extends Fragment {

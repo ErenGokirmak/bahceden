@@ -9,29 +9,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.CustomerCheckOutActivity;
 import com.swifties.bahceden.adapters.CartProductAdapter;
 import com.swifties.bahceden.data.AuthUser;
-import com.swifties.bahceden.data.apis.OrderApi;
-import com.swifties.bahceden.data.RetrofitService;
-import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class CustomerCartFragment extends Fragment {
 

@@ -1,6 +1,11 @@
 package com.swifties.bahceden.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,16 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CommentProducerViewAdapter;
 import com.swifties.bahceden.adapters.YourListingsAdapter;
 import com.swifties.bahceden.data.RetrofitService;
@@ -26,7 +24,6 @@ import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.databinding.FragmentProducerHomeBinding;
 import com.swifties.bahceden.models.Comment;
 import com.swifties.bahceden.models.Product;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +98,6 @@ public class ProducerHomeFragment extends Fragment {
         });
 
         // adapters
-
 
 
         // image slider
