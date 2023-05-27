@@ -13,6 +13,9 @@ import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.OrderApi;
 import com.swifties.bahceden.databinding.ActivityProducerOrderDetailsBinding;
 import com.swifties.bahceden.models.Order;
+import com.swifties.bahceden.models.Product;
+
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,14 +44,42 @@ public class ProducerOrderDetailsActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call<Order> call, @NonNull Response<Order> response) {
                 if (response.body() != null) {
                     Order order = response.body();
+                    String shipmentType;
+                    String amountType;
+
+                    Order.ShipmentType orderShipmentType = order.getShipmentType();
+                    Product.UnitType unitType = order.getProduct().getUnitType();
+
+                    // Converting ShipmentType to String
+                    if (orderShipmentType == Order.ShipmentType.SHIPMENT) {
+                        shipmentType = "Shipment";
+                    }
+                    else if (orderShipmentType == Order.ShipmentType.PRODUCER_DELIVERY) {
+                        shipmentType = "Producer Delivery";
+                    }
+                    else {
+                        shipmentType = "Customer Pickup";
+                    }
+
+                    // Converting UnitType to String
+                    if (unitType == Product.UnitType.KILOGRAMS) {
+                        amountType = "KG";
+                    }
+                    else if (unitType == Product.UnitType.LITERS) {
+                        amountType = "L";
+                    }
+                    else {
+                        amountType = "Packages";
+                    }
+
                     Picasso.get()
                             .load(order.getProduct().getImageURL())
                             .into(binding.producerOrderDetailsProductImage);
                     binding.producerOrderDetailsProductName.setText(order.getProduct().getName());
                     binding.producerOrderDetailsProductID.setText(String.format(getString(R.string.number_symbol), order.getProduct().getId()));
                     binding.producerOrderDetailsOrderDate.setText(order.getDateOfPurchase());
-                    //binding.producerOrderDetailsDeliveryType.setText(order.getShipmentType()); TODO: shipmentType to string conversion
-                    //binding.producerOrderDetailsAmountValue.setText(); // TODO: Same as shipment type
+                    binding.producerOrderDetailsDeliveryType.setText(shipmentType);
+                    binding.producerOrderDetailsAmountValue.setText(String.format(Locale.ENGLISH ,"%d %s", order.getAmount(), amountType));
                     binding.producerOrderDetailsCustomerNameValue.setText(order.getCustomer().getName());
                     binding.producerOrderDetailsCustomerPhoneNumberValue.setText(order.getDeliveryAddress().getPhoneNumber());
                     binding.producerOrderDetailsCustomerAddressValue.setText(order.getDeliveryAddress().getFullAddress());
@@ -61,7 +92,10 @@ public class ProducerOrderDetailsActivity extends AppCompatActivity {
             }
         });
 
-        binding.producerOrderDetailsBackButton.setOnClickListener(backView -> ProducerOrderDetailsActivity.super.onBackPressed());
+        binding.producerOrderDetailsBackButton.setOnClickListener(backView -> {
+            ProducerOrderDetailsActivity.super.onBackPressed();
+            finish();
+        });
 
     }
 }

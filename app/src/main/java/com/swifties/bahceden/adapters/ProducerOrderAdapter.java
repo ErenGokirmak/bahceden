@@ -72,14 +72,15 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
 
 
         holder.binding.changeStatusButton.setOnClickListener(v -> {
-            holder.changeStatusButtonsHolder.setVisibility(View.VISIBLE);
+            holder.binding.changeStatusButtonsHolder.setVisibility(View.VISIBLE);
             Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
-            holder.changeStatusButtonsHolder.startAnimation(animation);
+            holder.binding.changeStatusButtonsHolder.startAnimation(animation);
         });
-        holder.changeStatusButtonsHolder.setOnClickListener(v -> holder.changeStatusButtonsHolder.setVisibility(View.GONE));
+        holder.binding.changeStatusButtonsHolder.setOnClickListener(v -> holder.binding.changeStatusButtonsHolder.setVisibility(View.GONE));
 
         holder.binding.detailsButton.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), ProducerOrderDetailsActivity.class);
+            intent.putExtra("order_id", order.getId());
             v.getContext().startActivity(intent);
         });
     }
@@ -91,8 +92,6 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        View changeStatusButtonsHolder;
-
         LayoutProducerOrdersItemBinding binding;
         public ViewHolder(LayoutProducerOrdersItemBinding binding) {
             super(binding.getRoot());

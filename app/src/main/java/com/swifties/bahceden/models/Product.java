@@ -76,7 +76,7 @@ public class Product {
     }
 
     public List<Comment> getComments() {
-        comments;
+        return comments;
     }
     //    public ArrayList<Comment> getComments() {
 //        for (Comment c : comments) {
