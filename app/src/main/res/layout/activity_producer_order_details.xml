@@ -16,7 +16,7 @@
 
 
     <TextView
-        android:id="@+id/productOrderDetailsProductName"
+        android:id="@+id/producerOrderDetailsProductName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -36,7 +36,7 @@
         android:layout_marginTop="40dp"
         android:text="#71261"
         android:textSize="30dp"
-        app:layout_constraintStart_toEndOf="@+id/productOrderDetailsProductName"
+        app:layout_constraintStart_toEndOf="@+id/producerOrderDetailsProductName"
         app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsProductImage" />
 
     <TextView
@@ -48,7 +48,7 @@
         android:text="Date of Purchase - Type of Delivery"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productOrderDetailsProductName" />
+        app:layout_constraintTop_toBottomOf="@+id/producerOrderDetailsProductName" />
 
     <TextView
         android:id="@+id/producerOrderDetailsOrderDate"

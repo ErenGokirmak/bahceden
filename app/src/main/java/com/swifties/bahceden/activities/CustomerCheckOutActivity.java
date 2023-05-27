@@ -14,7 +14,6 @@ import com.swifties.bahceden.databinding.ActivityCustomerCheckOutBinding;
 import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -43,7 +42,7 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
         RetrofitService.getApi(OrderApi.class).getAllOrders().enqueue(new Callback<List<Order>>() {
             @Override
             public void onResponse(@NonNull Call<List<Order>> call, @NonNull Response<List<Order>> response) {
-                cart.setOrders((ArrayList<Order>) response.body());
+                cart.setOrders(response.body());
 
                 binding.customerCheckOutOrdersRV.setHasFixedSize(true);
                 checkOutRcLayoutManager = new LinearLayoutManager(CustomerCheckOutActivity.this);
