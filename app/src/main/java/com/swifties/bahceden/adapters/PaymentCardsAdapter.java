@@ -13,6 +13,7 @@ import com.swifties.bahceden.R;
 
 public class PaymentCardsAdapter extends RecyclerView.Adapter<PaymentCardsAdapter.ViewHolder> {
 
+    // FIXME: AFAIK this file won't exist
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {

@@ -17,7 +17,7 @@ public class Comment {
     public Product getProduct() {
         return product;
     }
-    public String getContentOfComment() {
+    public String getMessage() {
         return message;
     }
     public int getNumberOfLikes() {

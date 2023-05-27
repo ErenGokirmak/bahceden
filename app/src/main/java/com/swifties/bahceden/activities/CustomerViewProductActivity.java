@@ -14,8 +14,8 @@ import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CommentCustomerViewAdapter;
 import com.swifties.bahceden.data.AuthUser;
-import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.databinding.ActivityCustomerViewProductBinding;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Product;
@@ -59,8 +59,7 @@ public class CustomerViewProductActivity extends AppCompatActivity {
             setViews();
         } else {
             List<Product> productsFromFav = AuthUser.getCustomer().getFavoriteProducts().stream().filter(p -> p.getId() == productID).collect(Collectors.toList());
-            if (productsFromFav.size() > 0)
-            {
+            if (productsFromFav.size() > 0) {
                 product = productsFromFav.get(0);
                 setViews();
                 binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
@@ -74,6 +73,13 @@ public class CustomerViewProductActivity extends AppCompatActivity {
                         // Setting appropriate fields to the product's information
                         setViews();
                         binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_unfavorite));
+                        RecyclerView commentsRV = binding.commentItems;
+                        
+                        // Loading the comments
+                        commentsRV.setHasFixedSize(true);
+                        commentsRV.setLayoutManager(new LinearLayoutManager(CustomerViewProductActivity.this, LinearLayoutManager.HORIZONTAL, false));
+                        CommentCustomerViewAdapter commentsAdapter = new CommentCustomerViewAdapter(product.getComments(), CustomerViewProductActivity.this, getLayoutInflater());
+                        commentsRV.setAdapter(commentsAdapter);
                     }
 
                     @Override
@@ -99,15 +105,10 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         //similarItemsAdapter = new ProductListingAdapter(products, this);
         //similarItemsRV.setAdapter(similarItemsAdapter);
 
-        RecyclerView commentsRV = binding.commentItems;
-        commentsRV.setHasFixedSize(true);
-        commentsRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        CommentCustomerViewAdapter commentsAdapter = new CommentCustomerViewAdapter();
-        commentsRV.setAdapter(commentsAdapter);
+
     }
 
-    private void setViews ()
-    {
+    private void setViews() {
         binding.customerViewProductItemName.setText(product.getName());
         binding.customerViewProductDescriptionText.setText(product.getDescription());
         binding.customerViewProductRatingText.setText(String.valueOf(product.getRating()));
@@ -120,12 +121,9 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         binding.productCount.setText(String.valueOf(productCount));
         Picasso.get().load(product.getImageURL()).into(binding.productImage);
         binding.favButton.setOnClickListener(v -> {
-            if (AuthUser.getCustomer().removeFavProduct(product))
-            {
+            if (AuthUser.getCustomer().removeFavProduct(product)) {
                 binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_unfavorite));
-            }
-            else
-            {
+            } else {
                 AuthUser.getCustomer().addNewFavProduct(product);
                 binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
             }

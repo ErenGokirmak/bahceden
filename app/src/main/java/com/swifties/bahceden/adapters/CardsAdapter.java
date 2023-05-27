@@ -12,6 +12,8 @@ import com.swifties.bahceden.R;
 
 public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> {
 
+    // FIXME: AFAIK this file won't exist
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {

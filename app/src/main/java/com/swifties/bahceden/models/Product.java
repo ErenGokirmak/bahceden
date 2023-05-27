@@ -1,5 +1,6 @@
 package com.swifties.bahceden.models;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Product {
@@ -7,7 +8,8 @@ public class Product {
     private int id;
     private String name;
     private String description;
-    //private ArrayList<Comment> comments;
+
+    private List<Comment> comments;
     private Producer producer;
     private double rating;
     private int producerId;
@@ -73,6 +75,9 @@ public class Product {
         return rating;
     }
 
+    public List<Comment> getComments() {
+        comments;
+    }
     //    public ArrayList<Comment> getComments() {
 //        for (Comment c : comments) {
 //            ConnectionFactory.get(c);
