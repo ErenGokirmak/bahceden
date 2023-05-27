@@ -1,6 +1,7 @@
 package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,6 +58,28 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
             public void onFailure(@NonNull Call<List<Order>> call, @NonNull Throwable t) {
 
             }
+        });
+
+        // TODO: I'm assuming that there won't be a payment screen as we don't have cards
+        binding.customerCheckOutContinueToPaymentButton.setOnClickListener(buyView -> {
+            for (Order o: cart.getOrders()) {
+                o.setStatus(Order.OrderStatus.PENDING);
+                RetrofitService.getApi(OrderApi.class).putOrder(o, o.getId()).enqueue(new Callback<Order>() {
+                    @Override
+                    public void onResponse(Call<Order> call, Response<Order> response) {
+                        // TODO: This is incomplete.
+                        //  firstly, how will this put order
+                        //  change the revenue of the producer,
+                        //  and many more worries™
+                    }
+
+                    @Override
+                    public void onFailure(Call<Order> call, Throwable t) {
+
+                    }
+                });
+            }
+            Toast.makeText(this, "Order made successfully", Toast.LENGTH_SHORT).show();
         });
 
     }

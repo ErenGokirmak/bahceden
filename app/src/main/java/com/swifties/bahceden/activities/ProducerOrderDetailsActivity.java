@@ -32,7 +32,7 @@ public class ProducerOrderDetailsActivity extends AppCompatActivity {
 
         // If activity is called without proper intent
         if (!intent.hasExtra("order_id")) {
-            Toast.makeText(this, "Could not find order", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Could not find order.", Toast.LENGTH_SHORT).show();
             super.onBackPressed();
         }
 

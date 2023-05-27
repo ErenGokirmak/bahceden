@@ -6,9 +6,11 @@ public class Producer extends User {
     String shopName;
     String backgroundImageURL;
     double rating;
-
     String phoneNumber;
-
+    String city; // TODO this is tentative we can change this into a location object etc
+    Address address;
+    ArrayList<Product> products;
+    ArrayList<Order> orders;
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -33,9 +35,7 @@ public class Producer extends User {
         this.backgroundImageURL = backgroundImageURL;
     }
 
-    String city; // TODO this is tentative we can change this into a location object etc
-    ArrayList<Product> products;
-    ArrayList<Order> orders;
+
 
     public void setShopName(String shopName) {
         this.shopName = shopName;
