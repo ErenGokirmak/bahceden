@@ -112,8 +112,6 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
                     .into(holder.binding.producerBgImage);
             holder.binding.layoutProducerItemName.setText(producer.getName());
             holder.binding.rating.setText(String.valueOf(producer.getRating()));
-            List<Producer>  SSSSSSSSSSS = AuthUser.getCustomer().getFavoriteProducers();
-            boolean f = AuthUser.getCustomer().getFavoriteProducers().contains(producer);
             if (AuthUser.getCustomer().getFavoriteProducers().contains(producer))
             {
                 holder.binding.itemLayoutItemLiked.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite));

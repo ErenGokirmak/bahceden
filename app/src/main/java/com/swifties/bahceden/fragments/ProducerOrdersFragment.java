@@ -39,7 +39,15 @@ public class ProducerOrdersFragment extends Fragment {
 
     private RecyclerView ordersRV;
     private RecyclerView.Adapter<ProducerOrderAdapter.ViewHolder> ordersAdapter;
-    List<Order> orders;
+    private List<Order> orders;
+
+    private int pending = 0;
+
+    private int ongoing = 0;
+
+    private int delivered = 0;
+
+    private int cancelled = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -69,6 +77,16 @@ public class ProducerOrdersFragment extends Fragment {
             public void onResponse(Call<Customer> call, Response<Customer> response) {
                 orders = response.body().getOrders();
                 ordersAdapter.notifyDataSetChanged();
+                for(Order order : orders){
+                    if(order.getStatus() == Order.OrderStatus.PENDING) pending++;
+                    else if(order.getStatus() == Order.OrderStatus.ONGOING) ongoing++;
+                    else if(order.getStatus() == Order.OrderStatus.DELIVERED) delivered++;
+                    else if(order.getStatus() == Order.OrderStatus.CANCELLED) cancelled++;
+                }
+                binding.producerOrdersPendingCount.setText(String.format("%d", pending));
+                binding.producerOrdersOngoingCount.setText(String.format("%d", ongoing));
+                binding.producerOrdersDeliveredCount.setText(String.format("%d", delivered));
+                binding.producerOrdersCancelledCount.setText(String.format("%d", cancelled));
 
             }
 
