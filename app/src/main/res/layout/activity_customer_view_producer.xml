@@ -48,7 +48,10 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
-            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:src="@drawable/ciftci"
             app:civ_border_color="@color/white"
             app:civ_border_width="5dp" />
@@ -62,7 +65,7 @@
         android:divider="@drawable/divider"
         android:orientation="vertical"
         android:showDividers="middle"
-        app:layout_constraintBottom_toTopOf="@+id/costumerViewProducerProductsRV"
+        app:layout_constraintBottom_toTopOf="@+id/customerViewProducerProductsRV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/costumerViewProducerRelativeLayout">
@@ -73,7 +76,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/company_name"
+                android:id="@+id/customerViewProducerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nexa_heavy"
@@ -99,7 +102,7 @@
 
 
         <TextView
-            android:id="@+id/costumerViewProducerDescription"
+            android:id="@+id/customerViewProducerDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
@@ -125,7 +128,7 @@
                 app:tint="@color/black" />
 
             <TextView
-                android:id="@+id/costumerViewProducerLocationInfo"
+                android:id="@+id/customerViewProducerLocationInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
@@ -148,7 +151,7 @@
         app:layout_constraintTop_toBottomOf="@id/costumerViewProducerInfo" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/costumerViewProducerProductsRV"
+        android:id="@+id/customerViewProducerProductsRV"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginVertical="8dp"

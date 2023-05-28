@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.activities.ProducerOrderDetailsActivity;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.databinding.LayoutCustomerOrderBinding;
+import com.swifties.bahceden.databinding.LayoutProducerOrdersItemBinding;
 import com.swifties.bahceden.models.Order;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
     @NonNull
     @Override
     public ProducerOrderAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutCustomerOrderBinding binding = LayoutCustomerOrderBinding.inflate(inflater, parent, false);
+        LayoutProducerOrdersItemBinding binding = LayoutProducerOrdersItemBinding.inflate(inflater, parent, false);
         return new ProducerOrderAdapter.ViewHolder(binding);
     }
 
@@ -70,32 +71,29 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
 
 
 
-        holder.changeStatusButton.setOnClickListener(v -> {
-            holder.changeStatusButtonsHolder.setVisibility(View.VISIBLE);
+        holder.binding.changeStatusButton.setOnClickListener(v -> {
+            holder.binding.changeStatusButtonsHolder.setVisibility(View.VISIBLE);
             Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
-            holder.changeStatusButtonsHolder.startAnimation(animation);
+            holder.binding.changeStatusButtonsHolder.startAnimation(animation);
         });
-        holder.changeStatusButtonsHolder.setOnClickListener(v -> holder.changeStatusButtonsHolder.setVisibility(View.GONE));
+        holder.binding.changeStatusButtonsHolder.setOnClickListener(v -> holder.binding.changeStatusButtonsHolder.setVisibility(View.GONE));
 
-        holder.detailsButton.setOnClickListener(v -> {
+        holder.binding.detailsButton.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), ProducerOrderDetailsActivity.class);
+            intent.putExtra("order_id", order.getId());
             v.getContext().startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
+        if(orders == null) return 0;
         return orders.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-
-        AppCompatButton changeStatusButton;
-        AppCompatButton detailsButton;
-        View changeStatusButtonsHolder;
-
-        LayoutCustomerOrderBinding binding;
-        public ViewHolder(LayoutCustomerOrderBinding binding) {
+        LayoutProducerOrdersItemBinding binding;
+        public ViewHolder(LayoutProducerOrdersItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

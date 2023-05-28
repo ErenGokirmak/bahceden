@@ -3,6 +3,7 @@ package com.swifties.bahceden.activities;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +30,7 @@ public class CustomerAnalyticsActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.customerAnalyticsBackButton.setOnClickListener(view -> CustomerAnalyticsActivity.super.onBackPressed());
+        Toast.makeText(this, "AFAIK this page won't exist", Toast.LENGTH_SHORT).show();
 
         consumerChart = binding.customerAnalyticsConsumerChart;
 

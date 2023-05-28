@@ -2,6 +2,7 @@ package com.swifties.bahceden.activities;
 
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ public class CustomerPaymentActivity extends AppCompatActivity {
 
         backButton = findViewById(R.id.customerPaymentBackButton);
         backButton.setOnClickListener(backView -> CustomerPaymentActivity.super.onBackPressed());
+        Toast.makeText(this, "AFAIK this page won't exist", Toast.LENGTH_SHORT).show();
 
         RecyclerView paymentCardsRV = findViewById(R.id.customerPaymentCardRV);
 
