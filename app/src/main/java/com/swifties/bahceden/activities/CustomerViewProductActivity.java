@@ -99,11 +99,7 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         //similarItemsAdapter = new ProductListingAdapter(products, this);
         //similarItemsRV.setAdapter(similarItemsAdapter);
 
-        RecyclerView commentsRV = binding.commentItems;
-        commentsRV.setHasFixedSize(true);
-        commentsRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        CommentCustomerViewAdapter commentsAdapter = new CommentCustomerViewAdapter();
-        commentsRV.setAdapter(commentsAdapter);
+
     }
 
     private void setViews ()
@@ -147,5 +143,7 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         });
         binding.customerViewProductBackButton.setOnClickListener(v -> CustomerViewProductActivity.super.onBackPressed());
         binding.totalPrice.setText(String.format(getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit() * productCount)));
+        binding.commentItems.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        binding.commentItems.setAdapter(new CommentCustomerViewAdapter(product.getComments(), getLayoutInflater(), this));
     }
 }

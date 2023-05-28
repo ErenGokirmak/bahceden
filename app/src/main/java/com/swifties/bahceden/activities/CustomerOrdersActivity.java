@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.swifties.bahceden.adapters.OrdersAdapter;
+import com.swifties.bahceden.adapters.CustomerOrdersAdapter;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.databinding.ActivityCustomerOrdersBinding;
 import com.swifties.bahceden.models.Order;
@@ -26,6 +26,6 @@ public class CustomerOrdersActivity extends AppCompatActivity {
         RecyclerView ordersRV = binding.ordersProfileRV;
         ordersRV.setHasFixedSize(true);
         ordersRV.setLayoutManager(new LinearLayoutManager(this));
-        ordersRV.setAdapter(new OrdersAdapter(AuthUser.getCustomer().getOrders().stream().filter(o -> o.getStatus() != Order.OrderStatus.IN_CART).collect(Collectors.toList()), this, getLayoutInflater()));
+        ordersRV.setAdapter(new CustomerOrdersAdapter(AuthUser.getCustomer().getOrders().stream().filter(o -> o.getStatus() != Order.OrderStatus.IN_CART).collect(Collectors.toList()), this, getLayoutInflater()));
     }
 }

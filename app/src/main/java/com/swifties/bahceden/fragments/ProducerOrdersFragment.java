@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.ProducerOrderAdapter;
+import com.swifties.bahceden.databinding.FragmentCustomerProfileBinding;
 import com.swifties.bahceden.databinding.FragmentProducerOrdersBinding;
 
 public class ProducerOrdersFragment extends Fragment {
@@ -22,8 +24,18 @@ public class ProducerOrdersFragment extends Fragment {
     private ProducerOrderAdapter producerOrderAdapter;
     private RecyclerView.LayoutManager producerOrderLM;
 
+    private FragmentProducerOrdersBinding binding;
+
+    private AppCompatButton changeStatus;
+
+    private AppCompatButton detailsButton;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        binding = FragmentProducerOrdersBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
         return inflater.inflate(R.layout.fragment_producer_orders, container, false);
     }
 
@@ -31,10 +43,6 @@ public class ProducerOrdersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        producerOrdersRV = view.findViewById(R.id.producerOrdersRV);
-        producerOrderAdapter = new ProducerOrderAdapter();
-        producerOrderLM = new LinearLayoutManager(getActivity());
-        producerOrdersRV.setAdapter(producerOrderAdapter);
-        producerOrdersRV.setLayoutManager(producerOrderLM);
+
     }
 }

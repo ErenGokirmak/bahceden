@@ -1,18 +1,29 @@
 package com.swifties.bahceden.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
+import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.databinding.ActivityProducerEditProductBinding;
+import com.swifties.bahceden.models.Product;
 import com.swifties.bahceden.uiclasses.SpinnerCustomItem;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProducerEditProductActivity extends AppCompatActivity {
     Spinner customCategoriesSpinner;
@@ -21,6 +32,9 @@ public class ProducerEditProductActivity extends AppCompatActivity {
     ArrayList<ArrayList<SpinnerCustomItem>> customSubItems;
     SpinnerCustomAdapter spinnerSubCategoriesAdapter;
     ActivityProducerEditProductBinding binding;
+    Intent intent;
+    EditText nameField, descriptionField, amountInStockField, pricePerUnitField;
+    Product product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +43,74 @@ public class ProducerEditProductActivity extends AppCompatActivity {
         binding = ActivityProducerEditProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        nameField = binding.producerEditProductNameField;
+        descriptionField = binding.producerEditProductDescriptionField;
+        amountInStockField = binding.producerEditProductAmountField;
+        pricePerUnitField = binding.producerEditProductPriceField;
+
+        intent = getIntent();
+
+        if (intent.hasExtra("product_id")) {
+            RetrofitService.getApi(ProductApi.class).getProductById(intent.getIntExtra("product_id", -1)).enqueue(new Callback<Product>() {
+                @Override
+                public void onResponse(Call<Product> call, Response<Product> response) {
+                    if (response.body() != null) {
+                        product = response.body();
+                        nameField.setText(product.getName());
+                        descriptionField.setText(product.getDescription());
+                        amountInStockField.setText(String.valueOf(product.getAmountInStock()));
+                        pricePerUnitField.setText(String.valueOf(product.getPricePerUnit()));
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Product> call, Throwable t) {
+                    Toast.makeText(ProducerEditProductActivity.this, "There was a problem retrieving the product information", Toast.LENGTH_SHORT).show();
+                    Log.d("debugPurposes", t.getMessage());
+                }
+            });
+
+            binding.producerEditProductUpdateButton.setOnClickListener(updateView -> {
+                if (Double.parseDouble(String.valueOf(pricePerUnitField.getText())) <= 0) {
+                    pricePerUnitField.setError("Please input a valid price.");
+                    return;
+                }
+
+                if (Double.parseDouble(String.valueOf(amountInStockField.getText())) <= 0) {
+                    amountInStockField.setError("Please input a vaild amount left in stock.");
+                    return;
+                }
+
+                if (String.valueOf(nameField.getText()).equals("") || String.valueOf(descriptionField.getText()).equals("")
+                        || String.valueOf(pricePerUnitField.getText()).equals("") || String.valueOf(amountInStockField.getText()).equals("")) {
+                    Toast.makeText(this, "Please input appropriate information into the fields.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // TODO: Image selection is missing here
+                product.setName(String.valueOf(nameField.getText()));
+                product.setDescription(String.valueOf(descriptionField.getText()));
+                product.setAmountInStock(Double.parseDouble(String.valueOf(amountInStockField.getText())));
+                product.setPricePerUnit(Double.parseDouble(String.valueOf(pricePerUnitField.getText())));
+
+                RetrofitService.getApi(ProductApi.class).saveProduct(product).enqueue(new Callback<Product>() {
+                    @Override
+                    public void onResponse(Call<Product> call, Response<Product> response) {
+                        if (response.body() != null) {
+                            Toast.makeText(ProducerEditProductActivity.this, "Product was updated successfully.", Toast.LENGTH_SHORT).show();
+                            // TODO: Go back to the last screen
+                            return;
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Product> call, Throwable t) {
+                        Toast.makeText(ProducerEditProductActivity.this, "There was a problem updating the product", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            });
+
+        }
 
         customSubCategoriesSpinner = binding.producerEditProductItemSubCategoriesSpinner;
         customCategoriesSpinner = binding.producerEditProductItemCategoriesSpinner;

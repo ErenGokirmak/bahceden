@@ -26,6 +26,16 @@
             android:src="@drawable/chicken" />
     </androidx.cardview.widget.CardView>
 
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/commentDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp"/>
+
     <TextView
         android:id="@+id/commentName"
         android:layout_width="wrap_content"
@@ -40,23 +50,25 @@
         app:layout_constraintTop_toTopOf="@id/commentImageHolder" />
 
 
-    <TextView
-        android:id="@+id/rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_curved_border"
-        android:drawablePadding="8dp"
-        android:drawableTint="@color/star_yellow"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
-        android:text="5"
-        android:textColor="@color/bahceden_green"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:drawableStartCompat="@drawable/ic_star"
-        app:layout_constraintBottom_toBottomOf="@id/commentName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/commentName" />
+<!--    <TextView-->
+<!--        android:id="@+id/rating"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:background="@drawable/bg_curved_border"-->
+<!--        android:drawablePadding="8dp"-->
+<!--        android:drawableTint="@color/star_yellow"-->
+<!--        android:paddingHorizontal="16dp"-->
+<!--        android:paddingVertical="8dp"-->
+<!--        android:text="5"-->
+<!--        android:textColor="@color/bahceden_green"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:drawableStartCompat="@drawable/ic_star"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/commentName"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@id/commentName"-->
+<!--        app:layout_constraintVertical_bias="0.9" />-->
 
     <TextView
         android:id="@+id/commentMessage"
@@ -69,61 +81,73 @@
         android:text="@string/loremIpsum"
         android:textColor="@color/black"
         android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="@id/rating"
         app:layout_constraintStart_toStartOf="@id/commentImageHolder"
         app:layout_constraintTop_toBottomOf="@id/commentImageHolder" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="visible"
         android:id="@+id/commentReplyHolder"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/bg_curved_border"
-        android:backgroundTint="@color/gray"
-        android:orientation="vertical"
-        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="@id/commentMessage"
         app:layout_constraintStart_toStartOf="@id/commentMessage"
         app:layout_constraintTop_toBottomOf="@id/commentMessage">
 
-        <TextView
-            android:id="@+id/commentReplyAuthor"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/commentReplyLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nexa_heavy"
-            android:text="Lorem Ipsum"
-            android:textColor="@color/bahceden_green"
-            android:textSize="16dp" />
+            android:layout_marginStart="40dp"
+            android:background="@drawable/bg_curved_border"
+            android:backgroundTint="@color/gray"
+            android:orientation="vertical"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/commentReply"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/commentReplyAuthor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nexa_heavy"
+                android:text="Lorem Ipsum"
+                android:textColor="@color/bahceden_green"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/commentReply"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/loremIpsum"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/loremIpsum"
-            android:textColor="@color/black"
-            android:textSize="16dp" />
+            android:layout_marginEnd="8dp"
+            android:rotation="90"
+            android:src="@drawable/ic_reply"
+            app:layout_constraintEnd_toStartOf="@id/commentReplyLayout"
+            app:layout_constraintTop_toTopOf="@id/commentReplyLayout" />
 
-    </LinearLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:rotation="90"
-        android:src="@drawable/ic_reply"
-        app:layout_constraintEnd_toStartOf="@id/commentReplyHolder"
-        app:layout_constraintStart_toStartOf="@id/commentMessage"
-        app:layout_constraintTop_toBottomOf="@id/commentMessage" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <TextView
         android:id="@+id/likeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:drawableStart="@drawable/favorite2"
+        android:layout_marginStart="10dp"
+        app:drawableStartCompat="@drawable/favorite2"
         android:drawablePadding="8dp"
-        android:drawableTint="@color/bahceden_green"
+        app:drawableTint="@color/bahceden_green"
         android:text="336"
         android:textColor="@color/bahceden_green"
         android:textSize="16sp"
@@ -131,16 +155,16 @@
         app:layout_constraintStart_toStartOf="@id/commentMessage"
         app:layout_constraintTop_toBottomOf="@id/commentReplyHolder" />
 
-    <TextView
-        android:id="@+id/commentDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="13 Days ago"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/likeCount"
-        app:layout_constraintTop_toBottomOf="@id/commentReplyHolder" />
+<!--    <TextView-->
+<!--        android:id="@+id/commentDate"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:text="13 Days ago"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@id/likeCount"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/commentReplyHolder" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

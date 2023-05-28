@@ -2,9 +2,7 @@ package com.swifties.bahceden.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,13 +14,13 @@ import com.swifties.bahceden.models.Order;
 
 import java.util.List;
 
-public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder> {
+public class CustomerOrdersAdapter extends RecyclerView.Adapter<CustomerOrdersAdapter.ViewHolder> {
 
     List<Order> orders;
     Context context;
     LayoutInflater inflater;
 
-    public OrdersAdapter(List<Order> orders, Context context, LayoutInflater inflater) {
+    public CustomerOrdersAdapter(List<Order> orders, Context context, LayoutInflater inflater) {
         this.orders = orders;
         this.context = context;
         this.inflater = inflater;
@@ -30,9 +28,9 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
 
     @NonNull
     @Override
-    public OrdersAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+    public CustomerOrdersAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         LayoutCustomerOrderBinding binding = LayoutCustomerOrderBinding.inflate(inflater, viewGroup, false);
-        return new OrdersAdapter.ViewHolder(binding);
+        return new CustomerOrdersAdapter.ViewHolder(binding);
     }
 
     @Override
