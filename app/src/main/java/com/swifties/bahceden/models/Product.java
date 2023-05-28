@@ -93,9 +93,6 @@ public class Product {
         return rating;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
     //    public ArrayList<Comment> getComments() {
 //        for (Comment c : comments) {
 //            ConnectionFactory.get(c);

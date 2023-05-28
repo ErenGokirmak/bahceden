@@ -73,13 +73,6 @@ public class CustomerViewProductActivity extends AppCompatActivity {
                         // Setting appropriate fields to the product's information
                         setViews();
                         binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_unfavorite));
-                        RecyclerView commentsRV = binding.commentItems;
-                        
-                        // Loading the comments
-                        commentsRV.setHasFixedSize(true);
-                        commentsRV.setLayoutManager(new LinearLayoutManager(CustomerViewProductActivity.this, LinearLayoutManager.HORIZONTAL, false));
-                        CommentCustomerViewAdapter commentsAdapter = new CommentCustomerViewAdapter(product.getComments(), CustomerViewProductActivity.this, getLayoutInflater());
-                        commentsRV.setAdapter(commentsAdapter);
                     }
 
                     @Override

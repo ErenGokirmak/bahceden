@@ -50,8 +50,6 @@ public class CustomerViewProducerActivity extends AppCompatActivity {
                     } else {
                         binding.customerViewProducerName.setText(producer.getName());
                     }
-                    //binding.customerViewProducerDescription.setText(producer.get); TODO: WILL WE HAVE THIS?
-                    binding.customerViewProducerLocationInfo.setText(producer.getCity()); // TODO: Change this to address, we need an address for producers too
                     int spanCount = 2;
                     int dp_spacing = 30;
                     int spacing = Math.round(dp_spacing * getResources().getDisplayMetrics().density);

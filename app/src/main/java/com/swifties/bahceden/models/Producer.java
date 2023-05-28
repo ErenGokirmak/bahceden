@@ -36,10 +36,6 @@ public class Producer extends User {
     }
 
 //    String city; // removed
-    ArrayList<Product> products;
-    ArrayList<Order> orders;
-
-
     public void setShopName(String shopName) {
         this.shopName = shopName;
     }
