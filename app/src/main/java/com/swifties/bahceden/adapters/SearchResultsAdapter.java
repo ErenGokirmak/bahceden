@@ -74,7 +74,7 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
             Picasso.get()
                     .load(product.getImageURL().replace("localhost", "10.0.2.2"))
                     .into(holder.binding.cartProductImage);
-            holder.binding.city.setText(product.getProducer().getCity());
+//            holder.binding.city.setText(product.getProducer().getCity());
             holder.binding.price.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit())));
             holder.binding.favoritesProductName.setText(product.getName());
             holder.binding.rating.setText(String.valueOf(product.getRating()));

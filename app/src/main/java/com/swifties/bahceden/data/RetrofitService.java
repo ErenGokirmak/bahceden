@@ -3,8 +3,11 @@ package com.swifties.bahceden.data;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.swifties.bahceden.data.deserializers.AddressDeserializer;
+import com.swifties.bahceden.data.deserializers.CategoryDeserializer;
+import com.swifties.bahceden.data.deserializers.CommentDeserializer;
 import com.swifties.bahceden.data.deserializers.CustomerDeserializer;
 import com.swifties.bahceden.data.deserializers.OrderStatusDeserializer;
+import com.swifties.bahceden.data.deserializers.ProductDeserializer;
 import com.swifties.bahceden.data.deserializers.ShipmentTypeDeserializer;
 import com.swifties.bahceden.data.deserializers.UnitTypeDeserializer;
 import com.swifties.bahceden.data.serializers.AddressSerializer;
@@ -14,6 +17,8 @@ import com.swifties.bahceden.data.serializers.OrderStatusSerializer;
 import com.swifties.bahceden.data.serializers.ProducerSerializer;
 import com.swifties.bahceden.data.serializers.ShipmentTypeSerializer;
 import com.swifties.bahceden.models.Address;
+import com.swifties.bahceden.models.Category;
+import com.swifties.bahceden.models.Comment;
 import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Producer;
@@ -44,17 +49,20 @@ public class RetrofitService {
         if (gson == null)
         {
             gson = new GsonBuilder()
-                    .registerTypeAdapter(Order.ShipmentType.class, new ShipmentTypeDeserializer())
-                    .registerTypeAdapter(Order.OrderStatus.class, new OrderStatusDeserializer())
-                    .registerTypeAdapter(Product.UnitType.class, new UnitTypeDeserializer())
-                    .registerTypeAdapter(Customer.class, new CustomerDeserializer())
                     .registerTypeAdapter(Address.class, new AddressDeserializer())
-                    .registerTypeAdapter(Order.ShipmentType.class, new ShipmentTypeSerializer())
-                    .registerTypeAdapter(Order.OrderStatus.class, new OrderStatusSerializer())
+                    .registerTypeAdapter(Category.class, new CategoryDeserializer())
+                    .registerTypeAdapter(Comment.class, new CommentDeserializer())
+                    .registerTypeAdapter(Customer.class, new CustomerDeserializer())
+                    .registerTypeAdapter(Order.OrderStatus.class, new OrderStatusDeserializer())
+                    .registerTypeAdapter(Product.class, new ProductDeserializer())
+                    .registerTypeAdapter(Order.ShipmentType.class, new ShipmentTypeDeserializer())
+                    .registerTypeAdapter(Product.UnitType.class, new UnitTypeDeserializer())
                     .registerTypeAdapter(Address.class, new AddressSerializer())
-                    .registerTypeAdapter(Order.class, new OrderSerializer())
                     .registerTypeAdapter(Customer.class, new CustomerSerializer())
+                    .registerTypeAdapter(Order.class, new OrderSerializer())
+                    .registerTypeAdapter(Order.OrderStatus.class, new OrderStatusSerializer())
                     .registerTypeAdapter(Producer.class, new ProducerSerializer())
+                    .registerTypeAdapter(Order.ShipmentType.class, new ShipmentTypeSerializer())
                     .create();
         }
         return gson;

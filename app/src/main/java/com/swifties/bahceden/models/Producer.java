@@ -1,7 +1,6 @@
 package com.swifties.bahceden.models;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Producer extends User {
     String shopName;
@@ -34,7 +33,7 @@ public class Producer extends User {
         this.backgroundImageURL = backgroundImageURL;
     }
 
-    String city; // TODO this is tentative we can change this into a location object etc
+//    String city; // removed
     ArrayList<Product> products;
     ArrayList<Order> orders;
 
@@ -42,9 +41,9 @@ public class Producer extends User {
         this.shopName = shopName;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+//    public void setCity(String city) {
+//        this.city = city;
+//    }
 
     public void setProducts(ArrayList<Product> products) {
         this.products = products;
@@ -58,9 +57,9 @@ public class Producer extends User {
         return shopName;
     }
 
-    public String getCity() {
-        return city;
-    }
+//    public String getCity() {
+//        return city;
+//    }
 
     public ArrayList<Product> getProducts() {
         return products;
@@ -78,5 +77,17 @@ public class Producer extends User {
     @Override
     public int hashCode() {
         return super.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Producer{" +
+                "shopName='" + shopName + '\'' +
+                ", backgroundImageURL='" + backgroundImageURL + '\'' +
+                ", rating=" + rating +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", products=" + products +
+                ", orders=" + orders +
+                '}';
     }
 }

@@ -2,9 +2,7 @@ package com.swifties.bahceden.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -48,7 +46,7 @@ public class FavItemAdapter extends RecyclerView.Adapter<FavItemAdapter.ViewHold
                 .into(holder.binding.cartProductImage);
         holder.binding.favoritesProductName.setText(product.getName());
         holder.binding.price.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit())));
-        holder.binding.city.setText(product.getProducer().getCity());
+//        holder.binding.city.setText(product.getProducer().getCity());
         holder.binding.rating.setText(String.valueOf(product.getRating()));
         holder.binding.favButton.setOnClickListener(v -> {
             if (AuthUser.getCustomer().removeFavProduct(product))

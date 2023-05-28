@@ -1,24 +1,40 @@
 package com.swifties.bahceden.models;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 public class Product {
-    UnitType unitType;
+    private UnitType unitType;
     private int id;
     private String name;
     private String description;
-    //private ArrayList<Comment> comments;
+    private List<Comment> comments;
     private Producer producer;
     private double rating;
-    private int producerId;
     private double pricePerUnit;
     private double amountInStock;
     private String imageURL;
+    private Category category;
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     public Product() {
 
@@ -139,5 +155,22 @@ public class Product {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "unitType=" + unitType +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", comments=" + comments +
+                ", producer=" + producer +
+                ", rating=" + rating +
+                ", pricePerUnit=" + pricePerUnit +
+                ", amountInStock=" + amountInStock +
+                ", imageURL='" + imageURL + '\'' +
+                ", category=" + category +
+                '}';
     }
 }

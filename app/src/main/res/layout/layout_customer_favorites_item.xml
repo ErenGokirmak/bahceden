@@ -58,16 +58,16 @@
         app:layout_constraintTop_toTopOf="@id/favoritesProductName"/>
 
 
-    <TextView
-        android:id="@+id/city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Samsun"
-        android:textColor="@color/darkGray"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/favoritesProductName"
-        app:layout_constraintTop_toBottomOf="@id/favoritesProductName" />
+<!--    <TextView-->
+<!--        android:id="@+id/city"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:text="Samsun"-->
+<!--        android:textColor="@color/darkGray"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toStartOf="@id/favoritesProductName"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/favoritesProductName" />-->
 
 
     <TextView

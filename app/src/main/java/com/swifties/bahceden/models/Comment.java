@@ -1,26 +1,78 @@
 package com.swifties.bahceden.models;
 
 public class Comment {
-    private Customer author;
+    private User author;
     private Product product;
     private String message;
     private Comment parent;
     private int countOfLikes;
     private int id;
+    private Comment childComment;
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Comment getParent() {
+        return parent;
+    }
+
+    public void setParent(Comment parent) {
+        this.parent = parent;
+    }
+
+    public int getCountOfLikes() {
+        return countOfLikes;
+    }
+
+    public void setCountOfLikes(int countOfLikes) {
+        this.countOfLikes = countOfLikes;
+    }
 
     public int getId() {
         return id;
     }
-    public Customer getAuthor() {
-        return author;
+
+    public void setId(int id) {
+        this.id = id;
     }
-    public Product getProduct() {
-        return product;
+
+    public Comment getChildComment() {
+        return childComment;
     }
-    public String getContentOfComment() {
-        return message;
+
+    public void setChildComment(Comment childComment) {
+        this.childComment = childComment;
     }
-    public int getNumberOfLikes() {
-        return countOfLikes;
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "author=" + author +
+                ", message='" + message + '\'' +
+                ", parent=" + parent +
+                ", countOfLikes=" + countOfLikes +
+                ", id=" + id +
+                '}';
     }
 }

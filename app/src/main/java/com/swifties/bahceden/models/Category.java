@@ -1,5 +1,6 @@
 package com.swifties.bahceden.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,8 +18,12 @@ public class Category {
         this.name = name;
     }
 
-    public static Category newCategory (int id, String name)
+    public static Category getCategory(int id, String name)
     {
+        if (existingCategories == null)
+        {
+            existingCategories = new ArrayList<>();
+        }
         Optional<Category> optionalCategory = existingCategories.stream()
                 .filter(c -> c.getId() == id)
                 .findFirst();
@@ -55,5 +60,13 @@ public class Category {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

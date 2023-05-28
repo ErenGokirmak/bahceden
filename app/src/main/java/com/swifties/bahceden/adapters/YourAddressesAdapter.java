@@ -15,7 +15,6 @@ import com.swifties.bahceden.databinding.LayoutCustomerAddressItemBinding;
 import com.swifties.bahceden.models.Address;
 
 import java.util.List;
-import java.util.Observer;
 
 import retrofit2.Call;
 import retrofit2.Callback;
