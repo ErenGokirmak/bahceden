@@ -35,7 +35,6 @@ public class ProducerAdapter extends RecyclerView.Adapter<ProducerAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         LayoutItemBinding binding = LayoutItemBinding.inflate(inflater, viewGroup, false);
-        // Create a new view, which defines the UI of the list item
         return new ViewHolder(binding);
     }
 
@@ -84,7 +83,7 @@ public class ProducerAdapter extends RecyclerView.Adapter<ProducerAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return products.size();
+        return products == null ? 0 : products.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

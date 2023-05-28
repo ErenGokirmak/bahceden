@@ -7,7 +7,6 @@ public class Producer extends User {
     String backgroundImageURL;
     double rating;
     String phoneNumber;
-    String city; // TODO this is tentative we can change this into a location object etc
     Address address;
     ArrayList<Product> products;
     ArrayList<Order> orders;

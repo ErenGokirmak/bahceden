@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.adapters.ProducerAdapter;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.ProducerApi;
@@ -34,7 +35,7 @@ public class CustomerViewProducerActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         intent = getIntent();
-        if (intent.hasExtra("producer_id")) {
+        if (!intent.hasExtra("producer_id")) {
             Toast.makeText(this, "Could not find producer.", Toast.LENGTH_SHORT).show();
             super.onBackPressed();
         }
@@ -45,11 +46,11 @@ public class CustomerViewProducerActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     Producer producer = response.body();
 
-                    if (producer.getShopName() != null) {
-                        binding.customerViewProducerName.setText(producer.getShopName());
-                    } else {
-                        binding.customerViewProducerName.setText(producer.getName());
-                    }
+                    Picasso.get().load(producer.getBackgroundImageURL().replace("localhost", "10.0.2.2")).into(binding.costumerViewProducerBGImage);
+                    Picasso.get().load(producer.getProfileImageURL().replace("localhost", "10.0.2.2")).into(binding.costumerViewProducerImage);
+
+                    binding.customerViewProducerShopName.setText(producer.getShopName());
+                    binding.customerViewProducerName.setText(producer.getName());
                     int spanCount = 2;
                     int dp_spacing = 30;
                     int spacing = Math.round(dp_spacing * getResources().getDisplayMetrics().density);
