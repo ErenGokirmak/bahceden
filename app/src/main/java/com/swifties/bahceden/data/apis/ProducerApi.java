@@ -1,6 +1,7 @@
 package com.swifties.bahceden.data.apis;
 
 import com.swifties.bahceden.models.Producer;
+import com.swifties.bahceden.models.Product;
 
 import java.util.List;
 
@@ -84,7 +85,8 @@ public interface ProducerApi {
             @Query("type") String type
     );
 
-
+    @GET("producers/{producerId}/products")
+    Call<List<Product>> getProductsOfProducer (@Path("producerId") int producerId);
 
 
 }
