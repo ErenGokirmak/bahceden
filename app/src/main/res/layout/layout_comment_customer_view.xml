@@ -81,8 +81,9 @@
         android:text="@string/loremIpsum"
         android:textColor="@color/black"
         android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@id/commentImageHolder"
-        app:layout_constraintTop_toBottomOf="@id/commentImageHolder" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/commentImageHolder"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:visibility="visible"

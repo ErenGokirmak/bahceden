@@ -63,25 +63,20 @@ public class ProductDeserializer implements JsonDeserializer<Product> {
                             comm.setChildComment(c);
                     }
                 }
-                int authorId = commentObject.get("author").getAsInt();
-                if (authorId == -1)
+                JsonElement author = commentObject.get("author");
+                if (author.isJsonObject())
+                {
+                    JsonObject authorObj = author.getAsJsonObject();
+                    Customer authorCustomer = new Customer();
+                    authorCustomer.setId(authorObj.get("id").getAsInt());
+                    authorCustomer.setName(authorObj.get("name").getAsString());
+                    authorCustomer.setEmail(authorObj.get("email").getAsString());
+                    authorCustomer.setProfileImageURL(authorObj.get("profileImageURL").getAsString());
+                    c.setAuthor(authorCustomer);
+                }
+                else if (author.isJsonPrimitive() && author.getAsJsonPrimitive().getAsInt() == -1)
                 {
                     c.setAuthor(p.getProducer());
-                }
-                else
-                {
-//                    RetrofitService.getApi(CustomerApi.class).getCustomerById(authorId).enqueue(new Callback<Customer>() {
-//                        @Override
-//                        public void onResponse(Call<Customer> call, Response<Customer> response) {
-//                            assert response.body() != null;
-//                            c.setAuthor(response.body());
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<Customer> call, Throwable t) {
-//                            throw new RuntimeException(t);
-//                        }
-//                    });
                 }
             }
         }

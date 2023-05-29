@@ -34,6 +34,8 @@ public interface ProductApi {
      */
     @GET("products/{productId}")
     Call<Product> getProductById(@Path("productId") int id);
+    @GET("products/custom/{productId}")
+    Call<Product> getProductByIdWithDetailedComments(@Path("productId") int id);
 
     /**
      * Deletes the product from the database

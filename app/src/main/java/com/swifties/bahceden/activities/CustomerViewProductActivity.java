@@ -21,6 +21,7 @@ import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Product;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import retrofit2.Call;
@@ -48,41 +49,39 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         intent = getIntent();
         productID = intent.getIntExtra("product_id", 0);
 
-        List<Order> orders = AuthUser.getCustomer().getOrders()
-                .stream()
-                .filter(o -> o.getStatus() == Order.OrderStatus.IN_CART)
-                .filter(o -> o.getProduct().getId() == productID)
-                .collect(Collectors.toList());
-        if (orders.size() > 0) {
-            product = orders.get(0).getProduct();
-            productCount = orders.get(0).getAmount();
-            setViews();
-        } else {
-            List<Product> productsFromFav = AuthUser.getCustomer().getFavoriteProducts().stream().filter(p -> p.getId() == productID).collect(Collectors.toList());
-            if (productsFromFav.size() > 0) {
-                product = productsFromFav.get(0);
+        RetrofitService.getApi(ProductApi.class).getProductByIdWithDetailedComments(productID).enqueue(new Callback<Product>() {
+            @Override
+            public void onResponse(@NonNull Call<Product> call, @NonNull Response<Product> response) {
+                // Getting product & finding appropriate fields
+                product = response.body();
+
+                Optional<Order> orderOptional = AuthUser.getCustomer().getOrders()
+                        .stream()
+                        .filter(o -> o.getStatus() == Order.OrderStatus.IN_CART)
+                        .filter(o -> o.getProduct().getId() == productID).findFirst();
+                Optional<Product> favProductOptional = AuthUser.getCustomer().getFavoriteProducts()
+                        .stream().filter(p -> p.getId() == productID)
+                        .findFirst();
+
+                if (orderOptional.isPresent())
+                {
+                    productCount = orderOptional.get().getAmount();
+                }
+                if (favProductOptional.isPresent())
+                {
+                    binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
+                }
+
+                // Setting appropriate fields to the product's information
                 setViews();
-                binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
-            } else {
-                RetrofitService.getApi(ProductApi.class).getProductById(productID).enqueue(new Callback<Product>() {
-                    @Override
-                    public void onResponse(@NonNull Call<Product> call, @NonNull Response<Product> response) {
-                        // Getting product & finding appropriate fields
-                        product = response.body();
-
-                        // Setting appropriate fields to the product's information
-                        setViews();
-                        binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_unfavorite));
-                    }
-
-                    @Override
-                    public void onFailure(@NonNull Call<Product> call, @NonNull Throwable t) {
-                        Toast.makeText(CustomerViewProductActivity.this, "Didn't work for some reason", Toast.LENGTH_SHORT).show();
-                        Log.d("debug_purposes", t.getMessage());
-                    }
-                });
             }
-        }
+
+            @Override
+            public void onFailure(@NonNull Call<Product> call, @NonNull Throwable t) {
+                Toast.makeText(CustomerViewProductActivity.this, "Didn't work for some reason", Toast.LENGTH_SHORT).show();
+                Log.d("debug_purposes", t.getMessage());
+            }
+        });
 
 //        binding.customerViewProductBackButton.setOnClickListener(view -> CustomerViewProductActivity.super.onBackPressed());
 //        ArrayList<SlideModel> slideModels = new ArrayList<>();
