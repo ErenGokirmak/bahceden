@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,7 +50,7 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         binding = ActivityCustomerViewProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        LinearLayout starsLayout = findViewById(R.id.stars);
+        LinearLayout starsLayout = binding.stars;
         int totalStars = starsLayout.getChildCount();
 
         for (int i = 0; i < totalStars; i++) {
@@ -112,6 +116,14 @@ public class CustomerViewProductActivity extends AppCompatActivity {
                 throw new RuntimeException(t);
             }
         });
+
+        binding.newCommentButton.setOnClickListener(v -> {
+            binding.newCommentLayout.setVisibility(binding.newCommentLayout.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
+            if (binding.newCommentLayout.getVisibility() == View.GONE)
+                return;
+            Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
+            binding.newCommentLayout.startAnimation(animation);
+        });
     }
     boolean calledOnce = true;
     private void setViews() {
@@ -163,15 +175,15 @@ public class CustomerViewProductActivity extends AppCompatActivity {
     }
 
     private void setRating(int rating) {
-        LinearLayout starsLayout = findViewById(R.id.stars);
+        LinearLayout starsLayout = binding.stars;
         int totalStars = starsLayout.getChildCount();
 
         for (int i = 0; i < totalStars; i++) {
-            View star = starsLayout.getChildAt(i);
+            AppCompatImageButton star = (AppCompatImageButton) starsLayout.getChildAt(i);
             if (i < rating) {
-                star.setBackgroundResource(R.drawable.ic_star);
+                star.setImageDrawable(getDrawable(R.drawable.ic_star));
             } else {
-                star.setBackgroundResource(R.drawable.ic_empty_star);
+                star.setImageDrawable(getDrawable(R.drawable.ic_empty_star));
             }
         }
     }
