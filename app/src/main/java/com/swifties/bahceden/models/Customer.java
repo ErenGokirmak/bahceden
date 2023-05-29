@@ -50,6 +50,9 @@ public class Customer extends User {
     public List<Order> getCart() {
         return orders.stream().filter(o -> o.getStatus().equals(Order.OrderStatus.IN_CART)).collect(Collectors.toList());
     }
+    public boolean deleteFromCart (int id) {
+        return orders.removeIf(o -> o.getId() == id && o.getStatus() == Order.OrderStatus.IN_CART);
+    }
 
     public List<Product> getFavoriteProducts() {
         return favoriteProducts;
@@ -87,6 +90,7 @@ public class Customer extends User {
             RetrofitService.getApi(OrderApi.class).postOrder(newOrder).enqueue(new Callback<Order>() {
                 @Override
                 public void onResponse(Call<Order> call, Response<Order> response) {
+                    newOrder.setId(response.body().getId());
                 }
 
                 @Override

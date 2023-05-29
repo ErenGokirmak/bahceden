@@ -36,17 +36,7 @@ public class Cart {
         Order order = orders.remove(index);
         if (order == null)
             return false;
-        RetrofitService.getApi(OrderApi.class).deleteById(order.getId()).enqueue(new Callback<Order>() {
-            @Override
-            public void onResponse(Call<Order> call, Response<Order> response) {
 
-            }
-
-            @Override
-            public void onFailure(Call<Order> call, Throwable t) {
-                throw new RuntimeException(t);
-            }
-        });
         return true;
     }
 
