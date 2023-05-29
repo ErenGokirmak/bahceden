@@ -108,6 +108,17 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/totalCostText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/customerAnalyticsBenefitExpenseHolder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/nexa_heavy"
+        android:layout_margin="8dp"
+        android:text="@string/analytics_text"/>
+
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/customerAnalyticsConsumerChart"
         android:layout_width="0dp"
@@ -115,6 +126,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/customerAnalyticsBenefitExpenseHolder" />
+        app:layout_constraintTop_toBottomOf="@id/totalCostText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
