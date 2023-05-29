@@ -34,6 +34,8 @@ public interface ProductApi {
      */
     @GET("products/{productId}")
     Call<Product> getProductById(@Path("productId") int id);
+    @GET("products/custom/{productId}")
+    Call<Product> getProductByIdWithDetailedComments(@Path("productId") int id);
 
     /**
      * Deletes the product from the database
@@ -52,5 +54,12 @@ public interface ProductApi {
     @POST("products")
     Call<Product> saveProduct(@Body Product product);
 
+    @GET("/products/newArrivals")
+    Call<List<Product>> getNewArrivals();
 
+    @GET("products/similar")
+    Call<List<Product>> getSimilarProducts(@Query("product") int productId);
+
+    @GET("categories/products")
+    Call<List<Product>> getProductByCategoryId(@Query("category") int categoryId);
 }

@@ -18,6 +18,13 @@ public abstract class User {
 
     private String profileImageURL;
 
+    public User() {
+    }
+
+    public User(int id) {
+        this.id = id;
+    }
+
     public String getProfileImageURL() {
         return profileImageURL;
     }

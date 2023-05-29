@@ -6,11 +6,13 @@ import com.swifties.bahceden.data.deserializers.AddressDeserializer;
 import com.swifties.bahceden.data.deserializers.CategoryDeserializer;
 import com.swifties.bahceden.data.deserializers.CommentDeserializer;
 import com.swifties.bahceden.data.deserializers.CustomerDeserializer;
+import com.swifties.bahceden.data.deserializers.OrderDeserializer;
 import com.swifties.bahceden.data.deserializers.OrderStatusDeserializer;
 import com.swifties.bahceden.data.deserializers.ProductDeserializer;
 import com.swifties.bahceden.data.deserializers.ShipmentTypeDeserializer;
 import com.swifties.bahceden.data.deserializers.UnitTypeDeserializer;
 import com.swifties.bahceden.data.serializers.AddressSerializer;
+import com.swifties.bahceden.data.serializers.CommentSerializer;
 import com.swifties.bahceden.data.serializers.CustomerSerializer;
 import com.swifties.bahceden.data.serializers.OrderSerializer;
 import com.swifties.bahceden.data.serializers.OrderStatusSerializer;
@@ -54,10 +56,12 @@ public class RetrofitService {
                     .registerTypeAdapter(Comment.class, new CommentDeserializer())
                     .registerTypeAdapter(Customer.class, new CustomerDeserializer())
                     .registerTypeAdapter(Order.OrderStatus.class, new OrderStatusDeserializer())
+//                    .registerTypeAdapter(Order.class, new OrderDeserializer())
                     .registerTypeAdapter(Product.class, new ProductDeserializer())
                     .registerTypeAdapter(Order.ShipmentType.class, new ShipmentTypeDeserializer())
                     .registerTypeAdapter(Product.UnitType.class, new UnitTypeDeserializer())
                     .registerTypeAdapter(Address.class, new AddressSerializer())
+                    .registerTypeAdapter(Comment.class, new CommentSerializer())
                     .registerTypeAdapter(Customer.class, new CustomerSerializer())
                     .registerTypeAdapter(Order.class, new OrderSerializer())
                     .registerTypeAdapter(Order.OrderStatus.class, new OrderStatusSerializer())

@@ -1,6 +1,7 @@
 package com.swifties.bahceden.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,11 +72,16 @@ public class CommentCustomerViewAdapter extends RecyclerView.Adapter<CommentCust
                 });
             });
         }
+        holder.binding.likeCount.setOnClickListener(v -> {});
     }
 
     @Override
     public int getItemCount() {
         return comments.size();
+    }
+
+    public List<Comment> getComments() {
+        return comments;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

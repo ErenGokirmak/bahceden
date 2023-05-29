@@ -41,8 +41,6 @@ public class CustomerCartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        cart = AuthUser.getCustomer().getCart();
-
         buyNowButton = view.findViewById(R.id.customerCartBuyNowButton);
         totalPriceText = view.findViewById(R.id.customerCartTotalPriceValue);
         totalPriceText.setText(String.format(getString(R.string.turkish_lira), String.valueOf(0.0)));
@@ -53,19 +51,21 @@ public class CustomerCartFragment extends Fragment {
         });
 
         cartProductsRV = view.findViewById(R.id.customerCartProductsRV);
-        cartProductsRV.setHasFixedSize(true);
-        cartProductLayoutManager = new LinearLayoutManager(getActivity());
-
-        cartProductsRV.setLayoutManager(cartProductLayoutManager);
-        cartProductAdapter = new CartProductAdapter(cart, CustomerCartFragment.this.getContext());
-        cartProductsRV.setAdapter(cartProductAdapter);
-
-        totalPriceText.setText(String.format(requireContext().getString(R.string.turkish_lira), String.valueOf(cart.stream().map(Order::getTotalPrice).reduce(0.0, Double::sum))));
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        cartProductAdapter.notifyDataSetChanged();
+
+        cart = AuthUser.getCustomer().getCart();
+
+        cartProductsRV.setHasFixedSize(true);
+        cartProductLayoutManager = new LinearLayoutManager(getActivity());
+
+        cartProductsRV.setLayoutManager(cartProductLayoutManager);
+        cartProductAdapter = new CartProductAdapter(cart, CustomerCartFragment.this.getContext(), totalPriceText);
+        cartProductsRV.setAdapter(cartProductAdapter);
+
+        totalPriceText.setText(String.format(requireContext().getString(R.string.turkish_lira), String.valueOf(cart.stream().map(Order::getTotalPrice).reduce(0.0, Double::sum))));
     }
 }

@@ -15,19 +15,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.CustomerViewProductActivity;
+import com.swifties.bahceden.data.AuthUser;
+import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.OrderApi;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Product;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.ViewHolder> {
 
     List<Order> cart;
     Context context;
+    TextView totalPriceText;
 
-    public CartProductAdapter(List<Order> cart, Context context) {
+    public CartProductAdapter(List<Order> cart, Context context, TextView totalPriceText) {
         this.cart = cart;
         this.context = context;
+        this.totalPriceText = totalPriceText;
     }
 
     @NonNull
@@ -54,18 +63,51 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
             if (!cartItem.offsetAmountBy(-1))
             {
                 cart.remove(holder.getBindingAdapterPosition());
+                AuthUser.getCustomer().deleteFromCart(cartItem.getId());
                 notifyItemRemoved(holder.getBindingAdapterPosition());
+                RetrofitService.getApi(OrderApi.class).deleteById(cartItem.getId()).enqueue(new Callback<Order>() {
+                    @Override
+                    public void onResponse(Call<Order> call, Response<Order> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Order> call, Throwable t) {
+                        throw new RuntimeException(t);
+                    }
+                });
             }
-            notifyItemChanged(holder.getBindingAdapterPosition());
+            else
+            {
+                notifyItemChanged(holder.getBindingAdapterPosition());
+            }
+            totalPriceText.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(cart.stream().map(Order::getTotalPrice).reduce(0.0, Double::sum))));
         });
 
         holder.cartProductIncrement.setOnClickListener(v -> {
             cartItem.offsetAmountBy(1);
+            totalPriceText.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(cart.stream().map(Order::getTotalPrice).reduce(0.0, Double::sum))));
             notifyItemChanged(holder.getBindingAdapterPosition());
         });
 
         holder.cartProductDelete.setOnClickListener(v -> {
             cart.remove(holder.getBindingAdapterPosition());
+            AuthUser.getCustomer().deleteFromCart(cartItem.getId());
+            totalPriceText.setText(String.format(context.getString(R.string.turkish_lira), String.valueOf(cart.stream().map(Order::getTotalPrice).reduce(0.0, Double::sum))));
+            RetrofitService.getApi(OrderApi.class).deleteById(cartItem.getId()).enqueue(new Callback<Order>() {
+                @Override
+                public void onResponse(Call<Order> call, Response<Order> response) {
+                    if (response == null)
+                    {
+                        throw new RuntimeException("order delete response is null");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Order> call, Throwable t) {
+                    throw new RuntimeException(t);
+                }
+            });
             notifyItemRemoved(holder.getBindingAdapterPosition());
         });
 

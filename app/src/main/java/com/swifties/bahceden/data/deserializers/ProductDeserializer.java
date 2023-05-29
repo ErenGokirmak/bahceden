@@ -30,7 +30,8 @@ public class ProductDeserializer implements JsonDeserializer<Product> {
 
         p.setId(jObj.get("id").getAsInt());
         p.setName(jObj.get("name").getAsString());
-        p.setDescription(jObj.get("description").getAsString());
+        if (jObj.get("description") != null && !jObj.get("description").isJsonNull())
+            p.setDescription(jObj.get("description").getAsString());
         p.setCategory(context.deserialize(jObj.get("category"), Category.class));
         p.setUnitType(context.deserialize(jObj.get("unitType"), Product.UnitType.class));
         p.setPricePerUnit(jObj.get("pricePerUnit").getAsInt());
@@ -41,7 +42,7 @@ public class ProductDeserializer implements JsonDeserializer<Product> {
 
         JsonElement commentObjs = jObj.get("comments");
 
-        if (commentObjs.isJsonArray())
+        if (commentObjs != null && commentObjs.isJsonArray())
         {
             List<Comment> comments = new ArrayList<>();
             p.setComments(comments);
@@ -63,25 +64,20 @@ public class ProductDeserializer implements JsonDeserializer<Product> {
                             comm.setChildComment(c);
                     }
                 }
-                int authorId = commentObject.get("author").getAsInt();
-                if (authorId == -1)
+                JsonElement author = commentObject.get("author");
+                if (author.isJsonObject())
+                {
+                    JsonObject authorObj = author.getAsJsonObject();
+                    Customer authorCustomer = new Customer();
+                    authorCustomer.setId(authorObj.get("id").getAsInt());
+                    authorCustomer.setName(authorObj.get("name").getAsString());
+                    authorCustomer.setEmail(authorObj.get("email").getAsString());
+                    authorCustomer.setProfileImageURL(authorObj.get("profileImageURL").getAsString());
+                    c.setAuthor(authorCustomer);
+                }
+                else if (author.isJsonPrimitive() && author.getAsJsonPrimitive().getAsInt() == -1)
                 {
                     c.setAuthor(p.getProducer());
-                }
-                else
-                {
-//                    RetrofitService.getApi(CustomerApi.class).getCustomerById(authorId).enqueue(new Callback<Customer>() {
-//                        @Override
-//                        public void onResponse(Call<Customer> call, Response<Customer> response) {
-//                            assert response.body() != null;
-//                            c.setAuthor(response.body());
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<Customer> call, Throwable t) {
-//                            throw new RuntimeException(t);
-//                        }
-//                    });
                 }
             }
         }

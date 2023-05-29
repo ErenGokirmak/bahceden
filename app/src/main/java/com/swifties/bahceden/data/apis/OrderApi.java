@@ -47,4 +47,7 @@ public interface OrderApi {
      */
     @DELETE("orders/{orderId}")
     Call<Order> deleteById(@Path("orderId") int orderId);
+
+    @GET("producers/{producerId}/orders")
+    Call<List<Order>> getOrdersOfProducer(@Path("producerId") int producerId);
 }

@@ -9,7 +9,9 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface CommentApi {
 
@@ -44,4 +46,6 @@ public interface CommentApi {
     @DELETE("comments/{commentId}")
     Call<Comment> deleteCommentById(@Path("commentId") int id);
 
+    @PUT("comments/{commentId}")
+    Call<Comment> putLikeCount(@Path("commentId") int id, @Query("likes") int likeCount);
 }
