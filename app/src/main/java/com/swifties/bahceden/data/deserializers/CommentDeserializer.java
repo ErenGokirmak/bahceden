@@ -24,7 +24,7 @@ public class CommentDeserializer implements JsonDeserializer<Comment> {
     @Override
     public Comment deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 
-        if (json.isJsonPrimitive())
+        if (json.isJsonPrimitive() || (json.isJsonObject() && json.getAsJsonObject().size() == 1))
         {
             return null;
         }

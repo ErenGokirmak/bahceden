@@ -22,8 +22,11 @@ import com.swifties.bahceden.adapters.CommentCustomerViewAdapter;
 import com.swifties.bahceden.adapters.ProductListingAdapter;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.CommentApi;
 import com.swifties.bahceden.data.apis.ProductApi;
+import com.swifties.bahceden.data.serializers.CommentSerializer;
 import com.swifties.bahceden.databinding.ActivityCustomerViewProductBinding;
+import com.swifties.bahceden.models.Comment;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Product;
 
@@ -116,14 +119,6 @@ public class CustomerViewProductActivity extends AppCompatActivity {
                 throw new RuntimeException(t);
             }
         });
-
-        binding.newCommentButton.setOnClickListener(v -> {
-            binding.newCommentLayout.setVisibility(binding.newCommentLayout.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
-            if (binding.newCommentLayout.getVisibility() == View.GONE)
-                return;
-            Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
-            binding.newCommentLayout.startAnimation(animation);
-        });
     }
     boolean calledOnce = true;
     private void setViews() {
@@ -172,6 +167,37 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         binding.commentItems.setAdapter(new CommentCustomerViewAdapter(product.getComments().stream().filter(c -> c.getParent() == null).collect(Collectors.toList()), getLayoutInflater(), this));
         binding.itemSimilarItems.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         binding.itemSimilarItems.setAdapter(new ProductListingAdapter(similarItems, this, getLayoutInflater()));
+        binding.newCommentButton.setOnClickListener(v -> {
+            binding.newCommentLayout.setVisibility(binding.newCommentLayout.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
+            if (binding.newCommentLayout.getVisibility() == View.GONE)
+                return;
+            Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
+            binding.newCommentLayout.startAnimation(animation);
+        });
+        binding.submitComment.setOnClickListener(v -> {
+            String message = binding.messageEditText.getText().toString();
+            Comment c = new Comment();
+            c.setMessage(message);
+            c.setAuthor(AuthUser.getCustomer());
+            c.setProduct(product);
+            c.setCountOfLikes(0);
+            RetrofitService.getApi(CommentApi.class).saveComment(c).enqueue(new Callback<Comment>() {
+                @Override
+                public void onResponse(Call<Comment> call, Response<Comment> response) {
+                    c.setId(response.body().getId());
+                    product.getComments().add(c);
+                    ((CommentCustomerViewAdapter)binding.commentItems.getAdapter()).getComments().add(c);
+                    binding.commentItems.getAdapter().notifyItemInserted(binding.commentItems.getAdapter().getItemCount());
+                }
+
+                @Override
+                public void onFailure(Call<Comment> call, Throwable t) {
+                    throw new RuntimeException(t);
+                }
+            });
+
+            binding.newCommentLayout.setVisibility(View.GONE);
+        });
     }
 
     private void setRating(int rating) {

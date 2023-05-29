@@ -42,6 +42,6 @@ public interface CommentApi {
     Call<Comment> saveComment(@Body Comment comment);
 
     @DELETE("comments/{commentId}")
-    Call<String> deleteCommentById(@Path("commentId") int id);
+    Call<Comment> deleteCommentById(@Path("commentId") int id);
 
 }

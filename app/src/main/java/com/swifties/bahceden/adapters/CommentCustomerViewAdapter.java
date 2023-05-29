@@ -61,14 +61,14 @@ public class CommentCustomerViewAdapter extends RecyclerView.Adapter<CommentCust
             holder.binding.commentDelete.setOnClickListener(v -> {
                 comments.remove(comment);
                 notifyItemRemoved(position);
-                RetrofitService.getApi(CommentApi.class).deleteCommentById(comment.getId()).enqueue(new Callback<String>() {
+                RetrofitService.getApi(CommentApi.class).deleteCommentById(comment.getId()).enqueue(new Callback<Comment>() {
                     @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
+                    public void onResponse(Call<Comment> call, Response<Comment> response) {
 
                     }
 
                     @Override
-                    public void onFailure(Call<String> call, Throwable t) {
+                    public void onFailure(Call<Comment> call, Throwable t) {
                         throw new RuntimeException(t);
                     }
                 });
@@ -79,6 +79,10 @@ public class CommentCustomerViewAdapter extends RecyclerView.Adapter<CommentCust
     @Override
     public int getItemCount() {
         return comments.size();
+    }
+
+    public List<Comment> getComments() {
+        return comments;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
