@@ -10,6 +10,14 @@ public class Producer extends User {
     Address address;
     ArrayList<Product> products;
     ArrayList<Order> orders;
+
+    public Producer() {
+    }
+
+    public Producer(int id) {
+        super(id);
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }

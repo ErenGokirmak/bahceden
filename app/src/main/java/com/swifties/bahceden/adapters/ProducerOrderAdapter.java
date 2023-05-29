@@ -1,6 +1,8 @@
 package com.swifties.bahceden.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,26 +59,25 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
             case ONGOING:
                 color = context.getColor(R.color.eggplant_pink);
                 break;
-            case CANCELLED:
+            case DELIVERED:
                 color = context.getColor(R.color.plus_green);
                 break;
-            case DELIVERED:
+            case CANCELLED:
                 color = context.getColor(R.color.minus_red);
                 break;
         }
-        holder.binding.orderStatus.setText(String.format(context.getResources().getText(R.string.status).toString(), order.getStatus()));
+        holder.binding.orderStatus.setText(order.getStatus().toString());
         holder.binding.orderStatus.setTextColor(color);
-
-
-
-
-
         holder.binding.changeStatusButton.setOnClickListener(v -> {
             holder.binding.changeStatusButtonsHolder.setVisibility(View.VISIBLE);
             Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
             holder.binding.changeStatusButtonsHolder.startAnimation(animation);
         });
-        holder.binding.changeStatusButtonsHolder.setOnClickListener(v -> holder.binding.changeStatusButtonsHolder.setVisibility(View.GONE));
+
+        holder.binding.pendingButton.setOnClickListener(new StatusChangeListener(Order.OrderStatus.PENDING, order));
+        holder.binding.ongoingButton.setOnClickListener(new StatusChangeListener(Order.OrderStatus.ONGOING, order));
+        holder.binding.deliveredButton.setOnClickListener(new StatusChangeListener(Order.OrderStatus.DELIVERED, order));
+        holder.binding.cancelledButton.setOnClickListener(new StatusChangeListener(Order.OrderStatus.CANCELLED, order));
 
         holder.binding.detailsButton.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), ProducerOrderDetailsActivity.class);
@@ -96,6 +97,29 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
         public ViewHolder(LayoutProducerOrdersItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+        }
+    }
+
+    private class StatusChangeListener implements View.OnClickListener
+    {
+        Order.OrderStatus status;
+        Order order;
+
+        public StatusChangeListener(Order.OrderStatus status, Order order) {
+            this.status = status;
+            this.order = order;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (order.getStatus() == status)
+                return;
+            new AlertDialog.Builder(context)
+                    .setTitle("Confirmation")
+                    .setMessage("Are you sure you want to change the status?")
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> order.changeStatusTo(status))
+                    .setNegativeButton(android.R.string.no, null).show();
         }
     }
 }
