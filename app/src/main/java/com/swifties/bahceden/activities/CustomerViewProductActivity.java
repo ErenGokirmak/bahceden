@@ -3,6 +3,8 @@ package com.swifties.bahceden.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,6 +45,24 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityCustomerViewProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        LinearLayout starsLayout = findViewById(R.id.stars);
+        int totalStars = starsLayout.getChildCount();
+
+        for (int i = 0; i < totalStars; i++) {
+            final int starIndex = i;
+            View star = starsLayout.getChildAt(i);
+            star.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setRating(starIndex + 1);
+                }
+            });
+        }
+
+        // Setting up productApi
+
+        // Getting product from the backend
         intent = getIntent();
         productID = intent.getIntExtra("product_id", 0);
 
@@ -140,5 +160,19 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         binding.commentItems.setAdapter(new CommentCustomerViewAdapter(product.getComments().stream().filter(c -> c.getParent() == null).collect(Collectors.toList()), getLayoutInflater(), this));
         binding.itemSimilarItems.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         binding.itemSimilarItems.setAdapter(new ProductListingAdapter(similarItems, this, getLayoutInflater()));
+    }
+
+    private void setRating(int rating) {
+        LinearLayout starsLayout = findViewById(R.id.stars);
+        int totalStars = starsLayout.getChildCount();
+
+        for (int i = 0; i < totalStars; i++) {
+            View star = starsLayout.getChildAt(i);
+            if (i < rating) {
+                star.setBackgroundResource(R.drawable.ic_star);
+            } else {
+                star.setBackgroundResource(R.drawable.ic_empty_star);
+            }
+        }
     }
 }
