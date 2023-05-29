@@ -1,5 +1,12 @@
 package com.swifties.bahceden.models;
 
+import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.OrderApi;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Order {
 
     public enum ShipmentType {
@@ -120,5 +127,19 @@ public class Order {
     public void setStatus(OrderStatus status) {
         this.status = status;
     }
+    public void changeStatusTo (OrderStatus status)
+    {
+        setStatus(status);
+        RetrofitService.getApi(OrderApi.class).putOrder(this, getId()).enqueue(new Callback<Order>() {
+            @Override
+            public void onResponse(Call<Order> call, Response<Order> response) {
 
+            }
+
+            @Override
+            public void onFailure(Call<Order> call, Throwable t) {
+                throw new RuntimeException(t);
+            }
+        });
+    }
 }

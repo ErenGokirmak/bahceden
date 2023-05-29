@@ -1,6 +1,7 @@
 package com.swifties.bahceden.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,14 +61,14 @@ public class CommentCustomerViewAdapter extends RecyclerView.Adapter<CommentCust
             holder.binding.commentDelete.setOnClickListener(v -> {
                 comments.remove(comment);
                 notifyItemRemoved(position);
-                RetrofitService.getApi(CommentApi.class).deleteCommentById(comment.getId()).enqueue(new Callback<Comment>() {
+                RetrofitService.getApi(CommentApi.class).deleteCommentById(comment.getId()).enqueue(new Callback<String>() {
                     @Override
-                    public void onResponse(Call<Comment> call, Response<Comment> response) {
+                    public void onResponse(Call<String> call, Response<String> response) {
 
                     }
 
                     @Override
-                    public void onFailure(Call<Comment> call, Throwable t) {
+                    public void onFailure(Call<String> call, Throwable t) {
                         throw new RuntimeException(t);
                     }
                 });

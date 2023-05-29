@@ -41,7 +41,7 @@ public class ProductDeserializer implements JsonDeserializer<Product> {
 
         JsonElement commentObjs = jObj.get("comments");
 
-        if (commentObjs.isJsonArray())
+        if (commentObjs != null && commentObjs.isJsonArray())
         {
             List<Comment> comments = new ArrayList<>();
             p.setComments(comments);

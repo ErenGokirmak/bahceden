@@ -63,6 +63,7 @@ public class Comment {
 
     public void setChildComment(Comment childComment) {
         this.childComment = childComment;
+        childComment.setParent(this);
     }
 
     @Override

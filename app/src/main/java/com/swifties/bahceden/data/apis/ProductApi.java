@@ -54,5 +54,9 @@ public interface ProductApi {
     @POST("products")
     Call<Product> saveProduct(@Body Product product);
 
+    @GET("/products/newArrivals")
+    Call<List<Product>> getNewArrivals();
 
+    @GET("products/similar")
+    Call<List<Product>> getSimilarProducts(@Query("product") int productId);
 }

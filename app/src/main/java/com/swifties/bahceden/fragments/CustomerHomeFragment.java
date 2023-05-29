@@ -66,7 +66,7 @@ public class CustomerHomeFragment extends Fragment {
         ArrayList<SlideModel> slideModels = new ArrayList<>();
 
 
-        RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
+        RetrofitService.getApi(ProductApi.class).getNewArrivals().enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 products.removeAll(products);

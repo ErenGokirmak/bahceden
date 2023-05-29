@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.CommentCustomerViewAdapter;
+import com.swifties.bahceden.adapters.ProductListingAdapter;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.ProductApi;
@@ -35,17 +36,13 @@ public class CustomerViewProductActivity extends AppCompatActivity {
     int productID;
     int productCount = 0;
     ActivityCustomerViewProductBinding binding;
+    List<Product> similarItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityCustomerViewProductBinding.inflate(getLayoutInflater());
-
         setContentView(binding.getRoot());
-
-        // Setting up productApi
-
-        // Getting product from the backend
         intent = getIntent();
         productID = intent.getIntExtra("product_id", 0);
 
@@ -83,24 +80,26 @@ public class CustomerViewProductActivity extends AppCompatActivity {
             }
         });
 
-//        binding.customerViewProductBackButton.setOnClickListener(view -> CustomerViewProductActivity.super.onBackPressed());
-//        ArrayList<SlideModel> slideModels = new ArrayList<>();
-//
-//        slideModels.add(new SlideModel(R.drawable.honey1, ScaleTypes.FIT));
-//        slideModels.add(new SlideModel(R.drawable.honey2, ScaleTypes.FIT));
-//        slideModels.add(new SlideModel(R.drawable.honey3, ScaleTypes.FIT));
-//        binding.productSlider.setImageList(slideModels);
+        RetrofitService.getApi(ProductApi.class).getSimilarProducts(productID).enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                similarItems = response.body();
+                setViews();
+            }
 
-        RecyclerView similarItemsRV = binding.itemSimilarItems;
-        similarItemsRV.setHasFixedSize(true);
-        similarItemsRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        //similarItemsAdapter = new ProductListingAdapter(products, this);
-        //similarItemsRV.setAdapter(similarItemsAdapter);
-
-
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                throw new RuntimeException(t);
+            }
+        });
     }
-
+    boolean calledOnce = true;
     private void setViews() {
+        if (calledOnce)
+        {
+            calledOnce = false;
+            return;
+        }
         binding.customerViewProductItemName.setText(product.getName());
         binding.customerViewProductDescriptionText.setText(product.getDescription());
         binding.customerViewProductRatingText.setText(String.valueOf(product.getRating()));
@@ -138,6 +137,8 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         binding.customerViewProductBackButton.setOnClickListener(v -> CustomerViewProductActivity.super.onBackPressed());
         binding.totalPrice.setText(String.format(getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit() * productCount)));
         binding.commentItems.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        binding.commentItems.setAdapter(new CommentCustomerViewAdapter(product.getComments(), getLayoutInflater(), this));
+        binding.commentItems.setAdapter(new CommentCustomerViewAdapter(product.getComments().stream().filter(c -> c.getParent() == null).collect(Collectors.toList()), getLayoutInflater(), this));
+        binding.itemSimilarItems.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        binding.itemSimilarItems.setAdapter(new ProductListingAdapter(similarItems, this, getLayoutInflater()));
     }
 }
