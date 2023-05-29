@@ -1,5 +1,6 @@
 package com.swifties.bahceden.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.swifties.bahceden.activities.CategoryItemsActivity;
 import com.swifties.bahceden.adapters.ProductListingAdapter;
 import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.data.RetrofitService;
@@ -30,25 +32,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CustomerHomeFragment extends Fragment {
-    private RecyclerView newArrivalsRV;
-    private RecyclerView.Adapter<ProductListingAdapter.ViewHolder> arrivalsAdapter;
 
-    private ImageSlider imageSlider;
-    RecyclerView.LayoutManager newArrivalsLayoutManager;
-
-    List<Product> products;
-
+    List<Product> newArrivals;
     FragmentCustomerHomeBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentCustomerHomeBinding.inflate(inflater, container, false);
-        products = new ArrayList<>();
+        newArrivals = new ArrayList<>();
 
-        newArrivalsRV = binding.customerHomeNewArrivalsRV;
-        arrivalsAdapter = new ProductListingAdapter(products, getContext(), inflater);
-
-        newArrivalsRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        newArrivalsRV.setAdapter(arrivalsAdapter);
+        binding.customerHomeNewArrivalsRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        binding.customerHomeNewArrivalsRV.setAdapter(new ProductListingAdapter(newArrivals, getContext(), inflater));
 
         return binding.getRoot();
     }
@@ -56,24 +49,30 @@ public class CustomerHomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        for (int i = 1; i <= binding.customerHomeCategoriesGrid.getChildCount(); i++)
+        {
+            int finalI = i;
+            binding.customerHomeCategoriesGrid.getChildAt(i-1).setOnClickListener(v -> {
+                Intent intent = new Intent(getContext(), CategoryItemsActivity.class);
+                intent.putExtra("category_id", finalI);
+                startActivity(intent);
+            });
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        imageSlider = binding.customerHomeSlider;
         ArrayList<SlideModel> slideModels = new ArrayList<>();
-
-
         RetrofitService.getApi(ProductApi.class).getNewArrivals().enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                products.removeAll(products);
-                products.addAll(response.body());
-                arrivalsAdapter.notifyDataSetChanged();
-                slideModels.addAll(products.stream().map(p -> new SlideModel(p.getImageURL().replace("localhost", "10.0.2.2"), ScaleTypes.FIT)).collect(Collectors.toList()));
-                imageSlider.setImageList(slideModels);
+                newArrivals.clear();
+                newArrivals.addAll(response.body());
+                binding.customerHomeNewArrivalsRV.getAdapter().notifyDataSetChanged();
+                slideModels.addAll(newArrivals.stream().map(p -> new SlideModel(p.getImageURL().replace("localhost", "10.0.2.2"), ScaleTypes.FIT)).collect(Collectors.toList()));
+                binding.customerHomeSlider.setImageList(slideModels);
             }
 
             @Override

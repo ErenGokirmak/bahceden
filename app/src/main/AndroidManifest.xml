@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Bahceden"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.CategoryItemsActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.ProducerOrderDetailsActivity"
             android:exported="false" />
@@ -77,11 +80,11 @@
         <activity
             android:name=".activities.SignUpActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.LogInActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.IntroActivity"
             android:exported="false" />
@@ -95,4 +98,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

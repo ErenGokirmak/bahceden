@@ -59,4 +59,7 @@ public interface ProductApi {
 
     @GET("products/similar")
     Call<List<Product>> getSimilarProducts(@Query("product") int productId);
+
+    @GET("categories/products")
+    Call<List<Product>> getProductByCategoryId(@Query("category") int categoryId);
 }
