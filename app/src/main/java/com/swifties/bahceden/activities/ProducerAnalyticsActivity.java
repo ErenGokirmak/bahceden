@@ -23,6 +23,7 @@ import com.swifties.bahceden.models.ProductInformation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import retrofit2.Call;
@@ -34,16 +35,15 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
     RecyclerView analyticsProductRV;
     RecyclerView.Adapter<AnalyticsProductAdapter.ViewHolder> analyticsProductAdapter;
     RecyclerView.LayoutManager analyticsProductLM;
-
     Spinner spinner1;
     Spinner spinner2;
 
     TextView totalText;
+    int totalRevenue;
     TextView averageText;
     List<Order> orders;
     List<Product> products;
     List<ProductInformation> productInfo;
-
     ActivityProducerAnalyticsBinding binding;
 
 
@@ -56,23 +56,19 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
         totalText = binding.producerAnalyticsTotalText;
         averageText = binding.producerAnalyticsAverageText;
 
-        // TODO: we need a "getOrdersByProducerId()" for this part
-        //  or maybe not, we can patch this by doing a filter on the
-        //  frontend like below
-        //   |
-        //   v
-        RetrofitService.getApi(OrderApi.class).getAllOrders().enqueue(new Callback<List<Order>>() {
+        RetrofitService.getApi(OrderApi.class).getOrdersOfProducer(AuthUser.getProducer().getId()).enqueue(new Callback<List<Order>>() {
             @Override
             public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
                 assert response.body() != null;
 
                 orders = response.body().stream()
-                        .filter(order -> (order.getStatus() != Order.OrderStatus.IN_CART || order.getStatus() != Order.OrderStatus.CANCELLED) && order.getProduct().getProducer().getId() == AuthUser.getProducer().getId())
+                        .filter(order -> (order.getStatus() != Order.OrderStatus.IN_CART || order.getStatus() != Order.OrderStatus.CANCELLED))
                         .collect(Collectors.toList());
 
 
                 products = new ArrayList<>();
                 productInfo = new ArrayList<>();
+                totalRevenue = 0;
                 for (int i = 0; i < orders.size(); i++) {
                     Order o = orders.get(i);
                     if (!products.contains(o.getProduct())) {
@@ -81,7 +77,10 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
                     }
                     productInfo.get(products.indexOf(o.getProduct())).increaseEarnings(o.getTotalPrice());
                     productInfo.get(products.indexOf(o.getProduct())).increaseAmountOfSales(o.getAmount());
+                    totalRevenue += o.getTotalPrice();
                 }
+
+                binding.producerAnalyticsTotalText.setText(String.format(Locale.ENGLISH,"Total: %d", totalRevenue));
 
 
                 analyticsProductRV = binding.producerAnalyticsRV;

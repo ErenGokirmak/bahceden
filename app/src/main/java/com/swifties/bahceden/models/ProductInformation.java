@@ -1,5 +1,9 @@
 package com.swifties.bahceden.models;
 
+import android.content.Context;
+
+import com.swifties.bahceden.R;
+
 public class ProductInformation {
     private Product product;
     private double amountOfSales;
@@ -43,6 +47,9 @@ public class ProductInformation {
         this.earnings = earnings;
     }
 
+    public String getEarningsInString() {
+        return earnings + " ₺";
+    }
     public String getAmountSoldInString() {
         Product.UnitType unitType = product.getUnitType();
         if (unitType == Product.UnitType.KILOGRAMS) {
