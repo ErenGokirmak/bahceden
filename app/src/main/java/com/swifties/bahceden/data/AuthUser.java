@@ -9,6 +9,7 @@ import com.swifties.bahceden.activities.IntroActivity;
 import com.swifties.bahceden.activities.ProducerMainActivity;
 import com.swifties.bahceden.data.apis.CustomerApi;
 import com.swifties.bahceden.data.apis.ProducerApi;
+import com.swifties.bahceden.data.local.DBHelper;
 import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.User;
@@ -92,7 +93,8 @@ public class AuthUser {
         }
     }
 
-    public void deleteUser() {
+    public void deleteUser(Context context) {
+        new DBHelper(context).deleteAllUsers();
         user = null;
     }
 

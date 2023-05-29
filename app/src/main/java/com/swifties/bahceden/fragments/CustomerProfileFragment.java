@@ -80,7 +80,7 @@ public class CustomerProfileFragment extends Fragment {
         });
 
         logOutButton.setOnClickListener(logOutView -> {
-            AuthUser.getInstance().deleteUser();
+            AuthUser.getInstance().deleteUser(getContext());
             Intent intent = new Intent(getActivity(), IntroActivity.class);
             startActivity(intent);
         });

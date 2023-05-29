@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.data.AuthUser;
+import com.swifties.bahceden.data.local.DBHelper;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -119,6 +121,11 @@ public class LogInActivity extends AppCompatActivity {
                                                 if (task.isSuccessful()) {
                                                     DocumentSnapshot document = task.getResult();
                                                     int userType = Integer.parseInt(document.getString("userType"));
+
+                                                    CheckBox rememberMe = findViewById(R.id.loginRememberMe);
+
+                                                    if (rememberMe.isChecked())
+                                                        new DBHelper(LogInActivity.this).insertUser(email, password);
 
                                                     if (userType == IntroActivity.PRODUCER_TYPE)
                                                         AuthUser.getInstance().createUser(email, userType, LogInActivity.this);

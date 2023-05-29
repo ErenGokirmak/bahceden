@@ -51,7 +51,7 @@ public class ProducerProfileFragment extends Fragment {
 
 
         binding.producerProfileLogOutButton.setOnClickListener(logOutView -> {
-            AuthUser.getInstance().deleteUser();
+            AuthUser.getInstance().deleteUser(getContext());
             Intent intent = new Intent(getActivity(), IntroActivity.class);
             startActivity(intent);
         });
