@@ -72,7 +72,7 @@ public class CustomerHomeFragment extends Fragment {
                 products.removeAll(products);
                 products.addAll(response.body());
                 arrivalsAdapter.notifyDataSetChanged();
-                slideModels.addAll(products.stream().map(p -> new SlideModel(p.getImageURL(), ScaleTypes.FIT)).collect(Collectors.toList()));
+                slideModels.addAll(products.stream().map(p -> new SlideModel(p.getImageURL().replace("localhost", "10.0.2.2"), ScaleTypes.FIT)).collect(Collectors.toList()));
                 imageSlider.setImageList(slideModels);
             }
 

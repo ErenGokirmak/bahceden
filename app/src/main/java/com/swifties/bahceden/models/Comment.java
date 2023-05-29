@@ -8,6 +8,15 @@ public class Comment {
     private int countOfLikes;
     private int id;
     private Comment childComment;
+    private int ratingGiven;
+
+    public int getRatingGiven() {
+        return ratingGiven;
+    }
+
+    public void setRatingGiven(int ratingGiven) {
+        this.ratingGiven = ratingGiven;
+    }
 
     public User getAuthor() {
         return author;

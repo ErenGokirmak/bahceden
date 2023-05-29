@@ -181,6 +181,7 @@ public class CustomerViewProductActivity extends AppCompatActivity {
             c.setAuthor(AuthUser.getCustomer());
             c.setProduct(product);
             c.setCountOfLikes(0);
+            c.setRatingGiven(ratingGiven);
             RetrofitService.getApi(CommentApi.class).saveComment(c).enqueue(new Callback<Comment>() {
                 @Override
                 public void onResponse(Call<Comment> call, Response<Comment> response) {
@@ -200,7 +201,9 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         });
     }
 
+    int ratingGiven = 0;
     private void setRating(int rating) {
+        ratingGiven = rating;
         LinearLayout starsLayout = binding.stars;
         int totalStars = starsLayout.getChildCount();
 

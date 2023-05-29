@@ -74,6 +74,7 @@ public class CommentCustomerViewAdapter extends RecyclerView.Adapter<CommentCust
                 });
             });
         }
+        holder.binding.likeCount.setOnClickListener(v -> {});
     }
 
     @Override
