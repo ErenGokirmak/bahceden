@@ -30,7 +30,8 @@ public class ProductDeserializer implements JsonDeserializer<Product> {
 
         p.setId(jObj.get("id").getAsInt());
         p.setName(jObj.get("name").getAsString());
-        p.setDescription(jObj.get("description").getAsString());
+        if (jObj.get("description") != null && !jObj.get("description").isJsonNull())
+            p.setDescription(jObj.get("description").getAsString());
         p.setCategory(context.deserialize(jObj.get("category"), Category.class));
         p.setUnitType(context.deserialize(jObj.get("unitType"), Product.UnitType.class));
         p.setPricePerUnit(jObj.get("pricePerUnit").getAsInt());
