@@ -1,13 +1,14 @@
 package com.swifties.bahceden.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,7 +62,7 @@ public class ProducerOrdersFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Order>> call, Throwable t) {
-
+                Toast.makeText(getContext(), "There was a problem retrieving your orders", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -78,9 +79,12 @@ public class ProducerOrdersFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        // TODO: This is here for testing purposes,
+        //  this should be changed to the producer's orders
         RetrofitService.getApi(CustomerApi.class).getCustomerById(1).enqueue(new Callback<Customer>() {
             @Override
             public void onResponse(Call<Customer> call, Response<Customer> response) {
+                assert response.body() != null;
                 orders = response.body().getOrders();
                 ordersAdapter.notifyDataSetChanged();
                 for (Order order : orders) {
@@ -98,7 +102,7 @@ public class ProducerOrdersFragment extends Fragment {
 
             @Override
             public void onFailure(Call<Customer> call, Throwable t) {
-                throw new RuntimeException(t);
+                Log.e("errorPurposes", t.getMessage());
             }
         });
     }

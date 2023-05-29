@@ -11,7 +11,7 @@
     android:padding="8dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cartProductImage"
+        android:id="@+id/cartProductImageHolder"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_margin="8dp"
@@ -22,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/cartProductImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
@@ -41,10 +42,11 @@
         android:text="Cherry Jam"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@id/cartProductImage"
-        app:layout_constraintTop_toTopOf="@id/cartProductImage" />
+        app:layout_constraintStart_toEndOf="@id/cartProductImageHolder"
+        app:layout_constraintTop_toTopOf="@id/cartProductImageHolder" />
 
     <TextView
+        android:id="@+id/analyticsProductId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="#007251"
@@ -80,8 +82,8 @@
         android:fontFamily="@font/nexa_heavy"
         android:text="Amount Sold : "
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/cartProductImage"
-        app:layout_constraintStart_toEndOf="@id/cartProductImage" />
+        app:layout_constraintBottom_toBottomOf="@id/cartProductImageHolder"
+        app:layout_constraintStart_toEndOf="@id/cartProductImageHolder" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -90,7 +92,7 @@
         android:fontFamily="@font/nexa_heavy"
         android:text="255"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/cartProductImage"
+        app:layout_constraintBottom_toBottomOf="@id/cartProductImageHolder"
         app:layout_constraintStart_toEndOf="@id/amountSoldText" />
 
     <TextView
@@ -102,7 +104,7 @@
         android:text="Earnings : "
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@id/amountSoldText"
-        app:layout_constraintStart_toEndOf="@id/cartProductImage" />
+        app:layout_constraintStart_toEndOf="@id/cartProductImageHolder" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -115,7 +117,7 @@
         app:layout_constraintStart_toEndOf="@id/earningsText" />
 
     <TextView
-        android:id="@+id/amount"
+        android:id="@+id/producerAnalyticsAmountLeftInStock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"

@@ -13,7 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.AnalyticsProductAdapter;
+import com.swifties.bahceden.data.AuthUser;
+import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.OrderApi;
 import com.swifties.bahceden.databinding.ActivityProducerAnalyticsBinding;
+import com.swifties.bahceden.models.Order;
+import com.swifties.bahceden.models.Product;
+import com.swifties.bahceden.models.ProductInformation;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProducerAnalyticsActivity extends AppCompatActivity {
 
@@ -26,7 +40,12 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
 
     TextView totalText;
     TextView averageText;
+    List<Order> orders;
+    List<Product> products;
+    List<ProductInformation> productInfo;
+
     ActivityProducerAnalyticsBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +53,52 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
         binding = ActivityProducerAnalyticsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-        binding.producerAnalyticsBackButton.setOnClickListener(view -> ProducerAnalyticsActivity.super.onBackPressed());
-
         totalText = binding.producerAnalyticsTotalText;
         averageText = binding.producerAnalyticsAverageText;
 
-        analyticsProductRV = binding.producerAnalyticsRV;
-        analyticsProductRV.setHasFixedSize(true);
-        analyticsProductLM = new LinearLayoutManager(this);
-        analyticsProductRV.setLayoutManager(analyticsProductLM);
-        analyticsProductAdapter = new AnalyticsProductAdapter();
-        analyticsProductRV.setAdapter(analyticsProductAdapter);
+        // TODO: we need a "getOrdersByProducerId()" for this part
+        //  or maybe not, we can patch this by doing a filter on the
+        //  frontend like below
+        //   |
+        //   v
+        RetrofitService.getApi(OrderApi.class).getAllOrders().enqueue(new Callback<List<Order>>() {
+            @Override
+            public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
+                assert response.body() != null;
+
+                orders = response.body().stream()
+                        .filter(order -> (order.getStatus() != Order.OrderStatus.IN_CART || order.getStatus() != Order.OrderStatus.CANCELLED) && order.getProduct().getProducer().getId() == AuthUser.getProducer().getId())
+                        .collect(Collectors.toList());
+
+
+                products = new ArrayList<>();
+                productInfo = new ArrayList<>();
+                for (int i = 0; i < orders.size(); i++) {
+                    Order o = orders.get(i);
+                    if (!products.contains(o.getProduct())) {
+                        products.add(o.getProduct());
+                        productInfo.add(new ProductInformation(o.getProduct(), o.getAmount(), o.getTotalPrice()));
+                    }
+                    productInfo.get(products.indexOf(o.getProduct())).increaseEarnings(o.getTotalPrice());
+                    productInfo.get(products.indexOf(o.getProduct())).increaseAmountOfSales(o.getAmount());
+                }
+
+
+                analyticsProductRV = binding.producerAnalyticsRV;
+                analyticsProductRV.setHasFixedSize(true);
+                analyticsProductLM = new LinearLayoutManager(ProducerAnalyticsActivity.this);
+                analyticsProductRV.setLayoutManager(analyticsProductLM);
+                analyticsProductAdapter = new AnalyticsProductAdapter(productInfo, ProducerAnalyticsActivity.this, getLayoutInflater());
+                analyticsProductRV.setAdapter(analyticsProductAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Order>> call, Throwable t) {
+
+            }
+        });
+        binding.producerAnalyticsBackButton.setOnClickListener(view -> ProducerAnalyticsActivity.super.onBackPressed());
+
 
         spinner1 = binding.producerAnalyticsSpinner1;
         spinner2 = binding.producerAnalyticsSpinner2;

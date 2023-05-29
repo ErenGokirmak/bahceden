@@ -32,12 +32,9 @@ import retrofit2.Response;
 public class CustomerHomeFragment extends Fragment {
     private RecyclerView newArrivalsRV;
     private RecyclerView.Adapter<ProductListingAdapter.ViewHolder> arrivalsAdapter;
-
     private ImageSlider imageSlider;
-    RecyclerView.LayoutManager newArrivalsLayoutManager;
-
+    private ArrayList<SlideModel> slideModels;
     List<Product> products;
-
     FragmentCustomerHomeBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,15 +59,15 @@ public class CustomerHomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
+        // Initializing image-slider resources
         imageSlider = binding.customerHomeSlider;
-        ArrayList<SlideModel> slideModels = new ArrayList<>();
+        slideModels = new ArrayList<>();
 
 
         RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
             @Override
-            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                products.removeAll(products);
-                products.addAll(response.body());
+            public void onResponse(@NonNull Call<List<Product>> call, @NonNull Response<List<Product>> response) {
+                products = response.body();
                 arrivalsAdapter.notifyDataSetChanged();
                 slideModels.addAll(products.stream().map(p -> new SlideModel(p.getImageURL(), ScaleTypes.FIT)).collect(Collectors.toList()));
                 imageSlider.setImageList(slideModels);

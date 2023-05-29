@@ -22,6 +22,7 @@ import com.swifties.bahceden.databinding.ActivityCustomerViewProductBinding;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,14 +35,13 @@ public class CustomerViewProductActivity extends AppCompatActivity {
     Intent intent;
     Product product;
     int productID;
-    int productCount = 0;
+    int productCount = 1;
     ActivityCustomerViewProductBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityCustomerViewProductBinding.inflate(getLayoutInflater());
-
         setContentView(binding.getRoot());
 
         LinearLayout starsLayout = findViewById(R.id.stars);

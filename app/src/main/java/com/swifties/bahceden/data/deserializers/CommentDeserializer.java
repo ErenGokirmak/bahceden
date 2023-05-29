@@ -1,5 +1,7 @@
 package com.swifties.bahceden.data.deserializers;
 
+import android.util.Log;
+
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -7,11 +9,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.CustomerApi;
-import com.swifties.bahceden.data.apis.ProducerApi;
 import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.models.Comment;
 import com.swifties.bahceden.models.Customer;
-import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.Product;
 
 import java.lang.reflect.Type;
@@ -44,7 +44,7 @@ public class CommentDeserializer implements JsonDeserializer<Comment> {
 
             @Override
             public void onFailure(Call<Product> call, Throwable t) {
-                throw new RuntimeException(t);
+                Log.e("errorPurposes", t.getMessage());
             }
         });
 
@@ -58,7 +58,7 @@ public class CommentDeserializer implements JsonDeserializer<Comment> {
 
                 @Override
                 public void onFailure(Call<Customer> call, Throwable t) {
-                    throw new RuntimeException(t);
+                    Log.e("errorPurposes", t.getMessage());
                 }
             });
         }

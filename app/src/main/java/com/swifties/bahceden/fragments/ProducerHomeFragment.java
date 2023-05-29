@@ -77,6 +77,7 @@ public class ProducerHomeFragment extends Fragment {
                 Toast.makeText(getContext(), "There was a problem retrieving reviews", Toast.LENGTH_SHORT).show();
                 Log.d("debugPurposes", t.getMessage());
             }
+
         });
 
         // TODO: Change api requests
@@ -97,10 +98,7 @@ public class ProducerHomeFragment extends Fragment {
             }
         });
 
-        // adapters
-
-
-        // image slider
+        // Image slider
         imageSlider = binding.producerHomeSlider;
         ArrayList<SlideModel> slideModels = new ArrayList<>();
 
@@ -119,7 +117,6 @@ public class ProducerHomeFragment extends Fragment {
 
             }
         });
-
 
         return view;
     }

@@ -43,6 +43,7 @@ public class ProducerDataFragment extends Fragment {
 
         producerChart = view.findViewById(R.id.producerDataChart);
 
+        // TODO: Define "success rate"
         ArrayList<PieEntry> dataEntries = new ArrayList<>();
         dataEntries.add(new PieEntry(70, "Our Recommendation"));
         dataEntries.add(new PieEntry(40, "Other Prices"));
