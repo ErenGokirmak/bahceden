@@ -1,5 +1,8 @@
 package com.swifties.bahceden.fragments;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,20 +14,32 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.activities.ProducerMainActivity;
 import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
+import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.databinding.FragmentProducerAddProductBinding;
 import com.swifties.bahceden.models.Product;
 import com.swifties.bahceden.uiclasses.SpinnerCustomItem;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okio.BufferedSink;
+import okio.Okio;
+import okio.Source;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,7 +55,11 @@ public class ProducerAddProductFragment extends Fragment {
     SpinnerCustomAdapter spinnerSubCategoriesAdapter;
     Spinner productUnitTypeSpinner;
     Button addProductButton;
+    ActivityResultLauncher<String> getImageFromGallery;
+    Uri imageUri;
     FragmentProducerAddProductBinding binding;
+    boolean bothRequestsAreDone;
+    Product product;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,13 +112,23 @@ public class ProducerAddProductFragment extends Fragment {
             }
         });
 
+        getImageFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent(),
+                uri -> {
+                    imageUri = uri;
+                    binding.producerAddProductAddImage.setImageURI(uri);
+                });
+
+        binding.producerAddProductAddImage.setOnClickListener(v -> {
+            getImageFromGallery.launch("image/*");
+        });
+
         addProductButton.setOnClickListener(addView -> {
             // TODO: take the product name, description, price, and category (further TODO), and make a new Product object.
             //  afterwards, pass this new product onto the database.
 
-            Product product = new Product();
+            product = new Product();
 
-            if (productNameField.getText().equals("") || productDescriptionField.getText().equals("") || productPriceField.getText().equals("")) {
+            if (String.valueOf(productNameField.getText()).equals("") || String.valueOf(productDescriptionField.getText()).equals("") || String.valueOf(productPriceField.getText()).equals("")) {
                 Toast.makeText(view.getContext(), "Please input appropriate information to the fields.", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -113,19 +142,49 @@ public class ProducerAddProductFragment extends Fragment {
             product.setPricePerUnit(Double.parseDouble(String.valueOf(productPriceField.getText())));
             product.setAmountInStock(Double.parseDouble(String.valueOf(productAvailableAmountField.getText())));
             // product.setUnitType(); TODO: Spinner should return a UnitType
-            // product.setImageURL(); TODO: postimageurl stuff
-            // TODO: Categories, image, unitType
+            // TODO: Categories, unitType
 
-            RetrofitService.getApi(ProductApi.class).saveProduct(product).enqueue(new Callback<Product>() {
-                @Override
-                public void onResponse(Call<Product> call, Response<Product> response) {
-                    Toast.makeText(view.getContext(), "Product successfully saved", Toast.LENGTH_SHORT).show();
-                }
 
-                @Override
-                public void onFailure(Call<Product> call, Throwable t) {
-                    Toast.makeText(view.getContext(), "There was an error saving the product", Toast.LENGTH_SHORT).show();
-                    Log.d("debugPurposes", t.getMessage());
+            binding.producerAddProductUpdateButton.setOnClickListener(updateView -> {
+
+                RetrofitService.getApi(ProductApi.class).saveProduct(product).enqueue(new Callback<Product>() {
+                    @Override
+                    public void onResponse(Call<Product> call, Response<Product> response) {
+                        Toast.makeText(getContext(), "Product listing added successfully", Toast.LENGTH_SHORT).show();
+                        product = response.body();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Product> call, Throwable t) {
+
+                    }
+                });
+
+                if (imageUri != null) {
+                    try {
+                        RequestBody requestBody = new ProgressRequestBody(getInputStreamFromUri(requireContext(), imageUri), "image/*");
+                        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("image", "uploadedImage.jpg", requestBody);
+
+                        RetrofitService.getApi(ProductApi.class).uploadProductImage(product.getId(), imagePart).enqueue(new Callback<Product>() {
+                            @Override
+                            public void onResponse(Call<Product> call, Response<Product> response) {
+                                if (bothRequestsAreDone) {
+                                    Intent intent = new Intent(getContext(), ProducerMainActivity.class);
+                                    startActivity(intent);
+                                }
+                                bothRequestsAreDone = true;
+                            }
+
+                            @Override
+                            public void onFailure(Call<Product> call, Throwable t) {
+                                Log.e("errorPurposes", t.getMessage());
+                            }
+                        });
+                    } catch (Exception e) {
+                        Log.e("errorPurposes", e.getMessage());
+                    }
+                } else {
+                    bothRequestsAreDone = true;
                 }
             });
         });
@@ -183,5 +242,55 @@ public class ProducerAddProductFragment extends Fragment {
         items.add(submenu6);
 
         return items;
+    }
+
+    public InputStream getInputStreamFromUri(Context context, Uri uri) throws IOException {
+        return context.getContentResolver().openInputStream(uri);
+    }
+
+    public static class ProgressRequestBody extends RequestBody {
+
+        private final InputStream inputStream;
+        private final String contentType;
+
+        public ProgressRequestBody(final InputStream inputStream, final String contentType) {
+            this.inputStream = inputStream;
+            this.contentType = contentType;
+        }
+
+        @Override
+        public MediaType contentType() {
+            return MediaType.parse(contentType);
+        }
+
+        @Override
+        public long contentLength() throws IOException {
+            try {
+                return inputStream.available();
+            } catch (IOException e) {
+                return 0;
+            }
+        }
+
+        @Override
+        public void writeTo(BufferedSink sink) throws IOException {
+            Source source = null;
+            try {
+                source = Okio.source(inputStream);
+                long total = 0;
+                long read;
+
+                while ((read = source.read(sink.buffer(), 2048)) != -1) {
+                    total += read;
+                    sink.flush();
+                    // here you can send any notification you want
+                    // for example, you can send a broadcast intent to notify your progress bar
+                }
+            } finally {
+                if (source != null) {
+                    source.close();
+                }
+            }
+        }
     }
 }
