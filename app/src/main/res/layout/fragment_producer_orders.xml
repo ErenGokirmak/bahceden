@@ -44,7 +44,7 @@
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/nexa_heavy"
-                android:text="123"
+                android:text=""
                 android:textAlignment="center"
                 android:textColor="@color/orange" />
 
@@ -78,7 +78,7 @@
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/nexa_heavy"
-                android:text="123"
+                android:text=""
                 android:textAlignment="center"
                 android:textColor="@color/eggplant_pink" />
 
@@ -112,7 +112,7 @@
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/nexa_heavy"
-                android:text="123"
+                android:text=""
                 android:textAlignment="center"
                 android:textColor="@color/plus_green" />
 
@@ -146,7 +146,7 @@
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/nexa_heavy"
-                android:text="123"
+                android:text=""
                 android:textAlignment="center"
                 android:textColor="@color/minus_red" />
 

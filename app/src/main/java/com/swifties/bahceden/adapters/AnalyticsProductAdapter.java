@@ -1,6 +1,7 @@
 package com.swifties.bahceden.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -41,6 +42,9 @@ public class AnalyticsProductAdapter extends RecyclerView.Adapter<AnalyticsProdu
         holder.binding.analyticsProductName.setText(productInformation.getProduct().getName());
         holder.binding.analyticsProductId.setText(String.format(Locale.ENGLISH,"#%d", productInformation.getProduct().getId()));
         holder.binding.producerAnalyticsAmountLeftInStock.setText(String.valueOf(productInformation.getProduct().getAmountInStock()));
+        holder.binding.earningsValue.setText(productInformation.getEarningsInString());
+        holder.binding.amountSoldValue.setText(productInformation.getAmountSoldInString());
+        // TODO: the image of the product can direct the user to its product page
     }
 
     @Override

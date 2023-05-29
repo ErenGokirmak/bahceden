@@ -25,6 +25,7 @@ import com.swifties.bahceden.models.Producer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,23 +48,6 @@ public class ProducerOrdersFragment extends Fragment {
         this.inflater = inflater;
         binding = FragmentProducerOrdersBinding.inflate(inflater, container, false);
 
-
-        RetrofitService.getApi(OrderApi.class).getAllOrders().enqueue(new Callback<List<Order>>() {
-            @Override
-            public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
-                orders = response.body();
-                ordersRV = binding.producerOrdersRV;
-                ordersAdapter = new ProducerOrderAdapter(orders, getContext(), inflater);
-                ordersRV.setLayoutManager(new LinearLayoutManager(getActivity()));
-                ordersRV.setAdapter(ordersAdapter);
-            }
-
-            @Override
-            public void onFailure(Call<List<Order>> call, Throwable t) {
-                Toast.makeText(getContext(), "There was a problem retrieving your orders", Toast.LENGTH_SHORT).show();
-            }
-        });
-
         return binding.getRoot();
     }
 
@@ -71,7 +55,6 @@ public class ProducerOrdersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         orders = new ArrayList<>();
-        orderStatusCounts = new int[4];
     }
 
     @Override
@@ -83,12 +66,16 @@ public class ProducerOrdersFragment extends Fragment {
             public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
                 orders.clear();
                 assert response.body() != null;
-                orders.addAll(response.body());
+                orders.addAll(response.body().stream().filter(order -> order.getStatus() != Order.OrderStatus.IN_CART).collect(Collectors.toList()));
                 orders.forEach(o -> o.getProduct().setProducer(new Producer(AuthUser.getProducer().getId())));
+
+                orderStatusCounts = new int[4];
+
                 for (Order order : orders) {
                     orderStatusCounts[order.getStatus().getValue() - 2]++;
                 }
                 System.out.println(orderStatusCounts[0]);
+
 
                 int pending = orderStatusCounts[Order.OrderStatus.PENDING.getValue() - 2];
                 int ongoing = orderStatusCounts[Order.OrderStatus.ONGOING.getValue() - 2];
@@ -100,6 +87,7 @@ public class ProducerOrdersFragment extends Fragment {
                 binding.producerOrdersDeliveredCount.setText(String.format("%d", delivered));
                 binding.producerOrdersCancelledCount.setText(String.format("%d", cancelled));
 
+                binding.producerOrdersRV.setLayoutManager(new LinearLayoutManager(getContext()));
                 binding.producerOrdersRV.setAdapter(new ProducerOrderAdapter(orders, getContext(), inflater));
             }
 
