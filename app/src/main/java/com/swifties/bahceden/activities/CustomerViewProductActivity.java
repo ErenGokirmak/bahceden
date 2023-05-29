@@ -3,6 +3,8 @@ package com.swifties.bahceden.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,6 +43,20 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         binding = ActivityCustomerViewProductBinding.inflate(getLayoutInflater());
 
         setContentView(binding.getRoot());
+
+        LinearLayout starsLayout = findViewById(R.id.stars);
+        int totalStars = starsLayout.getChildCount();
+
+        for (int i = 0; i < totalStars; i++) {
+            final int starIndex = i;
+            View star = starsLayout.getChildAt(i);
+            star.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setRating(starIndex + 1);
+                }
+            });
+        }
 
         // Setting up productApi
 
@@ -140,5 +156,19 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         binding.totalPrice.setText(String.format(getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit() * productCount)));
         binding.commentItems.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         binding.commentItems.setAdapter(new CommentCustomerViewAdapter(product.getComments(), getLayoutInflater(), this));
+    }
+
+    private void setRating(int rating) {
+        LinearLayout starsLayout = findViewById(R.id.stars);
+        int totalStars = starsLayout.getChildCount();
+
+        for (int i = 0; i < totalStars; i++) {
+            View star = starsLayout.getChildAt(i);
+            if (i < rating) {
+                star.setBackgroundResource(R.drawable.ic_star);
+            } else {
+                star.setBackgroundResource(R.drawable.ic_empty_star);
+            }
+        }
     }
 }
