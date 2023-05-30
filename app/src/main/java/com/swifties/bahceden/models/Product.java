@@ -1,5 +1,6 @@
 package com.swifties.bahceden.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,7 +38,7 @@ public class Product {
     }
 
     public Product() {
-
+        comments = new ArrayList<>();
     }
     public Product(int id) {
         this.id = id;

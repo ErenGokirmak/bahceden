@@ -17,7 +17,9 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.swifties.bahceden.adapters.CommentProducerViewAdapter;
+import com.swifties.bahceden.adapters.ProducerHomeNewReviewsAdapter;
 import com.swifties.bahceden.adapters.YourListingsAdapter;
+import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.CommentApi;
 import com.swifties.bahceden.data.apis.ProductApi;
@@ -117,7 +119,26 @@ public class ProducerHomeFragment extends Fragment {
 
             }
         });
+        List<Comment> comments = new ArrayList<>();
 
+
+
+        RetrofitService.getApi(CommentApi.class).getProducersComments(AuthUser.getProducer().getId()).enqueue(new Callback<List<Comment>>() {
+            @Override
+            public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
+                comments.clear();
+                comments.addAll(response.body());
+                binding.producerHomeNewReviewsRV.getAdapter().notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<List<Comment>> call, Throwable t) {
+                throw new RuntimeException(t);
+
+            }
+        });
+        ProducerHomeNewReviewsAdapter producerHomeNewReviewsAdapter = new ProducerHomeNewReviewsAdapter(comments, getContext(), inflater);
+        reviewsRV.setAdapter(producerHomeNewReviewsAdapter);
         return view;
     }
 

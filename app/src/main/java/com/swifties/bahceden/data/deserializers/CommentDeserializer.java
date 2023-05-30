@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.CustomerApi;
+import com.swifties.bahceden.data.apis.ProducerApi;
 import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.models.Comment;
 import com.swifties.bahceden.models.Customer;
@@ -28,44 +29,24 @@ public class CommentDeserializer implements JsonDeserializer<Comment> {
         {
             return null;
         }
-
         Comment c = new Comment();
-
         JsonObject jObj= json.getAsJsonObject();
-        int authorId = jObj.get("author").getAsInt();
+        c.setId(jObj.get("id").getAsInt());
+        Product p = new Product();
+        p.setId(jObj.get("id").getAsInt());
+        p.setName(jObj.get("productName").getAsString());
+        c.setProduct(p);
+        JsonElement author = jObj.get("author");
 
-        RetrofitService.getApi(ProductApi.class).getProductById(jObj.get("product").getAsInt()).enqueue(new Callback<Product>() {
-            @Override
-            public void onResponse(Call<Product> call, Response<Product> response) {
-                c.setProduct(response.body());
-                if (authorId == -1)
-                    c.setAuthor(response.body().getProducer());
-            }
+        JsonObject authorObj = author.getAsJsonObject();
+        Customer authorCustomer = new Customer();
+        authorCustomer.setId(authorObj.get("id").getAsInt());
+        authorCustomer.setName(authorObj.get("name").getAsString());
+        authorCustomer.setEmail(authorObj.get("email").getAsString());
+        authorCustomer.setProfileImageURL(authorObj.get("profileImageURL").getAsString());
+        c.setAuthor(authorCustomer);
 
-            @Override
-            public void onFailure(Call<Product> call, Throwable t) {
-                Log.e("errorPurposes", t.getMessage());
-            }
-        });
 
-        if (authorId != -1)
-        {
-            RetrofitService.getApi(CustomerApi.class).getCustomerById(authorId).enqueue(new Callback<Customer>() {
-                @Override
-                public void onResponse(Call<Customer> call, Response<Customer> response) {
-                    c.setAuthor(response.body());
-                }
-
-                @Override
-                public void onFailure(Call<Customer> call, Throwable t) {
-                    Log.e("errorPurposes", t.getMessage());
-                }
-            });
-        }
-        else
-        {
-            c.setAuthor(c.getProduct().getProducer());
-        }
 
         c.setMessage(jObj.get("message").getAsString());
         c.setCountOfLikes(jObj.get("countOfLikes").getAsInt());

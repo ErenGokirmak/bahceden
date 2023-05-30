@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -27,7 +28,7 @@
     </androidx.cardview.widget.CardView>
 
     <ImageView
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/commentDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,25 +51,23 @@
         app:layout_constraintTop_toTopOf="@id/commentImageHolder" />
 
 
-<!--    <TextView-->
-<!--        android:id="@+id/rating"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginEnd="8dp"-->
-<!--        android:background="@drawable/bg_curved_border"-->
-<!--        android:drawablePadding="8dp"-->
-<!--        android:drawableTint="@color/star_yellow"-->
-<!--        android:paddingHorizontal="16dp"-->
-<!--        android:paddingVertical="8dp"-->
-<!--        android:text="5"-->
-<!--        android:textColor="@color/bahceden_green"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:drawableStartCompat="@drawable/ic_star"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/commentName"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@id/commentName"-->
-<!--        app:layout_constraintVertical_bias="0.9" />-->
+    <TextView
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/star_yellow"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:text="5"
+        android:textColor="@color/star_yellow"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commentReplyHolder" />
 
     <TextView
         android:id="@+id/commentMessage"
@@ -144,17 +143,16 @@
         android:id="@+id/likeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="10dp"
-        app:drawableStartCompat="@drawable/favorite2"
         android:drawablePadding="8dp"
-        app:drawableTint="@color/bahceden_green"
         android:text="336"
         android:textColor="@color/bahceden_green"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/commentMessage"
-        app:layout_constraintTop_toBottomOf="@id/commentReplyHolder" />
+        app:drawableStartCompat="@drawable/favorite2"
+        app:drawableTint="@color/bahceden_green"
+        app:layout_constraintBottom_toBottomOf="@+id/rating"
+        app:layout_constraintStart_toStartOf="@id/commentMessage" />
 
 <!--    <TextView-->
 <!--        android:id="@+id/commentDate"-->
@@ -169,3 +167,5 @@
 <!--        app:layout_constraintTop_toBottomOf="@id/commentReplyHolder" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

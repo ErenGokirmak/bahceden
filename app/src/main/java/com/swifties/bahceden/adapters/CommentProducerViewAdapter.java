@@ -45,14 +45,12 @@ public class CommentProducerViewAdapter extends RecyclerView.Adapter<CommentProd
             Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.pop);
             holder.replyEdit.startAnimation(animation);
             holder.likeCount.setVisibility(View.GONE);
-            holder.commentDate.setVisibility(View.GONE);
         });
 
         holder.replyEdit.setOnEditorActionListener((v, actionId, event) -> {
             holder.replyEdit.setVisibility(View.GONE);
             holder.replyButton.setVisibility(View.VISIBLE);
             holder.likeCount.setVisibility(View.VISIBLE);
-            holder.commentDate.setVisibility(View.VISIBLE);
             return true;
         });
     }
@@ -67,14 +65,12 @@ public class CommentProducerViewAdapter extends RecyclerView.Adapter<CommentProd
         EditText replyEdit;
         ImageView replyButton;
         TextView likeCount;
-        TextView commentDate;
         public ViewHolder(View view) {
             super(view);
 
             replyEdit = view.findViewById(R.id.commentReplyEditText);
             replyButton = view.findViewById(R.id.commentReplyButton);
             likeCount = view.findViewById(R.id.likeCount);
-            commentDate = view.findViewById(R.id.commentDate);
 
             view.setOnClickListener(v ->
                     Toast.makeText(view.getContext(), "BaS:" + getBindingAdapterPosition(), Toast.LENGTH_SHORT).show());

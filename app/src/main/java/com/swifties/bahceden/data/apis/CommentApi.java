@@ -48,4 +48,7 @@ public interface CommentApi {
 
     @PUT("comments/{commentId}")
     Call<Comment> putLikeCount(@Path("commentId") int id, @Query("likes") int likeCount);
+
+    @GET("producers/{producerId}/comments")
+    Call<List<Comment>> getProducersComments(@Path("producerId") int id);
 }
