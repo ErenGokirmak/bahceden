@@ -1,6 +1,8 @@
 package com.swifties.bahceden.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.swifties.bahceden.R;
@@ -19,8 +23,16 @@ import com.swifties.bahceden.databinding.ActivityProducerEditProductBinding;
 import com.swifties.bahceden.models.Product;
 import com.swifties.bahceden.uiclasses.SpinnerCustomItem;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okio.BufferedSink;
+import okio.Okio;
+import okio.Source;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,9 +44,12 @@ public class ProducerEditProductActivity extends AppCompatActivity {
     ArrayList<ArrayList<SpinnerCustomItem>> customSubItems;
     SpinnerCustomAdapter spinnerSubCategoriesAdapter;
     ActivityProducerEditProductBinding binding;
+    ActivityResultLauncher<String> getImageFromGallery;
     Intent intent;
     EditText nameField, descriptionField, amountInStockField, pricePerUnitField;
     Product product;
+    Uri imageUri;
+    boolean bothRequestsAreDone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +85,17 @@ public class ProducerEditProductActivity extends AppCompatActivity {
                 }
             });
 
+            getImageFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent(),
+                    uri -> {
+                        imageUri = uri;
+                        binding.producerEditProductImage.setImageURI(uri);
+                    });
+            binding.producerEditProductImageSelectionButton.setOnClickListener(updateImageView -> {
+                getImageFromGallery.launch("image/*");
+            });
+
+            bothRequestsAreDone = false;
+
             binding.producerEditProductUpdateButton.setOnClickListener(updateView -> {
                 if (Double.parseDouble(String.valueOf(pricePerUnitField.getText())) <= 0) {
                     pricePerUnitField.setError("Please input a valid price.");
@@ -77,7 +103,7 @@ public class ProducerEditProductActivity extends AppCompatActivity {
                 }
 
                 if (Double.parseDouble(String.valueOf(amountInStockField.getText())) <= 0) {
-                    amountInStockField.setError("Please input a vaild amount left in stock.");
+                    amountInStockField.setError("Please input a valid amount left in stock.");
                     return;
                 }
 
@@ -87,27 +113,57 @@ public class ProducerEditProductActivity extends AppCompatActivity {
                     return;
                 }
 
-                // TODO: Image selection is missing here
+                // TODO: Set category thing
                 product.setName(String.valueOf(nameField.getText()));
                 product.setDescription(String.valueOf(descriptionField.getText()));
                 product.setAmountInStock(Double.parseDouble(String.valueOf(amountInStockField.getText())));
                 product.setPricePerUnit(Double.parseDouble(String.valueOf(pricePerUnitField.getText())));
+                product.setUnitType(Product.UnitType.KILOGRAMS);
 
-                RetrofitService.getApi(ProductApi.class).saveProduct(product).enqueue(new Callback<Product>() {
+                if (imageUri != null) {
+                    RequestBody requestBody = null;
+                    try {
+                        requestBody = new ProgressRequestBody(getInputStreamFromUri(this, imageUri), "image/*");
+                        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("image", "uploadedImage.jpg", requestBody);
+
+                        RetrofitService.getApi(ProductApi.class).uploadProductImage(intent.getIntExtra("product_id", -1), imagePart).enqueue(new Callback<Product>() {
+                            @Override
+                            public void onResponse(Call<Product> call, Response<Product> response) {
+                                if (bothRequestsAreDone) {
+                                    Toast.makeText(ProducerEditProductActivity.this, "Product was updated successfully.", Toast.LENGTH_SHORT).show();
+                                }
+                                bothRequestsAreDone = true;
+                            }
+
+                            @Override
+                            public void onFailure(Call<Product> call, Throwable t) {
+
+                            }
+                        });
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+
+                } else {
+                    bothRequestsAreDone = true;
+                }
+                RetrofitService.getApi(ProductApi.class).updateProduct(product).enqueue(new Callback<Product>() {
                     @Override
                     public void onResponse(Call<Product> call, Response<Product> response) {
-                        if (response.body() != null) {
+                        if (bothRequestsAreDone) {
                             Toast.makeText(ProducerEditProductActivity.this, "Product was updated successfully.", Toast.LENGTH_SHORT).show();
-                            // TODO: Go back to the last screen
-                            return;
                         }
+                        bothRequestsAreDone = true;
                     }
 
                     @Override
                     public void onFailure(Call<Product> call, Throwable t) {
-                        Toast.makeText(ProducerEditProductActivity.this, "There was a problem updating the product", Toast.LENGTH_SHORT).show();
+
                     }
                 });
+
+
             });
 
         }
@@ -197,5 +253,49 @@ public class ProducerEditProductActivity extends AppCompatActivity {
         items.add(submenu6);
 
         return items;
+    }
+
+    public InputStream getInputStreamFromUri(Context context, Uri uri) throws IOException {
+        return context.getContentResolver().openInputStream(uri);
+    }
+
+    public static class ProgressRequestBody extends RequestBody {
+
+        private final InputStream inputStream;
+        private final String contentType;
+
+        public ProgressRequestBody(final InputStream inputStream, final String contentType) {
+            this.inputStream = inputStream;
+            this.contentType = contentType;
+        }
+
+        @Override
+        public MediaType contentType() {
+            return MediaType.parse(contentType);
+        }
+
+        @Override
+        public long contentLength() throws IOException {
+            try {
+                return inputStream.available();
+            } catch (IOException e) {
+                return 0;
+            }
+        }
+
+        @Override
+        public void writeTo(BufferedSink sink) throws IOException {
+            try (Source source = Okio.source(inputStream)) {
+                long total = 0;
+                long read;
+
+                while ((read = source.read(sink.buffer(), 2048)) != -1) {
+                    total += read;
+                    sink.flush();
+                    // here you can send any notification you want
+                    // for example, you can send a broadcast intent to notify your progress bar
+                }
+            }
+        }
     }
 }

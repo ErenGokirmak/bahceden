@@ -12,6 +12,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -57,6 +58,9 @@ public interface ProductApi {
      */
     @POST("products")
     Call<Product> saveProduct(@Body Product product);
+
+    @PUT("products")
+    Call<Product> updateProduct(@Body Product product);
 
     @GET("/products/newArrivals")
     Call<List<Product>> getNewArrivals();
