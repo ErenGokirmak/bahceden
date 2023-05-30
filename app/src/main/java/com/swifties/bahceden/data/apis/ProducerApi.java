@@ -78,7 +78,7 @@ public interface ProducerApi {
     Call<Producer> updateProducer(@Body Producer producer);
 
     @Multipart
-    @POST("producers/{producersId}/image")
+    @PUT("producers/{producersId}/image")
     Call<Producer> uploadImage(
             @Path("producersId") int producerId,
             @Part MultipartBody.Part image,

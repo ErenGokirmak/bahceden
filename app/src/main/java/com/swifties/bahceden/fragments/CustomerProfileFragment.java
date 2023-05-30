@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.activities.CustomerAddressesActivity;
 import com.swifties.bahceden.activities.CustomerAnalyticsActivity;
@@ -96,7 +98,10 @@ public class CustomerProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Picasso.get().load(AuthUser.getCustomer().getProfileImageURL().replace("localhost", "10.0.2.2")).into(binding.customerProfileImage);
+        Picasso.get().load(AuthUser.getCustomer().getProfileImageURL().replace("localhost", "10.0.2.2"))
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                .into(binding.customerProfileImage);
         binding.customerProfileName.setText(AuthUser.getCustomer().getName());
         binding.customerProfileEmail.setText(AuthUser.getCustomer().getEmail());
     }

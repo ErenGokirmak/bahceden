@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.activities.IntroActivity;
 import com.swifties.bahceden.activities.ProducerAnalyticsActivity;
@@ -62,7 +64,10 @@ public class ProducerProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Picasso.get().load(AuthUser.getProducer().getProfileImageURL().replace("localhost", "10.0.2.2")).into(binding.producerProfileImage);
+        Picasso.get().load(AuthUser.getProducer().getProfileImageURL().replace("localhost", "10.0.2.2"))
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                .into(binding.producerProfileImage);
         binding.producerProfileName.setText(AuthUser.getProducer().getName());
         binding.producerProfileEmail.setText(AuthUser.getProducer().getEmail());
     }

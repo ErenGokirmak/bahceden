@@ -8,6 +8,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
@@ -52,8 +54,14 @@ public class ProducerEditProfileActivity extends AppCompatActivity {
         binding.countryCodePicker.setDefaultCountryUsingPhoneCode(Integer.parseInt(AuthUser.getProducer().getPhoneNumber().substring(1,AuthUser.getProducer().getPhoneNumber().length() - 10))); //TODO this doesn't work idk fix this. the one in the CustomerAddAddressActivity works.
         binding.customerEditNumber.setText(AuthUser.getProducer().getPhoneNumber().substring(AuthUser.getProducer().getPhoneNumber().length() - 10));
 
-        Picasso.get().load(AuthUser.getProducer().getProfileImageURL().replace("localhost", "10.0.2.2")).into(binding.producerEditProfileImage);
-        Picasso.get().load(AuthUser.getProducer().getBackgroundImageURL().replace("localhost", "10.0.2.2")).into(binding.producerEditBannerImage);
+        Picasso.get().load(AuthUser.getProducer().getProfileImageURL().replace("localhost", "10.0.2.2"))
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                .into(binding.producerEditProfileImage);
+        Picasso.get().load(AuthUser.getProducer().getBackgroundImageURL().replace("localhost", "10.0.2.2"))
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                .into(binding.producerEditBannerImage);
 
         getProfileImageFromGallery = registerForActivityResult(new ActivityResultContracts.GetContent(),
                 uri -> {
