@@ -101,19 +101,39 @@
         app:layout_constraintTop_toTopOf="@id/likeCount"
         app:tint="@color/bahceden_green" />
 
-    <EditText
-        android:id="@+id/commentReplyEditText"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/commentReply"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_curved_border"
-        android:backgroundTint="@color/gray"
-        android:paddingHorizontal="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/commentMessage"
         app:layout_constraintStart_toStartOf="@id/commentMessage"
-        app:layout_constraintTop_toBottomOf="@id/commentMessage"
-        />
+        app:layout_constraintTop_toBottomOf="@id/commentMessage">
+
+        <EditText
+            android:id="@+id/commentReplyEditText"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_curved_border"
+            android:backgroundTint="@color/gray"
+            android:hint="Reply Here"
+            android:paddingHorizontal="16dp"
+            android:textSize="15dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sendReplyButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:fontFamily="@font/nexa_heavy"
+            android:text="Send"
+            android:textSize="12dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <TextView
         android:id="@+id/whichProductId"

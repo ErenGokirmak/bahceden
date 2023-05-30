@@ -33,12 +33,14 @@
                 app:cardCornerRadius="16dp">
 
                 <ImageView
+                    android:id="@+id/producerEditProductImage"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/strawberry" />
 
                 <ImageView
+                    android:id="@+id/producerEditProductImageSelectionButton"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="end"

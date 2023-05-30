@@ -23,10 +23,10 @@ import androidx.fragment.app.Fragment;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.ProducerMainActivity;
 import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
-import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.databinding.FragmentProducerAddProductBinding;
+import com.swifties.bahceden.models.Category;
 import com.swifties.bahceden.models.Product;
 import com.swifties.bahceden.uiclasses.SpinnerCustomItem;
 
@@ -48,12 +48,15 @@ public class ProducerAddProductFragment extends Fragment {
 
     Spinner itemCategoriesSpinner;
     Spinner itemSubCategoriesSpinner;
+    Spinner itemUnitTypeSpinner;
     ArrayList<SpinnerCustomItem> customItems;
     ArrayList<ArrayList<SpinnerCustomItem>> customSubItems;
+    ArrayList<SpinnerCustomItem> customUnitTypes;
 
     EditText productNameField, productDescriptionField, productPriceField, productAvailableAmountField;
     SpinnerCustomAdapter spinnerSubCategoriesAdapter;
-    Spinner productUnitTypeSpinner;
+    SpinnerCustomAdapter spinnerCategoriesAdapter;
+    SpinnerCustomAdapter spinnerUnitTypeAdapter;
     Button addProductButton;
     ActivityResultLauncher<String> getImageFromGallery;
     Uri imageUri;
@@ -68,15 +71,16 @@ public class ProducerAddProductFragment extends Fragment {
 
         itemSubCategoriesSpinner = binding.addItemSubCategoriesSpinner;
         itemCategoriesSpinner = binding.addItemCategoriesSpinner;
+        itemUnitTypeSpinner = binding.addProductUnitTypeSpinner;
 
         customItems = getCustomCategoriesList();
         customSubItems = getCustomSubCategoriesList();
+        customUnitTypes = getUnitTypeList();
 
         productNameField = binding.nameOfItemField;
         productDescriptionField = binding.descriptionOfItemField;
         productPriceField = binding.addProductPriceOfItemField;
         productAvailableAmountField = binding.availableAmountOfItemField;
-        productUnitTypeSpinner = binding.addProductUnitTypeSpinner;
 
         addProductButton = binding.producerAddProductUpdateButton;
 
@@ -87,8 +91,9 @@ public class ProducerAddProductFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        SpinnerCustomAdapter spinnerCategoriesAdapter = new SpinnerCustomAdapter(requireActivity(), customItems);
+        spinnerCategoriesAdapter = new SpinnerCustomAdapter(requireActivity(), customItems);
         spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(requireActivity(), customSubItems.get(0));
+        spinnerUnitTypeAdapter = new SpinnerCustomAdapter(requireActivity(), customUnitTypes);
 
         if (itemCategoriesSpinner != null) {
             itemCategoriesSpinner.setAdapter(spinnerCategoriesAdapter);
@@ -96,6 +101,10 @@ public class ProducerAddProductFragment extends Fragment {
 
         if (itemSubCategoriesSpinner != null) {
             itemSubCategoriesSpinner.setAdapter(spinnerSubCategoriesAdapter);
+        }
+
+        if (itemUnitTypeSpinner != null) {
+            itemUnitTypeSpinner.setAdapter(spinnerUnitTypeAdapter);
         }
 
         itemCategoriesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -122,13 +131,17 @@ public class ProducerAddProductFragment extends Fragment {
             getImageFromGallery.launch("image/*");
         });
 
+        product = new Product();
+
         addProductButton.setOnClickListener(addView -> {
             // TODO: take the product name, description, price, and category (further TODO), and make a new Product object.
             //  afterwards, pass this new product onto the database.
 
-            product = new Product();
 
-            if (String.valueOf(productNameField.getText()).equals("") || String.valueOf(productDescriptionField.getText()).equals("") || String.valueOf(productPriceField.getText()).equals("")) {
+            if (String.valueOf(productNameField.getText()).equals("") ||
+                    String.valueOf(productDescriptionField.getText()).equals("") ||
+                    String.valueOf(productPriceField.getText()).equals("") ||
+                    String.valueOf(productAvailableAmountField).equals("")) {
                 Toast.makeText(view.getContext(), "Please input appropriate information to the fields.", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -137,28 +150,23 @@ public class ProducerAddProductFragment extends Fragment {
                 productPriceField.setError("Please input an appropriate price");
                 return;
             }
+
+            // Making the new product
             product.setName(String.valueOf(productNameField.getText()));
             product.setDescription(String.valueOf(productDescriptionField.getText()));
             product.setPricePerUnit(Double.parseDouble(String.valueOf(productPriceField.getText())));
             product.setAmountInStock(Double.parseDouble(String.valueOf(productAvailableAmountField.getText())));
-            // product.setUnitType(); TODO: Spinner should return a UnitType
-            // TODO: Categories, unitType
+            product.setUnitType(Product.UnitType.KILOGRAMS); // TODO: Spinner should return a UnitType
+            product.setCategory(Category.getCategory(1, "whateverthisis")); // TODO: Spinner stuff again
 
 
             binding.producerAddProductUpdateButton.setOnClickListener(updateView -> {
 
-                RetrofitService.getApi(ProductApi.class).saveProduct(product).enqueue(new Callback<Product>() {
-                    @Override
-                    public void onResponse(Call<Product> call, Response<Product> response) {
-                        Toast.makeText(getContext(), "Product listing added successfully", Toast.LENGTH_SHORT).show();
-                        product = response.body();
-                    }
-
-                    @Override
-                    public void onFailure(Call<Product> call, Throwable t) {
-
-                    }
-                });
+                try {
+                    product = RetrofitService.getApi(ProductApi.class).saveProduct(product).execute().body();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
                 if (imageUri != null) {
                     try {
@@ -188,6 +196,14 @@ public class ProducerAddProductFragment extends Fragment {
                 }
             });
         });
+    }
+
+    private ArrayList<SpinnerCustomItem> getUnitTypeList() {
+        ArrayList<SpinnerCustomItem> items = new ArrayList<>();
+        items.add(new SpinnerCustomItem("KG", R.drawable.bahceden_logo));
+        items.add(new SpinnerCustomItem("L", R.drawable.bahceden_logo));
+        items.add(new SpinnerCustomItem("Package", R.drawable.bahceden_logo));
+        return items;
     }
 
     private ArrayList<SpinnerCustomItem> getCustomCategoriesList() {
