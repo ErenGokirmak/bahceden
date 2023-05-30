@@ -50,7 +50,7 @@ public class CommentCustomerViewAdapter extends RecyclerView.Adapter<CommentCust
         }
         else
         {
-            holder.binding.commentReplyAuthor.setText(comment.getChildComment().getAuthor().getName());
+            holder.binding.commentReplyAuthor.setText(comment.getChildComment().getProduct().getProducer().getName());
             holder.binding.commentReply.setText(comment.getChildComment().getMessage());
         }
         if (comment.getAuthor().equals(AuthUser.getCustomer()))

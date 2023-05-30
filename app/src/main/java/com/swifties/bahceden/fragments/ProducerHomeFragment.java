@@ -83,7 +83,6 @@ public class ProducerHomeFragment extends Fragment {
 
         });
 
-        // TODO: Change api requests
         RetrofitService.getApi(ProducerApi.class).getProductsOfProducer(AuthUser.getProducer().getId()).enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
@@ -106,20 +105,20 @@ public class ProducerHomeFragment extends Fragment {
         ArrayList<SlideModel> slideModels = new ArrayList<>();
 
         // TODO: This will need to be changed to a more appropriate request
-        RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
-            @Override
-            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                productsInSlider = new ArrayList<>();
-                productsInSlider.addAll(response.body());
-                slideModels.addAll(productsInSlider.stream().map(p -> new SlideModel(p.getImageURL(), ScaleTypes.FIT)).collect(Collectors.toList()));
-                imageSlider.setImageList(slideModels);
-            }
-
-            @Override
-            public void onFailure(Call<List<Product>> call, Throwable t) {
-
-            }
-        });
+//        RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
+//            @Override
+//            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+//                productsInSlider = new ArrayList<>();
+//                productsInSlider.addAll(response.body());
+//                slideModels.addAll(productsInSlider.stream().map(p -> new SlideModel(p.getImageURL(), ScaleTypes.FIT)).collect(Collectors.toList()));
+//                imageSlider.setImageList(slideModels);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Product>> call, Throwable t) {
+//
+//            }
+//        });
         List<Comment> comments = new ArrayList<>();
 
 
