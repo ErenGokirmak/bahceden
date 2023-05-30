@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
@@ -17,7 +18,7 @@
         android:layout_height="65dp"
         app:cardCornerRadius="75dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/whichProductId">
 
         <ImageView
             android:id="@+id/commentImage"
@@ -34,6 +35,7 @@
         android:layout_marginStart="8dp"
         android:fontFamily="@font/nexa_heavy"
         android:text="Davuk"
+
         android:textColor="@color/bahceden_green"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@id/commentImageHolder"
@@ -46,13 +48,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/bg_curved_border"
         android:drawablePadding="8dp"
-        android:drawableTint="@color/bahceden_green"
+        android:drawableTint="@color/star_yellow"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
         android:text="5"
-        android:textColor="@color/bahceden_green"
+        android:gravity="center"
+        android:textColor="@color/star_yellow"
         android:textSize="18sp"
         android:textStyle="bold"
         app:drawableStartCompat="@drawable/ic_star"
@@ -87,17 +89,7 @@
         app:drawableTint="@color/bahceden_green"
         app:drawableStartCompat="@drawable/favorite2" />
 
-    <TextView
-        android:id="@+id/commentDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="13 Days ago"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/likeCount"
-        app:layout_constraintStart_toEndOf="@id/likeCount"
-        app:layout_constraintTop_toTopOf="@id/likeCount" />
+
 
     <ImageView
         android:id="@+id/commentReplyButton"
@@ -120,6 +112,19 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/commentMessage"
         app:layout_constraintStart_toStartOf="@id/commentMessage"
-        app:layout_constraintTop_toBottomOf="@id/commentMessage" />
+        app:layout_constraintTop_toBottomOf="@id/commentMessage"
+        />
+
+    <TextView
+        android:id="@+id/whichProductId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This comment was added to your Elma product"
+        android:textColor="@color/grey_font"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="5dp"
+        android:fontFamily="@font/nexa_heavy"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
