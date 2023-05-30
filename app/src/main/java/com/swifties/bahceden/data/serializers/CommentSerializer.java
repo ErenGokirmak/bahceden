@@ -19,6 +19,8 @@ public class CommentSerializer implements JsonSerializer<Comment> {
             obj.addProperty("parent", src.getParent().getId());
         if (src.getAuthor() instanceof Customer)
             obj.addProperty("author", src.getAuthor().getId());
+        else
+            obj.addProperty("author", -1);
         obj.addProperty("countOfLikes", src.getCountOfLikes());
         obj.addProperty("message", src.getMessage());
         obj.addProperty("rating", src.getRatingGiven());
