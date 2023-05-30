@@ -77,4 +77,7 @@ public interface ProductApi {
             @Path("productId") int productId,
             @Part MultipartBody.Part image
     );
+
+    @GET("products/populars")
+    Call<List<Product>> getPopularProducts();
 }
