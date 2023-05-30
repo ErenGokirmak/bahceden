@@ -33,7 +33,7 @@ public class CommentDeserializer implements JsonDeserializer<Comment> {
         JsonObject jObj= json.getAsJsonObject();
         c.setId(jObj.get("id").getAsInt());
         Product p = new Product();
-        p.setId(jObj.get("id").getAsInt());
+        p.setId(jObj.get("product").getAsInt());
         if (jObj.get("productName") != null)
             p.setName(jObj.get("productName").getAsString());
         c.setProduct(p);
