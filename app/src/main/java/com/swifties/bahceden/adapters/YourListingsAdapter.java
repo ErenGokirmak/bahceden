@@ -14,12 +14,13 @@ import com.swifties.bahceden.databinding.LayoutProducerHomeListingItemBinding;
 import com.swifties.bahceden.models.Product;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class YourListingsAdapter extends RecyclerView.Adapter<YourListingsAdapter.ProducerViewHolder> {
-    ArrayList<Product> listings;
+    List<Product> listings;
     Context context;
 
-    public YourListingsAdapter(ArrayList<Product> listings, Context context) {
+    public YourListingsAdapter(List<Product> listings, Context context) {
         this.listings = listings;
         this.context = context;
     }
