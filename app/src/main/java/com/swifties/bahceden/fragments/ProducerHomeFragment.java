@@ -39,57 +39,43 @@ import retrofit2.Response;
 public class ProducerHomeFragment extends Fragment {
 
     FragmentProducerHomeBinding binding;
-    RecyclerView reviewsRV, listingsRV;
-    ImageSlider imageSlider;
-    ArrayList<Comment> comments;
-    ArrayList<Product> listings;
-    ArrayList<Product> productsInSlider;
+    List<Comment> comments;
+    List<Product> listings;
+    List<Product> productsInSlider;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProducerHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        // RecyclerView initializations
-        reviewsRV = binding.producerHomeNewReviewsRV;
-        listingsRV = binding.producerHomeYourListingsRV;
+        comments = new ArrayList<>();
 
-        reviewsRV.setHasFixedSize(true);
-        listingsRV.setHasFixedSize(true);
+        binding.producerHomeNewReviewsRV.setHasFixedSize(true);
+        binding.producerHomeYourListingsRV.setHasFixedSize(true);
 
-        // layout managers
-        RecyclerView.LayoutManager reviewsLM = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        reviewsRV.setLayoutManager(reviewsLM);
-        RecyclerView.LayoutManager listingsLM = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        listingsRV.setLayoutManager(listingsLM);
+        binding.producerHomeNewReviewsRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        binding.producerHomeYourListingsRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
+        binding.producerHomeNewReviewsRV.setAdapter(new ProducerHomeNewReviewsAdapter(comments, getContext(), inflater));
 
-        // retrieving reviews and listings TODO: Change api requests
-        RetrofitService.getApi(CommentApi.class).getAllComments().enqueue(new Callback<List<Comment>>() {
-            @Override
-            public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
-                if (response.body() != null) {
-                    comments = (ArrayList<Comment>) (response.body());
-                    CommentProducerViewAdapter reviewsAdapter = new CommentProducerViewAdapter(comments, getContext());
-                    reviewsRV.setAdapter(reviewsAdapter);
-                }
-            }
+        return view;
+    }
 
-            @Override
-            public void onFailure(Call<List<Comment>> call, Throwable t) {
-                Toast.makeText(getContext(), "There was a problem retrieving reviews", Toast.LENGTH_SHORT).show();
-                Log.d("debugPurposes", t.getMessage());
-            }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        });
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
         RetrofitService.getApi(ProducerApi.class).getProductsOfProducer(AuthUser.getProducer().getId()).enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 if (response.body() != null) {
-                    listings = (ArrayList<Product>) response.body();
-                    YourListingsAdapter yourListingsAdapter = new YourListingsAdapter(listings, getContext());
-                    listingsRV.setAdapter(yourListingsAdapter);
+                    listings = response.body();
+                    binding.producerHomeYourListingsRV.setAdapter(new YourListingsAdapter(listings, getContext()));
                 }
             }
 
@@ -99,29 +85,6 @@ public class ProducerHomeFragment extends Fragment {
                 Log.d("debugPurposes", t.getMessage());
             }
         });
-
-        // Image slider
-        imageSlider = binding.producerHomeSlider;
-        ArrayList<SlideModel> slideModels = new ArrayList<>();
-
-        // TODO: This will need to be changed to a more appropriate request
-//        RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
-//            @Override
-//            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-//                productsInSlider = new ArrayList<>();
-//                productsInSlider.addAll(response.body());
-//                slideModels.addAll(productsInSlider.stream().map(p -> new SlideModel(p.getImageURL(), ScaleTypes.FIT)).collect(Collectors.toList()));
-//                imageSlider.setImageList(slideModels);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Product>> call, Throwable t) {
-//
-//            }
-//        });
-        List<Comment> comments = new ArrayList<>();
-
-
 
         RetrofitService.getApi(CommentApi.class).getProducersComments(AuthUser.getProducer().getId()).enqueue(new Callback<List<Comment>>() {
             @Override
@@ -134,17 +97,24 @@ public class ProducerHomeFragment extends Fragment {
             @Override
             public void onFailure(Call<List<Comment>> call, Throwable t) {
                 throw new RuntimeException(t);
+            }
+        });
+
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+        // TODO: This will need to be changed to a more appropriate request
+        RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                productsInSlider = new ArrayList<>();
+                productsInSlider.addAll(response.body());
+                slideModels.addAll(productsInSlider.stream().map(p -> new SlideModel(p.getImageURL(), ScaleTypes.FIT)).collect(Collectors.toList()));
+                binding.producerHomeSlider.setImageList(slideModels);
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
 
             }
         });
-        ProducerHomeNewReviewsAdapter producerHomeNewReviewsAdapter = new ProducerHomeNewReviewsAdapter(comments, getContext(), inflater);
-        reviewsRV.setAdapter(producerHomeNewReviewsAdapter);
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
     }
 }
