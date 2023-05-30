@@ -10,9 +10,12 @@ import com.swifties.bahceden.activities.ProducerMainActivity;
 import com.swifties.bahceden.data.apis.CustomerApi;
 import com.swifties.bahceden.data.apis.ProducerApi;
 import com.swifties.bahceden.data.local.DBHelper;
+import com.swifties.bahceden.models.Action;
 import com.swifties.bahceden.models.Customer;
 import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.User;
+
+import java.util.function.Function;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,13 +33,17 @@ public class AuthUser {
         return instance;
     }
 
-    public void updateUser() {
+    public void updateUser(Action act){
         if (user instanceof Customer) {
             RetrofitService.getApi(CustomerApi.class).getCustomerById(user.getId()).enqueue(new Callback<Customer>() {
                 @Override
                 public void onResponse(Call<Customer> call, Response<Customer> response) {
                     if (response.body() != null) {
                         user = response.body();
+                        if(act != null){
+                            act.act();
+                        }
+
                     }
                 }
 
@@ -51,6 +58,9 @@ public class AuthUser {
                 public void onResponse(Call<Producer> call, Response<Producer> response) {
                     if (response.body() != null) {
                         user = response.body();
+                        if(act != null){
+                            act.act();
+                        }
                     }
                 }
 
@@ -60,6 +70,10 @@ public class AuthUser {
                 }
             });
         }
+    }
+
+    public void updateUser() {
+        updateUser(null);
     }
 
     public void createUser(String email, int userType, Context context) {
