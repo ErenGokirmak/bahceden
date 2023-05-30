@@ -17,6 +17,7 @@ import com.swifties.bahceden.data.serializers.CustomerSerializer;
 import com.swifties.bahceden.data.serializers.OrderSerializer;
 import com.swifties.bahceden.data.serializers.OrderStatusSerializer;
 import com.swifties.bahceden.data.serializers.ProducerSerializer;
+import com.swifties.bahceden.data.serializers.ProductSerializer;
 import com.swifties.bahceden.data.serializers.ShipmentTypeSerializer;
 import com.swifties.bahceden.models.Address;
 import com.swifties.bahceden.models.Category;
@@ -61,6 +62,7 @@ public class RetrofitService {
                     .registerTypeAdapter(Order.ShipmentType.class, new ShipmentTypeDeserializer())
                     .registerTypeAdapter(Product.UnitType.class, new UnitTypeDeserializer())
                     .registerTypeAdapter(Address.class, new AddressSerializer())
+                    .registerTypeAdapter(Product.class, new ProductSerializer())
                     .registerTypeAdapter(Comment.class, new CommentSerializer())
                     .registerTypeAdapter(Customer.class, new CustomerSerializer())
                     .registerTypeAdapter(Order.class, new OrderSerializer())

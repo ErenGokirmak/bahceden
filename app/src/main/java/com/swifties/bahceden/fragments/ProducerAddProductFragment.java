@@ -23,7 +23,6 @@ import androidx.fragment.app.Fragment;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.ProducerMainActivity;
 import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
-import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.ProductApi;
 import com.swifties.bahceden.databinding.FragmentProducerAddProductBinding;
@@ -122,11 +121,12 @@ public class ProducerAddProductFragment extends Fragment {
             getImageFromGallery.launch("image/*");
         });
 
+        product = new Product();
+
         addProductButton.setOnClickListener(addView -> {
             // TODO: take the product name, description, price, and category (further TODO), and make a new Product object.
             //  afterwards, pass this new product onto the database.
 
-            product = new Product();
 
             if (String.valueOf(productNameField.getText()).equals("") || String.valueOf(productDescriptionField.getText()).equals("") || String.valueOf(productPriceField.getText()).equals("")) {
                 Toast.makeText(view.getContext(), "Please input appropriate information to the fields.", Toast.LENGTH_SHORT).show();
@@ -137,28 +137,23 @@ public class ProducerAddProductFragment extends Fragment {
                 productPriceField.setError("Please input an appropriate price");
                 return;
             }
+
+            // Making the new product
             product.setName(String.valueOf(productNameField.getText()));
             product.setDescription(String.valueOf(productDescriptionField.getText()));
             product.setPricePerUnit(Double.parseDouble(String.valueOf(productPriceField.getText())));
             product.setAmountInStock(Double.parseDouble(String.valueOf(productAvailableAmountField.getText())));
-            // product.setUnitType(); TODO: Spinner should return a UnitType
-            // TODO: Categories, unitType
+            product.setUnitType(Product.UnitType.KILOGRAMS); // TODO: Spinner should return a UnitType
+            // product.setCategory(Category.getCategory(1, "whateverthisis")); // TODO: Spinner stuff again
 
 
             binding.producerAddProductUpdateButton.setOnClickListener(updateView -> {
 
-                RetrofitService.getApi(ProductApi.class).saveProduct(product).enqueue(new Callback<Product>() {
-                    @Override
-                    public void onResponse(Call<Product> call, Response<Product> response) {
-                        Toast.makeText(getContext(), "Product listing added successfully", Toast.LENGTH_SHORT).show();
-                        product = response.body();
-                    }
-
-                    @Override
-                    public void onFailure(Call<Product> call, Throwable t) {
-
-                    }
-                });
+                try {
+                    product = RetrofitService.getApi(ProductApi.class).saveProduct(product).execute().body();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
                 if (imageUri != null) {
                     try {
