@@ -23,7 +23,7 @@ public class CustomerAddressesActivity extends AppCompatActivity {
         binding.customerAddressesYourAddressesRV.setLayoutManager(new LinearLayoutManager(this));
         binding.customerAddressesYourAddressesRV.setAdapter(new YourAddressesAdapter(AuthUser.getCustomer().getAddresses(),
                 this,
-                getLayoutInflater()));
+                getLayoutInflater(), this));
 
         binding.customerAddressesAddAddressButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, CustomerAddAddressActivity.class);
@@ -36,8 +36,13 @@ public class CustomerAddressesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        reload();
+    }
+
+    public void reload()
+    {
         binding.customerAddressesYourAddressesRV.setAdapter(new YourAddressesAdapter(AuthUser.getCustomer().getAddresses(),
                 this,
-                getLayoutInflater()));
+                getLayoutInflater(), this));
     }
 }

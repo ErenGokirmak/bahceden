@@ -9,9 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.activities.CustomerAddAddressActivity;
+import com.swifties.bahceden.activities.CustomerAddressesActivity;
+import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.AddressesApi;
 import com.swifties.bahceden.databinding.LayoutCustomerAddressItemBinding;
+import com.swifties.bahceden.models.Action;
 import com.swifties.bahceden.models.Address;
 
 import java.util.List;
@@ -26,10 +29,13 @@ public class YourAddressesAdapter extends RecyclerView.Adapter<YourAddressesAdap
     Context context;
     LayoutInflater inflater;
 
-    public YourAddressesAdapter(List<Address> addresses, Context context, LayoutInflater inflater) {
+    CustomerAddressesActivity activity;
+
+    public YourAddressesAdapter(List<Address> addresses, Context context, LayoutInflater inflater, CustomerAddressesActivity activity) {
         this.addresses = addresses;
         this.context = context;
         this.inflater = inflater;
+        this.activity = activity;
     }
 
     @NonNull
@@ -53,12 +59,22 @@ public class YourAddressesAdapter extends RecyclerView.Adapter<YourAddressesAdap
             RetrofitService.getApi(AddressesApi.class).deleteAddressById(address.getId()).enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
-
+                    AuthUser.getInstance().updateUser(new Action() {
+                        @Override
+                        public void act() {
+                            activity.reload();
+                        }
+                    });
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-
+                    AuthUser.getInstance().updateUser(new Action() {
+                        @Override
+                        public void act() {
+                            activity.reload();
+                        }
+                    });
                 }
             });
         });
