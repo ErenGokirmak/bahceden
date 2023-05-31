@@ -84,6 +84,7 @@ public class ProducerHomeFragment extends Fragment {
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 if (response.body() != null) {
                     listings = response.body().subList(0, Math.min(response.body().size(), 5));
+                    binding.producerHomeSlider.setImageList(listings.stream().map(p -> new SlideModel(p.getImageURL().replace("localhost", "10.0.2.2"), ScaleTypes.FIT)).collect(Collectors.toList()));
                     binding.producerHomeYourListingsRV.setAdapter(new YourListingsAdapter(listings, getContext()));
                 }
             }
