@@ -59,7 +59,7 @@ public class ProducerAnalyticsActivity extends AppCompatActivity {
         RetrofitService.getApi(OrderApi.class).getOrdersOfProducer(AuthUser.getProducer().getId()).enqueue(new Callback<List<Order>>() {
             @Override
             public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
-                assert response.body() != null;
+                if( response.body() == null) return;
 
                 orders = response.body().stream()
                         .filter(order -> (order.getStatus() != Order.OrderStatus.IN_CART || order.getStatus() != Order.OrderStatus.CANCELLED))
