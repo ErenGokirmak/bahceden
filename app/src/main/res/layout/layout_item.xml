@@ -124,6 +124,7 @@
         android:backgroundTint="@color/bahceden_green"
         android:fontFamily="@font/nexa_heavy"
         android:text="Add to Cart"
+        android:foreground="?android:attr/selectableItemBackground"
         android:textColor="@color/white" />
 
 </LinearLayout>
