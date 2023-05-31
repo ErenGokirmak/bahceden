@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -21,7 +22,9 @@ import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.CategoryApi;
+import com.swifties.bahceden.data.apis.ProducerApi;
 import com.swifties.bahceden.models.Category;
+import com.swifties.bahceden.models.ProducerDataDTO;
 import com.swifties.bahceden.uiclasses.SpinnerCustomItem;
 
 import java.util.ArrayList;
@@ -38,11 +41,23 @@ public class ProducerDataFragment extends Fragment {
     Spinner customDataSubCategoriesSpinner;
     ArrayList<SpinnerCustomItem> categoryItems;
     ArrayList<ArrayList<SpinnerCustomItem>> subCategoryItems;
+    SpinnerCustomAdapter spinnerCategoriesAdapter;
     SpinnerCustomAdapter spinnerSubCategoriesAdapter;
     PieChart producerChart;
+    private TextView producerDataMarketMin;
+    private TextView producerDataMarketAverage;
+    private TextView producerDataMarketMax;
+
+    private TextView producerDataOtherMin;
+    private TextView producerDataOtherAverage;
+    private TextView producerDataOtherMax;
+
+    private TextView producerDataOurRecommendationValue;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        categoryItems = new ArrayList<>();
+        subCategoryItems = new ArrayList<>();
         return inflater.inflate(R.layout.fragment_producer_data, container, false);
     }
 
@@ -53,6 +68,15 @@ public class ProducerDataFragment extends Fragment {
         producerChart = view.findViewById(R.id.producerDataChart);
         customDataCategoriesSpinner = view.findViewById(R.id.producerDataCategoriesSpinner);
         customDataSubCategoriesSpinner = view.findViewById(R.id.producerDataSubCategoriesSpinner);
+        producerDataMarketMin = view.findViewById(R.id.producerDataMarketMin);
+        producerDataMarketAverage = view.findViewById(R.id.producerDataMarketAverage);
+        producerDataMarketMax = view.findViewById(R.id.producerDataMarketMax);
+
+        producerDataOtherMin = view.findViewById(R.id.producerDataOtherMin);
+        producerDataOtherAverage = view.findViewById(R.id.producerDataOtherAverage);
+        producerDataOtherMax = view.findViewById(R.id.producerDataOtherMax);
+
+        producerDataOurRecommendationValue = view.findViewById(R.id.producerDataOurRecommendationValue);
 
         RetrofitService.getApi(CategoryApi.class).getAllCategories().enqueue(new Callback<List<Category>>() {
             @Override
@@ -66,33 +90,102 @@ public class ProducerDataFragment extends Fragment {
                     }
                     subCategoryItems.get(category.getParentId()-1).add(new SpinnerCustomItem(category, 0));
                 }
+
+                spinnerCategoriesAdapter = new SpinnerCustomAdapter(requireActivity(), categoryItems);
+                spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(requireActivity(), subCategoryItems.get(0));
+
+                if (customDataCategoriesSpinner != null) {
+                    customDataCategoriesSpinner.setAdapter(spinnerCategoriesAdapter);
+                }
+
+                if (customDataSubCategoriesSpinner != null) {
+                    customDataSubCategoriesSpinner.setAdapter(spinnerSubCategoriesAdapter);
+                }
+                setViews();
+
+                customDataCategoriesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        // Handle the selected item here
+                        spinnerSubCategoriesAdapter = new SpinnerCustomAdapter(getActivity(), subCategoryItems.get(position));
+                        customDataSubCategoriesSpinner.setAdapter(spinnerSubCategoriesAdapter);
+                        ((SpinnerCustomAdapter)customDataCategoriesSpinner.getAdapter()).position = position;
+                        setViews();
+                        customDataSubCategoriesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                ((SpinnerCustomAdapter)customDataSubCategoriesSpinner.getAdapter()).position = position;
+                                setViews();
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
+
+
             }
 
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
-
+                throw new RuntimeException(t);
             }
         });
     }
 
-    public void setPiechart ()
+    public void setViews ()
     {
-        ArrayList<PieEntry> dataEntries = new ArrayList<>();
-        dataEntries.add(new PieEntry(70, "Our Recommendation"));
-        dataEntries.add(new PieEntry(40, "Other Prices"));
+        RetrofitService.getApi(ProducerApi.class).getProductData(Category
+                .getCategory(
+                        subCategoryItems
+                                .get(((SpinnerCustomAdapter)customDataCategoriesSpinner.getAdapter()).position)
+                                .get(((SpinnerCustomAdapter)customDataSubCategoriesSpinner.getAdapter()).position).getCategory()
+                ).getId()).enqueue(new Callback<ProducerDataDTO>() {
+            @Override
+            public void onResponse(Call<ProducerDataDTO> call, Response<ProducerDataDTO> response) {
+                if (response.body() == null) return;
+                producerDataMarketMin.setText(String.valueOf(response.body().getMarketPriceMIN()));
+                producerDataMarketAverage.setText(String.valueOf(response.body().getMarketPriceAVG()));
+                producerDataMarketMax.setText(String.valueOf(response.body().getMarketPriceMAX()));
 
-        PieDataSet pieDataSet = new PieDataSet(dataEntries, "Success Rate");
-        pieDataSet.setColors(getResources().getColor(R.color.plus_green, null), getResources().getColor(R.color.minus_red, null));
-        pieDataSet.setValueTextColor(Color.WHITE);
-        pieDataSet.setValueTextSize(16);
+                producerDataOtherMin.setText(String.valueOf(response.body().getSellersMIN()));
+                producerDataOtherAverage.setText(String.valueOf(response.body().getSellersAVG()));
+                producerDataOtherMax.setText(String.valueOf(response.body().getSellersMAX()));
 
-        PieData pieData = new PieData(pieDataSet);
+                producerDataOurRecommendationValue.setText(String.valueOf(response.body().getRecommendedPrice()));
+            }
 
-        producerChart.setData(pieData);
-        producerChart.setCenterText("Success Rate");
-        producerChart.getDescription().setEnabled(false);
-        producerChart.animate();
+            @Override
+            public void onFailure(Call<ProducerDataDTO> call, Throwable t) {
+                throw new RuntimeException(t);
+            }
+        });
     }
+
+//    public void setPiechart ()
+//    {
+//        ArrayList<PieEntry> dataEntries = new ArrayList<>();
+//        dataEntries.add(new PieEntry(70, "Our Recommendation"));
+//        dataEntries.add(new PieEntry(40, "Other Prices"));
+//
+//        PieDataSet pieDataSet = new PieDataSet(dataEntries, "Success Rate");
+//        pieDataSet.setColors(getResources().getColor(R.color.plus_green, null), getResources().getColor(R.color.minus_red, null));
+//        pieDataSet.setValueTextColor(Color.WHITE);
+//        pieDataSet.setValueTextSize(16);
+//
+//        PieData pieData = new PieData(pieDataSet);
+//
+//        producerChart.setData(pieData);
+//        producerChart.setCenterText("Success Rate");
+//        producerChart.getDescription().setEnabled(false);
+//        producerChart.animate();
+//    }
 
 //    private ArrayList<SpinnerCustomItem> getCustomCategoriesList() {
 //        ArrayList<SpinnerCustomItem> items = new ArrayList<>();
