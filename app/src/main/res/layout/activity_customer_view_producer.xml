@@ -98,6 +98,7 @@
                 android:layout_weight="1" />
 
             <ImageView
+                android:id="@+id/favButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="12dp"

@@ -134,7 +134,6 @@ public class SearchResultsAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
                 {
                     AuthUser.getCustomer().addNewFavProducer(producer);
                     holder.binding.itemLayoutItemLiked.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite));
-
                 }
             });
             holder.binding.getRoot().setOnClickListener(v -> {

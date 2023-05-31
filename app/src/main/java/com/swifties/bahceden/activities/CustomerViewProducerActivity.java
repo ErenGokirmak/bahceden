@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+import com.swifties.bahceden.R;
 import com.swifties.bahceden.adapters.ProductListingAdapter;
+import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.ProducerApi;
 import com.swifties.bahceden.databinding.ActivityCustomerViewProducerBinding;
@@ -19,6 +21,7 @@ import com.swifties.bahceden.models.Product;
 import com.swifties.bahceden.uiclasses.GridSpacingItemDecoration;
 
 import java.util.List;
+import java.util.Optional;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,6 +59,25 @@ public class CustomerViewProducerActivity extends AppCompatActivity {
 
                     binding.customerViewProducerShopName.setText(producer.getShopName());
                     binding.customerViewProducerName.setText(producer.getName());
+
+                    Optional<Producer> optPro = AuthUser.getCustomer().getFavoriteProducers().stream().filter(p -> p.getId() == producerId).findFirst();
+
+                    if (optPro.isPresent())
+                    {
+                        binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
+                    }
+
+                    binding.favButton.setOnClickListener(v -> {
+                        if (AuthUser.getCustomer().removeFavProducer(producer))
+                        {
+                            binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_unfavorite));
+                        }
+                        else
+                        {
+                            AuthUser.getCustomer().addNewFavProducer(producer);
+                            binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
+                        }
+                    });
 
                     RetrofitService.getApi(ProducerApi.class).getProductsOfProducer(producerId).enqueue(new Callback<List<Product>>() {
                         @Override

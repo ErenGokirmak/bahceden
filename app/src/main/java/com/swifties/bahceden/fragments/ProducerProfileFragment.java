@@ -64,7 +64,8 @@ public class ProducerProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Picasso.get().load(AuthUser.getProducer().getProfileImageURL().replace("localhost", "10.0.2.2"))
+        if (AuthUser.getProducer().getProfileImageURL() != null)
+            Picasso.get().load(AuthUser.getProducer().getProfileImageURL().replace("localhost", "10.0.2.2"))
                 .networkPolicy(NetworkPolicy.NO_CACHE)
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .into(binding.producerProfileImage);

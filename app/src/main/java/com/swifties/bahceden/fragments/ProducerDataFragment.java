@@ -150,13 +150,13 @@ public class ProducerDataFragment extends Fragment {
             @Override
             public void onResponse(Call<ProducerDataDTO> call, Response<ProducerDataDTO> response) {
                 if (response.body() == null) return;
-                producerDataMarketMin.setText(String.valueOf(response.body().getMarketPriceMIN()));
-                producerDataMarketAverage.setText(String.valueOf(response.body().getMarketPriceAVG()));
-                producerDataMarketMax.setText(String.valueOf(response.body().getMarketPriceMAX()));
+                producerDataMarketMin.setText(String.format("%.2f",response.body().getMarketPriceMIN()));
+                producerDataMarketAverage.setText(String.format("%.2f",response.body().getMarketPriceAVG()));
+                producerDataMarketMax.setText(String.format("%.2f",response.body().getMarketPriceMAX()));
 
-                producerDataOtherMin.setText(String.valueOf(response.body().getSellersMIN()));
-                producerDataOtherAverage.setText(String.valueOf(response.body().getSellersAVG()));
-                producerDataOtherMax.setText(String.valueOf(response.body().getSellersMAX()));
+                producerDataOtherMin.setText(String.format("%.2f",response.body().getSellersMIN()));
+                producerDataOtherAverage.setText(String.format("%.2f",response.body().getSellersAVG()));
+                producerDataOtherMax.setText(String.format("%.2f",response.body().getSellersMAX()));
 
                 producerDataOurRecommendationValue.setText(String.valueOf(response.body().getRecommendedPrice()));
             }
