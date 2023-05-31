@@ -57,7 +57,7 @@ public class RetrofitService {
                     .registerTypeAdapter(Comment.class, new CommentDeserializer())
                     .registerTypeAdapter(Customer.class, new CustomerDeserializer())
                     .registerTypeAdapter(Order.OrderStatus.class, new OrderStatusDeserializer())
-                    .registerTypeAdapter(Order.class, new OrderDeserializer())
+//                    .registerTypeAdapter(Order.class, new OrderDeserializer())
                     .registerTypeAdapter(Product.class, new ProductDeserializer())
                     .registerTypeAdapter(Order.ShipmentType.class, new ShipmentTypeDeserializer())
                     .registerTypeAdapter(Product.UnitType.class, new UnitTypeDeserializer())
