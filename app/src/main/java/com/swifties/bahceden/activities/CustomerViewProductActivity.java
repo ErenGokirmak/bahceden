@@ -138,7 +138,7 @@ public class CustomerViewProductActivity extends AppCompatActivity {
             this.startActivity(intent);
         });
         binding.productCount.setText(String.valueOf(productCount));
-        Picasso.get().load(product.getImageURL()).into(binding.productImage);
+        Picasso.get().load(product.getImageURL().replace("localhost", "10.0.2.2")).into(binding.productImage);
         binding.favButton.setOnClickListener(v -> {
             if (AuthUser.getCustomer().removeFavProduct(product)) {
                 binding.favButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_unfavorite));

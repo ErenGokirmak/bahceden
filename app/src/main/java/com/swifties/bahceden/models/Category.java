@@ -10,15 +10,17 @@ public class Category {
 
     private int id;
     private String name;
+    private int parentId;
 
     private Category () {}
-    private Category (int id, String name)
-    {
+
+    private Category(int id, String name, int parentId) {
         this.id = id;
         this.name = name;
+        this.parentId = parentId;
     }
 
-    public static Category getCategory(int id, String name)
+    public static Category getCategory(int id, String name, int parentId)
     {
         if (existingCategories == null)
         {
@@ -36,9 +38,14 @@ public class Category {
             return category;
         }
 
-        Category category = new Category(id, name);
+        Category category = new Category(id, name, parentId);
         existingCategories.add(category);
         return category;
+    }
+
+    public static Category getCategory(Category category)
+    {
+        return getCategory(category.getId(), category.getName(), category.getParentId());
     }
 
     public int getId() {
@@ -47,6 +54,10 @@ public class Category {
 
     public String getName() {
         return name;
+    }
+
+    public int getParentId() {
+        return parentId;
     }
 
     @Override

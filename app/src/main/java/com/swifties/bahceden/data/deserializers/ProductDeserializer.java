@@ -36,9 +36,11 @@ public class ProductDeserializer implements JsonDeserializer<Product> {
         p.setUnitType(context.deserialize(jObj.get("unitType"), Product.UnitType.class));
         p.setPricePerUnit(jObj.get("pricePerUnit").getAsInt());
         p.setProducer(context.deserialize(jObj.get("producer"), Producer.class));
-        p.setImageURL(jObj.get("imageURL").getAsString());
+        if (!jObj.get("imageURL").isJsonNull())
+            p.setImageURL(jObj.get("imageURL").getAsString());
         p.setAmountInStock(jObj.get("availableAmount").getAsInt());
-        p.setRating(jObj.get("rating").getAsDouble());
+        if (!jObj.get("rating").isJsonNull())
+            p.setRating(jObj.get("rating").getAsDouble());
 
         JsonElement commentObjs = jObj.get("comments");
 

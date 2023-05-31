@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 public class SpinnerCustomAdapter extends ArrayAdapter {
 
+    public int position;
+
     public SpinnerCustomAdapter(@NonNull Context context, ArrayList<SpinnerCustomItem> customList) {
         super(context, 0, customList);
     }

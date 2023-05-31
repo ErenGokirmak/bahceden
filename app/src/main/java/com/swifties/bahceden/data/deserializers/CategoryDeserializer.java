@@ -13,6 +13,9 @@ public class CategoryDeserializer implements JsonDeserializer<Category> {
     public Category deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         String categoryName = json.getAsJsonObject().get("name").getAsString();
         int categoryId = json.getAsJsonObject().get("id").getAsInt();
-        return Category.getCategory(categoryId, categoryName);
+        if (json.getAsJsonObject().get("parent").isJsonNull())
+            return Category.getCategory(categoryId, categoryName, 0);
+        else
+            return Category.getCategory(categoryId, categoryName, json.getAsJsonObject().get("parent").getAsInt());
     }
 }
