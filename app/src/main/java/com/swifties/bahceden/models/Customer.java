@@ -1,5 +1,6 @@
 package com.swifties.bahceden.models;
 
+import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.CustomerApi;
 import com.swifties.bahceden.data.apis.OrderApi;
@@ -81,7 +82,7 @@ public class Customer extends User {
         {
             Order newOrder = new Order();
             newOrder.setProduct(p);
-            newOrder.setDeliveryAddress(new Address(this));
+            newOrder.setDeliveryAddress(AuthUser.getCustomer().getAddresses().get(0));
             newOrder.setStatus(Order.OrderStatus.IN_CART);
             newOrder.setShipmentType(Order.ShipmentType.CUSTOMER_PICKUP);
             newOrder.setAmount(amount);
