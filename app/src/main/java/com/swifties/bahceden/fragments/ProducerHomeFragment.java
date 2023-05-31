@@ -74,7 +74,7 @@ public class ProducerHomeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 if (response.body() != null) {
-                    listings = response.body();
+                    listings = response.body().subList(0, Math.min(response.body().size(), 5));
                     binding.producerHomeYourListingsRV.setAdapter(new YourListingsAdapter(listings, getContext()));
                 }
             }
