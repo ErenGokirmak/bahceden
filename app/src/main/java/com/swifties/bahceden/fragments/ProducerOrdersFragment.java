@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.rpc.context.AttributeContext;
 import com.swifties.bahceden.adapters.ProducerOrderAdapter;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
@@ -61,11 +62,11 @@ public class ProducerOrdersFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
+        Log.d("debugPurposes", String.valueOf(AuthUser.getProducer().getId()));
         RetrofitService.getApi(OrderApi.class).getOrdersOfProducer(AuthUser.getProducer().getId()).enqueue(new Callback<List<Order>>() {
             @Override
             public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
                 orders.clear();
-                assert response.body() != null;
                 orders.addAll(response.body().stream().filter(order -> order.getStatus() != Order.OrderStatus.IN_CART).collect(Collectors.toList()));
                 orders.forEach(o -> o.getProduct().setProducer(new Producer(AuthUser.getProducer().getId())));
 
@@ -93,6 +94,8 @@ public class ProducerOrdersFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Order>> call, Throwable t) {
+                Log.e("debugPurposes", String.valueOf(AuthUser.getProducer().getId()));
+                Log.e("why", String.valueOf(t.getCause()));
                 Log.e("errorPurposes", t.getMessage());
             }
         });
