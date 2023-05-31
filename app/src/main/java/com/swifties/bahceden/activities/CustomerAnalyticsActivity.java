@@ -14,10 +14,15 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.CustomerApi;
 import com.swifties.bahceden.databinding.ActivityCustomerAnalyticsBinding;
 import com.swifties.bahceden.models.Order;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CustomerAnalyticsActivity extends AppCompatActivity {
 
@@ -25,8 +30,9 @@ public class CustomerAnalyticsActivity extends AppCompatActivity {
     private ImageView backButton;
     private PieChart consumerChart;
     private ActivityCustomerAnalyticsBinding binding;
-    int marketTotal;
+    double marketTotal;
     double bahcedenTotal;
+    double profit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +41,23 @@ public class CustomerAnalyticsActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         binding.customerAnalyticsBackButton.setOnClickListener(view -> CustomerAnalyticsActivity.super.onBackPressed());
 
+
         // TODO get the market prices of the customer's orders and calculate the total.
         // TODO set it to marketTotal.
 
-        if (AuthUser.getCustomer().getOrders().stream().anyMatch(o -> o.getStatus() != Order.OrderStatus.IN_CART))
-            bahcedenTotal = AuthUser.getCustomer().getOrders().stream().filter(o -> o.getStatus() != Order.OrderStatus.IN_CART).map(Order::getTotalPrice).reduce(Double::sum).get();
+        RetrofitService.getApi(CustomerApi.class).getCustomerProfit(AuthUser.getCustomer().getId()).enqueue(new Callback<Double[]>() {
+            @Override
+            public void onResponse(Call<Double[]> call, Response<Double[]> response) {
+                marketTotal = response.body()[0];
+                bahcedenTotal = response.body()[1];
+                profit = response.body()[2];
+            }
+
+            @Override
+            public void onFailure(Call<Double[]> call, Throwable t) {
+                throw new RuntimeException(t);
+            }
+        });
 
         setViews(); // TODO call this after the calculations.
     }
@@ -47,7 +65,7 @@ public class CustomerAnalyticsActivity extends AppCompatActivity {
     private void setViews ()
     {
         ArrayList<PieEntry> dataEntries = new ArrayList<>();
-        dataEntries.add(new PieEntry((int) (marketTotal - bahcedenTotal), "Benefits"));
+        dataEntries.add(new PieEntry((int) (profit), "Benefits"));
         dataEntries.add(new PieEntry((int) bahcedenTotal, "Costs"));
 
         PieDataSet pieDataSet = new PieDataSet(dataEntries, "Monthly Data");
@@ -61,7 +79,7 @@ public class CustomerAnalyticsActivity extends AppCompatActivity {
         binding.customerAnalyticsConsumerChart.getDescription().setEnabled(false);
         binding.customerAnalyticsConsumerChart.animate();
 
-        binding.customerAnalyticsBenefitValue.setText(String.valueOf(marketTotal - bahcedenTotal));
+        binding.customerAnalyticsBenefitValue.setText(String.valueOf(profit));
         binding.customerAnalyticsCostsValue.setText(String.valueOf(bahcedenTotal));
         binding.totalCostText.setText(String.format(getString(R.string.analytics_text), marketTotal));
     }

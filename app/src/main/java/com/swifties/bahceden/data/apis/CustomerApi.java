@@ -92,4 +92,7 @@ public interface CustomerApi {
     @DELETE("customer/{customerId}")
     Call<String> deleteCustomer(@Path("customerId") int id);
 
+    @GET("customers/{customerId}/profit")
+    Call<Double[]> getCustomerProfit(@Path("customerId") int customerId);
+
 }
