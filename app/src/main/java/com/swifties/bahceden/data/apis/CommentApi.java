@@ -51,4 +51,13 @@ public interface CommentApi {
 
     @GET("producers/{producerId}/comments")
     Call<List<Comment>> getProducersComments(@Path("producerId") int id);
+
+    @POST("customers/likes")
+    Call<Void> addLike(@Query("customerId") int customerId, @Query("commentId") int commentId);
+
+    @DELETE("customers/likes")
+    Call<Void> removeLike(@Query("customerId") int customerId, @Query("commentId") int commentId);
+
+    @GET("customers/likes")
+    Call<Boolean> getLike(@Query("customerId") int customerId, @Query("commentId") int commentId);
 }

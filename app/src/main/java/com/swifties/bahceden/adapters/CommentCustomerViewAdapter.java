@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+import com.swifties.bahceden.R;
 import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.CommentApi;
@@ -44,6 +45,7 @@ public class CommentCustomerViewAdapter extends RecyclerView.Adapter<CommentCust
         holder.binding.commentName.setText(comment.getAuthor().getName());
         holder.binding.commentMessage.setText(comment.getMessage());
         holder.binding.likeCount.setText(String.valueOf(comment.getCountOfLikes()));
+        holder.binding.rating.setText(comment.getRatingGiven() + "");
         if (comment.getChildComment() == null)
         {
             holder.binding.commentReplyHolder.setVisibility(View.GONE);
@@ -72,7 +74,64 @@ public class CommentCustomerViewAdapter extends RecyclerView.Adapter<CommentCust
                 });
             });
         }
-        holder.binding.likeCount.setOnClickListener(v -> {});
+        else
+        {
+            holder.binding.commentDelete.setVisibility(View.GONE);
+        }
+        RetrofitService.getApi(CommentApi.class).getLike(AuthUser.getCustomer().getId(), comment.getId()).enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+
+                if (Boolean.TRUE.equals(response.body())) {
+                    holder.binding.likeButtonHeart.setImageDrawable(context.getDrawable(R.drawable.ic_favorite));
+                    holder.isLiked = true;
+                }
+
+                holder.binding.likeButton.setOnClickListener(v -> {
+                    if (holder.isLiked)
+                    {
+                        RetrofitService.getApi(CommentApi.class).removeLike(AuthUser.getCustomer().getId(), comment.getId()).enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                holder.binding.likeButtonHeart.setImageDrawable(context.getDrawable(R.drawable.ic_unfavorite));
+                                comment.setCountOfLikes(comment.getCountOfLikes()-1);
+                                holder.binding.likeCount.setText(String.valueOf(comment.getCountOfLikes()));
+                                holder.isLiked = false;
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                    else
+                    {
+                        RetrofitService.getApi(CommentApi.class).addLike(AuthUser.getCustomer().getId(), comment.getId()).enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                holder.binding.likeButtonHeart.setImageDrawable(context.getDrawable(R.drawable.ic_favorite));
+                                comment.setCountOfLikes(comment.getCountOfLikes()+1);
+                                holder.binding.likeCount.setText(String.valueOf(comment.getCountOfLikes()));
+                                holder.isLiked = true;
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -86,6 +145,7 @@ public class CommentCustomerViewAdapter extends RecyclerView.Adapter<CommentCust
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         LayoutCommentCustomerViewBinding binding;
+        boolean isLiked = false;
         public ViewHolder(LayoutCommentCustomerViewBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
