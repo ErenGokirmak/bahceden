@@ -16,8 +16,10 @@ public class ProducerSerializer implements JsonSerializer<Producer> {
         obj.addProperty("name", src.getName());
         obj.addProperty("shopName", src.getShopName());
         obj.addProperty("email", src.getEmail());
-        obj.addProperty("profileImageURL", src.getProfileImageURL());
-        obj.addProperty("backgroundImageURL", src.getBackgroundImageURL());
+        if (src.getProfileImageURL() != null)
+            obj.addProperty("profileImageURL", src.getProfileImageURL());
+        if (src.getBackgroundImageURL() != null)
+            obj.addProperty("backgroundImageURL", src.getBackgroundImageURL());
         obj.addProperty("phoneNumber", src.getPhoneNumber());
         obj.addProperty("rating", src.getRating());
 
