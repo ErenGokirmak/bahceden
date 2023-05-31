@@ -183,14 +183,8 @@ public class CustomerSearchFragment extends Fragment {
         searchHistoryPopup.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
 
         searchEditText.setOnClickListener(k -> {
-            Toast.makeText(getContext(), "afdsdfsfda", Toast.LENGTH_SHORT).show();
-            // Fill the search history list
             fillSearchHistory();
-            //if (isVisible) {
-                searchHistoryPopup.showAsDropDown(searchEditText);
-//            } else {
-//                searchHistoryPopup.dismiss();
-//            }
+            searchHistoryPopup.showAsDropDown(searchEditText);
         });
         searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -295,11 +289,8 @@ public class CustomerSearchFragment extends Fragment {
     }
 
     private void fillSearchHistory() {
-        Log.d("SearchFragment", "fillSearchHistory called");
         DBHelper dbHelper = new DBHelper(requireActivity());
         searchHistoryList = dbHelper.getSearchHistory();
-//        searchHistoryAdapter.notifyDataSetChanged();
-        Log.d("SearchFragment", "Retrieved search history: " + searchHistoryList.toString());
     }
 
     private ArrayList<SpinnerCustomItem> getCustomCategoriesList() {
