@@ -3,6 +3,7 @@ package com.swifties.bahceden.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -34,6 +35,10 @@ public class ProducerAllProductsActivity extends AppCompatActivity {
 
         binding.producerAllProductsRV.setHasFixedSize(true);
         binding.producerAllProductsRV.setLayoutManager(new LinearLayoutManager(ProducerAllProductsActivity.this));
+        binding.producerProductsBackButton.setOnClickListener(v -> {
+            ProducerAllProductsActivity.super.onBackPressed();
+            finish();
+        });
 
         RetrofitService.getApi(ProducerApi.class).getProductsOfProducer(AuthUser.getProducer().getId()).enqueue(new Callback<List<Product>>() {
             @Override
