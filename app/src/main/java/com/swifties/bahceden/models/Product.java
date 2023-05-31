@@ -16,6 +16,15 @@ public class Product {
     private double amountInStock;
     private String imageURL;
     private Category category;
+    private Category subCategory;
+
+    public Category getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(Category subCategory) {
+        this.subCategory = subCategory;
+    }
 
     public Category getCategory() {
         return category;
