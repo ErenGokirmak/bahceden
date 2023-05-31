@@ -41,7 +41,8 @@ public class CommentCustomerViewAdapter extends RecyclerView.Adapter<CommentCust
     @Override
     public void onBindViewHolder(@NonNull CommentCustomerViewAdapter.ViewHolder holder, int position) {
         Comment comment = comments.get(position);
-        Picasso.get().load(comment.getAuthor().getProfileImageURL().replace("localhost", "10.0.2.2")).into(holder.binding.commentImage);
+        if (comment.getAuthor().getProfileImageURL() != null)
+            Picasso.get().load(comment.getAuthor().getProfileImageURL().replace("localhost", "10.0.2.2")).into(holder.binding.commentImage);
         holder.binding.commentName.setText(comment.getAuthor().getName());
         holder.binding.commentMessage.setText(comment.getMessage());
         holder.binding.likeCount.setText(String.valueOf(comment.getCountOfLikes()));

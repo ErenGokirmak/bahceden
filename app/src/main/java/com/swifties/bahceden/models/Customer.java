@@ -146,7 +146,7 @@ public class Customer extends User {
     {
         if (getFavoriteProducers().add(producer))
         {
-            RetrofitService.getApi(CustomerApi.class).postNewFavoriteProduct(getId(), producer.getId()).enqueue(new Callback<Customer>() {
+            RetrofitService.getApi(CustomerApi.class).postNewFavoriteProducer(getId(), producer.getId()).enqueue(new Callback<Customer>() {
                 @Override
                 public void onResponse(Call<Customer> call, Response<Customer> response) {
 
@@ -165,7 +165,7 @@ public class Customer extends User {
     {
         if (getFavoriteProducers().remove(producer))
         {
-            RetrofitService.getApi(CustomerApi.class).deleteNewFavoriteProduct(getId(), producer.getId()).enqueue(new Callback<Customer>() {
+            RetrofitService.getApi(CustomerApi.class).deleteNewFavoriteProducer(getId(), producer.getId()).enqueue(new Callback<Customer>() {
                 @Override
                 public void onResponse(Call<Customer> call, Response<Customer> response) {
 

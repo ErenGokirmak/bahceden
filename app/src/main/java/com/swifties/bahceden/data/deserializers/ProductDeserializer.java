@@ -74,7 +74,8 @@ public class ProductDeserializer implements JsonDeserializer<Product> {
                     authorCustomer.setId(authorObj.get("id").getAsInt());
                     authorCustomer.setName(authorObj.get("name").getAsString());
                     authorCustomer.setEmail(authorObj.get("email").getAsString());
-                    authorCustomer.setProfileImageURL(authorObj.get("profileImageURL").getAsString());
+                    if (authorObj.get("profileImageURL") != null && !authorObj.get("profileImageURL").isJsonNull())
+                        authorCustomer.setProfileImageURL(authorObj.get("profileImageURL").getAsString());
                     c.setAuthor(authorCustomer);
                 }
                 else if (author.isJsonPrimitive() && author.getAsJsonPrimitive().getAsInt() == -1)
