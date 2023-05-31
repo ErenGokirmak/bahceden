@@ -455,6 +455,7 @@
             android:text="Add to Cart"
             android:textColor="@color/white"
             android:textSize="15dp"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintEnd_toEndOf="@id/productBottom"
             app:layout_constraintTop_toTopOf="@id/productBottom" />
     </androidx.constraintlayout.widget.ConstraintLayout>
