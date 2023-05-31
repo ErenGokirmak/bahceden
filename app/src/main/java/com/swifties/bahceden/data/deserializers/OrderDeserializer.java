@@ -16,6 +16,11 @@ public class OrderDeserializer implements JsonDeserializer<Order> {
         {
             if (json.getAsJsonObject().size() != 1)
             {
+                if (json.getAsJsonObject().get("customer") != null && !json.getAsJsonObject().get("customer").isJsonNull())
+                {
+                    Order o = new Gson().fromJson(json, typeOfT);
+                    o.setCustomerName(json.getAsJsonObject().get("customer").getAsString());
+                }
                 return new Gson().fromJson(json, typeOfT);
             }
             if (json.getAsJsonObject().has("id")) {

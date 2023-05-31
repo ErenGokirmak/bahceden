@@ -38,7 +38,8 @@ public class CommentDeserializer implements JsonDeserializer<Comment> {
             p.setName(jObj.get("productName").getAsString());
         c.setProduct(p);
         JsonElement author = jObj.get("author");
-
+        if (jObj.get("rating") != null && !jObj.get("rating").isJsonNull())
+            c.setRatingGiven((int)jObj.get("rating").getAsDouble());
         if (author.isJsonObject()) {
             JsonObject authorObj = author.getAsJsonObject();
             Customer authorCustomer = new Customer();

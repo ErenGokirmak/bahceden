@@ -56,6 +56,8 @@ public class ProductDeserializer implements JsonDeserializer<Product> {
                 c.setProduct(p);
                 c.setMessage(commentObject.get("message").getAsString());
                 c.setCountOfLikes(commentObject.get("countOfLikes").getAsInt());
+                if (commentObject.get("rating") != null && !commentObject.get("rating").isJsonNull())
+                    c.setRatingGiven((int)commentObject.get("rating").getAsDouble());
                 JsonElement parentElement = commentObject.get("parent");
                 if (parentElement != null && !parentElement.isJsonNull())
                 {
@@ -76,6 +78,8 @@ public class ProductDeserializer implements JsonDeserializer<Product> {
                     authorCustomer.setEmail(authorObj.get("email").getAsString());
                     if (authorObj.get("profileImageURL") != null && !authorObj.get("profileImageURL").isJsonNull())
                         authorCustomer.setProfileImageURL(authorObj.get("profileImageURL").getAsString());
+                    else
+                        authorCustomer.setProfileImageURL("http://10.0.2.2:8080/images/noProfile.png");
                     c.setAuthor(authorCustomer);
                 }
                 else if (author.isJsonPrimitive() && author.getAsJsonPrimitive().getAsInt() == -1)

@@ -47,6 +47,15 @@ public class Order {
     private ShipmentType shipmentType;
     private Address deliveryAddress;
     private OrderStatus status;
+    private String customerName;
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
 
     private void calculateTotalPrice() {
         totalPrice = amount * product.getPricePerUnit();

@@ -164,6 +164,8 @@ public class CustomerViewProductActivity extends AppCompatActivity {
         });
         binding.customerViewProductBackButton.setOnClickListener(v -> CustomerViewProductActivity.super.onBackPressed());
         binding.totalPrice.setText(String.format(getString(R.string.turkish_lira), String.valueOf(product.getPricePerUnit() * productCount)));
+
+
         binding.commentItems.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         binding.commentItems.setAdapter(new CommentCustomerViewAdapter(product.getComments().stream().filter(c -> c.getParent() == null).collect(Collectors.toList()), getLayoutInflater(), this));
         binding.itemSimilarItems.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -191,7 +193,20 @@ public class CustomerViewProductActivity extends AppCompatActivity {
                     ((CommentCustomerViewAdapter)binding.commentItems.getAdapter()).getComments().add(c);
                     binding.commentItems.getAdapter().notifyItemInserted(binding.commentItems.getAdapter().getItemCount());
                     binding.messageEditText.setText("");
-                }
+                    RetrofitService.getApi(ProductApi.class).getProductByIdWithDetailedComments(productID).enqueue(new Callback<Product>() {
+                        @Override
+                        public void onResponse(Call<Product> call, Response<Product> response) {
+                            try {
+                                binding.customerViewProductRatingText.setText(response.body().getRating() + "");
+                            } catch (Exception ignored) {};
+                        }
+
+                        @Override
+                        public void onFailure(Call<Product> call, Throwable t) {
+
+                        }
+                    });
+                    }
 
                 @Override
                 public void onFailure(Call<Comment> call, Throwable t) {

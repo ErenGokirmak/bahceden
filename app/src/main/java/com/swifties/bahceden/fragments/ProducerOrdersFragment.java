@@ -91,7 +91,7 @@ public class ProducerOrdersFragment extends Fragment {
                 binding.producerOrdersCancelledCount.setText(String.format("%d", cancelled));
 
                 binding.producerOrdersRV.setLayoutManager(new LinearLayoutManager(getContext()));
-                binding.producerOrdersRV.setAdapter(new ProducerOrderAdapter(orders, getContext(), inflater));
+                binding.producerOrdersRV.setAdapter(new ProducerOrderAdapter(orders, getContext(), inflater, ProducerOrdersFragment.this));
             }
 
             @Override

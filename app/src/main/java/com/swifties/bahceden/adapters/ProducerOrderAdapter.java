@@ -20,6 +20,7 @@ import com.swifties.bahceden.activities.ProducerOrderDetailsActivity;
 import com.swifties.bahceden.R;
 import com.swifties.bahceden.databinding.LayoutCustomerOrderBinding;
 import com.swifties.bahceden.databinding.LayoutProducerOrdersItemBinding;
+import com.swifties.bahceden.fragments.ProducerOrdersFragment;
 import com.swifties.bahceden.models.Order;
 
 import java.util.List;
@@ -28,12 +29,15 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
     List<Order> orders;
     Context context;
     LayoutInflater inflater;
+    ProducerOrdersFragment frag;
 
-    public ProducerOrderAdapter(List<Order> orders, Context context, LayoutInflater inflater) {
+    public ProducerOrderAdapter(List<Order> orders, Context context, LayoutInflater inflater, ProducerOrdersFragment frag) {
         this.orders = orders;
         this.context = context;
         this.inflater = inflater;
+        this.frag = frag;
     }
+
     @NonNull
     @Override
     public ProducerOrderAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -118,7 +122,10 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
                     .setTitle("Confirmation")
                     .setMessage("Are you sure you want to change the status?")
                     .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> order.changeStatusTo(status))
+                    .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> {
+                        order.changeStatusTo(status);
+                        frag.onResume();
+                    })
                     .setNegativeButton(android.R.string.no, null).show();
         }
     }
