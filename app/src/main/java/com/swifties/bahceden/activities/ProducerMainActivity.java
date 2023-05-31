@@ -31,13 +31,7 @@ public class ProducerMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producer_main);
 
-        if (AuthUser.getProducer().getPhoneNumber() == null);
-        {
-            Toast.makeText(this, "You need to fill the required information to continue.", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, ProducerEditProfileActivity.class);
-            intent.putExtra("signup", true);
-            startActivity(intent);
-        }
+
 
         producerBottomNav = findViewById(R.id.producerBottomNavBar);
 
@@ -76,6 +70,14 @@ public class ProducerMainActivity extends AppCompatActivity {
 
             return false;
         });
+
+        if (AuthUser.getProducer().getPhoneNumber() == null);
+        {
+            Toast.makeText(this, "You need to fill the required information to continue.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, ProducerEditProfileActivity.class);
+            intent.putExtra("signup", true);
+            startActivity(intent);
+        }
     }
 
     // This is here to prevent the user from pressing the back button

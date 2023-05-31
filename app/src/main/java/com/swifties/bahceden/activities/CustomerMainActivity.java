@@ -1,8 +1,10 @@
 package com.swifties.bahceden.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.fragments.CustomerCartFragment;
 import com.swifties.bahceden.fragments.CustomerFavoritesFragment;
 import com.swifties.bahceden.fragments.CustomerHomeFragment;
@@ -72,6 +75,14 @@ public class CustomerMainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        if (AuthUser.getCustomer().getAddresses() == null || AuthUser.getCustomer().getAddresses().isEmpty());
+        {
+            Toast.makeText(this, "You need to fill the required information to continue.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, CustomerAddAddressActivity.class);
+            intent.putExtra("signup", true);
+            startActivity(intent);
+        }
     }
 
     // This is here to prevent the user from pressing the back button
