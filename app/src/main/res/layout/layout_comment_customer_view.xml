@@ -28,7 +28,7 @@
     </androidx.cardview.widget.CardView>
 
     <ImageView
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/commentDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -138,21 +138,33 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <TextView
-        android:id="@+id/likeCount"
+    <LinearLayout
+        android:id="@+id/likeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:drawablePadding="8dp"
-        android:text="336"
-        android:textColor="@color/bahceden_green"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:drawableStartCompat="@drawable/favorite2"
-        app:drawableTint="@color/bahceden_green"
         app:layout_constraintBottom_toBottomOf="@+id/rating"
-        app:layout_constraintStart_toStartOf="@id/commentMessage" />
+        app:layout_constraintStart_toStartOf="@id/commentMessage"
+        android:layout_marginStart="10dp">
+
+        <ImageView
+            android:id="@+id/likeButtonHeart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_unfavorite"/>
+
+        <TextView
+            android:id="@+id/likeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="336"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp"/>
+
+    </LinearLayout>
+
+
+
 
 <!--    <TextView-->
 <!--        android:id="@+id/commentDate"-->

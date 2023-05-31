@@ -190,6 +190,7 @@ public class CustomerViewProductActivity extends AppCompatActivity {
                     product.getComments().add(c);
                     ((CommentCustomerViewAdapter)binding.commentItems.getAdapter()).getComments().add(c);
                     binding.commentItems.getAdapter().notifyItemInserted(binding.commentItems.getAdapter().getItemCount());
+                    binding.messageEditText.setText("");
                 }
 
                 @Override
