@@ -68,6 +68,7 @@ public class SplashActivity extends AppCompatActivity {
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(SplashActivity.this, "Incorrect email or password.", Toast.LENGTH_SHORT).show();
                             new DBHelper(SplashActivity.this).deleteAllUsers();
+                            new DBHelper(SplashActivity.this).deleteAllSearchHistory();
                         }
                     });
         }
