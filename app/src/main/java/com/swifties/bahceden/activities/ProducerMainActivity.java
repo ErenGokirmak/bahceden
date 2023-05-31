@@ -15,6 +15,7 @@ import com.swifties.bahceden.fragments.ProducerDataFragment;
 import com.swifties.bahceden.fragments.ProducerHomeFragment;
 import com.swifties.bahceden.fragments.ProducerOrdersFragment;
 import com.swifties.bahceden.fragments.ProducerProfileFragment;
+import com.swifties.bahceden.models.Producer;
 
 public class ProducerMainActivity extends AppCompatActivity {
 
@@ -71,7 +72,8 @@ public class ProducerMainActivity extends AppCompatActivity {
             return false;
         });
 
-        if (AuthUser.getProducer().getPhoneNumber() == null);
+        String p = AuthUser.getProducer().getPhoneNumber();
+        if (p == null)
         {
             Toast.makeText(this, "You need to fill the required information to continue.", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, ProducerEditProfileActivity.class);
