@@ -3,6 +3,7 @@ package com.swifties.bahceden.fragments;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,6 +35,7 @@ import com.swifties.bahceden.adapters.SpinnerCustomAdapter;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.ProducerApi;
 import com.swifties.bahceden.data.apis.ProductApi;
+import com.swifties.bahceden.data.local.DBHelper;
 import com.swifties.bahceden.models.Producer;
 import com.swifties.bahceden.models.Product;
 import com.swifties.bahceden.uiclasses.SpinnerCustomItem;
@@ -59,6 +62,8 @@ public class CustomerSearchFragment extends Fragment {
     SwitchCompat producerSwitch, productSwitch, ascDscSwitch;
     Spinner categorySpinner;
 
+     DBHelper dbHelper;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -69,7 +74,7 @@ public class CustomerSearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        dbHelper = new DBHelper(getActivity());
         // Create the RecyclerView and its adapter
         productSearchRV = view.findViewById(R.id.customerSearchResultsRV);
         productSearchRV.setHasFixedSize(false);
@@ -82,6 +87,7 @@ public class CustomerSearchFragment extends Fragment {
         ratingSortButton = view.findViewById(R.id.ratingSortSwitch);
         priceSortButton = view.findViewById(R.id.priceSortSwitch);
         sortByMenu = view.findViewById(R.id.sortByMenu);
+        searchEditText = view.findViewById(R.id.customerSearchEditText);
 
         filtersButton.setOnClickListener(v -> {
             if (sortByMenu.getVisibility() == View.VISIBLE) sortByMenu.setVisibility(View.GONE);
@@ -146,9 +152,6 @@ public class CustomerSearchFragment extends Fragment {
         SpinnerCustomAdapter spinnerAdapter = new SpinnerCustomAdapter(getActivity(), getCustomCategoriesList());
         categorySpinner.setAdapter(spinnerAdapter);
 
-        // Fill the search history list
-        fillSearchHistory();
-
         // Create an adapter for the search history list
         ArrayAdapter<String> searchHistoryAdapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, searchHistoryList);
 
@@ -179,22 +182,21 @@ public class CustomerSearchFragment extends Fragment {
         searchHistoryPopup.setOutsideTouchable(true);
         searchHistoryPopup.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
 
-        // Find the EditText view for the search history
-        searchEditText = view.findViewById(R.id.customerSearchEditText);
-
-        // Set a focus change listener for the search history EditText
-        searchEditText.setOnFocusChangeListener((v, hasFocus) -> {
-            if (hasFocus) {
+        searchEditText.setOnClickListener(k -> {
+            Toast.makeText(getContext(), "afdsdfsfda", Toast.LENGTH_SHORT).show();
+            // Fill the search history list
+            fillSearchHistory();
+            //if (isVisible) {
                 searchHistoryPopup.showAsDropDown(searchEditText);
-            } else {
-                searchHistoryPopup.dismiss();
-            }
+//            } else {
+//                searchHistoryPopup.dismiss();
+//            }
         });
-
-
         searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                dbHelper.insertSearchHistory(searchEditText.getText().toString());
                 if(producerSwitch.isChecked()){
                     RetrofitService.getApi(ProducerApi.class).searchProducer(searchEditText.getText().toString(),
                                     "rating",
@@ -234,6 +236,7 @@ public class CustomerSearchFragment extends Fragment {
         });
 
         searchButton.setOnClickListener(v -> {
+
             if (producerSwitch.isChecked()) {
 
                 RetrofitService.getApi(ProducerApi.class).searchProducer(searchEditText.getText().toString(),
@@ -292,12 +295,11 @@ public class CustomerSearchFragment extends Fragment {
     }
 
     private void fillSearchHistory() {
-        searchHistoryList.add("Milk");
-        searchHistoryList.add("Pink Milk");
-        searchHistoryList.add("Meat");
-        searchHistoryList.add("Honey");
-        searchHistoryList.add("Şifa Gıda");
-        searchHistoryList.add("Herbs");
+        Log.d("SearchFragment", "fillSearchHistory called");
+        DBHelper dbHelper = new DBHelper(requireActivity());
+        searchHistoryList = dbHelper.getSearchHistory();
+//        searchHistoryAdapter.notifyDataSetChanged();
+        Log.d("SearchFragment", "Retrieved search history: " + searchHistoryList.toString());
     }
 
     private ArrayList<SpinnerCustomItem> getCustomCategoriesList() {
