@@ -19,9 +19,15 @@ import com.swifties.bahceden.R;
 import com.swifties.bahceden.activities.CustomerCheckOutActivity;
 import com.swifties.bahceden.adapters.CartProductAdapter;
 import com.swifties.bahceden.data.AuthUser;
+import com.swifties.bahceden.data.RetrofitService;
+import com.swifties.bahceden.data.apis.OrderApi;
 import com.swifties.bahceden.models.Order;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CustomerCartFragment extends Fragment {
 
@@ -44,10 +50,25 @@ public class CustomerCartFragment extends Fragment {
         buyNowButton = view.findViewById(R.id.customerCartBuyNowButton);
         totalPriceText = view.findViewById(R.id.customerCartTotalPriceValue);
         totalPriceText.setText(String.format(getString(R.string.turkish_lira), String.valueOf(0.0)));
+        cart = AuthUser.getCustomer().getCart();
 
         buyNowButton.setOnClickListener(buyView -> {
-            Intent intent = new Intent(buyView.getContext(), CustomerCheckOutActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(buyView.getContext(), CustomerCheckOutActivity.class);
+//            startActivity(intent);
+            cart.forEach(o -> {
+                o.setStatus(Order.OrderStatus.PENDING);
+                RetrofitService.getApi(OrderApi.class).postOrder(o).enqueue(new Callback<Order>() {
+                    @Override
+                    public void onResponse(Call<Order> call, Response<Order> response) {
+                        onResume();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Order> call, Throwable t) {
+
+                    }
+                });
+            });
         });
 
         cartProductsRV = view.findViewById(R.id.customerCartProductsRV);

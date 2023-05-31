@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.swifties.bahceden.adapters.CheckOutAdapter;
+import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.apis.OrderApi;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.databinding.ActivityCustomerCheckOutBinding;
@@ -25,7 +26,7 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
 
     private CheckOutAdapter checkOutAdapter;
     private RecyclerView.LayoutManager checkOutRcLayoutManager;
-    private Cart cart;
+    private List<Order> cart;
     private ActivityCustomerCheckOutBinding binding;
 
     @Override
@@ -37,13 +38,13 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
 
         binding.customerCheckOutBackButton.setOnClickListener(backView -> CustomerCheckOutActivity.super.onBackPressed());
 
-        //cart = new Cart(0);
+        cart = AuthUser.getCustomer().getCart();
 
         // TODO: Turn this into the orders of the user that are in cart
         RetrofitService.getApi(OrderApi.class).getAllOrders().enqueue(new Callback<List<Order>>() {
             @Override
             public void onResponse(@NonNull Call<List<Order>> call, @NonNull Response<List<Order>> response) {
-                cart.setOrders(response.body());
+                cart.addAll(response.body());
 
                 binding.customerCheckOutOrdersRV.setHasFixedSize(true);
                 checkOutRcLayoutManager = new LinearLayoutManager(CustomerCheckOutActivity.this);
@@ -62,7 +63,7 @@ public class CustomerCheckOutActivity extends AppCompatActivity {
 
         // TODO: I'm assuming that there won't be a payment screen as we don't have cards
         binding.customerCheckOutContinueToPaymentButton.setOnClickListener(buyView -> {
-            for (Order o: cart.getOrders()) {
+            for (Order o: cart) {
                 o.setStatus(Order.OrderStatus.PENDING);
                 RetrofitService.getApi(OrderApi.class).putOrder(o, o.getId()).enqueue(new Callback<Order>() {
                     @Override

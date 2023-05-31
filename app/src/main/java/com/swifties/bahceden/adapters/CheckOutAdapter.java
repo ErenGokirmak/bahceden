@@ -17,12 +17,14 @@ import com.swifties.bahceden.models.Cart;
 import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Product;
 
+import java.util.List;
+
 public class CheckOutAdapter extends RecyclerView.Adapter<CheckOutAdapter.ViewHolder> {
 
-    Cart cart;
+    List<Order> cart;
     Context context;
 
-    public CheckOutAdapter(Cart cart, Context context) {
+    public CheckOutAdapter(List<Order> cart, Context context) {
         this.cart = cart;
         this.context = context;
     }
