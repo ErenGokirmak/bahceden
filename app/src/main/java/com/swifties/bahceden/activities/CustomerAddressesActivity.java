@@ -36,6 +36,8 @@ public class CustomerAddressesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        binding.customerAddressesYourAddressesRV.getAdapter().notifyDataSetChanged();
+        binding.customerAddressesYourAddressesRV.setAdapter(new YourAddressesAdapter(AuthUser.getCustomer().getAddresses(),
+                this,
+                getLayoutInflater()));
     }
 }

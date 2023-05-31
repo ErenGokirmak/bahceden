@@ -16,6 +16,7 @@ import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.data.RetrofitService;
 import com.swifties.bahceden.data.apis.AddressesApi;
 import com.swifties.bahceden.databinding.ActivityCustomerAddAddressBinding;
+import com.swifties.bahceden.models.Action;
 import com.swifties.bahceden.models.Address;
 import com.swifties.bahceden.models.Customer;
 
@@ -73,8 +74,12 @@ public class CustomerAddAddressActivity extends AppCompatActivity {
                     public void onResponse(Call<Address> call, Response<Address> response) {
                         Toast.makeText(CustomerAddAddressActivity.this,
                                 "successful", Toast.LENGTH_SHORT).show();
-                        AuthUser.getInstance().updateUser();
-                        CustomerAddAddressActivity.super.onBackPressed();
+                        AuthUser.getInstance().updateUser(new Action() {
+                            @Override
+                            public void act() {
+                                CustomerAddAddressActivity.super.onBackPressed();
+                            }
+                        });
                     }
 
                     @Override
@@ -116,5 +121,12 @@ public class CustomerAddAddressActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
     }
 }
