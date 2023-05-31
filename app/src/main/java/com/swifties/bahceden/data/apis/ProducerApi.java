@@ -1,6 +1,7 @@
 package com.swifties.bahceden.data.apis;
 
 import com.swifties.bahceden.models.Producer;
+import com.swifties.bahceden.models.ProducerDataDTO;
 import com.swifties.bahceden.models.Product;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public interface ProducerApi {
 
     /**
      * retrieve producer according to the email for the log in purposes
+     *
      * @param email
      * @return producer with given email
      */
@@ -86,7 +88,8 @@ public interface ProducerApi {
     );
 
     @GET("producers/{producerId}/products")
-    Call<List<Product>> getProductsOfProducer (@Path("producerId") int producerId);
+    Call<List<Product>> getProductsOfProducer(@Path("producerId") int producerId);
 
-
+    @GET("producers/data")
+    Call<ProducerDataDTO> getProductData(@Query("subCategory") int categoryId);
 }
