@@ -113,48 +113,42 @@ public class ProducerEditProductActivity extends AppCompatActivity {
                     return;
                 }
 
-                // TODO: Set category thing
                 product.setName(String.valueOf(nameField.getText()));
                 product.setDescription(String.valueOf(descriptionField.getText()));
                 product.setAmountInStock(Double.parseDouble(String.valueOf(amountInStockField.getText())));
                 product.setPricePerUnit(Double.parseDouble(String.valueOf(pricePerUnitField.getText())));
                 product.setUnitType(Product.UnitType.KILOGRAMS);
 
-                if (imageUri != null) {
-                    RequestBody requestBody = null;
-                    try {
-                        requestBody = new ProgressRequestBody(getInputStreamFromUri(this, imageUri), "image/*");
-                        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("image", "uploadedImage.jpg", requestBody);
 
-                        RetrofitService.getApi(ProductApi.class).uploadProductImage(intent.getIntExtra("product_id", -1), imagePart).enqueue(new Callback<Product>() {
-                            @Override
-                            public void onResponse(Call<Product> call, Response<Product> response) {
-                                if (bothRequestsAreDone) {
-                                    Toast.makeText(ProducerEditProductActivity.this, "Product was updated successfully.", Toast.LENGTH_SHORT).show();
-                                }
-                                bothRequestsAreDone = true;
-                            }
-
-                            @Override
-                            public void onFailure(Call<Product> call, Throwable t) {
-
-                            }
-                        });
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-
-
-                } else {
-                    bothRequestsAreDone = true;
-                }
                 RetrofitService.getApi(ProductApi.class).updateProduct(product).enqueue(new Callback<Product>() {
                     @Override
                     public void onResponse(Call<Product> call, Response<Product> response) {
-                        if (bothRequestsAreDone) {
-                            Toast.makeText(ProducerEditProductActivity.this, "Product was updated successfully.", Toast.LENGTH_SHORT).show();
+                        product = response.body();
+                        Toast.makeText(ProducerEditProductActivity.this, "Product was updated successfully.", Toast.LENGTH_SHORT).show();
+                        if (imageUri != null) {
+                            RequestBody requestBody = null;
+                            try {
+                                requestBody = new ProgressRequestBody(getInputStreamFromUri(getBaseContext(), imageUri), "image/*");
+                                MultipartBody.Part imagePart = MultipartBody.Part.createFormData("image", "uploadedImage.jpg", requestBody);
+
+                                RetrofitService.getApi(ProductApi.class).uploadProductImage(intent.getIntExtra("product_id", -1), imagePart).enqueue(new Callback<Product>() {
+                                    @Override
+                                    public void onResponse(Call<Product> call, Response<Product> response) {
+                                        if (bothRequestsAreDone) {
+                                            Toast.makeText(ProducerEditProductActivity.this, "Product was updated successfully.", Toast.LENGTH_SHORT).show();
+                                        }
+                                        bothRequestsAreDone = true;
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Product> call, Throwable t) {
+
+                                    }
+                                });
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
-                        bothRequestsAreDone = true;
                     }
 
                     @Override
@@ -162,10 +156,7 @@ public class ProducerEditProductActivity extends AppCompatActivity {
 
                     }
                 });
-
-
             });
-
         }
 
         customSubCategoriesSpinner = binding.producerEditProductItemSubCategoriesSpinner;
