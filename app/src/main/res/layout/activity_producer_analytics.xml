@@ -31,7 +31,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/nexa_heavy"
             android:gravity="center"
-            android:text="Şifa Gıda"
+            android:text="Analytics"
             android:textColor="@color/bahceden_green"
             android:textSize="25sp" />
 
