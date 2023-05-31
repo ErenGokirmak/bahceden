@@ -37,7 +37,7 @@ public class AnalyticsProductAdapter extends RecyclerView.Adapter<AnalyticsProdu
     public void onBindViewHolder(@NonNull AnalyticsProductAdapter.ViewHolder holder, int position) {
         ProductInformation productInformation = productInformationList.get(position);
         Picasso.get()
-                .load(productInformation.getProduct().getImageURL())
+                .load(productInformation.getProduct().getImageURL().replace("localhost", "10.0.2.2"))
                 .into(holder.binding.cartProductImage);
         holder.binding.analyticsProductName.setText(productInformation.getProduct().getName());
         holder.binding.analyticsProductId.setText(String.format(Locale.ENGLISH,"#%d", productInformation.getProduct().getId()));

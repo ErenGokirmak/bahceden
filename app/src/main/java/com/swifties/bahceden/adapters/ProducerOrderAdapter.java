@@ -44,7 +44,7 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
     @Override
     public void onBindViewHolder(@NonNull ProducerOrderAdapter.ViewHolder holder, int position) {
         Order order = orders.get(position);
-        Picasso.get().load(order.getProduct().getImageURL())
+        Picasso.get().load(order.getProduct().getImageURL().replace("localhost", "10.0.2.2"))
                 .into(holder.binding.productImage);
         holder.binding.productName.setText(order.getProduct().getName());
         holder.binding.orderNumber.setText(String.format(context.getResources().getText(R.string.orderWithId).toString(), order.getId()));

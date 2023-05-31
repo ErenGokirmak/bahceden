@@ -47,18 +47,23 @@ public class ProducerEditProfileActivity extends AppCompatActivity {
         binding = ActivityProducerEditProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.producerEditProfileBackButton.setOnClickListener(backView -> ProducerEditProfileActivity.super.onBackPressed());
+        if (!getIntent().hasExtra("signup"))
+            binding.producerEditProfileBackButton.setOnClickListener(backView -> ProducerEditProfileActivity.super.onBackPressed());
 
         binding.producerEditName.setText(AuthUser.getProducer().getName());
         binding.producerEditDukkanName.setText(AuthUser.getProducer().getShopName());
-        binding.countryCodePicker.setDefaultCountryUsingPhoneCode(Integer.parseInt(AuthUser.getProducer().getPhoneNumber().substring(1,AuthUser.getProducer().getPhoneNumber().length() - 10))); //TODO this doesn't work idk fix this. the one in the CustomerAddAddressActivity works.
-        binding.customerEditNumber.setText(AuthUser.getProducer().getPhoneNumber().substring(AuthUser.getProducer().getPhoneNumber().length() - 10));
+        if (AuthUser.getProducer().getPhoneNumber() != null) {
+            binding.countryCodePicker.setDefaultCountryUsingPhoneCode(Integer.parseInt(AuthUser.getProducer().getPhoneNumber().substring(1, AuthUser.getProducer().getPhoneNumber().length() - 10)));
+            binding.customerEditNumber.setText(AuthUser.getProducer().getPhoneNumber().substring(AuthUser.getProducer().getPhoneNumber().length() - 10));
+        }
 
-        Picasso.get().load(AuthUser.getProducer().getProfileImageURL().replace("localhost", "10.0.2.2"))
+        if (AuthUser.getProducer().getProfileImageURL() != null)
+            Picasso.get().load(AuthUser.getProducer().getProfileImageURL().replace("localhost", "10.0.2.2"))
                 .networkPolicy(NetworkPolicy.NO_CACHE)
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .into(binding.producerEditProfileImage);
-        Picasso.get().load(AuthUser.getProducer().getBackgroundImageURL().replace("localhost", "10.0.2.2"))
+        if (AuthUser.getProducer().getBackgroundImageURL() != null)
+            Picasso.get().load(AuthUser.getProducer().getBackgroundImageURL().replace("localhost", "10.0.2.2"))
                 .networkPolicy(NetworkPolicy.NO_CACHE)
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .into(binding.producerEditBannerImage);

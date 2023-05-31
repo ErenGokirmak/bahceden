@@ -81,7 +81,7 @@ public class Customer extends User {
         {
             Order newOrder = new Order();
             newOrder.setProduct(p);
-            newOrder.setDeliveryAddress(addresses.get(0));
+            newOrder.setDeliveryAddress(new Address(this));
             newOrder.setStatus(Order.OrderStatus.IN_CART);
             newOrder.setShipmentType(Order.ShipmentType.CUSTOMER_PICKUP);
             newOrder.setAmount(amount);

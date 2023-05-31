@@ -1,12 +1,15 @@
 package com.swifties.bahceden.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.swifties.bahceden.R;
+import com.swifties.bahceden.data.AuthUser;
 import com.swifties.bahceden.fragments.ProducerAddProductFragment;
 import com.swifties.bahceden.fragments.ProducerDataFragment;
 import com.swifties.bahceden.fragments.ProducerHomeFragment;
@@ -27,6 +30,14 @@ public class ProducerMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producer_main);
+
+        if (AuthUser.getProducer().getPhoneNumber() == null);
+        {
+            Toast.makeText(this, "You need to fill the required information to continue.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, ProducerEditProfileActivity.class);
+            intent.putExtra("signup", true);
+            startActivity(intent);
+        }
 
         producerBottomNav = findViewById(R.id.producerBottomNavBar);
 

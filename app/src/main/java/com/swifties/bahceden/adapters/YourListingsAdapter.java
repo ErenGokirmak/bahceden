@@ -37,7 +37,7 @@ public class YourListingsAdapter extends RecyclerView.Adapter<YourListingsAdapte
         Product product = listings.get(position);
 
         Picasso.get()
-                .load(product.getImageURL())
+                .load(product.getImageURL().replace("localhost", "10.0.2.2"))
                 .into(holder.binding.producerHomeListingsProductImage);
         holder.binding.homeListingsProductName.setText(product.getName());
         holder.binding.price.setText(String.valueOf(product.getPricePerUnit()));

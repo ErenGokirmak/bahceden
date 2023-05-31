@@ -74,6 +74,10 @@ public class Address {
         this.customer = customer;
     }
 
+    public Address(Customer customer) {
+        this.customer = customer;
+    }
+
     public Address(int id, String title, String fullAddress, String phoneNumber, Customer customer) {
         this.id = id;
         this.title = title;

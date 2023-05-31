@@ -36,7 +36,7 @@ public class CustomerOrdersAdapter extends RecyclerView.Adapter<CustomerOrdersAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Order order = orders.get(position);
-        Picasso.get().load(order.getProduct().getImageURL()).into(holder.binding.productImage);
+        Picasso.get().load(order.getProduct().getImageURL().replace("localhost", "10.0.2.2")).into(holder.binding.productImage);
         holder.binding.orderNumber.setText(String.format(context.getResources().getText(R.string.orderWithId).toString(), order.getId()));
         holder.binding.orderDate.setText(order.getDateOfPurchase());
         holder.binding.totalAmount.setText(String.format(context.getResources().getText(R.string.totalCost).toString(), order.getTotalPrice()));

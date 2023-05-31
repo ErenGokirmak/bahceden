@@ -73,7 +73,7 @@ public class ProducerOrderDetailsActivity extends AppCompatActivity {
                     }
 
                     Picasso.get()
-                            .load(order.getProduct().getImageURL())
+                            .load(order.getProduct().getImageURL().replace("localhost", "10.0.2.2"))
                             .into(binding.producerOrderDetailsProductImage);
                     binding.producerOrderDetailsProductName.setText(order.getProduct().getName());
                     binding.producerOrderDetailsProductID.setText(String.format(getString(R.string.number_symbol), order.getProduct().getId()));
