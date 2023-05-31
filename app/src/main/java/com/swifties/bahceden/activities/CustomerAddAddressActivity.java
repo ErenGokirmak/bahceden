@@ -110,8 +110,12 @@ public class CustomerAddAddressActivity extends AppCompatActivity {
                         public void onResponse(@NonNull Call<Address> call, @NonNull Response<Address> response) {
                             Toast.makeText(CustomerAddAddressActivity.this,
                                     "successful", Toast.LENGTH_SHORT).show();
-                            AuthUser.getInstance().updateUser();
-                            CustomerAddAddressActivity.super.onBackPressed();
+                            AuthUser.getInstance().updateUser(new Action() {
+                                @Override
+                                public void act() {
+                                    CustomerAddAddressActivity.super.onBackPressed();
+                                }
+                            });
                         }
 
                         @Override

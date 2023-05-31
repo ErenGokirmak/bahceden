@@ -76,7 +76,7 @@ public class CustomerMainActivity extends AppCompatActivity {
             }
         });
 
-        if (AuthUser.getCustomer().getAddresses() == null || AuthUser.getCustomer().getAddresses().isEmpty());
+        if (AuthUser.getCustomer().getAddresses() == null || AuthUser.getCustomer().getAddresses().isEmpty())
         {
             Toast.makeText(this, "You need to fill the required information to continue.", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, CustomerAddAddressActivity.class);

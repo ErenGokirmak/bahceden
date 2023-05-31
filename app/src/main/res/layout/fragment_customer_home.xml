@@ -257,13 +257,13 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/customerHomeNewArrivalsSeeAllButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nexa_heavy"
-                    android:text="@string/see_all"
-                    android:textColor="@color/bahceden_green" />
+<!--                <TextView-->
+<!--                    android:id="@+id/customerHomeNewArrivalsSeeAllButton"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/nexa_heavy"-->
+<!--                    android:text="@string/see_all"-->
+<!--                    android:textColor="@color/bahceden_green" />-->
 
             </LinearLayout>
 
