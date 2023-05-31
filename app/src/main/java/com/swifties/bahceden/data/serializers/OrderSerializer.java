@@ -20,7 +20,8 @@ public class OrderSerializer implements JsonSerializer<Order> {
         obj.addProperty("customerId", src.getCustomer().getId());
         obj.addProperty("producerId", src.getProduct().getProducer().getId());
         obj.addProperty("productId", src.getProduct().getId());
-        obj.addProperty("deliveryAddressId", src.getDeliveryAddress().getId());
+        if(src.getDeliveryAddress() != null)
+            obj.addProperty("deliveryAddressId", src.getDeliveryAddress().getId());
 
         return obj;
     }

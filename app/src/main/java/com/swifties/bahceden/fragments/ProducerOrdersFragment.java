@@ -67,6 +67,8 @@ public class ProducerOrdersFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
                 orders.clear();
+                if (response.body() == null)
+                    return;
                 orders.addAll(response.body().stream().filter(order -> order.getStatus() != Order.OrderStatus.IN_CART).collect(Collectors.toList()));
                 orders.forEach(o -> o.getProduct().setProducer(new Producer(AuthUser.getProducer().getId())));
 

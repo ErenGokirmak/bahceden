@@ -99,30 +99,15 @@ public class ProducerHomeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
                 comments.clear();
-                comments.addAll(response.body());
-                binding.producerHomeNewReviewsRV.getAdapter().notifyDataSetChanged();
+                if(response.body() != null) {
+                    comments.addAll(response.body());
+                    binding.producerHomeNewReviewsRV.getAdapter().notifyDataSetChanged();
+                }
             }
 
             @Override
             public void onFailure(Call<List<Comment>> call, Throwable t) {
                 throw new RuntimeException(t);
-            }
-        });
-
-        ArrayList<SlideModel> slideModels = new ArrayList<>();
-        // TODO: This will need to be changed to a more appropriate request
-        RetrofitService.getApi(ProductApi.class).getAllProducts().enqueue(new Callback<List<Product>>() {
-            @Override
-            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                productsInSlider = new ArrayList<>();
-                productsInSlider.addAll(response.body());
-                slideModels.addAll(productsInSlider.stream().map(p -> new SlideModel(p.getImageURL(), ScaleTypes.FIT)).collect(Collectors.toList()));
-                binding.producerHomeSlider.setImageList(slideModels);
-            }
-
-            @Override
-            public void onFailure(Call<List<Product>> call, Throwable t) {
-
             }
         });
     }
