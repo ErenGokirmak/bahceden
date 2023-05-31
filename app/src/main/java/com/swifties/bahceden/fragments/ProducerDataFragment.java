@@ -65,7 +65,7 @@ public class ProducerDataFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        producerChart = view.findViewById(R.id.producerDataChart);
+//        producerChart = view.findViewById(R.id.producerDataChart);
         customDataCategoriesSpinner = view.findViewById(R.id.producerDataCategoriesSpinner);
         customDataSubCategoriesSpinner = view.findViewById(R.id.producerDataSubCategoriesSpinner);
         producerDataMarketMin = view.findViewById(R.id.producerDataMarketMin);
