@@ -37,8 +37,11 @@ public class CustomerAddAddressActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // Back button and listener initialization
-        if (getIntent().hasExtra("signup"))
-            binding.customerAddAddressBackButton.setOnClickListener(backView -> CustomerAddAddressActivity.super.onBackPressed());
+
+            binding.customerAddAddressBackButton.setOnClickListener(backView -> {
+                        CustomerAddAddressActivity.super.onBackPressed();
+                        finish();
+                    });
 
         // Fields
         addressNameField = binding.customerAddAddressEditTitleOfAddress;
