@@ -1,5 +1,6 @@
 package com.swifties.bahceden.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.swifties.bahceden.activities.ProducerAllProductsActivity;
 import com.swifties.bahceden.adapters.CommentProducerViewAdapter;
 import com.swifties.bahceden.adapters.ProducerHomeNewReviewsAdapter;
 import com.swifties.bahceden.adapters.YourListingsAdapter;
@@ -48,6 +50,13 @@ public class ProducerHomeFragment extends Fragment {
         binding = FragmentProducerHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        binding.producerHomeProductsSeeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ProducerAllProductsActivity.class);
+                startActivity(intent);
+            }
+        });
         comments = new ArrayList<>();
 
         binding.producerHomeNewReviewsRV.setHasFixedSize(true);
