@@ -42,15 +42,18 @@ public class CustomerAnalyticsActivity extends AppCompatActivity {
         binding.customerAnalyticsBackButton.setOnClickListener(view -> CustomerAnalyticsActivity.super.onBackPressed());
 
 
-        // TODO get the market prices of the customer's orders and calculate the total.
-        // TODO set it to marketTotal.
+        
 
         RetrofitService.getApi(CustomerApi.class).getCustomerProfit(AuthUser.getCustomer().getId()).enqueue(new Callback<Double[]>() {
             @Override
             public void onResponse(Call<Double[]> call, Response<Double[]> response) {
                 marketTotal = response.body()[0];
+                System.out.println(marketTotal);
                 bahcedenTotal = response.body()[1];
+                System.out.println(bahcedenTotal);
                 profit = response.body()[2];
+                System.out.println(profit);
+                setViews();
             }
 
             @Override
@@ -58,8 +61,6 @@ public class CustomerAnalyticsActivity extends AppCompatActivity {
                 throw new RuntimeException(t);
             }
         });
-
-        setViews(); // TODO call this after the calculations.
     }
 
     private void setViews ()
