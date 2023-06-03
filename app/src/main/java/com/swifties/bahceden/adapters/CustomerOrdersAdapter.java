@@ -49,10 +49,10 @@ public class CustomerOrdersAdapter extends RecyclerView.Adapter<CustomerOrdersAd
             case ONGOING:
                 color = context.getColor(R.color.eggplant_pink);
                 break;
-            case CANCELLED:
+            case DELIVERED:
                 color = context.getColor(R.color.plus_green);
                 break;
-            case DELIVERED:
+            case CANCELLED:
                 color = context.getColor(R.color.minus_red);
                 break;
         }

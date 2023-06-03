@@ -136,13 +136,13 @@ public class Order {
     public void setStatus(OrderStatus status) {
         this.status = status;
     }
-    public void changeStatusTo (OrderStatus status)
+    public void changeStatusTo (OrderStatus status, Action action)
     {
         setStatus(status);
         RetrofitService.getApi(OrderApi.class).putOrder(this, getId()).enqueue(new Callback<Order>() {
             @Override
             public void onResponse(Call<Order> call, Response<Order> response) {
-
+                action.act();
             }
 
             @Override

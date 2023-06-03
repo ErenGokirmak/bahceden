@@ -184,7 +184,8 @@ public class CustomerSearchFragment extends Fragment {
 
         searchEditText.setOnClickListener(k -> {
             fillSearchHistory();
-            searchHistoryPopup.showAsDropDown(searchEditText);
+            searchHistoryAdapter.notifyDataSetChanged();
+            searchHistoryPopup.showAsDropDown(k);
         });
         searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -289,7 +290,7 @@ public class CustomerSearchFragment extends Fragment {
     }
 
     private void fillSearchHistory() {
-        DBHelper dbHelper = new DBHelper(requireActivity());
+        DBHelper dbHelper = new DBHelper(getContext());
         searchHistoryList = dbHelper.getSearchHistory();
     }
 

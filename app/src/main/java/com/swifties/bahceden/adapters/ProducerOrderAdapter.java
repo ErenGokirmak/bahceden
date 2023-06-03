@@ -21,6 +21,7 @@ import com.swifties.bahceden.R;
 import com.swifties.bahceden.databinding.LayoutCustomerOrderBinding;
 import com.swifties.bahceden.databinding.LayoutProducerOrdersItemBinding;
 import com.swifties.bahceden.fragments.ProducerOrdersFragment;
+import com.swifties.bahceden.models.Action;
 import com.swifties.bahceden.models.Order;
 
 import java.util.List;
@@ -123,8 +124,13 @@ public class ProducerOrderAdapter extends RecyclerView.Adapter<ProducerOrderAdap
                     .setMessage("Are you sure you want to change the status?")
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> {
-                        order.changeStatusTo(status);
-                        frag.onResume();
+                        order.changeStatusTo(status, new Action() {
+                            @Override
+                            public void act() {
+                                frag.setViews();
+                            }
+                        });
+
                     })
                     .setNegativeButton(android.R.string.no, null).show();
         }

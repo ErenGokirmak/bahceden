@@ -158,7 +158,7 @@ public class ProducerDataFragment extends Fragment {
                 producerDataOtherAverage.setText(String.format("%.2f",response.body().getSellersAVG()));
                 producerDataOtherMax.setText(String.format("%.2f",response.body().getSellersMAX()));
 
-                producerDataOurRecommendationValue.setText(String.valueOf(response.body().getRecommendedPrice()));
+                producerDataOurRecommendationValue.setText(String.format("%.2f",response.body().getRecommendedPrice()));
             }
 
             @Override

@@ -92,13 +92,13 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/png_beef" />
+                        android:src="@drawable/png_dairy_products" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nexa_heavy"
-                        android:text="Red Meat"
+                        android:text="Dairy"
                         android:textColor="@color/black" />
 
                 </LinearLayout>
@@ -145,14 +145,15 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/png_dairy_products" />
+                        android:src="@drawable/png_beef" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nexa_heavy"
-                        android:text="Dairy"
+                        android:text="Red Meat"
                         android:textColor="@color/black" />
+
 
                 </LinearLayout>
 

@@ -25,6 +25,7 @@ import com.swifties.bahceden.models.Order;
 import com.swifties.bahceden.models.Producer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,7 +63,12 @@ public class ProducerOrdersFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        Log.d("debugPurposes", String.valueOf(AuthUser.getProducer().getId()));
+        setViews();
+        setViews();
+    }
+
+    public void setViews ()
+    {
         RetrofitService.getApi(OrderApi.class).getOrdersOfProducer(AuthUser.getProducer().getId()).enqueue(new Callback<List<Order>>() {
             @Override
             public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
@@ -89,7 +95,7 @@ public class ProducerOrdersFragment extends Fragment {
                 binding.producerOrdersOngoingCount.setText(String.format("%d", ongoing));
                 binding.producerOrdersDeliveredCount.setText(String.format("%d", delivered));
                 binding.producerOrdersCancelledCount.setText(String.format("%d", cancelled));
-
+                Collections.reverse(orders);
                 binding.producerOrdersRV.setLayoutManager(new LinearLayoutManager(getContext()));
                 binding.producerOrdersRV.setAdapter(new ProducerOrderAdapter(orders, getContext(), inflater, ProducerOrdersFragment.this));
             }

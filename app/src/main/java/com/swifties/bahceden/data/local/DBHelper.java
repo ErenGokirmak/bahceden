@@ -90,11 +90,20 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public ArrayList<String> getSearchHistory() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + TABLE_SEARCH_HISTORY, null);
 
-        ArrayList<String> searchHistoryList = new ArrayList<>();
-        while (res.moveToNext()) {
-            searchHistoryList.add(res.getString(1));
+        ArrayList<String> searchHistoryList;
+        Cursor res = null;
+        try {
+            res = db.rawQuery("select * from " + TABLE_SEARCH_HISTORY, null);
+
+            searchHistoryList = new ArrayList<>();
+            while (res.moveToNext()) {
+                searchHistoryList.add(res.getString(1));
+            }
+        } finally {
+            if (res != null) {
+                res.close();
+            }
         }
 
         // Debugging

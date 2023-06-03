@@ -85,6 +85,18 @@ public class CustomerMainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (AuthUser.getCustomer().getAddresses() == null || AuthUser.getCustomer().getAddresses().isEmpty())
+        {
+            Toast.makeText(this, "You need to fill the required information to continue.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, CustomerAddAddressActivity.class);
+            intent.putExtra("signup", true);
+            startActivity(intent);
+        }
+    }
+
     // This is here to prevent the user from pressing the back button
     // on their phone, as that would redirect them to the login page
     @Override

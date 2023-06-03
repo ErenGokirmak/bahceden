@@ -57,7 +57,7 @@ public class CustomerCartFragment extends Fragment {
 //            startActivity(intent);
             cart.forEach(o -> {
                 o.setStatus(Order.OrderStatus.PENDING);
-                RetrofitService.getApi(OrderApi.class).postOrder(o).enqueue(new Callback<Order>() {
+                RetrofitService.getApi(OrderApi.class).putOrder(o, o.getId()).enqueue(new Callback<Order>() {
                     @Override
                     public void onResponse(Call<Order> call, Response<Order> response) {
                         onResume();
